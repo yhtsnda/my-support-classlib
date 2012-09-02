@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Purviews" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<alias>
+		<typeAlias alias="Action" type="Projects.Purviews.Action"/>
+	</alias>
+
+	<statements>
+		<insert id="Create_Action" parameterClass="Action">
+			Insert Into actions(ActionKey,DomainKey,ActionName)Values(#Key#,#DomainKey#,#Name#);
+		</insert>
+
+		<update id="Update_Action" parameterClass="Action">
+			Update actions Set ActionName=#Name# Where ActionKey=#Key#;
+		</update>
+
+		<delete id="Delete_Action" parameterClass="Action">
+			Delete From actions Where AutoCode=#AutoCode#;
+		</delete>
+
+		<select id="Query_Action" resultClass="Action">
+			Select AutoCode, ActionKey As 'Key',DomainKey,ActionName As 'Name' From actions
+			<dynamic prepend="Where">
+        <isNotEqual prepend="And" property="AutoCode" compareValue="0">
+          AutoCode=#AutoCode#
+        </isNotEqual>        
+				<isNotEmpty prepend="And" property="DomainKey">
+					DomainKey=#DomainKey#
+				</isNotEmpty>
+				<isNotEmpty property="Name" prepend="And">
+					ActionName=#Name#
+				</isNotEmpty>
+				<isNotEmpty property="Key" prepend="And">
+					ActionKey=#Key#
+				</isNotEmpty>				
+			</dynamic>
+		</select>
+
+		<select id="Query_Action_Paging" parameterClass="Hashtable" resultClass="Action">
+			Select AutoCode, ActionKey As 'Key',DomainKey,ActionName As 'Name' From actions 
+			<dynamic prepend="Where">
+				<isNotEmpty prepend="And" property="DomainKey">
+					DomainKey=#DomainKey#
+				</isNotEmpty>
+				<isNotEmpty prepend="And" property="Name">
+					ActionName Like '%$Name$%'
+				</isNotEmpty>
+			</dynamic>
+			Limit #Skip#, #Limit#;
+		</select>
+
+		<select id="Query_Action_Count" parameterClass="Action" resultClass="int">
+			Select Count(1) From actions
+			<dynamic prepend="Where">
+				<isNotEmpty prepend="And" property="DomainKey">
+					DomainKey=#DomainKey#
+				</isNotEmpty>
+				<isNotEmpty prepend="And" property="Name">
+					ActionName Like '%$Name$%'
+				</isNotEmpty>
+			</dynamic>
+		</select>
+		
+	</statements>
+</sqlMap>

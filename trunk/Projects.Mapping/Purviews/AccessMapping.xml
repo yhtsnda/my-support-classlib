@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Purviews" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<alias>
+		<typeAlias alias="Access" type="Projects.Purviews.Access"/>
+	</alias>
+
+	<resultMaps>
+		<resultMap id="AccessMap" class="Access">
+			<result column="AutoCode" property="AutoCode"/>
+			<result column="UserId" property="UserId"/>
+			<result column="InstanceKey" property="InstanceKey"/>
+			<result select="Query_Access_Role" lazyLoad="true" column="AutoCode" property="Roles"/>
+		</resultMap>
+	</resultMaps>
+
+	<statements>
+		<insert id="Create_Access" parameterClass="Access">
+			Insert Into users(UserId,InstanceKey)Values(#UserId#,#InstanceKey#);
+			<selectKey property="AutoCode" resultClass="int" type="post">
+				Select LAST_INSERT_ID() As ID
+			</selectKey>
+		</insert>
+		<insert id="Create_User_Access" parameterClass="Hashtable">
+			Insert Into user_roles(AccessKey,RoleKey) Values(#AccessKey#,#RoleKey#)
+		</insert>
+		
+		<update id="Update_Access" parameterClass="Access"></update>
+
+		<delete id="Delete_Access" parameterClass="Access">
+			Delete From users Where UserId=#UserId# And InstanceKey=#InstanceKey#;
+			Delete From user_roles Where AccessKey=#UserId#;
+		</delete>
+
+		<delete id="Delete_AccessRole" parameterClass="int">
+			Delete From user_roles Where AccessKey=#value#;
+		</delete>
+
+		<select id="Query_Access" resultMap="AccessMap" parameterClass="Access">
+			select AutoCode,Userid,InstanceKey From users Where UserId=#UserId# And InstanceKey=#InstanceKey#;
+		</select>
+
+		<select id="Query_Access_Role" resultClass="Role" parameterClass="int">
+			Select a.RoleKey As 'Key',a.RoleName As 'Name',a.InstanceKey,a.ActionKeys As ActionKey,a.ResourceKeys As ResourceKey,a.CreateTime From roles a Inner Join user_roles b On a.RoleKey=b.RoleKey Where b.AccessKey=#value#
+		</select>
+
+	</statements>
+</sqlMap>

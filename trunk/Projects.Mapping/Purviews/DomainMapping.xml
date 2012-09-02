@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Purviews" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<alias>
+		<typeAlias alias="Domain" type="Projects.Purviews.Domain"/>
+	</alias>
+
+	<statements>
+		<insert id="Create_Domain" parameterClass="Domain">
+			Insert Into domains(DomainKey,DomainName)Values(#Key#,#Name#);
+		</insert>
+
+		<update id="Update_Domain" parameterClass="Domain">
+			Update domains Set DomainName=#Name# Where DomainKey=#Key#;
+		</update>
+
+		<delete id="Delete_Domain" parameterClass="Domain">
+			Delete From domains Where DomainKey=#Key#;
+		</delete>
+
+		<select id="Query_Domain" resultClass="Domain">
+			Select DomainKey As 'Key',DomainName As 'Name' From domains
+		</select>
+
+		<select id="QueryOneByKey_Domain" parameterClass="Domain" resultClass="Domain">
+			Select DomainKey As 'Key',DomainName As 'Name' From domains Where DomainKey=#Key#;
+		</select>
+		
+	</statements>
+</sqlMap>
