@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Purviews" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<alias>
+		<typeAlias alias="Model" type="Projects.Purviews.Model"/>
+	</alias>
+
+	<statements>
+		<insert id="Create_Model" parameterClass="Model">
+			Insert Into models(ModelKey,ModelName,ParentKey,ActionKey,InstanceKey,SortNumber,Url)Values(#Key#,#Name#,#ParentKey#,#ActionKey#,#InstanceKey#,#SortNumber#,#Url#);
+		</insert>
+
+		<update id="Update_Model" parameterClass="Model">
+			Update models Set ModelName=#Name#,ActionKey=#ActionKey#,SortNumber=#SortNumber#,Url=#Url# Where ModelKey=#Key#;
+		</update>
+
+		<delete id="Delete_Model" parameterClass="Model">
+			Delete From models Where ModelKey=#Key#;
+		</delete>
+
+		<select id="Query_Model" resultClass="Model">
+			Select ModelKey As 'Key',ModelName As 'Name',ParentKey,ActionKey,InstanceKey,SortNumber,Url From models
+			<dynamic prepend="Where">
+				<isNotEmpty prepend="And" property="InstanceKey">
+					InstanceKey=#InstanceKey#
+				</isNotEmpty>
+				<isNotEqual prepend="And" property="ParentKey" compareValue="0">
+					ParentKey=#ParentKey#
+				</isNotEqual>
+			</dynamic>
+		</select>
+
+		<select id="QueryOneByKey_Model" parameterClass="Model" resultClass="Model">
+			Select ModelKey As 'Key',ModelName As 'Name',ParentKey,ActionKey,InstanceKey,SortNumber,Url From models Where ModelKey=#Key#;
+		</select>
+
+	</statements>
+</sqlMap>

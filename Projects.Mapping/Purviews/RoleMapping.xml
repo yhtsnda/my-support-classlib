@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Purviews" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<alias>
+		<typeAlias alias="Role" type="Projects.Purviews.Role"/>
+	</alias>
+
+	<statements>
+		<insert id="Create_Role" parameterClass="Role">
+			Insert Into roles(RoleName,InstanceKey,ActionKeys,ResourceKeys) Values(#Name#, #InstanceKey#,#ActionKey#,#ResourceKey#);
+		</insert>
+
+		<update id="Update_Role" parameterClass="Role">
+			Update roles Set RoleName=#Name#,ActionKeys=#ActionKey#,ResourceKeys=#ResourceKey# Where RoleKey=#Key#;
+		</update>
+
+		<delete id="Delete_Role" parameterClass="Role">
+			Delete From roles Where RoleKey=#Key#;
+		</delete>
+
+		<select id="Query_Role" resultClass="Role" parameterClass="Role">
+			Select RoleKey As 'Key',RoleName As 'Name',InstanceKey,ActionKeys As ActionKey,ResourceKeys As ResourceKey From roles
+			<dynamic prepend="Where">
+				<isNotEmpty property="InstanceKey">
+					InstanceKey=#InstanceKey#
+				</isNotEmpty>
+			</dynamic>
+		</select>
+
+		<select id="QueryOneByKey_Role" parameterClass="Role" resultClass="Role">
+			Select RoleKey As 'Key',RoleName As 'Name',InstanceKey,ActionKeys As ActionKey,ResourceKeys As ResourceKey From roles Where RoleKey=#Key#
+		</select>
+		
+	</statements>
+</sqlMap>
