@@ -14,17 +14,28 @@ namespace BuildingSiteCheck.Mvc
     {
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
+            bool result = false;
             //从HttpRequest的Header中获取用户名,密码和AppKey
             string userName = httpContext.Request.Headers["User"];
             string password = httpContext.Request.Headers["Password"];
             string appKey = httpContext.Request.Headers["AppKey"];
             string checkSum = httpContext.Request.Headers["CheckSum"];
-
-            bool result = false;
             if (userName == null || password == null || appKey == null || checkSum == null)
                 result = false;
-            else
+
+            //获取IP地址
+            string requestIp = Projects.Tool.Util.IpAddress.GetIP();
+            //如果返回为String.Empty,表示不是网络环境,不传入IP进行验证
+            if (requestIp == String.Empty)
+            {
                 result = ServiceUserAuth.Instance.Check(userName, password, appKey, checkSum);
+            }
+            //否则就是网络环境
+            else
+            {
+                result = ServiceUserAuth.Instance.Check(userName, password, appKey, checkSum, requestIp);
+            }
+            //判断检查结果
             if (!result)
                 httpContext.Response.StatusCode = 403;
             return result;
