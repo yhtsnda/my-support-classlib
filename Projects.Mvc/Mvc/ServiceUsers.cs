@@ -145,8 +145,9 @@ namespace BuildingSiteCheck.Mvc
 
         public string AllowIp { get; set; }
 
-        static List<string> mIPList = null;
         [NonSerialized]
+        static List<string> mIPList = null;
+
         public List<string> IPList 
         {
             get
