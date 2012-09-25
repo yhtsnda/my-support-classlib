@@ -63,11 +63,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="IBatisNet.DataMapper">
-      <HintPath>..\..\Assembly\IBatisNet.DataMapper.dll</HintPath>
+      <HintPath>..\Assembly\IBatisNet.DataMapper.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\Assembly\log4net.dll</HintPath>
+      <HintPath>..\Assembly\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MongoDB.Bson, Version=1.3.1.4349, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <HintPath>..\..\Assembly\Mongo\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -75,7 +76,10 @@
       <HintPath>..\..\Assembly\Mongo\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Assembly\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\Assembly\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\Assembly\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -91,7 +95,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Tools">
-      <HintPath>..\..\Assembly\Tools.dll</HintPath>
+      <HintPath>..\Assembly\Tools.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +191,6 @@
   <ItemGroup>
     <Compile Include="Cache\Domain\CacheDomainUtil.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
