@@ -145,31 +145,12 @@ namespace BuildingSiteCheck.Mvc
 
         public string AllowIp { get; set; }
 
-        [NonSerialized]
-        static List<string> mIPList = null;
+        static List<string> mIPList = new List<string>();
 
         public List<string> IPList 
         {
-            get
-            {
-                if (mIPList == null)
-                {
-                    mIPList = new List<string>();
-                    var list = JsonConverter.FromJson<List<string>>(AllowIp);
-                    //删除所有不符合规范的IP地址
-                    foreach (string ip in list)
-                    {
-                        if (ip == "*")
-                        {
-                            mIPList.Add(ip);
-                            break;
-                        }
-                        if (IpAddress.ValidateIP(ip, true))
-                            mIPList.Add(ip);
-                    }
-                }
-                return mIPList;
-            }
+            get { return mIPList; }
+            set { mIPList = value; }
         }
     }
 
