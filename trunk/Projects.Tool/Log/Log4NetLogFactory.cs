@@ -14,7 +14,14 @@ namespace Projects.Tool
         {
             var node = ToolSection.Instance.TryGetNode("log/logProvider");
             string path = node.TryGetValue("configPath");
-            path = System.Web.HttpContext.Current.Server.MapPath(path);
+            if (System.Web.HttpContext.Current == null)
+            {
+                path = System.IO.Path.Combine(System.Environment.CurrentDirectory, path);
+            }
+            else
+            {
+                path = System.Web.HttpContext.Current.Server.MapPath(path);
+            }
             if (File.Exists(path))
             {
                 FileInfo fi = new FileInfo(path);
