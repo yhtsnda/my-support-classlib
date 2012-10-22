@@ -37,7 +37,7 @@ namespace Projects.Tool
             Manager.AssignFactory(factory);
         }
 
-        public static ILog GetLogger(string name)
+        public static ILog GetLogger(string name = "default")
         {
             return Manager.Factory.GetLogger(name);
         }
