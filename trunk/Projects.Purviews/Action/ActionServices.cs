@@ -13,12 +13,13 @@ namespace Projects.Purviews
     {
         private static IActionRepository repository = DependencyResolver.Resolve<IActionRepository>();
         //操作的缓存
-        private static CacheDomain<Action, int> actionCache = new CacheDomain<Action, int>(o => o.AutoCode,
-                                                                                                        GeActionInner,
-                                                                                                        null,
-                                                                                                        cacheName: "action",
-                                                                                                        cacheKeyFormat: "action:{0}",
-                                                                                                        secondesToLive: 600);
+        private static CacheDomain<Action, int> actionCache = 
+            new CacheDomain<Action, int>(o => o.AutoCode,
+                                                    GeActionInner,
+                                                    null,
+                                                    cacheName: "action",
+                                                    cacheKeyFormat: "action:{0}",
+                                                    secondesToLive: 600);
 
         private static CacheDomain<Action, string, string> actionCacheEx = new CacheDomain<Action, string, string>(o => o.Key, GetActionByKeyInner, null, cacheName: "actionEx", cacheKeyFormat: "actionEx:{0}:{1}", secondesToLive: 600);
 
