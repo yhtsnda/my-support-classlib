@@ -217,9 +217,7 @@ namespace Projects.Tool
                     {
                         IEnumerable<TEntity> dbItems = option.GetMissingItems(param, secondMissing.Select(key => keyDic[key]).ToArray());
                         //过滤掉 null 项，并加入缓存
-                        cache.SetBatch(dbItems.Where(item => !AbstractCache.IsDefault(item)), 
-                            key => option.GetCacheKey(param, option.EntityKeySelector(key)), 
-                            option.SecondesToLive);
+                        cache.SetBatch(dbItems.Where(item => !AbstractCache.IsDefault(item)), key => option.GetCacheKey(param, option.EntityKeySelector(key)), option.SecondesToLive);
                         cacheItems.AddRange(dbItems);
                     }
                 }

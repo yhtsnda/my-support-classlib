@@ -62,24 +62,8 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IBatisNet.DataMapper">
-      <HintPath>..\Assembly\IBatisNet.DataMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\Assembly\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="MongoDB.Bson, Version=1.3.1.4349, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
-      <HintPath>..\..\Assembly\Mongo\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver, Version=1.3.1.4349, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
-      <HintPath>..\..\Assembly\Mongo\MongoDB.Driver.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Assembly\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI">
-      <HintPath>..\Assembly\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -99,28 +83,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Access\Mongo\DefaultMongoProvider.cs" />
-    <Compile Include="Access\Mongo\IMongoProvider.cs" />
-    <Compile Include="Access\Mongo\Linq\IMongoUpdateable.cs" />
-    <Compile Include="Access\Mongo\Linq\MongoExpressionParser.cs" />
-    <Compile Include="Access\Mongo\Linq\MongoQueryable.cs" />
-    <Compile Include="Access\Mongo\Linq\MongoQueryable.Extend.cs">
-      <DependentUpon>MongoQueryable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Access\Mongo\Linq\NewSerializer.cs">
-      <DependentUpon>MongoExpressionParser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Access\Mongo\Linq\ParseException.cs" />
-    <Compile Include="Access\Mongo\Linq\QueryParserResult.cs" />
-    <Compile Include="Access\Mongo\MongoAccessor.cs" />
-    <Compile Include="Access\Mongo\MongoCollectionAttribute.cs" />
-    <Compile Include="Access\Mongo\MongoManager.cs.cs" />
     <Compile Include="Cache\CacheItem.cs" />
     <Compile Include="Cache\CacheManager.cs" />
     <Compile Include="Cache\Caches\AbstractCache.cs" />
     <Compile Include="Cache\Caches\AspnetCache.cs" />
     <Compile Include="Cache\Caches\BlankCache.cs" />
-    <Compile Include="Cache\Caches\CacheUtil.cs" />
+    <Compile Include="Extend\CacheExtend.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extend\CacheUtil.cs" />
     <Compile Include="Cache\Caches\HttpContextCache.cs" />
     <Compile Include="Cache\Caches\SecondaryCache.cs" />
     <Compile Include="Cache\Caches\StaticCache.cs" />
@@ -128,6 +99,7 @@
     <Compile Include="Cache\Domain\CacheDomain.cs" />
     <Compile Include="Cache\Domain\CacheDomainOption.cs" />
     <Compile Include="Cache\Domain\CacheDomainPrefixAttribute.cs" />
+    <Compile Include="Cache\Domain\CacheDomainUtil.cs" />
     <Compile Include="Cache\Domain\CacheProxy.cs" />
     <Compile Include="Cache\Domain\CacheTuple.cs" />
     <Compile Include="Cache\Factory\DefaultCacheFactory.cs" />
@@ -140,8 +112,6 @@
     <Compile Include="Configuration\SettingNode.cs" />
     <Compile Include="Configuration\ToolSection.cs" />
     <Compile Include="Extend\ArrayExtend.cs" />
-    <Compile Include="Extend\CacheExtend.cs" />
-    <Compile Include="Extend\CacheUnit.cs" />
     <Compile Include="Extend\CollectionExtend.cs" />
     <Compile Include="Extend\DateTimeExtend.cs" />
     <Compile Include="Extend\DirectoryExtend.cs" />
@@ -152,8 +122,6 @@
     <Compile Include="JsonProvider\PublicContractResolver.cs" />
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Log\ILogFactory.cs" />
-    <Compile Include="Log\Log4NetLog.cs" />
-    <Compile Include="Log\Log4NetLogFactory.cs" />
     <Compile Include="Log\LogManager.cs" />
     <Compile Include="Log\NullLoggerFactory.cs" />
     <Compile Include="Pager\IPagedList.cs" />
@@ -180,16 +148,12 @@
     <Compile Include="Util\ProtoInt.cs" />
     <Compile Include="Util\RegistrationHelper.cs" />
     <Compile Include="Util\RSACrypt.cs" />
-    <Compile Include="Util\SqlMapperManager.cs" />
     <Compile Include="Util\StringUtil.cs" />
     <Compile Include="Util\SynchronizedDictionary.cs" />
     <Compile Include="Util\Validator.cs" />
     <Compile Include="Util\Value.cs" />
     <Compile Include="Util\Workbench.cs" />
     <Compile Include="Util\WorkbenchUtil.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Cache\Domain\CacheDomainUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
