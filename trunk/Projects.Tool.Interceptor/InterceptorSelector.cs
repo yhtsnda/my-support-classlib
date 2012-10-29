@@ -11,24 +11,9 @@ namespace Projects.Tool.Interceptor
 {
     public sealed class InterceptorSelector : IInterceptorSelector
     {
-        Dictionary<string, IInterceptor> mInterceptors;
-
-        public Dictionary<string, IInterceptor> Interceptors
-        {
-            get
-            {
-                return mInterceptors;
-            }
-        }
-
-        static InterceptorSelector()
-        {
-            var interceptorTypes = ToolSection.Instance.TryGetTypes("interceptors/interceptor", "type");
-        }
-
         public IInterceptor[] SelectInterceptors(Type type, MethodInfo method, IInterceptor[] interceptors)
         {
-            var interceptorTypes = ToolSection.Instance.TryGetTypes("interceptors/interceptor", "type");
+            var interceptorTypes = InterceptorManager.Interceptors;
             List<IInterceptor> selectedInterceptors = new List<IInterceptor>();
 
             if (interceptorTypes == null)
