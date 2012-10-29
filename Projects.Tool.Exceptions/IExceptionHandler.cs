@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Projects.Tool.Exceptions
 {
-    public class IExceptionHandler
+    public interface IExceptionHandler
     {
         /// <summary>
         /// 传递特定的异常
