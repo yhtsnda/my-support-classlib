@@ -7,7 +7,10 @@ namespace Projects.Tool.Exceptions
 {
     public class ExceptionManager
     {
-        static ExceptionManager();
+        static ExceptionManager()
+        {
+        }
+
         private ExceptionManager()
         {
 

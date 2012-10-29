@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Projects.Tool.Exceptions;
+using Castle.DynamicProxy;
 
 namespace Projects.Tool.Interceptor
 {

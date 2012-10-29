@@ -5,6 +5,7 @@ using System.Text;
 using System.Reflection;
 
 using Projects.Tool;
+using Castle.DynamicProxy;
 
 namespace Projects.Tool.Interceptor
 {
@@ -12,14 +13,20 @@ namespace Projects.Tool.Interceptor
     {
         Dictionary<string, IInterceptor> mInterceptors;
 
-        public Dictionary<string, IInterceptor> Interceptors { get; }
+        public Dictionary<string, IInterceptor> Interceptors
+        {
+            get
+            {
+                return mInterceptors;
+            }
+        }
 
         static InterceptorSelector()
         {
             var interceptorTypes = ToolSection.Instance.TryGetTypes("interceptors/interceptor", "type");
         }
 
-        public IInterceptor[] SelectInterceptors(Type type, MethodInfo method)
+        public IInterceptor[] SelectInterceptors(Type type, MethodInfo method, IInterceptor[] interceptors)
         {
             var interceptorTypes = ToolSection.Instance.TryGetTypes("interceptors/interceptor", "type");
             List<IInterceptor> selectedInterceptors = new List<IInterceptor>();
