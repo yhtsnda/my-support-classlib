@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
-      <HintPath>..\..\Assembly\Castle\Castle.Core.dll</HintPath>
+      <HintPath>..\Assembly\Castle.Core\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTypeForInterfaceProxyAttribute.cs" />
-    <Compile Include="ExceptionhandlingInterceptor.cs" />
+    <Compile Include="ExceptionInterceptor.cs" />
     <Compile Include="InterceptorManager.cs" />
     <Compile Include="InterceptorSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
