@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Castle.DynamicProxy;
 
 namespace Projects.Tool.Interceptor
 {
-    public class LogInterceptor : IInterceptor
+    public class LoggerInvocation : IInnerInvocation
     {
-        public void Intercept(IInvocation invocation)
+        public bool IsMatch(IInvocation invocation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Process(IInvocation invocation)
         {
             throw new NotImplementedException();
         }

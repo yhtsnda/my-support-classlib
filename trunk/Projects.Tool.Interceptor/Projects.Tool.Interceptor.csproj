@@ -45,9 +45,11 @@
   <ItemGroup>
     <Compile Include="BaseTypeForInterfaceProxyAttribute.cs" />
     <Compile Include="ExceptionInterceptor.cs" />
+    <Compile Include="InnerInterceptor\IInnerInvocation.cs" />
     <Compile Include="InterceptorManager.cs" />
     <Compile Include="InterceptorSelector.cs" />
-    <Compile Include="LogInterceptor.cs" />
+    <Compile Include="InnerInterceptor\LoggerInvocation.cs" />
+    <Compile Include="InnerInterceptor\LogInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
