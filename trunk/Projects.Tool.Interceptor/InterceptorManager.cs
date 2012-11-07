@@ -9,7 +9,7 @@ namespace Projects.Tool.Interceptor
 {
     internal class InterceptorManager
     {
-        List<Type> mInterceptors;
+        static List<Type> mInterceptors = null;
         static object mSyncObj = new object();
 
         /// <summary>
