@@ -47,6 +47,7 @@
     <Compile Include="ExceptionInterceptor.cs" />
     <Compile Include="InterceptorManager.cs" />
     <Compile Include="InterceptorSelector.cs" />
+    <Compile Include="LogInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
