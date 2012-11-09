@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Warehouse.Configure.PolicyConfigureBase">
+    <Position X="0.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAIAAAAAAAAAAAACAAgAAAAAAAAAgAA=</HashCode>
+      <FileName>PolicyConfigureBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Warehouse.Configure.StoragePolicyConfigure">
+    <Position X="3.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StoragePolicyConfigure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Warehouse.Configure.ObtainPolicyConfigure">
+    <Position X="3.25" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObtainPolicyConfigure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Warehouse.Configure.IConfigure">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>IConfigure.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Warehouse.Configure.DatabaseOperateType" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAhA=</HashCode>
+      <FileName>DatabaseOperateType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Warehouse.Configure.PolicyType" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PolicyType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Warehouse.Configure.DataDistributeType" Collapsed="true">
+    <Position X="7.75" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAgAAAAAAAAAAAAAAAgAAAAAAIAAAAAAAAAABA=</HashCode>
+      <FileName>DataDistributeType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>
