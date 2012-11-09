@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.StoragePolicy", "Warehouse.StoragePolicy\Warehouse.StoragePolicy.csproj", "{554CA3D0-41A6-4E70-9F43-6688D6162CD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.DataOperator", "Warehouse.DataOperator\Warehouse.DataOperator.csproj", "{EF4FF961-EB7B-4CAF-AA2D-46444D263F4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0.Design", "0.Design", "{483F9354-5364-4E2C-B21A-58D7442F127D}"
+	ProjectSection(SolutionItems) = preProject
+		0.Design\数据仓库优化.vsd = 0.Design\数据仓库优化.vsd
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Access", "Warehouse.Access\Warehouse.Access.csproj", "{C17E5F1A-EF2C-4F62-A394-2642E63B3607}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Configure", "Warehouse.Configure\Warehouse.Configure.csproj", "{9B5E11EB-5144-4258-BB40-E68392081028}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{554CA3D0-41A6-4E70-9F43-6688D6162CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{554CA3D0-41A6-4E70-9F43-6688D6162CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{554CA3D0-41A6-4E70-9F43-6688D6162CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{554CA3D0-41A6-4E70-9F43-6688D6162CD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF4FF961-EB7B-4CAF-AA2D-46444D263F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4FF961-EB7B-4CAF-AA2D-46444D263F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4FF961-EB7B-4CAF-AA2D-46444D263F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4FF961-EB7B-4CAF-AA2D-46444D263F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C17E5F1A-EF2C-4F62-A394-2642E63B3607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17E5F1A-EF2C-4F62-A394-2642E63B3607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C17E5F1A-EF2C-4F62-A394-2642E63B3607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C17E5F1A-EF2C-4F62-A394-2642E63B3607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B5E11EB-5144-4258-BB40-E68392081028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B5E11EB-5144-4258-BB40-E68392081028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B5E11EB-5144-4258-BB40-E68392081028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B5E11EB-5144-4258-BB40-E68392081028}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
