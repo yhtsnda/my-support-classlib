@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="505d35a7-b63b-4999-af16-00ae7b9eb996" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="88d7c33a-5b63-442e-a31e-a242dfe18fce" name="存储策略层&#xD;&#xA;">
+      <childLayers>
+        <layer Id="923a535c-f37e-4d6e-b31d-95e4bc0587b1" name="高速缓存层&#xD;&#xA;" />
+      </childLayers>
+    </layer>
+    <layer Id="fcc2f631-943e-47cd-bd28-ac5be22d456e" name="数据操作层&#xD;&#xA;">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="32abde52-64ba-4386-8df7-6f8e2f9228ff" direction="Forward">
+          <layerMoniker Id="88d7c33a-5b63-442e-a31e-a242dfe18fce" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="cd368485-5901-49bc-abfb-f387da7af564" name="计算层&#xD;&#xA;" />
+      </childLayers>
+    </layer>
+    <layer Id="9a86df89-ed26-4945-b0e1-a5339de20cc4" name="配置层&#xD;&#xA;" />
+  </layers>
+</layerModel>
