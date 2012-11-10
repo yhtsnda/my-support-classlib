@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="9753f902-43af-4900-b188-5b3f8843ae6d"
+  name="DataOperator" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <appliedStereotypesInternal>
+    <stereotypeInstance
+      Id="0252e4f0-7149-431d-adc0-54851c0467f9"
+      name="namespace"
+      profile="CSharpProfile">
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="d0d198be-3342-41af-b261-44c2f757c578">
+          <propertyInstance
+            Id="9339e2a9-dcdd-48d1-b466-422be04c28f3"
+            name="BaseName"
+            value="Warehouse.DataOperator" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="56dd348b-b083-4c05-b5cc-53d5ae0e5822">
+          <propertyInstance
+            Id="27486186-570c-43d0-8bb2-5f6923f64d6f"
+            name="ClrAttributes" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances
+          Id="24fa12a0-52e3-446d-b751-8f07b257a276">
+          <propertyInstance
+            Id="c433503d-6553-48f7-86eb-0f7a82f9f14a"
+            name="Usings" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="a948f20b-eac1-4a1a-a69c-814d692b7000">
+      <profileInstance
+        Id="d9713ae9-610a-4900-8568-3b56f23baa95"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="a3fbda41-62cc-49eb-bd7a-24213b37767b"
+        name="ICalculate"
+        isAbstract="false"
+        isLeaf="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="a11a3207-99d1-4855-b129-56e0649ebdb3"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2ca1dc73-275f-4cb7-bf4c-64c9fd286c09">
+                <propertyInstance
+                  Id="3599c1ce-20aa-4444-bfa9-65263e959148"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="eca7f5b5-8921-43f9-be67-f5708e174760">
+                <propertyInstance
+                  Id="48bafd4e-5c74-4d99-84eb-6d538177c2fe"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="154c3a78-ef99-403a-87d4-d1de80314033">
+                <propertyInstance
+                  Id="c44b3c01-f182-4317-bd58-ae44047f8833"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ee0afb27-e420-42a4-9e06-2faeace9449a">
+                <propertyInstance
+                  Id="e03a3a97-024d-44f9-9970-cf9e121b25c2"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperations>
+          <operation
+            Id="17eb3b52-19b7-4101-a3ce-51c0c5c2b65b"
+            name="Reduce"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="3fd5965f-47b8-4d85-a577-8a11b587df3e"
+            name="Merge"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
