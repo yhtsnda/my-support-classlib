@@ -85,7 +85,7 @@
         <ownedOperations>
           <operation
             Id="17eb3b52-19b7-4101-a3ce-51c0c5c2b65b"
-            name="Reduce"
+            name="Map"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"
@@ -99,8 +99,68 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false" />
+          <operation
+            Id="b5237cfc-fcec-44fd-8210-a8335dfd8595"
+            name="Reduce"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperations>
       </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="baf52370-ab8f-45b0-a618-04ca7a3c77aa"
+        name="CalculateController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2c4e06fe-7a70-4872-b1e2-4994bc0b881e"
+        name="GroupCount"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="d8f10654-83c3-41a8-b004-d0187f0d845b">
+            <interfaceMoniker
+              Id="a3fbda41-62cc-49eb-bd7a-24213b37767b"
+              LastKnownName="ICalculate"
+              LastKnownLocation="Package_0502.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="85972078-34a9-4641-af2d-f79171c50698"
+            name="Map"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="7460f5b3-034e-44ce-ab14-47e0b3caad91"
+            name="Merge"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="c2e5e13e-67db-4703-ba26-281f7840ac45"
+            name="Reduce"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
 </package>

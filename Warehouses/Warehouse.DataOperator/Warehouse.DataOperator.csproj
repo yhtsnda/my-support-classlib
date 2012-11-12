@@ -39,8 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculateController.cs" />
+    <Compile Include="GroupCount.cs" />
     <Compile Include="ICalculate.cs" />
+    <Compile Include="ITask.cs" />
+    <Compile Include="LocalTaskBase.cs" />
+    <Compile Include="MappedKeyValuePair.cs" />
+    <Compile Include="MapTask.cs" />
+    <Compile Include="ProcesserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReduceTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataOperatorClassLib.cd" />
