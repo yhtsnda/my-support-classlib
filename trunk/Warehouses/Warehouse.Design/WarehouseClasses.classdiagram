@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="4f86e1a3-8207-4a00-82da-457771bd45fd" name="WarehouseClasses" linkedPackageId="6691e831-972c-412c-99f0-490aaf657f7e" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="579612c2-c0b3-4b3c-8be2-f76521479abe">
-      <profileInstance Id="7d499591-f7f4-4bad-a6c7-462f88a48c85" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="619b6896-a41f-46d5-ae30-2bc06d183d58">
-      <profileInstance Id="f325a377-c4dc-4dfc-ac4d-dd40a37a54bd" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <packageHasNamedElement>
       <referencedType Id="e9d503ae-feb6-428a-b3b1-395e814ae5ba" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
@@ -945,14 +931,44 @@
               </appliedStereotypesInternal>
               <elementDefinition Id="a3fbda41-62cc-49eb-bd7a-24213b37767b" />
               <ownedOperations>
-                <operation Id="00455b45-d74c-4ed5-acb3-7801c85275aa" name="Reduce" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                <operation Id="00455b45-d74c-4ed5-acb3-7801c85275aa" name="Map" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
                   <elementDefinition Id="17eb3b52-19b7-4101-a3ce-51c0c5c2b65b" />
                 </operation>
                 <operation Id="2b8a8470-c043-433f-95d7-45bd0540ea83" name="Merge" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
                   <elementDefinition Id="3fd5965f-47b8-4d85-a577-8a11b587df3e" />
                 </operation>
+                <operation Id="472d6322-f7dd-4cb0-be9e-6af5d621053f" name="Reduce" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="b5237cfc-fcec-44fd-8210-a8335dfd8595" />
+                </operation>
               </ownedOperations>
             </Interface>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="3f86e0e4-f18f-45a6-b18d-8b96b4098bf7" name="CalculateController" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="baf52370-ab8f-45b0-a618-04ca7a3c77aa" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="f8e09794-9c2d-44ad-b1dc-73eb5399b117" name="GroupCount" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="2c4e06fe-7a70-4872-b1e2-4994bc0b881e" />
+              <suppliersInternal>
+                <interfaceRealization Id="6c0e16ae-494f-4ac6-b0e3-54f857a7412b">
+                  <interfaceMoniker Id="55313208-8516-46c9-8731-01b6145ad11d" LastKnownName="ICalculate" />
+                  <elementDefinition Id="d8f10654-83c3-41a8-b004-d0187f0d845b" />
+                </interfaceRealization>
+              </suppliersInternal>
+              <ownedOperationsInternal>
+                <operation Id="19d95bc6-acdc-4802-b18d-fc26f5fb7de6" name="Map" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="85972078-34a9-4641-af2d-f79171c50698" />
+                </operation>
+                <operation Id="28308954-6e24-4ce1-9679-edee60be4764" name="Merge" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="7460f5b3-034e-44ce-ab14-47e0b3caad91" />
+                </operation>
+                <operation Id="ac38c15a-91ec-4bdf-88aa-6c414e370bf9" name="Reduce" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="c2e5e13e-67db-4703-ba26-281f7840ac45" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
           </packageHasNamedElement>
         </packagedElements>
       </package>
@@ -960,5 +976,19 @@
   </packagedElements>
   <package Id="6691e831-972c-412c-99f0-490aaf657f7e" name="Warehouse.Design">
     <elementDefinition Id="1b116543-c69c-48ec-bf32-9ab07c8e559a" />
+    <profileInstances>
+      <packageHasProfileInstances Id="579612c2-c0b3-4b3c-8be2-f76521479abe">
+        <profileInstance Id="7d499591-f7f4-4bad-a6c7-462f88a48c85" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="619b6896-a41f-46d5-ae30-2bc06d183d58">
+        <profileInstance Id="f325a377-c4dc-4dfc-ac4d-dd40a37a54bd" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

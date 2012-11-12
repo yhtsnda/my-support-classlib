@@ -19,33 +19,11 @@
   </profileInstances>
   <packagedElements>
     <packageHasNamedElement>
-      <class
-        Id="113058ba-f932-4146-9f27-9f4e1d1b6221"
-        name="Class1"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <packageMoniker
-        Id="01160fcc-e8d4-47c8-84a1-d0220277c4bb"
-        LastKnownName="Package1"
-        LastKnownLocation="Package_0431.uml" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <Interface
         Id="d88c249d-28b2-4c68-a68e-fa0b1d3645fa"
         name="PolicyConfigureBase"
         isAbstract="false"
         isLeaf="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="29370cc7-f350-4dd5-b620-cf8596fefe49"
-        name="Class2"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <packageMoniker
@@ -62,7 +40,7 @@
     <packageHasNamedElement>
       <packageMoniker
         Id="9753f902-43af-4900-b188-5b3f8843ae6d"
-        LastKnownName="Package2"
+        LastKnownName="DataOperator"
         LastKnownLocation="Package_0502.uml" />
     </packageHasNamedElement>
   </packagedElements>

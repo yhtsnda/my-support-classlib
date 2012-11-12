@@ -1,11 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Interface Name="Warehouse.DataOperator.ICalculate">
+  <Class Name="Warehouse.DataOperator.CalculateController">
+    <Position X="2.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAgAAAAAYAAAAAAAAAgAACAAFAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>CalculateController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Warehouse.DataOperator.GroupCount&lt;Key&gt;">
+    <Position X="0.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAABAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>GroupCount.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Warehouse.DataOperator.MappedKeyValuePair&lt;K, V&gt;">
+    <Position X="0.5" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>MappedKeyValuePair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Warehouse.DataOperator.MapTask">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>MapTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Warehouse.DataOperator.ReduceTask">
+    <Position X="4.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>ReduceTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Warehouse.DataOperator.LocalTaskBase">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAIgAAAAAAAQAAAAAAIAAAAgAAAAA=</HashCode>
+      <FileName>LocalTaskBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Warehouse.DataOperator.ICalculate&lt;Mapped&gt;">
     <Position X="0.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAABAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
       <FileName>ICalculate.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="Warehouse.DataOperator.ITask">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>ITask.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Warehouse.DataOperator.ProcesserType">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>ProcesserType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Microsoft YaHei" Size="9" />
 </ClassDiagram>
