@@ -6,12 +6,13 @@ using System.Text;
 
 namespace Warehouse.DataOperator
 {
-    public interface ICalculate<Mapped>
+    public interface ICalculate<Key, Value>
     {
-        void Reduce(List<Mapped> collection);
+        void Reduce(List<MappedKeyValuePair<Key, Value>> collection);
 
         void Merge();
 
-        List<Mapped> Map(Array collection);
+        List<MappedKeyValuePair<Key, Value>> Map(Func<object, Key> converter, 
+            ArrayList collection);
     }
 }
