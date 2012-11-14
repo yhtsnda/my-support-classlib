@@ -39,12 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\DatabaseOperateType.cs" />
+    <Compile Include="Enums\DataDistributeType.cs" />
+    <Compile Include="Enums\PolicyType.cs" />
     <Compile Include="PolicyConfigureBase.cs" />
-    <Compile Include="DatabaseOperateType.cs" />
-    <Compile Include="DataDistributeType.cs" />
     <Compile Include="IConfigure.cs" />
     <Compile Include="ObtainPolicyConfigure.cs" />
-    <Compile Include="PolicyType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoragePolicyConfigure.cs" />
   </ItemGroup>

@@ -11,14 +11,14 @@
   <Class Name="Warehouse.Configure.StoragePolicyConfigure">
     <Position X="3.25" Y="2.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StoragePolicyConfigure.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Warehouse.Configure.ObtainPolicyConfigure">
     <Position X="3.25" Y="4.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>ObtainPolicyConfigure.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -33,21 +33,21 @@
     <Position X="7.75" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAhA=</HashCode>
-      <FileName>DatabaseOperateType.cs</FileName>
+      <FileName>Enums\DatabaseOperateType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Warehouse.Configure.PolicyType" Collapsed="true">
-    <Position X="7.75" Y="2" Width="1.5" />
+    <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PolicyType.cs</FileName>
+      <FileName>Enums\PolicyType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Warehouse.Configure.DataDistributeType" Collapsed="true">
-    <Position X="7.75" Y="1.25" Width="2.25" />
+    <Position X="10" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAIAAgAAAAAAAAAAAAAAAgAAAAAAIAAAAAAAAAABA=</HashCode>
-      <FileName>DataDistributeType.cs</FileName>
+      <FileName>Enums\DataDistributeType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Microsoft YaHei" Size="9" />
