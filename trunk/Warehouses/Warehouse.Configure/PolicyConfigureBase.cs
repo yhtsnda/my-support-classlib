@@ -67,17 +67,11 @@ namespace Warehouse.Configure
         /// <summary>
         /// 读取配置信息
         /// </summary>
-        public void Load()
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract void Load();
 
         /// <summary>
         /// 保存配置信息
         /// </summary>
-        public void Save()
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract void Save();
     }
 }
