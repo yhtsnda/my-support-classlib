@@ -4,7 +4,7 @@
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAgAAAAAAgA=</HashCode>
-      <FileName>AbstractPolicy.cs</FileName>
+      <FileName>Policies\AbstractPolicy.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -12,7 +12,7 @@
     <Position X="0.5" Y="3.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
-      <FileName>ModulusPolicy.cs</FileName>
+      <FileName>Policies\ModulusPolicy.cs</FileName>
       <NewMemberFileName>modulusPolicy.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
@@ -20,21 +20,50 @@
     <Position X="4.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
-      <FileName>RangePolicy.cs</FileName>
+      <FileName>Policies\RangePolicy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Warehouse.StoragePolicy.HashPolicy">
     <Position X="7" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
-      <FileName>HashPolicy.cs</FileName>
+      <FileName>Policies\HashPolicy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Warehouse.DataOperator.WhereClauseBuilder&lt;TDataObject&gt;" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>YBACACqDAEY0BCACgAEAMSgAACAEICAoAlkgIAQNwQA=</HashCode>
+      <FileName>Storage\Builders\WhereClauseBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Warehouse.DataOperator.WhereClauseBuildResult" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAgAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Storage\Builders\WhereClauseBuildResult.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Warehouse.StoragePolicy.IPolicy">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAgAAAAAAgA=</HashCode>
-      <FileName>IPolicy.cs</FileName>
+      <FileName>Policies\IPolicy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Warehouse.DataOperator.IWhereClauseBuilder&lt;T&gt;" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Storage\Builders\IWhereClauseBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Warehouse.StoragePolicy.IStorageMappingResolver">
+    <Position X="9.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAgAAAAAAAAQAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>IStorageMappingResolver.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Microsoft YaHei" Size="9" />
