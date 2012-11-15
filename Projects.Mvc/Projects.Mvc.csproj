@@ -86,6 +86,8 @@
   <ItemGroup>
     <Compile Include="BuildingSiteCheckException.cs" />
     <Compile Include="ExportHelper.cs" />
+    <Compile Include="Modules\BaseHttpModules.cs" />
+    <Compile Include="Modules\HandlerErrorModule.cs" />
     <Compile Include="Mvc\ActionResults\AjaxApiDataResult.cs" />
     <Compile Include="Mvc\ActionResults\BuildingSiteCheckHttpLoginRedirectResult.cs" />
     <Compile Include="Mvc\ActionResults\BuildingSiteCheckHttpUnauthorizedResult.cs" />
