@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurePool.cs" />
+    <Compile Include="DataBaseType.cs" />
     <Compile Include="Enums\DatabaseOperateType.cs" />
     <Compile Include="Enums\DataDistributeType.cs" />
     <Compile Include="Enums\PolicyType.cs" />
@@ -46,10 +48,18 @@
     <Compile Include="IConfigure.cs" />
     <Compile Include="ObtainPolicyConfigure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelationDatabaseConfigure.cs" />
+    <Compile Include="StorageNodeConfigure.cs" />
     <Compile Include="StoragePolicyConfigure.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ConfigureClassLib.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Projects.Access\Projects.Access.csproj">
+      <Project>{63bc8a7d-9a63-4c8a-a094-0ef8a1b651d6}</Project>
+      <Name>Projects.Access</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

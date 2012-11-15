@@ -88,7 +88,7 @@ namespace Warehouse.StoragePolicy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The where clause builder failed to build the field name for member {0}..
+        ///   Looks up a localized string similar to The where clause builder failed to build the File name for member {0}..
         /// </summary>
         internal static string EX_BUILD_FIELD_NAME_FAIL {
             get {
@@ -349,7 +349,7 @@ namespace Warehouse.StoragePolicy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Only the property member of the given data object and the field member is supported. Current member type is {0}..
+        ///   Looks up a localized string similar to Only the property member of the given data object and the File member is supported. Current member type is {0}..
         /// </summary>
         internal static string EX_MEMBER_TYPE_NOT_SUPPORT {
             get {

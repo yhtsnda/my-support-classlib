@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Warehouse.Configure
 {
-    public class ObtainPolicyConfigure : PolicyConfigureBase
+    internal class ObtainPolicyConfigure : PolicyConfigureBase
     {
         /// <summary>
         /// 是否使用缓存
@@ -17,20 +17,5 @@ namespace Warehouse.Configure
         /// 获取记录的方式
         /// </summary>
         public CommandType ObtainCommandType { get; set; }
-
-        /// <summary>
-        /// 读取获取数据的策略
-        /// </summary>
-        public override void Load()
-        {
-        }
-
-        /// <summary>
-        /// 保存存储数据的策略
-        /// </summary>
-        public override void Save()
-        {
-
-        }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 using IBatisNet.DataMapper;
 using IBatisNet.DataMapper.Configuration;
 
-namespace Projects.Tool
+namespace Projects.Access
 {
     public class SqlMapperManager
     {
