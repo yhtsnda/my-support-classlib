@@ -4,7 +4,7 @@
     <Position X="0.5" Y="3" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAgIAAAAAAAAIAAAAAAAAAAAACAAgAAAAAAAAAgAA=</HashCode>
-      <FileName>PolicyConfigureBase.cs</FileName>
+      <FileName>Settings\PolicyConfigureBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -12,21 +12,21 @@
     <Position X="3.25" Y="2.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>StoragePolicyConfigure.cs</FileName>
+      <FileName>Settings\StoragePolicyConfigure.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Warehouse.Configure.ObtainPolicyConfigure">
     <Position X="3.25" Y="4.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAgIAAAAAAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAA=</HashCode>
-      <FileName>ObtainPolicyConfigure.cs</FileName>
+      <FileName>Settings\ObtainPolicyConfigure.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Warehouse.Configure.StorageNodeConfigure">
     <Position X="6" Y="3.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAgIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
-      <FileName>StorageNodeConfigure.cs</FileName>
+      <FileName>Settings\StorageNodeConfigure.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -34,49 +34,49 @@
     <Position X="8.75" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAABAAACAAQiAAAAAAAAAAAAAA=</HashCode>
-      <FileName>RelationDatabaseConfigure.cs</FileName>
+      <FileName>Settings\RelationDatabaseConfigure.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Warehouse.Configure.ConfigurePool">
     <Position X="11.5" Y="3.25" Width="2" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAABAAABAAAAAAAAAEAAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>ConfigurePool.cs</FileName>
+      <FileName>Settings\ConfigurePool.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Warehouse.Configure.IConfigure">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
-      <FileName>IConfigure.cs</FileName>
+      <FileName>Settings\IConfigure.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Enum Name="Warehouse.Configure.StorageMediaType" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Settings\Enums\DataBaseType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Enum Name="Warehouse.Configure.DatabaseOperateType" Collapsed="true">
     <Position X="7.75" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAhA=</HashCode>
-      <FileName>Enums\DatabaseOperateType.cs</FileName>
+      <FileName>Settings\Enums\DatabaseOperateType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Warehouse.Configure.PolicyType" Collapsed="true">
     <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Enums\PolicyType.cs</FileName>
+      <FileName>Settings\Enums\PolicyType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Warehouse.Configure.DataDistributeType" Collapsed="true">
     <Position X="10" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAIAAgAAAAAAAAAAAAAAAgAAAAAAIAAAAAAAAAABA=</HashCode>
-      <FileName>Enums\DataDistributeType.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Warehouse.Configure.StorageMediaType" Collapsed="true">
-    <Position X="12.5" Y="0.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAACAAA=</HashCode>
-      <FileName>DataBaseType.cs</FileName>
+      <FileName>Settings\Enums\DataDistributeType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Microsoft YaHei" Size="9" />

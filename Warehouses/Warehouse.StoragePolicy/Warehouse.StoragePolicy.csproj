@@ -43,6 +43,17 @@
     <Compile Include="Policies\AbstractPolicy.cs" />
     <Compile Include="Policies\HashPolicy.cs" />
     <Compile Include="Policies\IPolicy.cs" />
+    <Compile Include="Settings\ConfigurePool.cs" />
+    <Compile Include="Settings\Enums\DataBaseType.cs" />
+    <Compile Include="Settings\Enums\DatabaseOperateType.cs" />
+    <Compile Include="Settings\Enums\DataDistributeType.cs" />
+    <Compile Include="Settings\Enums\PolicyType.cs" />
+    <Compile Include="Settings\IConfigure.cs" />
+    <Compile Include="Settings\ObtainPolicyConfigure.cs" />
+    <Compile Include="Settings\PolicyConfigureBase.cs" />
+    <Compile Include="Settings\RelationDatabaseConfigure.cs" />
+    <Compile Include="Settings\StorageNodeConfigure.cs" />
+    <Compile Include="Settings\StoragePolicyConfigure.cs" />
     <Compile Include="Storage\Builders\IWhereClauseBuilder.cs" />
     <Compile Include="Policies\ModulusPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,13 +67,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Settings\ConfigureClassLib.cd" />
     <None Include="PolicyClassLib.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Warehouse.Configure\Warehouse.Configure.csproj">
-      <Project>{9b5e11eb-5144-4258-bb40-e68392081028}</Project>
-      <Name>Warehouse.Configure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Warehouse.Utility\Warehouse.Utility.csproj">
       <Project>{109f6c54-1fac-49a5-90b7-4612c4d82953}</Project>
       <Name>Warehouse.Utility</Name>
