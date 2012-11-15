@@ -75,6 +75,9 @@ namespace Projects.Mvc
         /// <returns>检查结果</returns>
         public bool Check(string userKey, string password, string appKey, string checkSum)
         {
+            if (userKey == null || password == null || appKey == null || checkSum == null)
+                return false;
+
             //先检查是否存在用户名,密码和AppKey
             ServiceUser user = mServiceUsers.First(m => m.UserKey == userKey && 
                 m.Password == password && m.AppKey == appKey);
@@ -97,6 +100,9 @@ namespace Projects.Mvc
         /// <returns></returns>
         public bool Check(string userKey, string password, string appKey, string checkSum, string ip)
         {
+            if (userKey == null || password == null || appKey == null || checkSum == null)
+                return false;
+
             //先检查是否存在用户名,密码和AppKey
             ServiceUser user = mServiceUsers.First(m => m.UserKey == userKey &&
                 m.Password == password && m.AppKey == appKey);
