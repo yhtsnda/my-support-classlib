@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 using Projects.Tool.Util;
 
-namespace BuildingSiteCheck.Mvc
+namespace Projects.Mvc
 {
     /// <summary>
     /// 允许调用WebService的用户列表

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace BuildingSiteCheck.Mvc
+namespace Projects.Mvc
 {
     /// <summary>
     /// 未授权的返回结果

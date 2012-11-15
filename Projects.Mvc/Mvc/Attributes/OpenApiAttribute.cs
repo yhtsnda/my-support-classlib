@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 using Projects.Tool;
 
-namespace BuildingSiteCheck.Mvc
+namespace Projects.Mvc
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public class OpenApiAttribute : AuthorizeAttribute, IExceptionFilter
@@ -47,7 +47,7 @@ namespace BuildingSiteCheck.Mvc
             if (filterContext.Exception is ArgumentException)
                 code = ResultCode.BadRequest;
 
-            var ex = filterContext.Exception as BuildingSiteCheckException;
+            var ex = filterContext.Exception as ProjectBaseException; ;
             if (ex != null)
             {
                 code = ex.Code;

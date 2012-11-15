@@ -4,7 +4,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-namespace BuildingSiteCheck.Mvc
+namespace Projects.Mvc
 {
     /// <summary>
     /// jsonp返回message，则封装
