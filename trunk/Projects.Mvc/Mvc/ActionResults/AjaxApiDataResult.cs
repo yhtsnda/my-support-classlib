@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
-namespace BuildingSiteCheck.Mvc
+namespace Projects.Mvc
 {
     public class AjaxApiDataResult : ActionResult
     {

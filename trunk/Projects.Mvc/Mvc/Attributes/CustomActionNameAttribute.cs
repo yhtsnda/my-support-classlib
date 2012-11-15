@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Web.Mvc;
 
-namespace BuildingSiteCheck.Mvc
+namespace Projects.Mvc
 {
     /// <summary>
     /// 自定义的方法选择器

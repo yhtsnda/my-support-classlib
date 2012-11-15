@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.Mvc;
 
-namespace BuildingSiteCheck.Mvc
+namespace Projects.Mvc
 {
     public class BuildingSiteCheckHttpLoginRedirectResult : HttpStatusCodeResult
     {
