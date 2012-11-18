@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Projects.Access.MongoAccess
+namespace Projects.Accesses.MongoAccess
 {
     public class MongoQueryable<TElement> : IQueryable<TElement>, IOrderedQueryable<TElement>, IQueryProvider
     {

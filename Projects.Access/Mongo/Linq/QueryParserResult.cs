@@ -6,7 +6,7 @@ using System.Text;
 
 using MongoDB.Driver;
 
-namespace Projects.Access.MongoAccess
+namespace Projects.Accesses.MongoAccess
 {
     internal class QueryParserResult
     {

@@ -54,6 +54,10 @@
     <Compile Include="Purviews\RoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Projects.Access\Projects.Accesses.csproj">
+      <Project>{63bc8a7d-9a63-4c8a-a094-0ef8a1b651d6}</Project>
+      <Name>Projects.Accesses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Projects.Framework\Projects.Framework.csproj">
       <Project>{0352cd0d-6487-45f2-ac4b-d566b8001631}</Project>
       <Name>Projects.Framework</Name>

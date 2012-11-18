@@ -7,7 +7,7 @@ using MongoDB.Driver;
 using Projects.Tool;
 using Projects.Tool.Reflection;
 
-namespace Projects.Access.MongoAccess
+namespace Projects.Accesses.MongoAccess
 {
     internal class MongoManager
     {

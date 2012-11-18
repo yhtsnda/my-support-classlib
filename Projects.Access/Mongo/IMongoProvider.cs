@@ -5,7 +5,7 @@ using System.Text;
 
 using MongoDB.Driver;
 
-namespace Projects.Access.MongoAccess
+namespace Projects.Accesses.MongoAccess
 {
     public interface IMongoProvider
     {

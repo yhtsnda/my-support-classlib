@@ -5,7 +5,7 @@ using System.Text;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Projects.Access.MongoAccess
+namespace Projects.Accesses.MongoAccess
 {
     public static class MongoQueryable
     {

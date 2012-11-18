@@ -9,5 +9,6 @@ namespace Projects.Purviews
 {
     public interface IRoleRepository : ISimpleRepository<Role, Role>
     {
+        Role QueryDefaultRole(string instanceKey);
     }
 }

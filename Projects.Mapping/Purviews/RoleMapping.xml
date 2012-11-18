@@ -6,20 +6,20 @@
 
 	<statements>
 		<insert id="Create_Role" parameterClass="Role">
-			Insert Into roles(RoleName,InstanceKey,ActionKeys,ResourceKeys) Values(#Name#, #InstanceKey#,#ActionKey#,#ResourceKey#);
-		</insert>
+      Insert Into roles(RoleName,InstanceKey,ActionKeys,ResourceKeys,IsDefault) Values(#Name#, #InstanceKey#,#ActionKey#,#ResourceKey#,#IsDefault#);
+    </insert>
 
 		<update id="Update_Role" parameterClass="Role">
-			Update roles Set RoleName=#Name#,ActionKeys=#ActionKey#,ResourceKeys=#ResourceKey# Where RoleKey=#Key#;
-		</update>
+      Update roles Set RoleName=#Name#,ActionKeys=#ActionKey#,ResourceKeys=#ResourceKey#,IsDefault=#IsDefault# Where RoleKey=#Key#;
+    </update>
 
 		<delete id="Delete_Role" parameterClass="Role">
 			Delete From roles Where RoleKey=#Key#;
 		</delete>
 
 		<select id="Query_Role" resultClass="Role" parameterClass="Role">
-			Select RoleKey As 'Key',RoleName As 'Name',InstanceKey,ActionKeys As ActionKey,ResourceKeys As ResourceKey From roles
-			<dynamic prepend="Where">
+      Select RoleKey As 'Key',RoleName As 'Name',InstanceKey,ActionKeys As ActionKey,ResourceKeys As ResourceKey, IsDefault From roles
+      <dynamic prepend="Where">
 				<isNotEmpty property="InstanceKey">
 					InstanceKey=#InstanceKey#
 				</isNotEmpty>
@@ -27,8 +27,12 @@
 		</select>
 
 		<select id="QueryOneByKey_Role" parameterClass="Role" resultClass="Role">
-			Select RoleKey As 'Key',RoleName As 'Name',InstanceKey,ActionKeys As ActionKey,ResourceKeys As ResourceKey From roles Where RoleKey=#Key#
-		</select>
-		
+      Select RoleKey As 'Key',RoleName As 'Name',InstanceKey,ActionKeys As ActionKey,ResourceKeys As ResourceKey,IsDefault From roles Where RoleKey=#Key#
+    </select>
+
+    <select id="Query_Default_Role" parameterClass="Role" resultClass="Role">
+      Select RoleKey As 'Key',RoleName As 'Name',InstanceKey,ActionKeys As ActionKey,ResourceKeys As ResourceKey, IsDefault From roles Where InstanceKey=#InstanceKey# And IsDefault=0
+    </select>
+    
 	</statements>
 </sqlMap>
