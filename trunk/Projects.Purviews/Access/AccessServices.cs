@@ -61,6 +61,12 @@ namespace Projects.Purviews
             return repository.DeleteAccessRole(accessKey);
         }
 
+        /// <summary>
+        /// 删除用户权限
+        /// </summary>
+        /// <param name="userKey"></param>
+        /// <param name="instanceKey"></param>
+        /// <returns></returns>
         public static ResultKey DeleteUserAccess(int userKey, string instanceKey)
         {
             if (userKey <= 0)
@@ -73,6 +79,7 @@ namespace Projects.Purviews
                 accessCache.RemoveCache(instanceKey, userKey);
             return result;
         }
+        
         /// <summary>
         /// 获取一个用户
         /// </summary>

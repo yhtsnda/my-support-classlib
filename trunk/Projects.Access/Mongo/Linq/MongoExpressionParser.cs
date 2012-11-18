@@ -10,7 +10,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using System.Collections;
 
-namespace Projects.Access.MongoAccess
+namespace Projects.Accesses.MongoAccess
 {
     internal partial class MongoExpressionParser : ExpressionVisitor
     {

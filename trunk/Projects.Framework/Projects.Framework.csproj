@@ -66,9 +66,9 @@
     <Compile Include="Specification\SpecificationExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Projects.Access\Projects.Access.csproj">
+    <ProjectReference Include="..\Projects.Access\Projects.Accesses.csproj">
       <Project>{63bc8a7d-9a63-4c8a-a094-0ef8a1b651d6}</Project>
-      <Name>Projects.Access</Name>
+      <Name>Projects.Accesses</Name>
     </ProjectReference>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188AABA2-82FD-4899-B537-4D49E80ABE0C}</Project>

@@ -8,7 +8,7 @@ using MongoDB.Bson.IO;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 
-namespace Projects.Access.MongoAccess
+namespace Projects.Accesses.MongoAccess
 {
     public class NewSerializer : IBsonSerializer
     {

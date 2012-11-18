@@ -7,7 +7,7 @@ using System.Configuration;
 using Projects.Tool;
 using MongoDB.Driver;
 
-namespace Projects.Access.MongoAccess
+namespace Projects.Accesses.MongoAccess
 {
     public class DefaultMongoProvider : IMongoProvider
     {

@@ -30,6 +30,11 @@ namespace Projects.Purviews
         [Required]
         public string InstanceKey { get; set; }
 
+        /// <summary>
+        /// 是否为默认角色
+        /// </summary>
+        public bool IsDefault { get; set; }
+
         public string ActionKey { get; set; }
 
         public string ResourceKey { get; set; }

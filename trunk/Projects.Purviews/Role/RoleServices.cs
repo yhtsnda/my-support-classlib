@@ -108,5 +108,16 @@ namespace Projects.Purviews
             return result;
         }
 
+        /// <summary>
+        /// 获取默认角色
+        /// </summary>
+        /// <returns></returns>
+        public static Role GetDefaultRole(string instanceKey)
+        {
+            var role = roleRepository.QueryDefaultRole(instanceKey);
+            if (role == null)
+                return new Role();
+            return role;
+        }
     }
 }
