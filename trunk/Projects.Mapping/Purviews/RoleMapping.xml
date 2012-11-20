@@ -31,7 +31,7 @@
     </select>
 
     <select id="Query_Default_Role" parameterClass="Role" resultClass="Role">
-      Select RoleKey As 'Key',RoleName As 'Name',InstanceKey,ActionKeys As ActionKey,ResourceKeys As ResourceKey, IsDefault From roles Where InstanceKey=#InstanceKey# And IsDefault=0
+      Select RoleKey As 'Key',RoleName As 'Name',InstanceKey,ActionKeys As ActionKey,ResourceKeys As ResourceKey, IsDefault From roles Where InstanceKey=#InstanceKey# And IsDefault=1
     </select>
     
 	</statements>
