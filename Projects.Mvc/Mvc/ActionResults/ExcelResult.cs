@@ -7,9 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-using BuildingSiteCheck;
-
-namespace BuildingSiteCheck.Mvc
+namespace Projects.Mvc
 {
     /// <summary>
     /// EXCEL结果
