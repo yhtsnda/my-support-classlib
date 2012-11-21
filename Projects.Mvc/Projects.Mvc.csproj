@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mvc\ActionResults\ExcelResult.cs" />
     <Compile Include="ProjectBaseException.cs">
       <SubType>Code</SubType>
     </Compile>
