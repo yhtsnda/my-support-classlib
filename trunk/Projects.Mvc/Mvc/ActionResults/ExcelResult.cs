@@ -1,30 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
+
+using Projects.Tool.Util;
 
 namespace Projects.Mvc
 {
     /// <summary>
     /// EXCEL结果
     /// </summary>
-    public class ExcelResult<T> : ActionResult
+    public class ExcelResult : ActionResult
     {
-        public IList<T> Source { get; set; }
-        public string FileName { get; set; }
-        public string Header { get; set; }
-        public string[] Columns { get; set; }
+        ExcelBuilder Builder;
+        String FileName;
 
-        public ExcelResult(IList<T> source, string fileName, string header, string[] columns)
+        public ExcelResult(string fileName, ExcelBuilder builder)
         {
-            Source = source;
+            Builder = builder;
             FileName = fileName;
-            Header = header;
-            Columns = columns;
+        }
+
+        public ExcelResult(string fileName)
+        {
+            Builder = new ExcelBuilder();
+            FileName = fileName;
+        }
+
+        public void AddSource<T>(IList<T> source, string header, string[] columns) where T : class, new()
+        {
+            Builder.AddExportSet<T>(source, header, columns);
         }
 
         public override void ExecuteResult(ControllerContext context)
@@ -33,13 +39,13 @@ namespace Projects.Mvc
                 throw new ArgumentNullException("context");
 
             //将数据源表中的
-            var ms = ExportHelper.Export(Source, Header, Columns);
-
+            var ms = Builder.ExportAll();
             var response = context.HttpContext.Response;
             response.ContentType = "application/vnd.ms-excel";
             response.ContentEncoding = Encoding.UTF8;
             response.Charset = "";
-            response.AppendHeader("Content-Disposition", "attachment;filename=" + HttpUtility.UrlEncode(FileName, Encoding.UTF8));
+            response.AppendHeader("Content-Disposition", 
+                "attachment;filename=" + HttpUtility.UrlEncode(FileName, Encoding.UTF8));
             response.BinaryWrite(ms.GetBuffer());
             response.End();
         }
