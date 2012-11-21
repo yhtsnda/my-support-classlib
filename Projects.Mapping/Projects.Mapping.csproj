@@ -52,7 +52,9 @@
     <EmbeddedResource Include="Purviews\ModelMapping.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Purviews\RoleMapping.xml" />
+    <EmbeddedResource Include="Purviews\RoleMapping.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Purviews\AccessMapping.xml" />
