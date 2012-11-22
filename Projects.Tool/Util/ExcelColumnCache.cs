@@ -84,7 +84,7 @@ namespace Projects.Tool.Util
         internal virtual string[] GetColumns(Type type)
         {
             IList<string> columns = new List<string>();
-            var properties = type.GetProperties(BindingFlags.Public);
+            var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);
             foreach (var pro in properties)
             {
                 //如果可以找到ExcelColumnAttribute属性
