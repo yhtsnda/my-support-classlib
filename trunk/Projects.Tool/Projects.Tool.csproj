@@ -87,7 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\ExcelColumnAttribute.cs" />
+    <Compile Include="Attributes\ExcelCaptionAttribute.cs" />
     <Compile Include="Cache\CacheItem.cs" />
     <Compile Include="Cache\CacheManager.cs" />
     <Compile Include="Cache\Caches\AbstractCache.cs" />

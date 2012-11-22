@@ -55,13 +55,26 @@ namespace Projects.Tool.Util
         /// <summary>
         /// 向Excel中添加一个Sheet
         /// </summary>
-        /// <param name="source">需要在Sheet中显示的数据</param>
+        /// <typeparam name="T">导出类型</typeparam>
+        /// <param name="genSource">需要在Sheet中显示的数据</param>
         /// <param name="header">表格的标题</param>
         /// <returns>ExcelBuilder</returns>
         public ExcelBuilder AddExportSet<T>(IList<T> genSource, string header)
         {
             string[] columns = ExcelColumnCache.Instance.Get(typeof(T));
             return AddExportSet<T>(genSource, header, columns);
+        }
+
+        /// <summary>
+        /// 向Excel中添加一个Sheet
+        /// </summary>
+        /// <typeparam name="T">导出类型</typeparam>
+        /// <param name="genSource">需要在Sheet中显示的数据</param>
+        /// <returns>ExcelBuilder</returns>
+        public ExcelBuilder AddExportSet<T>(IList<T> genSource)
+        {
+            string header = ExcelColumnCache.Instance.GetHeader(typeof(T));
+            return AddExportSet<T>(genSource, header);
         }
 
         /// <summary>

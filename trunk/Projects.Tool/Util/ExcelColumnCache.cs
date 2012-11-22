@@ -88,14 +88,45 @@ namespace Projects.Tool.Util
             foreach (var pro in properties)
             {
                 //如果可以找到ExcelColumnAttribute属性
-                var objs = pro.GetCustomAttributes(typeof(ExcelColumnAttribute), false);
+                var objs = pro.GetCustomAttributes(typeof(ExcelCaptionAttribute), false);
                 if (objs.Any())
                 {
-                    var attr = objs[0] as ExcelColumnAttribute;
-                    columns.Add(attr.ColumnName);
+                    var attr = objs[0] as ExcelCaptionAttribute;
+                    columns.Add(attr.Caption);
                 }
             }
             return columns.ToArray();
+        }
+
+        /// <summary>
+        /// 获取标题
+        /// </summary>
+        /// <param name="type">数据源的类型</param>
+        /// <returns>标题字段</returns>
+        internal virtual string GetHeader(Type type)
+        {
+            string header = String.Empty;
+            var objs = type.GetCustomAttributes(typeof(ExcelCaptionAttribute), false);
+            if (objs.Any())
+            {
+                var attr = objs[0] as ExcelCaptionAttribute;
+                if (attr.TitleStyle == ExcelHeaderSuffix.Static)
+                    header = attr.Caption;
+                if(attr.TitleStyle == ExcelHeaderSuffix.RandomNumber)
+                {
+                    Random rnd = new Random();
+                    header = String.Format("{0}_{1}", attr.Caption, rnd.Next(1000,99999999));
+                }
+                if (attr.TitleStyle == ExcelHeaderSuffix.DateTime)
+                {
+                    if (String.IsNullOrEmpty(attr.TitleFormat))
+                        header = String.Format("{0}_{1}", attr.Caption, DateTime.Now.ToString("yyyyMMdd"));
+                    else
+                        header = String.Format("{0}_{1}", attr.Caption, DateTime.Now.ToString(attr.TitleFormat));
+                }
+                return header;
+            }
+            return String.Format("导出的数据_{1}", DateTime.Now.ToString("yyyyMMdd"));
         }
     }
 }
