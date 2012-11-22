@@ -37,11 +37,42 @@ namespace Projects.Tool.Util
             SetDataCellStyle();
         }
 
+        /// <summary>
+        /// 向Excel中添加一个Sheet
+        /// </summary>
+        /// <typeparam name="T">导入的集合的类型</typeparam>
+        /// <param name="genSource">数据源</param>
+        /// <param name="header">表格标题</param>
+        /// <param name="columns">表格列标题</param>
+        /// <returns>ExcelBuilder</returns>
         public ExcelBuilder AddExportSet<T>(IList<T> genSource, string header, string[] columns)
         {
             //先将泛型转为Datatable
             DataTable source = GenericToDatatable(genSource);
+            return AddExportSet(source, header, columns);
+        }
 
+        /// <summary>
+        /// 向Excel中添加一个Sheet
+        /// </summary>
+        /// <param name="source">需要在Sheet中显示的数据</param>
+        /// <param name="header">表格的标题</param>
+        /// <returns>ExcelBuilder</returns>
+        public ExcelBuilder AddExportSet<T>(IList<T> genSource, string header)
+        {
+            string[] columns = ExcelColumnCache.Instance.Get(typeof(T));
+            return AddExportSet<T>(genSource, header, columns);
+        }
+
+        /// <summary>
+        /// 向Excel中添加一个Sheet
+        /// </summary>
+        /// <param name="source">需要在Sheet中显示的数据</param>
+        /// <param name="header">表格的标题</param>
+        /// <param name="columns">各数据字段的标题</param>
+        /// <returns>ExcelBuilder</returns>
+        public ExcelBuilder AddExportSet(DataTable source, string header, string[] columns)
+        {
             if (columns != null && columns.Length != source.Columns.Count)
                 throw new ArgumentException("参数不正确:columnNames,数组元素的个数需要和数据源列的数量相同!");
             //设置一个Sheet的数据
@@ -50,6 +81,42 @@ namespace Projects.Tool.Util
             return this;
         }
 
+        /// <summary>
+        /// 向Excel中添加一个Sheet的数据,数据源的Column的Name属性作为表格字段的标题
+        /// </summary>
+        /// <param name="source">需要在Sheet中显示的数据</param>
+        /// <param name="header">表格的标题</param>
+        /// <returns>ExcelBuilder</returns>
+        public ExcelBuilder AddExportSet(DataTable source, string header)
+        {
+            IList<string> columns = new List<string>();
+            foreach (DataColumn col in source.Columns)
+            {
+                columns.Add(col.ColumnName);
+            }
+            return AddExportSet(source, header, columns.ToArray());
+        }
+
+        /// <summary>
+        /// 向Excel中添加一个Sheet的数据,数据源的Column的Name属性作为表格字段的标题,Table的Name属性作为表格的标题
+        /// </summary>
+        /// <param name="source">需要在Sheet中显示的数据</param>
+        /// <returns>ExcelBuilder</returns>
+        public ExcelBuilder AddExportSet(DataTable source)
+        {
+            string header = source.TableName;
+            IList<string> columns = new List<string>();
+            foreach (DataColumn col in source.Columns)
+            {
+                columns.Add(col.ColumnName);
+            }
+            return AddExportSet(source, header, columns.ToArray());
+        }
+
+        /// <summary>
+        /// 生成Excel的文件内存流
+        /// </summary>
+        /// <returns>文件内存流</returns>
         public MemoryStream ExportAll()
         {
             if (mSheetCounter == 0)
