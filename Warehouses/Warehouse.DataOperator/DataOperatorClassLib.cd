@@ -65,7 +65,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAgBA=</HashCode>
       <FileName>Transfers\SqlServerTransfer.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="Warehouse.DataOperator.ICalculate&lt;Key, Value&gt;">
     <Position X="0.5" Y="0.5" Width="2" />

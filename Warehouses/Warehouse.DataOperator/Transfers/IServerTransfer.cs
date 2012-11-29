@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Warehouse.Settings;
+using Warehouse.Utility;
+
 namespace Warehouse.DataOperator
 {
     /// <summary>
@@ -14,20 +17,24 @@ namespace Warehouse.DataOperator
     {
         /// <summary>
         /// 复制数据库结构,将源库中的所有数据表都复制到目标库中
+        /// 方法只复制数据数据库的结构,而不会拷贝数据
         /// </summary>
-        void Clone();
+        /// <param name="source">需要复制的源数据库</param>
+        /// <param name="target">需要复制到的目标数据库</param>
+        ResultKey Clone(StorageNodeConfigure source, StorageNodeConfigure target);
 
         /// <summary>
         /// 复制数据库结构,只复制指定的表
+        /// 方法只复制数据数据库的结构,而不会拷贝数据
         /// </summary>
         /// <param name="tables">需要克隆的数据表</param>
-        void Clone(IEnumerable tables);
+        ResultKey Clone(StorageNodeConfigure source, StorageNodeConfigure target, IEnumerable tables);
 
         /// <summary>
-        /// 创建数据表
+        /// 根据数据存储策略创建数据表
         /// </summary>
         /// <param name="policy">数据的分布策略</param>
-        void Generate(IPolicy policy);
+        ResultKey Generate(IPolicy policy);
 
         /// <summary>
         /// 传输数据表中的数据
@@ -35,6 +42,6 @@ namespace Warehouse.DataOperator
         /// <param name="source">传输数据的源数据库</param>
         /// <param name="target">传输数据的目标数据库</param>
         /// <param name="policy">传输数据的策略</param>
-        void Transmission(string source, string target, IPolicy policy);
+        ResultKey Transmission(string source, string target, IPolicy policy);
     }
 }

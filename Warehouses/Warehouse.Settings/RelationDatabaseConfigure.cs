@@ -8,7 +8,7 @@ namespace Warehouse.Settings
     /// <summary>
     /// 关系性数据库配置
     /// </summary>
-    internal class RelationDatabaseConfigure : StorageNodeConfigure
+    public class RelationDatabaseConfigure : StorageNodeConfigure
     {
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Warehouse.Settings
         /// <summary>
         /// 数据库用户密码
         /// </summary>
-        public int DBPassword { get; protected set; }
+        public string DBPassword { get; protected set; }
 
         /// <summary>
         /// 数据驱动
