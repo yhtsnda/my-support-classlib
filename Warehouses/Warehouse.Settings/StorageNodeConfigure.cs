@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Projects.Access.MongoAccess;
+using Projects.Accesses.MongoAccess;
 
-namespace Warehouse.Configure
+namespace Warehouse.Settings
 {
     /// <summary>
     /// 存储节点的配置基类
     /// </summary>
-    internal abstract class StorageNodeConfigure : IConfigure
+    public abstract class StorageNodeConfigure : IConfigure
     {
         public string ConfigKey
         {
@@ -28,7 +28,7 @@ namespace Warehouse.Configure
         /// <summary>
         /// 读取存储媒介的配置
         /// </summary>
-        internal void Load()
+        public void Load()
         {
             
         }
@@ -36,7 +36,7 @@ namespace Warehouse.Configure
         /// <summary>
         /// 保存存储媒介的配置
         /// </summary>
-        internal void Save()
+        public void Save()
         {
             if (this.StorageMedia == StorageMediaType.MySQL 
                 || this.StorageMedia == StorageMediaType.SQLServer)

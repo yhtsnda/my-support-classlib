@@ -40,28 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Transfers\IServerTransfer.cs" />
-    <Compile Include="IStorageMappingResolver.cs" />
     <Compile Include="Policies\AbstractPolicy.cs" />
     <Compile Include="Policies\HashPolicy.cs" />
-    <Compile Include="Policies\IPolicy.cs" />
-    <Compile Include="Settings\ConfigurePool.cs" />
-    <Compile Include="Settings\Enums\DataBaseType.cs" />
-    <Compile Include="Settings\Enums\DatabaseOperateType.cs" />
-    <Compile Include="Settings\Enums\DataDistributeType.cs" />
-    <Compile Include="Settings\Enums\PolicyType.cs" />
-    <Compile Include="Settings\IConfigure.cs" />
-    <Compile Include="Settings\ObtainPolicyConfigure.cs" />
-    <Compile Include="Settings\PolicyConfigureBase.cs" />
-    <Compile Include="Settings\RelationDatabaseConfigure.cs" />
-    <Compile Include="Settings\StorageNodeConfigure.cs" />
-    <Compile Include="Settings\StoragePolicyConfigure.cs" />
-    <Compile Include="Storage\Builders\IWhereClauseBuilder.cs" />
     <Compile Include="Policies\ModulusPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Policies\RangePolicy.cs" />
-    <Compile Include="Storage\Builders\WhereClauseBuilder.cs" />
-    <Compile Include="Storage\Builders\WhereClauseBuildResult.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,10 +52,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Settings\ConfigureClassLib.cd" />
     <None Include="PolicyClassLib.cd" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Warehouse.DataOperator\Warehouse.DataOperator.csproj">
+      <Project>{ef4ff961-eb7b-4caf-aa2d-46444d263f4b}</Project>
+      <Name>Warehouse.DataOperator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Warehouse.Settings\Warehouse.Settings.csproj">
+      <Project>{fcfb22d4-aacc-4ec3-8e95-80f3f8fb1ebe}</Project>
+      <Name>Warehouse.Settings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Warehouse.Utility\Warehouse.Utility.csproj">
       <Project>{109f6c54-1fac-49a5-90b7-4612c4d82953}</Project>
       <Name>Warehouse.Utility</Name>
@@ -80,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Caches\" />
+    <Folder Include="Storage\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

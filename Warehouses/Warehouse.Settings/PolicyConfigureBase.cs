@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Warehouse.Configure
+namespace Warehouse.Settings
 {
-    internal abstract class PolicyConfigureBase : IConfigure
+    public abstract class PolicyConfigureBase : IConfigure
     {
         /// <summary>
         /// 唯一配置键

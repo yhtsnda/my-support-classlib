@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Warehouse.Settings;
+
 namespace Warehouse.StoragePolicy
 {
     public class HashPolicy : AbstractPolicy
@@ -15,12 +17,12 @@ namespace Warehouse.StoragePolicy
             throw new System.NotImplementedException();
         }
 
-        public override void Storage(Configure.StoragePolicyConfigure config)
+        public override void Storage(StoragePolicyConfigure config)
         {
             throw new NotImplementedException();
         }
 
-        public override void Obtain(Configure.ObtainPolicyConfigure config)
+        public override void Obtain(ObtainPolicyConfigure config)
         {
             throw new NotImplementedException();
         }

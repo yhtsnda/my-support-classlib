@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Warehouse.Configure
+namespace Warehouse.Settings
 {
     /// <summary>
     /// 数据分布类型
