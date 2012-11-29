@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Warehouse.Configure
+namespace Warehouse.Settings
 {
-    public enum PolicyType
+    public enum DatabaseOperateType
     {
         /// <summary>
-        /// 值区间策略
+        /// 未知
         /// </summary>
-        Range = 1,
+        Unknown = 0,
         /// <summary>
-        /// 取模数策略
+        /// 存储
         /// </summary>
-        Modulus = 2,
+        Storage = 1,
         /// <summary>
-        /// Hash值策略
+        /// 获取
         /// </summary>
-        Hash = 3,
+        Obtain = 2,
     }
 }

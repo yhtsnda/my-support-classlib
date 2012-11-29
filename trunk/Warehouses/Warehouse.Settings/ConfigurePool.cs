@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace Warehouse.Configure
+namespace Warehouse.Settings
 {
     public class ConfigurePool
     {
@@ -20,12 +20,12 @@ namespace Warehouse.Configure
         /// <summary>
         /// 存储策略配置池
         /// </summary>
-        protected static Dictionary<string, PolicyConfigureBase> mPolicyConfigPool;
+        internal static Dictionary<string, PolicyConfigureBase> mPolicyConfigPool;
 
         /// <summary>
         /// 存储节点配置池
         /// </summary>
-        protected static Dictionary<string, StorageNodeConfigure> mStorageConfigPool;
+        internal static Dictionary<string, StorageNodeConfigure> mStorageConfigPool;
 
         /// <summary>
         /// 获取配置

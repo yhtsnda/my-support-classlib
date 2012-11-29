@@ -31,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="IBatisNet.DataAccess">
-      <HintPath>..\..\Assembly\IBatisNet.DataAccess.dll</HintPath>
+      <HintPath>..\Assembly\IBatisNet.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="IBatisNet.DataMapper">
-      <HintPath>..\..\Assembly\IBatisNet.DataMapper.dll</HintPath>
+      <HintPath>..\Assembly\IBatisNet.DataMapper.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\..\Assembly\MongoDB.Bson.dll</HintPath>

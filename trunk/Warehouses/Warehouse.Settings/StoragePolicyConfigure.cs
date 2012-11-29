@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 
-namespace Warehouse.Configure
+namespace Warehouse.Settings
 {
-    internal class StoragePolicyConfigure : PolicyConfigureBase
+    public class StoragePolicyConfigure : PolicyConfigureBase
     {
     }
 }

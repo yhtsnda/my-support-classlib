@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace Warehouse.Configure
+namespace Warehouse.Settings
 {
-    internal class ObtainPolicyConfigure : PolicyConfigureBase
+    public class ObtainPolicyConfigure : PolicyConfigureBase
     {
         /// <summary>
         /// 是否使用缓存

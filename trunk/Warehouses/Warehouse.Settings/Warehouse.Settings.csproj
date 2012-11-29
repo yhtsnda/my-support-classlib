@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EF4FF961-EB7B-4CAF-AA2D-46444D263F4B}</ProjectGuid>
+    <ProjectGuid>{FCFB22D4-AACC-4EC3-8E95-80F3F8FB1EBE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Warehouse.DataOperator</RootNamespace>
-    <AssemblyName>Warehouse.DataOperator</AssemblyName>
+    <RootNamespace>Warehouse.Settings</RootNamespace>
+    <AssemblyName>Warehouse.Settings</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,7 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServer.Smo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,29 +39,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculateLayer\CalculateController.cs" />
-    <Compile Include="CalculateLayer\GroupCount.cs" />
-    <Compile Include="CalculateLayer\ICalculate.cs" />
-    <Compile Include="CalculateLayer\ITask.cs" />
-    <Compile Include="CalculateLayer\LocalTaskBase.cs" />
-    <Compile Include="CalculateLayer\LocalTaskManager.cs" />
-    <Compile Include="CalculateLayer\MappedKeyValuePair.cs" />
-    <Compile Include="CalculateLayer\MapTask.cs" />
-    <Compile Include="CalculateLayer\ProcesserType.cs" />
-    <Compile Include="IPolicy.cs" />
+    <Compile Include="ConfigurePool.cs" />
+    <Compile Include="Enums\DatabaseOperateType.cs" />
+    <Compile Include="Enums\DataBaseType.cs" />
+    <Compile Include="Enums\DataDistributeType.cs" />
+    <Compile Include="Enums\PolicyType.cs" />
+    <Compile Include="IConfigure.cs" />
+    <Compile Include="ObtainPolicyConfigure.cs" />
+    <Compile Include="PolicyConfigureBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CalculateLayer\ReduceTask.cs" />
-    <Compile Include="Transfers\IServerTransfer.cs" />
-    <Compile Include="Transfers\MySqlTransfer.cs" />
-    <Compile Include="Transfers\SqlServerTransfer.cs" />
+    <Compile Include="RelationDatabaseConfigure.cs" />
+    <Compile Include="StorageNodeConfigure.cs" />
+    <Compile Include="StoragePolicyConfigure.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataOperatorClassLib.cd" />
+    <None Include="ConfigureClassLib.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Warehouse.Settings\Warehouse.Settings.csproj">
-      <Project>{fcfb22d4-aacc-4ec3-8e95-80f3f8fb1ebe}</Project>
-      <Name>Warehouse.Settings</Name>
+    <ProjectReference Include="..\..\Projects.Access\Projects.Accesses.csproj">
+      <Project>{63bc8a7d-9a63-4c8a-a094-0ef8a1b651d6}</Project>
+      <Name>Projects.Accesses</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

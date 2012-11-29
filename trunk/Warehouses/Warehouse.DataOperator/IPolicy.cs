@@ -3,13 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Warehouse.Configure;
+using Warehouse.Settings;
 
-namespace Warehouse.StoragePolicy
+namespace Warehouse.DataOperator
 {
     public interface IPolicy
     {
         string StorageFlag
+        {
+            get;
+            set;
+        }
+
+        string DbServerKey
+        {
+            get;
+            set;
+        }
+
+        string TablePrefix
         {
             get;
             set;

@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Warehouse.Configure;
+using Warehouse.Settings;
+using Warehouse.DataOperator;
 
 namespace Warehouse.StoragePolicy
 {
     public abstract class AbstractPolicy : IPolicy
-    {    
-        public string StorageFlag
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+    {
+        public string StorageFlag { get; set; }
+
+        public string DbServerKey { get; set; }
+
+        public string TablePrefix { get; set; }
 
         /// <summary>
         /// 存储数据
@@ -32,5 +27,8 @@ namespace Warehouse.StoragePolicy
         /// </summary>
         /// <param name="config">获取数据策略配置</param>
         public abstract void Obtain(ObtainPolicyConfigure config);
+
+
+
     }
 }
