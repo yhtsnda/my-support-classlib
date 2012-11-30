@@ -30,17 +30,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\Assembly\FluentNHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="IBatisNet.DataAccess">
       <HintPath>..\Assembly\IBatisNet.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="IBatisNet.DataMapper">
       <HintPath>..\Assembly\IBatisNet.DataMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Assembly\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\..\Assembly\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
       <HintPath>..\..\Assembly\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Assembly\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -69,13 +78,34 @@
     <Compile Include="Mongo\MongoAccessor.cs" />
     <Compile Include="Mongo\MongoCollectionAttribute.cs" />
     <Compile Include="Mongo\MongoManager.cs.cs" />
+    <Compile Include="NHibernate\NHibernateRepositoryExtend.cs" />
+    <Compile Include="NHibernate\NHibernateShardSession.cs" />
+    <Compile Include="NHibernate\NHibernateShardSessionFactory.cs" />
+    <Compile Include="NHibernate\NHibernateSpecification.cs" />
+    <Compile Include="NHibernate\NHibernateSpecificationProvider.cs" />
+    <Compile Include="NHibernate\ProfilterLoggerFactory.cs" />
+    <Compile Include="NHibernate\UserType\AbstractUserType.cs" />
+    <Compile Include="NHibernate\UserType\JsonClobListUserType.cs" />
+    <Compile Include="NHibernate\UserType\JsonClobUserType.cs" />
+    <Compile Include="NHibernate\UserType\JsonListUserType.cs" />
+    <Compile Include="NHibernate\UserType\JsonUserType.cs" />
+    <Compile Include="NHibernate\UserType\ScoreUserType.cs" />
+    <Compile Include="NHibernate\UserType\SplitUserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NHibernate\QueryOverProjectionBuilderExtend.cs" />
+    <Compile Include="NHibernate\SessionExtend.cs" />
+    <Compile Include="NHibernate\SessionManager.cs" />
+    <Compile Include="NHibernate\ShardInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188aaba2-82fd-4899-b537-4d49e80abe0c}</Project>
       <Name>Projects.Tool</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="NHibernate\NHibernateAccess.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

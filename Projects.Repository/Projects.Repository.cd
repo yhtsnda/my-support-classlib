@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Projects.Repository.AbstractIBatisRepository&lt;TEntity&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAEABAAIAQAAAAAAEAAEEAAAAAAAAAAAI=</HashCode>
+      <FileName>AbstractIBatisRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Projects.Repository.AbstractMongoRepository&lt;TEntity&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAEABAAIAQAAAAAAEAAEEAAAAAAAAAAAI=</HashCode>
+      <FileName>AbstractMongoRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Projects.Repository.AbstractSimpleIBatisRepository&lt;TEntity, TSearch&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAIAQEAAAAAEAAEEAAAAAAAAAAAA=</HashCode>
+      <FileName>AbstractSimpleIBatisRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Projects.Repository.MongoMap" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MongoMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Repository.MongoRepositoryProvider" Collapsed="true">
+    <Position X="12" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>MongoRepositoryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Repository.AbstractNHibernateRepository&lt;TEntity&gt;">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAEABAAIAQAAAAAAEAAEEAAAAAAAAAAAI=</HashCode>
+      <FileName>AbstractNHibernateRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

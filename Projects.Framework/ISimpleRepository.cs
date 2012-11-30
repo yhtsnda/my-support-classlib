@@ -8,7 +8,7 @@ using Projects.Tool.Pager;
 namespace Projects.Framework
 {
     /// <summary>
-    /// 简单仓储接口
+    /// 简单仓储接口,目前适用于IBatis
     /// </summary>
     /// <remarks>
     /// 在简单仓储接口中,不需要实现规约
