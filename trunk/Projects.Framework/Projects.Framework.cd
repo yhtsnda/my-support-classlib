@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Projects.Framework.RepositoryFramework">
+    <Position X="6.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryFramework.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.RepositoryConfiguation">
+    <Position X="8.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryConfiguation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ReflectionHelper">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\ReflectionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ProxyGeneratorUtil">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\ProxyGeneratorUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.CacheData">
+    <Position X="4.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.AbstractShardStrategy">
+    <Position X="4.25" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\AbstractShardStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.NoShardStrategy">
+    <Position X="4.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\NoShardStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.PartitionId">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\PartitionId.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ShardConfig">
+    <Position X="4.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\ShardConfiguationExtend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.AbstractShardRepository">
+    <Position X="7.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\ShardedRepository.cs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ShardId">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\ShardId.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.AbstractRepository">
+    <Position X="8.5" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\ShardRepository.cs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.RepositoryGetListMethodInvocation">
+    <Position X="12.5" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryInterceptor\RepositoryGetListMethodInvocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.RepositoryGetMethodInvocation">
+    <Position X="13.25" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryInterceptor\RepositoryGetMethodInvocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.RepositoryInterceptor">
+    <Position X="12.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryInterceptor\RepositoryInterceptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.RepositoryPersistentMethodInvocation">
+    <Position X="9" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryInterceptor\RepositoryPersistentMethodInvocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.AbstractRepositoryFrameworkInterceptor">
+    <Position X="18.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryFrameworkInterceptors\AbstractRepositoryFrameworkInterceptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.DefaultRepositoryFrameworkInterceptor">
+    <Position X="18" Y="1.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryFrameworkInterceptors\DefaultRepositoryFrameworkInterceptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.DefaultGetter">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Property\DefaultGetter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.DefaultPropertyAccessor">
+    <Position X="25.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Property\DefaultPropertyAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.PropertyAccessorFactory">
+    <Position X="23.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Property\PropertyAccessorFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.CacheDependencyResolver">
+    <Position X="30.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Extends\CacheDependencyResolver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.PrettyTypeExtend">
+    <Position X="30.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Extends\PrettyTypeExtend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.EntityInterceptor">
+    <Position X="35" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\EntityInterceptor\EntityInterceptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.HasManyClassJoinProcesser">
+    <Position X="35" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\EntityInterceptor\HasManyClassJoinProcesser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.HasOneClassJoinProcesser">
+    <Position X="35" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\EntityInterceptor\HasOneClassJoinProcesser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.CacheRegion">
+    <Position X="40.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Defines\Internals\CacheRegion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ClassDefineMetadata">
+    <Position X="42.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Defines\Internals\ClassDefineMetadata.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ClassJoinDefineMetadata">
+    <Position X="40.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Defines\Internals\ClassJoinDefineMetadata.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ClassDefine">
+    <Position X="40.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Defines\ClassDefine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ClassJoinCacheDefine">
+    <Position X="40.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Defines\ClassJoinCacheDefine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ClassJoinDefine">
+    <Position X="40.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Defines\ClassJoinDefine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ConstantExpressionVisitor" Collapsed="true">
+    <Position X="48.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgIQAAAAAAAAgAAAAIAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\CacheKeyGenerator\ConstantExpressionVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.DefaultCacheKeyGenerator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\CacheKeyGenerator\DefaultCacheKeyGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.SimpleGenerator" Collapsed="true">
+    <Position X="47" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAIAAAAAAIAAABAAAAAAIACAAkCFAAAABAACABAg=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\CacheKeyGenerator\SimpleGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.ListCacheData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\ListCacheData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Projects.Framework.PagingCacheData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAAAAAACAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\PagingCacheData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Projects.Framework.QueryCacheData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\QueryCacheData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Projects.Framework.RepositoryExtend" Collapsed="true">
+    <Position X="48.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\RepositoryExtend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.AbstractCacheableRepositoryProvider&lt;TEntity&gt;" Collapsed="true">
+    <Position X="55" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAUCIAAAAAAEAAAABAAEAAAAAAAAAAAAAAAAAAAAECA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\Internals\AbstractCacheableRepositoryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.CacheableRepositoryInterceptor&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="60.5" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAgBCAAAAAAAAAAAAAAAAgAAAAE=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\Internals\CacheableRepositoryInterceptor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Projects.Framework.CommonCacheableRepositoryProvider&lt;TEntity&gt;" Collapsed="true">
+    <Position X="51.75" Y="2" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAECIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\Internals\CommonCacheableRepositoryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.DefaultRepositoryCacheable&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="62.25" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAACAAAAAAAAAAAAAAAAAAAAAAAAAAgASAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\Internals\DefaultRepositoryCacheable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Projects.Framework.EntityFindAllCacheableRepositoryProvider&lt;TEntity&gt;" Collapsed="true">
+    <Position X="58.5" Y="2" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAECIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\Internals\EntityFindAllCacheableRepositoryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.EntityFindOneCacheableRepositoryProvider&lt;TEntity&gt;" Collapsed="true">
+    <Position X="54" Y="2" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAECIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\Internals\EntityFindOneCacheableRepositoryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Framework.EntityPagingCacheableRepositoryProvider&lt;TEntity&gt;" Collapsed="true">
+    <Position X="56.25" Y="2" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAECIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\Internals\EntityPagingCacheableRepositoryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Projects.Framework.IValidatable">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\IValidatable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.ILifecycle">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\ILifecycle.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.ICacheKeySupport">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\ICacheKeySupport.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IShardStrategy">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\IShardStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IShardRepository">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\IShardRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IShardSession">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\IShardSession.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IShardSessionFactory">
+    <Position X="0.5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Shards\IShardSessionFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IRepositoryMethodInvocation">
+    <Position X="10.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryInterceptor\IRepositoryMethodInvocation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IRepositoryFrameworkInterceptor">
+    <Position X="18" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\RepositoryFrameworkInterceptors\IRepositoryFrameworkInterceptor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IGetter" Collapsed="true">
+    <Position X="27.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Property\IGetter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IPropertyAccessor" Collapsed="true">
+    <Position X="27.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Property\IPropertyAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.ICacheMetadataProvider">
+    <Position X="38.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Defines\Internals\ICacheMetadataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IClassJoinProcesser">
+    <Position X="38.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Defines\Internals\IClassJoinProcesser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.ICacheKeyGenerator" Collapsed="true">
+    <Position X="47" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\ICacheKeyGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IEntityDefineSupport&lt;T&gt;" Collapsed="true">
+    <Position X="49" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\IEntityDefineSupport.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IQueryTimestamp" Collapsed="true">
+    <Position X="47" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\IQueryTimestamp.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.IRepositoryCacheable&lt;T&gt;" Collapsed="true">
+    <Position X="49" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\IRepositoryCacheable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.ICacheableInterceptor" Collapsed="true">
+    <Position X="59" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\Internals\CacheableRepositoryInterceptor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Projects.Framework.ICacheableRepositoryProvider&lt;TEntity&gt;" Collapsed="true">
+    <Position X="60.75" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAECIAAAAAAAAAAABAAEAAAAAAAAAAAAAAAAAAAAECA=</HashCode>
+      <FileName>RepositoryFrameworks\CacheableRepositoryInterceptor\Internals\ICacheableRepositoryProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Projects.Framework.ClassJoinType">
+    <Position X="38.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RepositoryFrameworks\Defines\Internals\ClassJoinType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>
