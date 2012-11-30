@@ -68,18 +68,32 @@ namespace Projects.Framework
                 mGetters.Add(prop.Name, new DefaultGetter(prop));
         }
 
-        private void SetPropertyValues(object target, object[] values)
+        /// <summary>
+        /// 创建Setter函数
+        /// </summary>
+        private void CreateSetterValues(Type entityType, List<PropertyInfo> properties)
         {
             var param1 = Expression.Parameter(typeof(object), "target");
             var param2 = Expression.Parameter(typeof(object[]), "values");
 
             List<Expression> blocks = new List<Expression>();
-            var target = Expression.Variable(mEntityType, "entity");
-            blocks.Add(Expression.Assign(target, Expression.Convert(param1, mEntityType)));
-            for (int i = 0; i < mProperties.Count; i++)
+            var target = Expression.Variable(entityType, "entity");
+            blocks.Add(Expression.Assign(target, Expression.Convert(param1, entityType)));
+            for (int i = 0; i < properties.Count; i++)
             {
-
+                var property = properties[i];
+                var value = Expression.ArrayAccess(param2, Expression.Constant(i));
+                blocks.Add(Expression.Call(target, property.GetSetMethod(true), 
+                    Expression.Convert(value, property.PropertyType)));
             }
+            var main = Expression.Block(new ParameterExpression[] { target }, blocks);
+            mSetterValuesHandler = (Action<object, object[]>)Expression
+                .Lambda(typeof(Action<object, object[]>), main, param1, param2)
+                .Compile();
+        }
+
+        private void CreateGetterValues(Type entityType, List<PropertyInfo> properties)
+        {
         }
         #endregion
     }
