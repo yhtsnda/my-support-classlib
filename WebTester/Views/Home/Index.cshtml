@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        var excel = {
+            output: function () {
+                $.download("/home/exportexcel", "format=xls", "GET");
+            }
+        };
+        $("#export").click(excel.output);
+    });
+</script>
+
+<h2>Index</h2>
+<button id="export" type="button">导出数据</button>
