@@ -5,8 +5,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 
-using Projects.Tool.Interfaces;
-
 namespace Projects.Tool
 {
     /// <summary>

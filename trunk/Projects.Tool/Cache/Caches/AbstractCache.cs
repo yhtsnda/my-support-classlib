@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Projects.Tool.Interfaces;
-
 namespace Projects.Tool
 {
     public abstract class AbstractCache : ICacheSettingable
