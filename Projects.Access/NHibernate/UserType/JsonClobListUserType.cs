@@ -8,7 +8,7 @@ using Projects.Tool.Util;
 using NHibernate;
 using NHibernate.SqlTypes;
 
-namespace Projects.Accesses.NHibernate
+namespace Projects.Accesses.NHibernateRepository
 {
     /// <summary>
     /// JsonClobListUserType
