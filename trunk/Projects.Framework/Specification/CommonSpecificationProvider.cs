@@ -49,5 +49,11 @@ namespace Projects.Framework
         {
             return spec.Provider.Skip(spec, count);
         }
+
+
+        public ISpecification<T> Shard<T>(ISpecification<T> spec, Shards.ShardParams shardParams)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

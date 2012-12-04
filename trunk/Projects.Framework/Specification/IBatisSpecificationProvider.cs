@@ -54,5 +54,11 @@ namespace Projects.Framework
             batisSpec.Query = batisSpec.Query.Skip(count);
             return batisSpec;
         }
+
+
+        public ISpecification<T> Shard<T>(ISpecification<T> spec, Shards.ShardParams shardParams)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

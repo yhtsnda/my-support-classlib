@@ -87,5 +87,11 @@ namespace Projects.Framework
             get { return null; }
             set { ;}
         }
+
+
+        public Shards.ShardParams ShardParams
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

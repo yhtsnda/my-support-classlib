@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 
 using Projects.Tool;
+using Projects.Framework.Shards;
 
 namespace Projects.Framework
 {
@@ -13,6 +14,48 @@ namespace Projects.Framework
     /// </summary>
     public static class SpecificationExtend
     {
+        /// <summary>
+        /// 定义规约的分区分表参数
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="spec"></param>
+        /// <param name="shardParams"></param>
+        /// <returns></returns>
+        public static ISpecification<T> Shard<T>(this ISpecification<T> spec, ShardParams shardParams)
+        {
+            if (spec == null)
+                throw new ArgumentNullException("spec");
+            return spec.Provider.Shard(spec, shardParams);
+        }
+
+        /// <summary>
+        /// 定义规约的分区分表参数
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="spec"></param>
+        /// <param name="shardParam"></param>
+        /// <returns></returns>
+        public static ISpecification<T> Shard<T>(this ISpecification<T> spec, long shardParam)
+        {
+            if (spec == null)
+                throw new ArgumentNullException("spec");
+            return spec.Provider.Shard(spec, ShardParams.Form(shardParam));
+        }
+
+        /// <summary>
+        /// 定义规约的分区分表参数
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="spec"></param>
+        /// <param name="shardParam"></param>
+        /// <returns></returns>
+        public static ISpecification<T> Shard<T>(this ISpecification<T> spec, long shardParam1, long shardParam2)
+        {
+            if (spec == null)
+                throw new ArgumentNullException("spec");
+            return spec.Provider.Shard(spec, ShardParams.Form(shardParam1, shardParam2));
+        }
+
         /// <summary>
         /// 定义规约的条件
         /// </summary>

@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Projects.Framework
 {
-    public interface ICacheMetadataProvider
+    internal interface ICacheMetadataProvider
     {
+        ClassDefineMetadata GetCacheMetadata();
     }
 }

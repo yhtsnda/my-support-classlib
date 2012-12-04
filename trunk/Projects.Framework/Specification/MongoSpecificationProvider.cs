@@ -52,5 +52,10 @@ namespace Projects.Framework
             MongoSpecification<T> mongoSpec = (MongoSpecification<T>)spec;
             return mongoSpec;
         }
+
+        public ISpecification<T> Shard<T>(ISpecification<T> spec, Shards.ShardParams shardParams)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
