@@ -8,7 +8,7 @@ using NHibernate;
 using NHibernate.SqlTypes;
 using NHibernate.UserTypes;
 
-namespace Projects.Accesses.NHibernate
+namespace Projects.Accesses.NHibernateRepository
 {
     /// <summary>
     /// SplitUserType

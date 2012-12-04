@@ -6,7 +6,7 @@ using System.Text;
 using NHibernate;
 using NHibernate.Engine;
 
-namespace Projects.Repository
+namespace Projects.Repository.NHibernateRepository
 {
     /// <summary>
     /// NHibernate仓储扩展
