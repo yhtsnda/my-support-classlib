@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Projects.Tool
+namespace Projects.Framework.Shards
 {
     public struct ShardParams
     {

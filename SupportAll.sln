@@ -49,6 +49,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Settings", "Wareh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Repository", "Projects.Repository\Projects.Repository.csproj", "{A0B39A9E-3D55-4FE4-87FF-4E1B5C11444C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Test", "6.Test", "{2B424D00-7BC7-4E8B-B66B-D27B3B7D7975}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTester", "WebTester\WebTester.csproj", "{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -201,6 +205,14 @@ Global
 		{A0B39A9E-3D55-4FE4-87FF-4E1B5C11444C}.SimpleDebug|Any CPU.Build.0 = Debug|Any CPU
 		{A0B39A9E-3D55-4FE4-87FF-4E1B5C11444C}.WebAppSubfield|Any CPU.ActiveCfg = Release|Any CPU
 		{A0B39A9E-3D55-4FE4-87FF-4E1B5C11444C}.WebAppSubfield|Any CPU.Build.0 = Release|Any CPU
+		{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02}.SimpleDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02}.SimpleDebug|Any CPU.Build.0 = Debug|Any CPU
+		{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02}.WebAppSubfield|Any CPU.ActiveCfg = Release|Any CPU
+		{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02}.WebAppSubfield|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -224,5 +236,6 @@ Global
 		{EF4FF961-EB7B-4CAF-AA2D-46444D263F4B} = {22D41A59-D32F-4EDF-8458-483D92F3C83D}
 		{FCFB22D4-AACC-4EC3-8E95-80F3F8FB1EBE} = {22D41A59-D32F-4EDF-8458-483D92F3C83D}
 		{6AE81496-C67F-4B0C-86A9-3D44CA5CF600} = {B9205794-6E1E-443E-BDBB-1AC7FBE60462}
+		{05AB0CD6-7DCA-4263-B6D7-89BFAA81DC02} = {2B424D00-7BC7-4E8B-B66B-D27B3B7D7975}
 	EndGlobalSection
 EndGlobal
