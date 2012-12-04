@@ -5,7 +5,41 @@ using System.Text;
 
 namespace Projects.Framework
 {
-    public class DefaultRepositoryFrameworkInterceptor
+    internal class DefaultRepositoryFrameworkInterceptor : IRepositoryFrameworkInterceptor
     {
+        public void PreUpdate(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PreCreate(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PreDelete(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PostUpdate(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PostCreate(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PostDelete(object entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PostLoad(object entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

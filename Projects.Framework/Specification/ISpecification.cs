@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 
 using Projects.Tool;
+using Projects.Framework.Shards;
 
 namespace Projects.Framework
 {
@@ -26,6 +27,11 @@ namespace Projects.Framework
         String QueryStatement { get; set; }
 
         String QueryNumberStatement { get; set; }
+
+        /// <summary>
+        /// 获取分区相关的参数信息
+        /// </summary>
+        ShardParams ShardParams { get; }
 
         object SearchObject { get;  set; }
 

@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\Assembly\Castle.Core\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="IBatisNet.DataMapper, Version=1.6.2.1, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Assembly\IBatisNet.DataMapper.dll</HintPath>
@@ -38,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,62 +50,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CacheData\CacheKeyGenerator\ConstantExpressionVisitor.cs" />
-    <Compile Include="CacheData\CacheKeyGenerator\DefaultCacheKeyGenerator.cs" />
-    <Compile Include="CacheData\CacheKeyGenerator\SimpleGenerator.cs" />
-    <Compile Include="CacheData\ICacheKeyGenerator.cs" />
-    <Compile Include="CacheData\IEntityDefineSupport.cs" />
-    <Compile Include="CacheData\Internals\AbstractCacheableRepositoryProvider.cs" />
-    <Compile Include="CacheData\Internals\CacheableRepositoryInterceptor.cs" />
-    <Compile Include="CacheData\Internals\CommonCacheableRepositoryProvider.cs" />
-    <Compile Include="CacheData\Internals\DefaultRepositoryCacheable.cs" />
-    <Compile Include="CacheData\Internals\EntityFindAllCacheableRepositoryProvider.cs" />
-    <Compile Include="CacheData\Internals\EntityFindOneCacheableRepositoryProvider.cs" />
-    <Compile Include="CacheData\Internals\EntityPagingCacheableRepositoryProvider.cs" />
-    <Compile Include="CacheData\Internals\ICacheableRepositoryProvider.cs" />
-    <Compile Include="CacheData\IQueryTimestamp.cs" />
-    <Compile Include="CacheData\IRepositoryCacheable.cs" />
-    <Compile Include="CacheData\ListCacheData.cs" />
-    <Compile Include="CacheData\PagingCacheData.cs" />
-    <Compile Include="CacheData\QueryCacheData.cs" />
-    <Compile Include="CacheData\RepositoryExtend.cs" />
+    <Compile Include="Cacheable\CacheData\CacheData.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\CacheKeyUtil.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\ConstantExpressionVisitor.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\DefaultCacheKeyGenerator.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\Evaluator.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\SimpleGenerator.cs" />
+    <Compile Include="Cacheable\CacheData\ICacheKeyGenerator.cs" />
+    <Compile Include="Cacheable\CacheData\ICacheKeySupport.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\EntityInterceptor.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\HasManyClassJoinProcesser.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\HasOneClassJoinProcesser.cs" />
+    <Compile Include="Cacheable\QueryCacheable\IEntityDefineSupport.cs" />
+    <Compile Include="Cacheable\QueryCacheable\IRepositoryCacheable.cs" />
+    <Compile Include="Cacheable\QueryCacheable\RepositoryExtend.cs" />
+    <Compile Include="Cacheable\CommonCacheable\CacheDependencyResolver.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\AbstractCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\CacheableRepositoryInterceptor.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\CommonCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\DefaultRepositoryCacheable.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\EntityFindAllCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\EntityFindOneCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\EntityPagingCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\ICacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\CacheData\IQueryTimestamp.cs" />
+    <Compile Include="Cacheable\CacheData\ListCacheData.cs" />
+    <Compile Include="Cacheable\CacheData\PagingCacheData.cs" />
+    <Compile Include="Cacheable\CacheData\QueryCacheData.cs" />
     <Compile Include="Defines\ClassDefine.cs" />
     <Compile Include="Defines\ClassJoinCacheDefine.cs" />
     <Compile Include="Defines\ClassJoinDefine.cs" />
     <Compile Include="Defines\Internals\CacheRegion.cs" />
+    <Compile Include="Defines\Internals\ClassCacheRegionDefineMetadata.cs" />
     <Compile Include="Defines\Internals\ClassDefineMetadata.cs" />
     <Compile Include="Defines\Internals\ClassJoinDefineMetadata.cs" />
     <Compile Include="Defines\Internals\ClassJoinType.cs" />
     <Compile Include="Defines\Internals\ICacheMetadataProvider.cs" />
     <Compile Include="Defines\Internals\IClassJoinProcesser.cs" />
-    <Compile Include="RepositoryFrameworks\EntityInterceptor\EntityInterceptor.cs" />
-    <Compile Include="RepositoryFrameworks\EntityInterceptor\HasManyClassJoinProcesser.cs" />
-    <Compile Include="RepositoryFrameworks\EntityInterceptor\HasOneClassJoinProcesser.cs" />
-    <Compile Include="RepositoryFrameworks\Extends\CacheDependencyResolver.cs" />
+    <Compile Include="RepositoryFrameworks\LazyloadSupportException.cs" />
+    <Compile Include="RepositoryFrameworks\PersistentMethodAttribute.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\IRepositoryMethodInvocation.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\RepositoryGetListMethodInvocation.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\RepositoryGetMethodInvocation.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\RepositoryPersistentMethodInvocation.cs" />
+    <Compile Include="Shards\Strategies\ModShardStrategy.cs" />
+    <Compile Include="Shards\Strategies\NoShardStrategy.cs" />
+    <Compile Include="Shards\Strategies\WeekShardStrategy.cs" />
+    <Compile Include="Utils\PrettyTypeExtend.cs" />
     <Compile Include="Utils\Property\DefaultGetter.cs" />
     <Compile Include="Utils\Property\DefaultPropertyAccessor.cs" />
     <Compile Include="Utils\Property\IGetter.cs" />
     <Compile Include="Utils\Property\IPropertyAccessor.cs" />
-    <Compile Include="RepositoryFrameworks\Extends\PrettyTypeExtend.cs" />
     <Compile Include="Utils\Property\PropertyAccessorFactory.cs" />
     <Compile Include="Interceptors\AbstractRepositoryFrameworkInterceptor.cs" />
     <Compile Include="Interceptors\DefaultRepositoryFrameworkInterceptor.cs" />
     <Compile Include="Interceptors\IRepositoryFrameworkInterceptor.cs" />
-    <Compile Include="RepositoryFrameworks\RepositoryInterceptor\IRepositoryMethodInvocation.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\ShardRepository.cs.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\ShardedRepository.cs.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\AbstractShardStrategy.cs" />
+    <Compile Include="Shards\ShardRepository.cs.cs" />
+    <Compile Include="Shards\ShardedRepository.cs.cs" />
+    <Compile Include="Shards\Strategies\AbstractShardStrategy.cs" />
     <Compile Include="ActionResult.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\IShardRepository.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\IShardSession.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\IShardSessionFactory.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\IShardStrategy.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\NoShardStrategy.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\PartitionId.cs" />
-    <Compile Include="RepositoryFrameworks\CacheData.cs" />
+    <Compile Include="Shards\IShardRepository.cs" />
+    <Compile Include="Shards\IShardSession.cs" />
+    <Compile Include="Shards\IShardSessionFactory.cs" />
+    <Compile Include="Shards\IShardStrategy.cs" />
+    <Compile Include="Shards\PartitionId.cs" />
     <Compile Include="DefaultDependencyResolver.cs" />
     <Compile Include="DependencyResolver.cs" />
-    <Compile Include="RepositoryFrameworks\ICacheKeySupport.cs" />
     <Compile Include="IDependencyRegister.cs" />
     <Compile Include="IDependencyResolver.cs" />
     <Compile Include="RepositoryFrameworks\ILifecycle.cs" />
@@ -108,17 +124,11 @@
     <Compile Include="ISimpleRepository.cs" />
     <Compile Include="RepositoryFrameworks\IValidatable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryFrameworks\ProxyGeneratorUtil.cs" />
-    <Compile Include="RepositoryFrameworks\ReflectionHelper.cs" />
     <Compile Include="RepositoryFrameworks\RepositoryConfiguation.cs" />
     <Compile Include="RepositoryFrameworks\RepositoryFramework.cs" />
-    <Compile Include="RepositoryFrameworks\RepositoryInterceptor\RepositoryGetListMethodInvocation.cs" />
-    <Compile Include="RepositoryFrameworks\RepositoryInterceptor\RepositoryGetMethodInvocation.cs" />
-    <Compile Include="RepositoryFrameworks\RepositoryInterceptor\RepositoryInterceptor.cs" />
-    <Compile Include="RepositoryFrameworks\RepositoryInterceptor\RepositoryPersistentMethodInvocation.cs" />
     <Compile Include="ResultKey.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\ShardConfiguationExtend.cs" />
-    <Compile Include="RepositoryFrameworks\Shards\ShardId.cs" />
+    <Compile Include="Shards\ShardConfiguationExtend.cs" />
+    <Compile Include="Shards\ShardId.cs" />
     <Compile Include="SpecificationFactory.cs" />
     <Compile Include="Specification\CommonSpecificationProvider.cs" />
     <Compile Include="Specification\IBatisSpecification.cs" />
@@ -129,6 +139,8 @@
     <Compile Include="Specification\MongoSpecificationProvider.cs" />
     <Compile Include="Specification\QueryOrder.cs" />
     <Compile Include="Specification\SpecificationExtensions.cs" />
+    <Compile Include="Utils\ProxyGeneratorUtil.cs" />
+    <Compile Include="Utils\ReflectionHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Projects.Access\Projects.Accesses.csproj">
@@ -143,7 +155,9 @@
   <ItemGroup>
     <None Include="Projects.Framework.cd" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Commands\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

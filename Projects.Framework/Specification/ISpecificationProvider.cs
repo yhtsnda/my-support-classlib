@@ -5,6 +5,7 @@ using System.Text;
 using System.Linq.Expressions;
 
 using Projects.Tool;
+using Projects.Framework.Shards;
 
 namespace Projects.Framework
 {
@@ -67,5 +68,14 @@ namespace Projects.Framework
         /// <param name="count"></param>
         /// <returns></returns>
         ISpecification<T> Skip<T>(ISpecification<T> spec, int count);
+
+        /// <summary>
+        /// 定义分区分表信息参数
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="spec"></param>
+        /// <param name="shardParams"></param>
+        /// <returns></returns>
+        ISpecification<T> Shard<T>(ISpecification<T> spec, ShardParams shardParams);
     }
 }

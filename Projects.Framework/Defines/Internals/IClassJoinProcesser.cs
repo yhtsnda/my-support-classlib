@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Projects.Framework
 {
-    public interface IClassJoinProcesser
+    internal interface IClassJoinProcesser
     {
+        object Process(object entity);
     }
 }

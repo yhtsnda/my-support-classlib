@@ -5,14 +5,21 @@ using System.Linq;
 using System.Text;
 
 using Projects.Tool;
+using Projects.Tool.Util;
 using Projects.Tool.Pager;
+using Projects.Framework.Shards;
 
 namespace Projects.Framework
 {
+    public interface IRepository
+    {
+    }
+
     /// <summary>
     /// 仓储的接口
     /// </summary>
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> : IRepository
+        where TEntity : class
     {
         /// <summary>
         /// 创建仓储的规约
@@ -45,11 +52,25 @@ namespace Projects.Framework
         TEntity Get(object id);
 
         /// <summary>
+        /// 通过主键获取对象
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <returns></returns>
+        TEntity Get(ShardParams shardParams, object id);
+
+        /// <summary>
         /// 通过主键批量获取对象
         /// </summary>
         /// <param name="ids">The ids.</param>
         /// <returns></returns>
         IList<TEntity> GetList(IEnumerable<int> ids);
+
+        /// <summary>
+        /// 通过主键批量获取对象
+        /// </summary>
+        /// <param name="ids">The ids.</param>
+        /// <returns></returns>
+        IList<TEntity> GetList(ShardParams shardParams, IEnumerable<int> ids);
 
         /// <summary>
         /// 通过规约查找并返回一个对象

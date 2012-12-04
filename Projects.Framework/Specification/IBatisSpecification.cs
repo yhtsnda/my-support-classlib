@@ -152,5 +152,11 @@ namespace Projects.Framework
             }
             set { query = value; }
         }
+
+
+        public Shards.ShardParams ShardParams
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

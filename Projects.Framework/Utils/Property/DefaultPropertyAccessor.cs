@@ -92,8 +92,44 @@ namespace Projects.Framework
                 .Compile();
         }
 
+        /// <summary>
+        /// 创建Getter函数
+        /// </summary>
         private void CreateGetterValues(Type entityType, List<PropertyInfo> properties)
         {
+            var param = Expression.Parameter(typeof(object), "target");
+
+            var target = Expression.Variable(entityType, "entity");
+            var values = Expression.Variable(typeof(object[]), "values");
+
+            List<Expression> blocks = new List<Expression>();
+            blocks.Add(Expression.Assign(target, Expression.Convert(param, entityType)));
+            blocks.Add(Expression.Assign(values, Expression.NewArrayBounds(typeof(object), 
+                Expression.Constant(properties.Count))));
+
+            for (var i = 0; i < properties.Count; i++)
+            {
+                var left = Expression.ArrayAccess(values, Expression.Constant(i));
+                var right = Expression.Convert(Expression.Property(target, properties[i]), typeof(object));
+                blocks.Add(Expression.Assign(left, right));
+            }
+            LabelTarget returnTarget = Expression.Label(typeof(object[]));
+            var returnExpr = Expression.Return(returnTarget, values);
+
+            blocks.Add(returnExpr);
+            blocks.Add(Expression.Label(returnTarget, Expression.Constant(new object[0])));
+
+            var main = Expression.Block(new ParameterExpression[] { target, values }, blocks);
+            mGetterValuesHandler = (Func<object, object[]>)Expression
+                .Lambda(typeof(Func<object, object[]>), main, param)
+                .Compile();
+        }
+
+        private void CreateToDictionary(Type entityType)
+        {
+            var fields = entityType.GetFields(BindingFlags.Public | BindingFlags.Instance);
+            var properties = entityType.GetProperties(BindingFlags.Public | BindingFlags.Instance | 
+                BindingFlags.GetProperty).ToList();
         }
         #endregion
     }

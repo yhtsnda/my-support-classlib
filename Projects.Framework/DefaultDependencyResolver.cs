@@ -23,7 +23,7 @@ namespace Projects.Framework
         /// </summary>
         /// <typeparam name="I">接口类型</typeparam>
         /// <typeparam name="T">实现该接口的类型</typeparam>
-        public void Register<I, T>() where T : I, new()
+        public virtual void Register<I, T>() where T : I, new()
         {
             Register<I>(new T());
         }
@@ -33,7 +33,7 @@ namespace Projects.Framework
         /// </summary>
         /// <typeparam name="I">接口类型</typeparam>
         /// <param name="instance">实现该接口的实例</param>
-        public void Register<I>(I instance)
+        public virtual void Register<I>(I instance)
         {
             Register(typeof(I), instance);
             
@@ -44,7 +44,7 @@ namespace Projects.Framework
         /// </summary>
         /// <param name="interfaceType">接口类型</param>
         /// <param name="instanceType">实现该接口的类型</param>
-        public void Register(Type interfaceType, Type instanceType)
+        public virtual void Register(Type interfaceType, Type instanceType)
         {
             Register(interfaceType, FastActivator.Create(instanceType));
         }
@@ -54,7 +54,7 @@ namespace Projects.Framework
         /// </summary>
         /// <param name="interfaceType">接口类型</param>
         /// <param name="instance">实现该接口的实例</param>
-        public void Register(Type interfaceType, object instance)
+        public virtual void Register(Type interfaceType, object instance)
         {
             List<object> items = mInstances.GetOrAdd(interfaceType, type => new List<object>());
             items.Add(instance);
