@@ -10,7 +10,7 @@ namespace Warehouse.StoragePolicy
     public class RangePolicy : AbstractPolicy
     {
         /// <summary>
-        /// 按键值范围分发存放的策略
+        /// 按键值范围读取/存放的策略
         /// </summary>
         public RangePolicy()
         {

@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SqlServer.Smo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,18 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculateLayer\CalculateController.cs" />
-    <Compile Include="CalculateLayer\GroupCount.cs" />
-    <Compile Include="CalculateLayer\ICalculate.cs" />
-    <Compile Include="CalculateLayer\ITask.cs" />
-    <Compile Include="CalculateLayer\LocalTaskBase.cs" />
-    <Compile Include="CalculateLayer\LocalTaskManager.cs" />
-    <Compile Include="CalculateLayer\MappedKeyValuePair.cs" />
-    <Compile Include="CalculateLayer\MapTask.cs" />
-    <Compile Include="CalculateLayer\ProcesserType.cs" />
-    <Compile Include="IPolicy.cs" />
+    <Compile Include="Calculator\CalculateController.cs" />
+    <Compile Include="Calculator\GroupCount.cs" />
+    <Compile Include="Calculator\ICalculate.cs" />
+    <Compile Include="Calculator\ITask.cs" />
+    <Compile Include="Calculator\LocalTaskBase.cs" />
+    <Compile Include="Calculator\LocalTaskManager.cs" />
+    <Compile Include="Calculator\MappedKeyValuePair.cs" />
+    <Compile Include="Calculator\MapTask.cs" />
+    <Compile Include="Calculator\ProcesserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CalculateLayer\ReduceTask.cs" />
+    <Compile Include="Calculator\ReduceTask.cs" />
     <Compile Include="Transfers\IServerTransfer.cs" />
     <Compile Include="Transfers\MySqlTransfer.cs" />
     <Compile Include="Transfers\SqlServerTransfer.cs" />

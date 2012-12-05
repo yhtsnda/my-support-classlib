@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace Warehouse.Settings
 {
-    public class StoragePolicyConfigure : PolicyConfigureBase
+    public class PolicyConfig : IConfigure
     {
     }
 }
