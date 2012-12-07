@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 using Warehouse.Utility;
 
@@ -12,8 +13,8 @@ namespace Warehouse.Settings
     /// </summary>
     public interface IPolicy
     {
-        PolicyConfig GetPolicyConfig();
-
+        ResultKey Storage(DataTable datas);
+        DataTable Obtain();
     }
 
     /// <summary>

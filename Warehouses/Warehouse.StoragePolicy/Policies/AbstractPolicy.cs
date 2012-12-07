@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Warehouse.Utility;
 using Warehouse.Settings;
 using Warehouse.DataOperator;
 
@@ -11,7 +13,7 @@ namespace Warehouse.StoragePolicy
     /// <summary>
     /// 存储/读取策略的抽象基类
     /// </summary>
-    public abstract class AbstractPolicy : IPolicy
+    public abstract class AbstractPolicy<TEntity> : IPolicy, IPolicy<TEntity>
     {
         /// <summary>
         /// 数据读取和存储的标识位
@@ -28,16 +30,29 @@ namespace Warehouse.StoragePolicy
         /// </summary>
         public string TablePrefix { get; set; }
 
-        /// <summary>
-        /// 存储数据
-        /// </summary>
-        /// <param name="config">存储数据策略配置</param>
-        public abstract void Storage(StoragePolicyConfigure config);
+        public PolicyConfig GetPolicyConfig()
+        {
+            throw new NotImplementedException();
+        }
 
-        /// <summary>
-        /// 获取数据
-        /// </summary>
-        /// <param name="config">获取数据策略配置</param>
-        public abstract void Obtain(ObtainPolicyConfigure config);
+        public ResultKey Storage(DataTable datas)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataTable Obtain()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ResultKey Storage(List<TEntity> datas)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<TEntity> Obtain<TEntity>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

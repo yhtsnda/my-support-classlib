@@ -7,5 +7,6 @@ namespace Warehouse.Settings
 {
     public class PolicyConfig : IConfigure
     {
+
     }
 }
