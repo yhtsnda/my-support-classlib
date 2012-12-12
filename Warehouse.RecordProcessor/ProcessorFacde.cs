@@ -22,5 +22,23 @@ namespace Warehouse.RecordProcessor
             //进入处理
             processors[0].ProcessRequest(data);
         }
+
+        /// <summary>
+        /// 传入序列化后的RecordData
+        /// </summary>
+        /// <param name="data"></param>
+        public static void Process(string data)
+        {
+            RecrodData recordData;
+            try
+            {
+                recordData = new RecrodData(data);
+            }
+            catch
+            {
+                throw new ArgumentException("无法将传入的字符串反序列化为RecordData类型");
+            }
+            Process(recordData);
+        }
     }
 }
