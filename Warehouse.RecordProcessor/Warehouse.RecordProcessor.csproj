@@ -49,7 +49,7 @@
     <Compile Include="Configuration\RecorderNode.cs" />
     <Compile Include="IProcessor.cs" />
     <Compile Include="ProcessorFacde.cs" />
-    <Compile Include="Processors\DemoProcessor.cs">
+    <Compile Include="Processors\DefaultProcessor.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
