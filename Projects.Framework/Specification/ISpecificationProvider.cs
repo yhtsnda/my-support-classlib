@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using Projects.Tool;
 using Projects.Framework.Shards;
 
-namespace Projects.Framework
+namespace Projects.Framework.Specification
 {
     /// <summary>
     /// 定义一个规约提供接口
@@ -15,11 +15,11 @@ namespace Projects.Framework
     public interface ISpecificationProvider
     {
         /// <summary>
-        /// 创建一个规约对象
+        /// 创建一个空的规约对象
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        ISpecification<T> CreateSpecification<T>(string type="ibatis");
+        ISpecification<T> CreateSpecification<T>();
 
         /// <summary>
         /// 根据条件表达式创建一个规约对象
@@ -27,7 +27,7 @@ namespace Projects.Framework
         /// <typeparam name="T"></typeparam>
         /// <param name="exp"></param>
         /// <returns></returns>
-        ISpecification<T> CreateSpecification<T>(Expression<Func<T, bool>> exp, string type="ibatis");
+        ISpecification<T> CreateSpecification<T>(ShardParams shardParams, Expression<Func<T, bool>> exp);
 
         /// <summary>
         /// 加入排序规则

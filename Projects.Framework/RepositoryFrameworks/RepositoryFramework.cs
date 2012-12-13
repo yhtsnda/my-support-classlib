@@ -9,17 +9,18 @@ using Castle.DynamicProxy;
 using Projects.Tool;
 using Projects.Tool.Util;
 using Projects.Framework.Shards;
+using Projects.Framework.Specification;
 
 namespace Projects.Framework
 {
     public static class RepositoryFramework
     {
         private static object mSyncRoot = new object();
-        static RepositoryConfiguation mmShardConfiguration;
+        static RepositoryConfiguation mShardConfiguration;
 
-        internal static RepositoryConfiguation mShardConfiguration
+        internal static RepositoryConfiguation ShardConfiguration
         {
-            get { return mmShardConfiguration; }
+            get { return mShardConfiguration; }
         }
 
         /// <summary>
@@ -27,13 +28,21 @@ namespace Projects.Framework
         /// </summary>
         public static ICacheKeyGenerator CacheKeyGenerator
         {
-            get { return mmShardConfiguration.CacheKeyGenerator; }
-            set { mmShardConfiguration.CacheKeyGenerator = value; }
+            get { return mShardConfiguration.CacheKeyGenerator; }
+            set { mShardConfiguration.CacheKeyGenerator = value; }
+        }
+
+        /// <summary>
+        /// 仓储相关的程序集
+        /// </summary>
+        public static IEnumerable<Assembly> RepositoryAssemblies
+        {
+            get { return mShardConfiguration.RepositoryAssemblies; }
         }
 
         static RepositoryFramework()
         {
-            mmShardConfiguration = new RepositoryConfiguation();
+            mShardConfiguration = new RepositoryConfiguation();
         }
 
         /// <summary>

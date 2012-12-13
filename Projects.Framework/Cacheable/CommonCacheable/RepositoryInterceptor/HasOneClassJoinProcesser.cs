@@ -6,6 +6,7 @@ using System.Text;
 using System.Reflection;
 
 using Projects.Tool;
+using Projects.Framework.Specification;
 
 namespace Projects.Framework
 {

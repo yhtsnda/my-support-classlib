@@ -17,6 +17,11 @@ namespace Projects.Tool.Pager
             }
         }
 
+        public PagedList(int totalCount)
+        {
+            TotalItemCount = totalCount;
+        }
+
         public PagedList(IQueryable<T> items, int pageIndex, int pageSize, int totalItemCount)
         {
             AddRange(items);

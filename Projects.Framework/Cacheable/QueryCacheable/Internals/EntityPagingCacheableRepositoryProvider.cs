@@ -7,6 +7,7 @@ using System.Text;
 using Castle.DynamicProxy;
 using Projects.Tool;
 using Projects.Tool.Pager;
+using Projects.Framework.Specification;
 
 namespace Projects.Framework
 {

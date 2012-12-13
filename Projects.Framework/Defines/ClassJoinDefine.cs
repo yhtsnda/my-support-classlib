@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
+using Projects.Framework.Specification;
+
 namespace Projects.Framework
 {
     /// <summary>
