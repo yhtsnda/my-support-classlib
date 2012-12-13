@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Projects.Accesses.NHibernateRepository.AbstractUserType" Collapsed="true">
+    <Position X="19.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAAAAlAAAAAAAAAAIAIAACAAAAAAAACA=</HashCode>
+      <FileName>NHibernate\UserType\AbstractUserType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.JsonClobListUserType&lt;T&gt;" Collapsed="true">
+    <Position X="18.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAAAAhAAAAAAAAAAIAAAACAAAAAIAAAA=</HashCode>
+      <FileName>NHibernate\UserType\JsonClobListUserType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.JsonClobUserType&lt;T&gt;" Collapsed="true">
+    <Position X="23" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAAAABAAAAAAAAAAIAAAACAAAAAIAAAA=</HashCode>
+      <FileName>NHibernate\UserType\JsonClobUserType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.JsonListUserType&lt;T&gt;" Collapsed="true">
+    <Position X="14" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAAAAhAAAAAAAAAAIAAAACAAAAAIAAAA=</HashCode>
+      <FileName>NHibernate\UserType\JsonListUserType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.JsonUserType&lt;T&gt;" Collapsed="true">
+    <Position X="20.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAAAAAAABAAAAAAAAAAIAAAACAAAAAIAAAA=</HashCode>
+      <FileName>NHibernate\UserType\JsonUserType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.ScoreUserType" Collapsed="true">
+    <Position X="25.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\UserType\ScoreUserType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.SplitUserType&lt;T&gt;" Collapsed="true">
+    <Position X="16.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAABAAAAACAEAAIAAAACAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\UserType\SplitUserType.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Projects.Repository.NHibernateRepository.NHibernateRepositoryExtend" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\NHibernateRepositoryExtend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.NHibernateShardSession" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\NHibernateShardSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.NHibernateShardSessionFactory" Collapsed="true">
+    <Position X="6" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\NHibernateShardSessionFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.NHibernateSpecification" Collapsed="true">
+    <Position X="9" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\NHibernateSpecification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.NHibernateSpecificationProvider" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\NHibernateSpecificationProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.ProfilterLoggerFactory" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\ProfilterLoggerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.QueryOverProjectionBuilderExtend" Collapsed="true">
+    <Position X="6" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\QueryOverProjectionBuilderExtend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.SessionExtend" Collapsed="true">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\SessionExtend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.SessionManager" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\SessionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projects.Accesses.NHibernateRepository.ShardInterceptor" Collapsed="true">
+    <Position X="2.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernate\ShardInterceptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

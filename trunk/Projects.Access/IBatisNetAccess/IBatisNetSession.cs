@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Accesses.IBatisNetAccess
 {
-    public interface IMongoUpdateable<T>
+    public class IBatisNetSession
     {
     }
 }

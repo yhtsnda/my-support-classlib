@@ -61,43 +61,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBatis\SqlMapperManager.cs" />
-    <Compile Include="Mongo\DefaultMongoProvider.cs" />
-    <Compile Include="Mongo\IMongoProvider.cs" />
-    <Compile Include="Mongo\Linq\IMongoUpdateable.cs" />
-    <Compile Include="Mongo\Linq\MongoExpressionParser.cs" />
-    <Compile Include="Mongo\Linq\MongoQueryable.cs" />
-    <Compile Include="Mongo\Linq\MongoQueryable.Extend.cs">
-      <DependentUpon>MongoQueryable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Mongo\Linq\NewSerializer.cs">
-      <DependentUpon>MongoExpressionParser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Mongo\Linq\ParseException.cs" />
-    <Compile Include="Mongo\Linq\QueryParserResult.cs" />
-    <Compile Include="Mongo\MongoAccessor.cs" />
-    <Compile Include="Mongo\MongoCollectionAttribute.cs" />
-    <Compile Include="Mongo\MongoManager.cs.cs" />
-    <Compile Include="NHibernate\NHibernateRepositoryExtend.cs" />
-    <Compile Include="NHibernate\NHibernateShardSession.cs" />
-    <Compile Include="NHibernate\NHibernateShardSessionFactory.cs" />
-    <Compile Include="NHibernate\NHibernateSpecification.cs" />
-    <Compile Include="NHibernate\NHibernateSpecificationProvider.cs" />
-    <Compile Include="NHibernate\ProfilterLoggerFactory.cs" />
-    <Compile Include="NHibernate\UserType\AbstractUserType.cs" />
-    <Compile Include="NHibernate\UserType\JsonClobListUserType.cs" />
-    <Compile Include="NHibernate\UserType\JsonClobUserType.cs" />
-    <Compile Include="NHibernate\UserType\JsonListUserType.cs" />
-    <Compile Include="NHibernate\UserType\JsonUserType.cs" />
-    <Compile Include="NHibernate\UserType\ScoreUserType.cs" />
-    <Compile Include="NHibernate\UserType\SplitUserType.cs" />
+    <Compile Include="IBatisNetAccess\IBatisNetSession.cs" />
+    <Compile Include="IBatisNetAccess\IBatisNetManager.cs" />
+    <Compile Include="IBatisNetAccess\IBatisNetSpecification.cs" />
+    <Compile Include="IBatisNetAccess\IBatisNetSpecificationProvider.cs" />
+    <Compile Include="MongoAccess\Linq\MongoExpressionTreeVisitor.cs" />
+    <Compile Include="MongoAccess\Linq\MongoNodeTypeProvider.cs" />
+    <Compile Include="MongoAccess\Linq\MongoQueryExecutor.cs" />
+    <Compile Include="MongoAccess\Linq\MongoQueryModelVisitor.cs" />
+    <Compile Include="MongoAccess\Linq\MongoQueryParser.cs" />
+    <Compile Include="MongoAccess\Linq\MongoQueryable.cs" />
+    <Compile Include="MongoAccess\Linq\QueryData.cs" />
+    <Compile Include="MongoAccess\MongoManager.cs.cs" />
+    <Compile Include="MongoAccess\MongoMap.cs" />
+    <Compile Include="MongoAccess\MongoRepositoryExtend.cs" />
+    <Compile Include="MongoAccess\MongoSession.cs" />
+    <Compile Include="MongoAccess\MongoShardSessionFactory.cs" />
+    <Compile Include="MongoAccess\MongoShardSession.cs" />
+    <Compile Include="MongoAccess\MongoSpecification.cs" />
+    <Compile Include="MongoAccess\MongoSpecificationProvider.cs" />
+    <Compile Include="NHibernateAccess\NHibernateRepositoryExtend.cs" />
+    <Compile Include="NHibernateAccess\NHibernateShardSession.cs" />
+    <Compile Include="NHibernateAccess\NHibernateShardSessionFactory.cs" />
+    <Compile Include="NHibernateAccess\NHibernateSpecification.cs" />
+    <Compile Include="NHibernateAccess\NHibernateSpecificationProvider.cs" />
+    <Compile Include="NHibernateAccess\ProfilterLoggerFactory.cs" />
+    <Compile Include="NHibernateAccess\UserType\AbstractUserType.cs" />
+    <Compile Include="NHibernateAccess\UserType\JsonClobListUserType.cs" />
+    <Compile Include="NHibernateAccess\UserType\JsonClobUserType.cs" />
+    <Compile Include="NHibernateAccess\UserType\JsonListUserType.cs" />
+    <Compile Include="NHibernateAccess\UserType\JsonUserType.cs" />
+    <Compile Include="NHibernateAccess\UserType\ScoreUserType.cs" />
+    <Compile Include="NHibernateAccess\UserType\SplitUserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NHibernate\QueryOverProjectionBuilderExtend.cs" />
-    <Compile Include="NHibernate\SessionExtend.cs" />
-    <Compile Include="NHibernate\SessionManager.cs" />
-    <Compile Include="NHibernate\ShardInterceptor.cs" />
+    <Compile Include="NHibernateAccess\QueryOverProjectionBuilderExtend.cs" />
+    <Compile Include="NHibernateAccess\SessionExtend.cs" />
+    <Compile Include="NHibernateAccess\SessionManager.cs" />
+    <Compile Include="NHibernateAccess\ShardInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Projects.Framework\Projects.Framework.csproj">
+      <Project>{0352cd0d-6487-45f2-ac4b-d566b8001631}</Project>
+      <Name>Projects.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188aaba2-82fd-4899-b537-4d49e80abe0c}</Project>
       <Name>Projects.Tool</Name>
@@ -105,7 +111,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="NHibernate\NHibernateAccess.cd" />
+    <None Include="NHibernateAccess\NHibernateAccess.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
