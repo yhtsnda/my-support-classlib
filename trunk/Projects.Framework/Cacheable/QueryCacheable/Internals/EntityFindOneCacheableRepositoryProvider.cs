@@ -5,6 +5,7 @@ using System.Text;
 
 using Castle.DynamicProxy;
 using Projects.Tool;
+using Projects.Framework.Specification;
 
 namespace Projects.Framework
 {

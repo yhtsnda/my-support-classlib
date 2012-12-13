@@ -7,7 +7,7 @@ using System.Text;
 using Projects.Tool;
 using Projects.Framework.Shards;
 
-namespace Projects.Framework
+namespace Projects.Framework.Specification
 {
     /// <summary>
     /// 规约接口
@@ -20,24 +20,14 @@ namespace Projects.Framework
         Expression<Func<T, bool>> CriteriaExpression { get; }
 
         /// <summary>
-        /// 获取规约提供者对象
-        /// </summary>
-        ISpecificationProvider Provider { get; }
-
-        String QueryStatement { get; set; }
-
-        String QueryNumberStatement { get; set; }
-
-        /// <summary>
         /// 获取分区相关的参数信息
         /// </summary>
         ShardParams ShardParams { get; }
 
-        object SearchObject { get;  set; }
-
-        int? PageIndex { get; set; }
-
-        int? PageSize { get; set; }
+        /// <summary>
+        /// 获取规约提供者对象
+        /// </summary>
+        ISpecificationProvider Provider { get; }
     }
 
     /// <summary>

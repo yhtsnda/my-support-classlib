@@ -39,6 +39,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.4.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assembly\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -101,6 +106,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\warehouse.recorder.xml" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -189,9 +195,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -203,6 +207,10 @@
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188aaba2-82fd-4899-b537-4d49e80abe0c}</Project>
       <Name>Projects.Tool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Warehouse.RecordProcessor\Warehouse.RecordProcessor.csproj">
+      <Project>{28ff9c5e-9180-4c73-b5ee-d516b4d1835f}</Project>
+      <Name>Warehouse.RecordProcessor</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<warehouse.recorder>
+	<recorders>
+		<recorder name="UserCenter">
+			<processor name="login" type="Warehouse.RecordProcessor.DemoProcessor, Warehouse.RecordProcessor"/>
+		</recorder>
+		<recorder name="OpenApi">
+			<processor name="login" type="Warehouse.RecordProcessor.DemoProcessor, Warehouse.RecordProcessor"/>
+		</recorder>
+	</recorders>
+</warehouse.recorder>

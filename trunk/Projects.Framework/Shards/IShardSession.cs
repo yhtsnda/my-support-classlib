@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 
 using Projects.Tool.Pager;
+using Projects.Framework.Specification;
 
 namespace Projects.Framework.Shards
 {

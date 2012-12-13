@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<warehouse.recorder>
+	<recorders>
+		<recorder name="UserCenter">
+			<processor name="login" type="Warehouse.RecordProcessor.Processors.LoginProcessor, Warehouse.RecordProcessor"/>
+			<processor name="register" type="Warehouse.RecordProcessor.Processors.RegisterProcessor, Warehouse.RecordProcessor"/>
+		</recorder>
+	</recorders>
+</warehouse.recorder>

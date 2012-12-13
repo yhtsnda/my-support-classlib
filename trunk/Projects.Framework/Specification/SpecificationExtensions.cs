@@ -7,7 +7,7 @@ using System.Text;
 using Projects.Tool;
 using Projects.Framework.Shards;
 
-namespace Projects.Framework
+namespace Projects.Framework.Specification
 {
     /// <summary>
     /// 规约扩展
@@ -56,6 +56,7 @@ namespace Projects.Framework
             return spec.Provider.Shard(spec, ShardParams.Form(shardParam1, shardParam2));
         }
 
+
         /// <summary>
         /// 定义规约的条件
         /// </summary>
@@ -69,9 +70,12 @@ namespace Projects.Framework
                 throw new ArgumentNullException("spec");
             if (expr == null)
                 throw new ArgumentNullException("expr");
-            IConditionSpecification<T> cndSpec = (IConditionSpecification<T>)spec.Provider.CreateSpecification(expr);
-            cndSpec.SearchObject = spec.SearchObject;
-            return cndSpec;
+
+            // 多个where 使用 And 关系进行组合 HHB 2012-10-12
+            if (spec.CriteriaExpression != null)
+                expr = spec.CriteriaExpression.And(expr);
+
+            return (IConditionSpecification<T>)spec.Provider.CreateSpecification(spec.ShardParams, expr);
         }
 
         /// <summary>
@@ -88,7 +92,7 @@ namespace Projects.Framework
             if (expr == null)
                 throw new ArgumentNullException("expr");
 
-            return (IConditionSpecification<T>)spec.Provider.CreateSpecification(spec.CriteriaExpression.And(expr));
+            return (IConditionSpecification<T>)spec.Provider.CreateSpecification(spec.ShardParams, spec.CriteriaExpression.And(expr));
         }
 
         /// <summary>
@@ -105,7 +109,7 @@ namespace Projects.Framework
             if (expr == null)
                 throw new ArgumentNullException("expr");
 
-            return (IConditionSpecification<T>)spec.Provider.CreateSpecification(spec.CriteriaExpression.Or(expr));
+            return (IConditionSpecification<T>)spec.Provider.CreateSpecification(spec.ShardParams, spec.CriteriaExpression.Or(expr));
         }
 
         /// <summary>
@@ -119,7 +123,7 @@ namespace Projects.Framework
             if (spec == null)
                 throw new ArgumentNullException("spec");
 
-            return (IConditionSpecification<T>)spec.Provider.CreateSpecification(spec.CriteriaExpression.Not());
+            return (IConditionSpecification<T>)spec.Provider.CreateSpecification(spec.ShardParams, spec.CriteriaExpression.Not());
         }
 
         /// <summary>

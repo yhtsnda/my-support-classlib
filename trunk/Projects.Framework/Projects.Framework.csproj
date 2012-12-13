@@ -34,10 +34,6 @@
     <Reference Include="Castle.Core">
       <HintPath>..\Assembly\Castle.Core\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.1, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Assembly\IBatisNet.DataMapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -97,6 +93,9 @@
     <Compile Include="Shards\Strategies\ModShardStrategy.cs" />
     <Compile Include="Shards\Strategies\NoShardStrategy.cs" />
     <Compile Include="Shards\Strategies\WeekShardStrategy.cs" />
+    <Compile Include="Specification\Orderable.cs" />
+    <Compile Include="Specification\QueryOrderExpression.cs" />
+    <Compile Include="Specification\SpecificationFactory.cs" />
     <Compile Include="Utils\PrettyTypeExtend.cs" />
     <Compile Include="Utils\Property\DefaultGetter.cs" />
     <Compile Include="Utils\Property\DefaultPropertyAccessor.cs" />
@@ -130,23 +129,15 @@
     <Compile Include="Shards\ShardConfiguationExtend.cs" />
     <Compile Include="Shards\ShardId.cs" />
     <Compile Include="SpecificationFactory.cs" />
-    <Compile Include="Specification\CommonSpecificationProvider.cs" />
-    <Compile Include="Specification\IBatisSpecification.cs" />
-    <Compile Include="Specification\IBatisSpecificationProvider.cs" />
+    <Compile Include="Specification\AbstractSpecification.cs" />
     <Compile Include="Specification\ISpecification.cs" />
     <Compile Include="Specification\ISpecificationProvider.cs" />
-    <Compile Include="Specification\MongoSpecification.cs" />
-    <Compile Include="Specification\MongoSpecificationProvider.cs" />
     <Compile Include="Specification\QueryOrder.cs" />
     <Compile Include="Specification\SpecificationExtensions.cs" />
     <Compile Include="Utils\ProxyGeneratorUtil.cs" />
     <Compile Include="Utils\ReflectionHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Projects.Access\Projects.Accesses.csproj">
-      <Project>{63bc8a7d-9a63-4c8a-a094-0ef8a1b651d6}</Project>
-      <Name>Projects.Accesses</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188AABA2-82FD-4899-B537-4D49E80ABE0C}</Project>
       <Name>Projects.Tool</Name>

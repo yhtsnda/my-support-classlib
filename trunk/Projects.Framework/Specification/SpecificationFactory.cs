@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Projects.Framework.Specification;
-
-namespace Projects.Framework
+namespace Projects.Framework.Specification
 {
     /// <summary>
     /// 规约对象的工厂
@@ -17,8 +15,9 @@ namespace Projects.Framework
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static ISpecification<T> Create<T>(string type = "ibatis")
+        public static ISpecification<T> Create<T>()
         {
+            //return RepositoryFramework.CreateSpecification<T>();
             return DependencyResolver.Resolve<ISpecificationProvider>().CreateSpecification<T>();
         }
     }
