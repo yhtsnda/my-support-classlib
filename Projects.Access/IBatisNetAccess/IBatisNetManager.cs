@@ -7,22 +7,22 @@ using System.Text;
 using IBatisNet.DataMapper;
 using IBatisNet.DataMapper.Configuration;
 
-namespace Projects.Accesses
+namespace Projects.Accesses.IBatisNetAccess
 {
-    public class SqlMapperManager
+    public class IBatisNetManager
     {
         private Hashtable mMapperColl = Hashtable.Synchronized(new Hashtable());
-        private static SqlMapperManager mInstance = null;
+        private static IBatisNetManager mInstance = null;
 
         /// <summary>
         /// Mapper管理对象的单例
         /// </summary>
-        public static SqlMapperManager Instance
+        public static IBatisNetManager Instance
         {
             get 
             {
                 if (mInstance == null)
-                    mInstance = new SqlMapperManager();
+                    mInstance = new IBatisNetManager();
                 return mInstance;
             }
         }
@@ -57,7 +57,7 @@ namespace Projects.Accesses
             }
         }
 
-        private SqlMapperManager()
+        private IBatisNetManager()
         {
         }
 
