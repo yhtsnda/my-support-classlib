@@ -2,10 +2,20 @@
 <warehouse.recorder>
 	<recorders>
 		<recorder name="UserCenter">
-			<processor name="login" type="Warehouse.RecordProcessor.DemoProcessor, Warehouse.RecordProcessor"/>
+			<processor>
+				<identify>test</identify>
+				<type>Warehouse.RecordProcessor.DemoProcessor, Warehouse.RecordProcessor</type>
+			</processor>
+			<processor>
+				<identify>test</identify>
+				<type>Warehouse.RecordProcessor.DemoProcessor, Warehouse.RecordProcessor</type>
+			</processor>
 		</recorder>
 		<recorder name="OpenApi">
-			<processor name="login" type="Warehouse.RecordProcessor.DemoProcessor, Warehouse.RecordProcessor"/>
+			<processor>
+				<identify>test</identify>
+				<type>Warehouse.RecordProcessor.DemoProcessor, Warehouse.RecordProcessor</type>
+			</processor>
 		</recorder>
 	</recorders>
 </warehouse.recorder>
