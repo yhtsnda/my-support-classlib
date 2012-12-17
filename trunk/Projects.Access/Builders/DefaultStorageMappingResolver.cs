@@ -17,9 +17,8 @@ namespace Projects.Accesses.Builders
         /// <summary>
         /// 解析数据表
         /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
         /// <returns></returns>
-        public string ResolveTableName<TEntity>()
+        public string ResolveTableName()
         {
             Type entityType = typeof(TEntity);
             var attrs = entityType.GetCustomAttributes(typeof(TableNameAttribute), false);
@@ -34,7 +33,7 @@ namespace Projects.Accesses.Builders
             return entityType.Name;
         }
 
-        public bool IsAutoIdentityField<TEntity>(string propertyName)
+        public bool IsAutoIdentityField(string propertyName)
         {
             Type entityType = typeof(TEntity);
             var pi = entityType.GetProperty(propertyName);
@@ -51,7 +50,7 @@ namespace Projects.Accesses.Builders
             return false;
         }
 
-        public string ResolveFieldName<TEntity>(string propertyName)
+        public string ResolveFieldName(string propertyName)
         {
             Type entityType = typeof(TEntity);
             var pi= entityType.GetProperty(propertyName);
