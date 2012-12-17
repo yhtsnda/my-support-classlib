@@ -64,10 +64,14 @@
     <Compile Include="Attributes\ColumnNameAttribute.cs" />
     <Compile Include="Attributes\TableNameAttribute.cs" />
     <Compile Include="Builders\DefaultStorageMappingResolver.cs" />
+    <Compile Include="Builders\GeneralWhereClauseBuilder.cs" />
     <Compile Include="Builders\IStorageMappingResolver.cs" />
     <Compile Include="Builders\IWhereClauseBuilder.cs" />
+    <Compile Include="Builders\MySQLWhereClauseBuilder.cs" />
     <Compile Include="Builders\WhereBuilderResult.cs" />
     <Compile Include="Builders\WhereClauseBuilder.cs" />
+    <Compile Include="IBatisNetAccess\IBatisNetSpecification.cs" />
+    <Compile Include="IBatisNetAccess\IBatisNetSpecificationProvider.cs" />
     <Compile Include="MongoAccess\Linq\MongoExpressionTreeVisitor.cs" />
     <Compile Include="MongoAccess\Linq\MongoNodeTypeProvider.cs" />
     <Compile Include="MongoAccess\Linq\MongoQueryExecutor.cs" />

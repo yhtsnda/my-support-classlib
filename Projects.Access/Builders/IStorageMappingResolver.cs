@@ -7,8 +7,8 @@ namespace Projects.Accesses.Builders
 {
     public interface IStorageMappingResolver<TEntity> where TEntity : class, new()
     {
-        string ResolveTableName<TEntity>();
-        bool IsAutoIdentityField<TEntity>(string propertyName);
-        string ResolveFieldName<TEntity>(string propertyName);
+        string ResolveTableName();
+        bool IsAutoIdentityField(string propertyName);
+        string ResolveFieldName(string propertyName);
     }
 }

@@ -35,6 +35,13 @@ namespace Projects.Accesses.Builders
 
         protected internal abstract char ParameterChar { get; }
 
+        #region 构造函数
+        public WhereClauseBuilder(IStorageMappingResolver<TEntity> mappingResolver)
+        {
+            this.mStorageMappingResolver = mappingResolver;
+        }
+        #endregion
+
         protected override Expression VisitBinary(BinaryExpression node)
         {
             string operate = String.Empty;
@@ -110,7 +117,7 @@ namespace Projects.Accesses.Builders
                 typeof(TEntity).IsSubclassOf(node.Member.DeclaringType))
             {
                 string fieldName = this.mStorageMappingResolver
-                    .ResolveFieldName<TEntity>(node.Member.Name);
+                    .ResolveFieldName(node.Member.Name);
                 mBuilder.Append(fieldName);
             }
             else
