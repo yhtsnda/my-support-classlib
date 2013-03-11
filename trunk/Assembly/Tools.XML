@@ -1,0 +1,2382 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tools</name>
+    </assembly>
+    <members>
+        <member name="T:Tools.Web.Request">
+            <summary>
+            Request操作类
+            </summary>
+        </member>
+        <member name="M:Tools.Web.Request.IsPost">
+            <summary>
+            判断当前页面是否接收到了Post请求
+            </summary>
+            <returns>是否接收到了Post请求</returns>
+        </member>
+        <member name="M:Tools.Web.Request.IsGet">
+            <summary>
+            判断当前页面是否接收到了Get请求
+            </summary>
+            <returns>是否接收到了Get请求</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetServerString(System.String)">
+            <summary>
+            返回指定的服务器变量信息
+            </summary>
+            <param name="strName">服务器变量名</param>
+            <returns>服务器变量信息</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetUrlReferrer">
+            <summary>
+            返回上一个页面的地址
+            </summary>
+            <returns>上一个页面的地址</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetCurrentFullHost">
+            <summary>
+            得到当前完整主机头
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetHost">
+            <summary>
+            得到主机头
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetRawUrl">
+            <summary>
+            获取当前请求的原始 URL(URL 中域信息之后的部分,包括查询字符串(如果存在))
+            </summary>
+            <returns>原始 URL</returns>
+        </member>
+        <member name="M:Tools.Web.Request.IsBrowserGet">
+            <summary>
+            判断当前访问是否来自浏览器软件
+            </summary>
+            <returns>当前访问是否来自浏览器软件</returns>
+        </member>
+        <member name="M:Tools.Web.Request.IsSearchEnginesGet">
+            <summary>
+            判断是否来自搜索引擎链接
+            </summary>
+            <returns>是否来自搜索引擎链接</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetUrl">
+            <summary>
+            获得当前完整Url地址
+            </summary>
+            <returns>当前完整Url地址</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetQueryString(System.String)">
+            <summary>
+            获得指定Url参数的值
+            </summary>
+            <param name="strName">Url参数</param>
+            <returns>Url参数的值</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetPageName">
+            <summary>
+            获得当前页面的名称
+            </summary>
+            <returns>当前页面的名称</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetParamCount">
+            <summary>
+            返回表单或Url参数的总个数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetFormString(System.String)">
+            <summary>
+            获得指定表单参数的值
+            </summary>
+            <param name="strName">表单参数</param>
+            <returns>表单参数的值</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetString(System.String)">
+            <summary>
+            获得Url或表单参数的值, 先判断Url参数是否为空字符串, 如为True则返回表单参数的值
+            </summary>
+            <param name="strName">参数</param>
+            <returns>Url或表单参数的值</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetQueryInt(System.String,System.Int32)">
+            <summary>
+            获得指定Url参数的int类型值
+            </summary>
+            <param name="strName">Url参数</param>
+            <param name="defValue">缺省值</param>
+            <returns>Url参数的int类型值</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetFormInt(System.String,System.Int32)">
+            <summary>
+            获得指定表单参数的int类型值
+            </summary>
+            <param name="strName">表单参数</param>
+            <param name="defValue">缺省值</param>
+            <returns>表单参数的int类型值</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetFormLong(System.String,System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="strName"></param>
+            <param name="defValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetQueryLong(System.String,System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="strName"></param>
+            <param name="defValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetInt(System.String,System.Int32)">
+            <summary>
+            获得指定Url或表单参数的int类型值, 先判断Url参数是否为缺省值, 如为True则返回表单参数的值
+            </summary>
+            <param name="strName">Url或表单参数</param>
+            <param name="defValue">缺省值</param>
+            <returns>Url或表单参数的int类型值</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetQueryFloat(System.String,System.Single)">
+            <summary>
+            获得指定Url参数的float类型值
+            </summary>
+            <param name="strName">Url参数</param>
+            <param name="defValue">缺省值</param>
+            <returns>Url参数的int类型值</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetFormFloat(System.String,System.Single)">
+            <summary>
+            获得指定表单参数的float类型值
+            </summary>
+            <param name="strName">表单参数</param>
+            <param name="defValue">缺省值</param>
+            <returns>表单参数的float类型值</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetFloat(System.String,System.Single)">
+            <summary>
+            获得指定Url或表单参数的float类型值, 先判断Url参数是否为缺省值, 如为True则返回表单参数的值
+            </summary>
+            <param name="strName">Url或表单参数</param>
+            <param name="defValue">缺省值</param>
+            <returns>Url或表单参数的int类型值</returns>
+        </member>
+        <member name="M:Tools.Web.Request.GetIP">
+            <summary>
+            获得当前页面客户端的IP
+            </summary>
+            <returns>当前页面客户端的IP</returns>
+        </member>
+        <member name="T:Tools.JsonUtil">
+            <summary>
+            Json辅助类
+            </summary>
+        </member>
+        <member name="M:Tools.JsonUtil.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Tools.JsonUtil.JScriptUnEscape(System.String)">
+            <summary>
+            2010-10-18 增加 by 杜有发
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JsonUtil.JScriptEscape(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JsonUtil.IsJson(System.String)">
+            <summary>
+            判断传入的字符串是否是标准JSON格式，注意必须是标准格式，如果不是则返回false 2010-07-20增加
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JsonUtil.ToJson(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JsonUtil.getSafeString(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JsonUtil.DataTableToJson(System.Data.DataTable)">
+            <summary>
+            把表结果转成JSON
+            </summary>
+            <param name="dt">表结果集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JsonUtil.DataTableToJson(System.Data.DataTable,System.String)">
+            <summary>
+            把表结果转成JSON
+            </summary>
+            <param name="dt">表结果集</param>
+            <param name="keyField"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JsonUtil.XmlToJson(System.Xml.XmlDocument)">
+            <summary>
+            
+            </summary>
+            <param name="xmlDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JsonUtil.XmlToJson(System.Xml.XmlNodeList)">
+            <summary>
+            
+            </summary>
+            <param name="nodeList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JsonUtil.ValueType.Clear">
+            <summary>
+            清理资源 11-12
+            </summary>
+        </member>
+        <member name="T:Tools.HttpBase">
+            <summary>
+            HttpBase类提供了对http请求的封装,Encoding.UTF8
+            </summary>
+        </member>
+        <member name="M:Tools.HttpBase.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Tools.HttpBase.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Tools.HttpBase.CreateWebRequest(System.String,System.String,System.String)">
+            <summary>
+            创建Web请求
+            </summary>
+            <param name="url"></param>
+            <param name="method">Http请求方式:"POST","GET"</param>
+            <param name="requestBody"></param>
+            <returns>请求实例</returns>
+        </member>
+        <member name="M:Tools.HttpBase.GetResponseText(System.String,System.String,System.String)">
+            <summary>
+            获取最终响应，2010-09-30 增加HttpWebResponse by 杜有发
+            </summary>
+            <param name="url"></param>
+            <param name="method"></param>
+            <param name="requestBody"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.HttpBase.GetResponse(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="method"></param>
+            <param name="requestBody"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.HttpBase.StreamToBytes(System.IO.Stream,System.Int64)">
+            <summary>
+            Reads data from a stream until the end is reached. The
+            data is returned as a byte array. An IOException is
+            thrown if any of the underlying IO calls fail.
+            </summary>
+            <param name="stream">The stream to read data from</param>
+            <param name="initialLength">The initial buffer length</param>
+        </member>
+        <member name="M:Tools.HttpBase.Post(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="requestBody"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.HttpBase.Get(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.HttpBase.Get(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="requestBody"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.HttpBase.Put(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="requestBody"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.HttpBase.Delete(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="requestBody"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Tools.HttpBase.ResponseCookies">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.AllowAutoRedirect">
+            <summary>
+            2010-12-30 增加，应对302请求的 location 表头
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.Encoding">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.Proxy">
+            <summary>
+            代理 2010-12-25 增加 by 杜有发
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.ResponseStatusCode">
+            <summary>
+            2010-12-26增加，取代out status的方式
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.WebResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.UserName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.Timeout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.RequestHeaders">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.HttpBase.ResponseHeaders">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Tools.Validate">
+            <summary>
+            数据验证类
+            </summary>
+        </member>
+        <member name="M:Tools.Validate.IsValidImage(System.IO.Stream)">
+            <summary>
+            Validate that the stream is of an image file.
+            </summary>
+            <remarks>
+            IMPORTANT: The calling code is responsible for creating and disposing the image stream.
+            Supported file types: .JPEG .BMP .GIF .PNG .TIF
+            </remarks>
+            <param name="imageStream">The stream of a picture file.</param>
+            <exception cref="T:System.Exception">Throws if the stream is of invalid image.</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsValidImage(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="header"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsValidImage(System.Byte[],System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="header"></param>
+            <param name="imageFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.FetchInputDigit(System.Web.HttpRequest,System.String,System.Int32)">
+            <summary>
+            检查Request查询字符串的键值，是否是数字，最大长度限制
+            </summary>
+            <param name="req">Request</param>
+            <param name="inputKey">Request的键值</param>
+            <param name="maxLen">最大长度</param>
+            <returns>返回Request查询字符串</returns>
+        </member>
+        <member name="M:Tools.Validate.IsInt32(System.Object)">
+            <summary>
+            判断对象是否为Int32类型的数字
+            </summary>
+            <param name="Expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsDouble(System.Object)">
+            <summary>
+            是否是DOUBLE类型的表达式
+            </summary>
+            <param name="Expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsNumber(System.String)">
+            <summary>
+            是否数字字符串 可带正负号,比如01则返回false
+            </summary>
+            <param name="str">输入字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsDecimalSign(System.String)">
+            <summary>
+            是否是浮点数 可带正负号
+            </summary>
+            <param name="str">输入字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsHasCHZN(System.String)">
+            <summary>
+            检测是否有中文字符
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.CheckStringLength(System.String,System.Int32,System.Int32)">
+            <summary>
+            检查字符串的长度，中文一个算俩；如果min=0，则允许为空
+            </summary>
+            <param name="str"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.SqlText(System.String,System.Int32)">
+            <summary>
+            检查字符串最大长度，返回指定长度的串
+            </summary>
+            <param name="sqlInput">输入字符串</param>
+            <param name="maxLength">最大长度</param>
+            <returns></returns>			
+        </member>
+        <member name="M:Tools.Validate.IsValidEmail(System.String)">
+            <summary>
+            检测是否符合email格式
+            </summary>
+            <param name="str">要判断的email字符串</param>
+            <returns>判断结果</returns>
+        </member>
+        <member name="M:Tools.Validate.JustCharsOrNumbers(System.String)">
+            <summary>
+            判断一个字符串是否仅仅包含字母或者数据 2010-07-19 增加 by 杜有发
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsURL(System.String)">
+            <summary>
+            检测是否是正确的Url
+            </summary>
+            <param name="str">要验证的Url</param>
+            <returns>判断结果</returns>
+        </member>
+        <member name="M:Tools.Validate.IsTime(System.String)">
+            <summary>
+            是否为时间格式为：14:23:52
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsIPSect(System.String)">
+            <summary>
+            是否为IP
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsDateString(System.String)">
+            <summary>
+            判断字符串是否是YYYY-MM-DD,YYYY/MM/DD,YYYY.MM.DD 字符串
+            </summary>
+            <param name="str">待判断字符串</param>
+            <returns>判断结果</returns>
+        </member>
+        <member name="M:Tools.Validate.IsNumericListString(System.String,System.Char)">
+            <summary>
+            判断输入的字符串是不是以指定的分隔符隔开的数字
+            </summary>
+            <param name="strList">要确认的字符串</param>
+            <param name="StrSeprate">分隔符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsNumericListString(System.String)">
+            <summary>
+            判断输入的字符串是不是以逗号隔开的数字
+            </summary>
+            <param name="strList">要确认的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsNumericArray(System.String[])">
+            <summary>
+            判断给定的字符串数组(strNumber)中的数据是不是都为数值型
+            </summary>
+            <param name="strNumber">要确认的字符串数组</param>
+            <returns>是则返加true 不是则返回 false</returns>
+        </member>
+        <member name="M:Tools.Validate.IsInt(System.String)">
+            <summary>
+            验证是否为正整数
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsImgFilename(System.String)">
+            <summary>
+            判断文件名是否为浏览器可以直接显示的图片文件名
+            </summary>
+            <param name="filename">文件名</param>
+            <returns>是否可以直接显示</returns>
+        </member>
+        <member name="M:Tools.Validate.IsDateTime(System.String)">
+            <summary>
+            判断是否为合法的时间
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsInStringSeparatedBySign(System.String,System.String,System.String)">
+            <summary>
+            判断指定的字符串是否在以指定的字符分隔的字符串里
+            </summary>
+            <param name="toCheck">要检查的串</param>
+            <param name="source">源串</param>
+            <param name="separatedSign">分隔符,特殊符号要处理</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsBlank(System.String)">
+            <summary>
+            是否为空
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Validate.IsWhitespace(System.String)">
+            <summary>
+            是否为空格
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.HttpPostHelper">
+            <summary>
+            创建WebClient.UploadData方法所需二进制数组,只使用于POST方法提交
+            </summary>
+        </member>
+        <member name="F:Tools.HttpPostHelper.Boundary">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Tools.HttpPostHelper.ContentType">
+            <summary>
+            ContentType
+            </summary>
+        </member>
+        <member name="M:Tools.HttpPostHelper.JoinBytes">
+            <summary>
+            拼接所有的二进制数组为一个数组
+            </summary>
+            <returns></returns>
+            <remarks>加上结束边界</remarks>
+        </member>
+        <member name="M:Tools.HttpPostHelper.UploadData(System.String)">
+            <summary>
+            往指定的URL里发送数据
+            </summary>
+            <param name="uploadUrl">要发送数据的URL</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.HttpPostHelper.AddData(System.String,System.String)">
+            <summary>
+            获取普通表单区域二进制数组
+            </summary>
+            <param name="fieldName">表单名</param>
+            <param name="fieldValue">表单值</param>
+            <returns></returns>
+            <remarks>
+            -----------------------------7d52ee27210a3c\r\nContent-Disposition: form-data; name=\"表单名\"\r\n\r\n表单值\r\n
+            </remarks>
+        </member>
+        <member name="M:Tools.HttpPostHelper.AddData(System.String,System.String,System.String,System.Byte[])">
+            <summary>
+            获取文件上传表单区域二进制数组
+            </summary>
+            <param name="fieldName">表单名</param>
+            <param name="filename">文件名</param>
+            <param name="contentType">文件类型</param>
+            <param name="fileBytes">文件流</param>
+            <returns></returns>
+        </member>
+        <member name="P:Tools.HttpPostHelper.Data">
+            <summary>
+            2010-12-15 增加 by 杜有发，得到要上传的数据流
+            </summary>
+        </member>
+        <member name="P:Tools.HttpPostHelper.Encoding">
+            <summary>
+            字节编码，默认UTF-8
+            </summary>
+        </member>
+        <member name="P:Tools.HttpPostHelper.Headers">
+            <summary>
+            可以随意增加header，不受属性限制，不像httpwebrequest那样有些属性是要特殊设置的，比如content-length
+            </summary>
+        </member>
+        <member name="T:Tools.MultipleIdGenerator.Generator">
+            <summary>
+            生成数字编号的类，线程安全的，默认的实现则需要一个文件写入的权限；2010-08-06增加该类
+            </summary>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.Generator.GetGenerator(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            key和dataStore不能为null，bufferSize和increment可以为0
+            </summary>
+            <param name="key"></param>
+            <param name="dataPath"></param>
+            <param name="bufferSize"></param>
+            <param name="increment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.Generator.Next(System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="dataPath"></param>
+            <param name="bufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.Generator.Next(System.String,Tools.MultipleIdGenerator.IDataStore,System.Int32,System.Int32)">
+            <summary>
+            key和dataStore不能为null，bufferSize和increment可以为0
+            </summary>
+            <param name="key"></param>
+            <param name="dataStore"></param>
+            <param name="bufferSize"></param>
+            <param name="increment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.Generator.Next(System.String,Tools.MultipleIdGenerator.IDataStore,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="dataStore"></param>
+            <param name="bufferSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.Generator.Next(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="dataPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.Generator.Next(System.String,Tools.MultipleIdGenerator.IDataStore)">
+            <summary>
+            key和dataStore不能为null
+            </summary>
+            <param name="key"></param>
+            <param name="dataStore"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.Generator.SetInitialValue(System.String,System.String,System.Int64,System.Int32)">
+            <summary>
+            设置初始值，生成的最小值从初始值+1开始
+            </summary>
+            <param name="key"></param>
+            <param name="dataPath"></param>
+            <param name="value"></param>
+            <param name="increment"></param>     
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.Generator.SetInitialValue(System.String,Tools.MultipleIdGenerator.IDataStore,System.Int64,System.Int32)">
+            <summary>
+            设置初始值，生成的最小值从初始值+1开始
+            </summary>
+            <param name="key"></param>
+            <param name="dataStore"></param>
+            <param name="value"></param>  
+            <param name="increment"></param>
+        </member>
+        <member name="T:Tools.MultipleIdGenerator.IDataStore">
+            <summary>
+            key-value存储器的接口
+            </summary>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IDataStore.Get(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IDataStore.Set(System.String,System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:Tools.MultipleIdGenerator.FileDataStore.BaseDirectory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Tools.MultipleIdGenerator.IdGenerator.DEFAULT_BUFFER_SIZE">
+            <summary>
+            默认缓冲器大小
+            </summary>
+        </member>
+        <member name="F:Tools.MultipleIdGenerator.IdGenerator.DEFAULT_INCREMENT">
+            <summary>
+            默认的增量
+            </summary>
+        </member>
+        <member name="F:Tools.MultipleIdGenerator.IdGenerator._bufferSize">
+            <summary>
+            2010-08-11增加
+            </summary>
+        </member>
+        <member name="F:Tools.MultipleIdGenerator.IdGenerator._left">
+            <summary>
+            方案3加入，这里不再创建缓冲区，而是直接加1返回id；如果_left=0，再重新申请一批
+            </summary>
+        </member>
+        <member name="F:Tools.MultipleIdGenerator.IdGenerator._dataStore">
+            <summary>
+            数据存储 2010-12-23
+            </summary>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IdGenerator.#ctor(System.String)">
+            <summary>
+            使用程序当前目录作为数据存储目录
+            </summary>
+            <param key="key"></param>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IdGenerator.#ctor">
+            <summary>
+            直接new一个，一些属性在外面进行设置
+            </summary>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IdGenerator.#ctor(System.String,System.Int32)">
+            <summary>
+            数据文件存储的目录
+            </summary>
+            <param key="key"></param>
+            <param key="bufferSize"></param>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IdGenerator.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="bufferSize"></param>
+            <param name="increment"></param>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IdGenerator.SetInitialValue(System.Int64)">
+            <summary>
+            请在Init()方法之前调用,设置初始值,慎用
+            </summary>
+            <param key="value"></param>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IdGenerator.SetBufferSize(System.Int32)">
+            <summary>
+            2010-08-11增加
+            </summary>
+            <param key="value"></param>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IdGenerator.CheckProperties">
+            <summary>
+            检查key,bufferSize属性 2010-08-05增加
+            </summary>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IdGenerator.Init">
+            <summary>
+            初始化，可以单独调用
+            </summary>
+        </member>
+        <member name="M:Tools.MultipleIdGenerator.IdGenerator.Next(System.Int32)">
+            <summary>
+            使用该方法，一次批量申请很多id号，私有方法，该方法非线程安全的，来设置_nowId的，同时写入到文件
+            </summary>
+            <param key="count"></param>
+        </member>
+        <member name="P:Tools.MultipleIdGenerator.IdGenerator.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.MultipleIdGenerator.IdGenerator.IsInitialized">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Tools.DictionaryUtil">
+            <summary>
+            字典辅助类,该类不负责线程同步
+            </summary>
+        </member>
+        <member name="M:Tools.DictionaryUtil.CloneIDictionary``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Does a deep copy of a dictionary, optimizing for value types.  If 
+            the key or value is not a value type (excluding strings), this method
+            relies on the type's serialization capabilities.  If the type is not
+            serializable, this method will fail.
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.DictionaryUtil.CloneDictionary``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            复制字典，返回字典对象
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.DictionaryUtil.DictionaryEach``2(System.Collections.Generic.IDictionary{``0,``1},System.Action{System.Collections.Generic.KeyValuePair{``0,``1}})">
+            <summary>
+            循环字典
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:Tools.DictionaryUtil.DictionaryEach``2(System.Collections.Generic.IDictionary{``0,``1},System.Predicate{System.Collections.Generic.KeyValuePair{``0,``1}},System.Action{System.Collections.Generic.KeyValuePair{``0,``1}})">
+            <summary>
+            循环字典，满足条件才做Action
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <param name="predicate"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:Tools.DictionaryUtil.ValueEach``2(System.Collections.Generic.IDictionary{``0,``1},System.Action{``1})">
+            <summary>
+            根据Key循环字典里的所有的值，改值可在循环时修改
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:Tools.DictionaryUtil.FindOneValueByValue``2(System.Collections.Generic.IDictionary{``0,``1},System.Predicate{``1})">
+            <summary>
+            返回在字典的值里第一个满足条件的值
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.DictionaryUtil.FindOneKeyValueByValue``2(System.Collections.Generic.IDictionary{``0,``1},System.Predicate{``1})">
+            <summary>
+            返回字典里满足值条件的第一个key-value对
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.DictionaryUtil.FindValuesByValue``2(System.Collections.Generic.IDictionary{``0,``1},System.Predicate{``1})">
+            <summary>
+            返回在字典的值里所有满足条件的值
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.DictionaryUtil.GetKeyListByValue``2(System.Collections.Generic.IDictionary{``0,``1},System.Predicate{``1})">
+            <summary>
+            得到在字典里的值所有满足条件的Key的列表
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.DictionaryUtil.Join``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            两个字典进行拼接，如果目标字典包含了重复的Key，则保留原来的Key-Value
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <param name="dictToJoin"></param>
+        </member>
+        <member name="M:Tools.DictionaryUtil.CheckContains``2(System.Collections.Generic.IDictionary{``0,``1},``0,System.Action{``0},System.Action{``0})">
+            <summary>
+            检查字典里是否含有某个Key，如果含有，则执行actionTrue，否则执行actionFalse
+            </summary>
+            <typeparam name="K"></typeparam>
+            <typeparam name="V"></typeparam>
+            <param name="dict"></param>
+            <param name="key"></param>
+            <param name="actionTrue"></param>
+            <param name="actionFalse"></param>
+        </member>
+        <member name="T:Tools.StringUtil">
+            <summary>
+            字符串辅助类
+            </summary>
+        </member>
+        <member name="F:Tools.StringUtil.SqlBlackKeyList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Tools.StringUtil.ResolveUrl(System.String)">
+            <summary>
+            ResolveUrl 2011-01-17 增加，来自：http://www.codeproject.com/KB/aspnet/resolveurl.aspx
+            </summary>
+            <param name="relativeUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.MD5(System.String)">
+            <summary>
+            MD5函数,用UTF8编码
+            </summary>
+            <param name="str">原始字符串</param>
+            <returns>MD5结果</returns>
+        </member>
+        <member name="M:Tools.StringUtil.MD5(System.String,System.Text.Encoding)">
+            <summary>
+            
+            </summary>
+            <param name="str"></param>
+            <param name="encoding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetLocalIP">
+            <summary>
+            得到本机IP，并不是web请求的客户端的IP，此方法用于winform里 2010-07-27增加
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetFeature(System.String,System.String)">
+            <summary>
+            得到类似"name=omeweb,age=25"里配置的值
+            </summary>
+            <param name="source"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetFeature(System.String,System.String,System.String)">
+            <summary>
+            得到类似"name=omeweb,age=25"里配置的值,其中分隔符可以指定，如果找不到，则返回空（非null）
+            </summary>
+            <param name="source"></param>
+            <param name="name"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.FastReplace(System.String,System.String,System.String)">
+            <summary>
+            快速替换
+            </summary>
+            <param name="original"></param>
+            <param name="pattern"></param>
+            <param name="replacement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.StrFilter(System.String,System.String)">
+            <summary>
+            进行指定的替换(脏字过滤)
+            </summary>
+            <param name="str"></param>
+            <param name="bantext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.SplitString(System.String,System.String,System.Int32)">
+            <summary>
+            分割字符串
+            </summary>
+            <param name="strContent"></param>
+            <param name="strSplit"></param>
+            <param name="p_3"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.HtmlEncode(System.String)">
+            <summary>
+            返回 HTML 字符串的编码结果
+            </summary>
+            <param name="str">字符串</param>
+            <returns>编码结果</returns>
+        </member>
+        <member name="M:Tools.StringUtil.HtmlDecode(System.String)">
+            <summary>
+            返回 HTML 字符串的解码结果
+            </summary>
+            <param name="str">字符串</param>
+            <returns>解码结果</returns>
+        </member>
+        <member name="M:Tools.StringUtil.UrlEncode(System.String)">
+            <summary>
+            返回 URL 字符串的编码结果
+            </summary>
+            <param name="str">字符串</param>
+            <returns>编码结果</returns>
+        </member>
+        <member name="M:Tools.StringUtil.UrlDecode(System.String)">
+            <summary>
+            返回 URL 字符串的编码结果
+            </summary>
+            <param name="str">字符串</param>
+            <returns>解码结果</returns>
+        </member>
+        <member name="M:Tools.StringUtil.SplitString(System.String,System.String)">
+            <summary>
+            分割字符串
+            </summary>
+            <param name="strContent"></param>
+            <param name="strSplit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.ReplaceQuotationMarks(System.String)">
+            <summary>
+            替换sql语句中的引号
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.StrFormat(System.String)">
+            <summary>
+            替换回车换行符为html换行符
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.CreateSigns(System.Int32,System.String)">
+            <summary>
+            生成指定数量的指定符号
+            </summary>
+            <param name="num"></param>
+            <param name="sign"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.ReplaceString(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            自定义的替换字符串函数
+            </summary>
+        </member>
+        <member name="M:Tools.StringUtil.GetSubString(System.String,System.Int32,System.String)">
+            <summary>
+            字符串如果操过指定长度则将超出的部分用指定字符串代替
+            </summary>
+            <param name="original">要检查的字符串</param>
+            <param name="length">指定长度</param>
+            <param name="fill">用于替换的字符串</param>
+            <returns>截取后的字符串</returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetSubString(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="str"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetSubString(System.String,System.Int32,System.String,Tools.StringUtil.StringFillOption)">
+            <summary>
+            字符串如果操过指定长度则将超出的部分用指定字符串代替
+            </summary>
+            <param name="original">要检查的字符串</param>
+            <param name="length">指定长度</param>
+            <param name="fill">用于填充的字符串</param>
+            <param name="option">字符串填充选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetLeftString(System.String,System.Int32,System.String)">
+            <summary>
+            取左边若干个字符，多余的被截断
+            </summary>
+            <param name="str">字符串</param>
+            <param name="l">长度</param>
+            <param name="fetch">在后面弥补的串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetLeftString(System.String,System.Int32)">
+            <summary>
+            取左边若干个字符，多余的被截断
+            </summary>
+            <param name="str">字符串</param>
+            <param name="l">长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetRightString(System.String,System.Int32)">
+            <summary>
+            截取字符串右边若干字符
+            </summary>
+            <param name="str">字符串</param>
+            <param name="l">长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.CutString(System.String,System.Int32,System.Int32)">
+            <summary>
+            从字符串的指定位置截取指定长度的子字符串
+            </summary>
+            <param name="str">原字符串</param>
+            <param name="startIndex">子字符串的起始位置</param>
+            <param name="length">子字符串的长度</param>
+            <returns>子字符串</returns>
+        </member>
+        <member name="M:Tools.StringUtil.CutString(System.String,System.Int32)">
+            <summary>
+            从字符串的指定位置开始截取到字符串结尾的了符串
+            </summary>
+            <param name="str">原字符串</param>
+            <param name="startIndex">子字符串的起始位置</param>
+            <returns>子字符串</returns>
+        </member>
+        <member name="M:Tools.StringUtil.Trim(System.String)">
+            <summary>
+            2010-09-13增加 Trim(new char[] { ' ', '\n', '\r' })
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.ClearBR(System.String)">
+            <summary>
+            清除给定字符串中的回车及换行符
+            </summary>
+            <param name="str">要清除的字符串</param>
+            <returns>清除后返回的字符串</returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetStringLength(System.String)">
+            <summary>
+            返回字符串真实长度, 1个汉字长度为2
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.RemoveHtml(System.String)">
+            <summary>
+            移除Html标记
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.RemoveUnsafeHtml(System.String)">
+            <summary>
+            过滤HTML中的不安全标签
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetTextFromHTML(System.String)">
+            <summary>
+            从HTML中获取文本,保留br,p,img
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.Nosql(System.String)">
+            <summary>
+            去掉string里的可能包含的SQL保留字符
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.RemoveLastChars(System.String,System.String)">
+            <summary>
+            去掉最后一或者几个符号，截取最后一次出现的该串的前面的部分
+            </summary>
+            <param name="origin"></param>
+            <param name="sign">符号，可以为多个字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetRndChars(System.Int32)">
+            <summary>
+            生成随机的字符
+            </summary>
+            <param name="len">生成字符的个数</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetRndChars(System.Int32,System.String)">
+            <summary>
+            生成随机的字符
+            </summary>
+            <param name="len">生成字符的个数</param>
+            <param name="source">字典，字符的范围，用逗号分割开</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetChineseSpell(System.String)">
+            <summary>
+            得到汉字的首字母
+            </summary>
+            <param name="strText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.StringUtil.GetFirstSpell(System.String)">
+            <summary>
+            得到汉字的首字母
+            </summary>
+            <param name="cnChar"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.StringUtil.StringFillOption">
+            <summary>
+            字符串填充选项
+            </summary>
+        </member>
+        <member name="F:Tools.StringUtil.StringFillOption.FillOnetime">
+            <summary>
+            在不足时只填充一次
+            </summary>
+        </member>
+        <member name="F:Tools.StringUtil.StringFillOption.FillTilTheLength">
+            <summary>
+            在不足时填充很多次直到达到指定的长度
+            </summary>
+        </member>
+        <member name="F:Tools.StringUtil.StringFillOption.NoFill">
+            <summary>
+            在不足时不填充
+            </summary>
+        </member>
+        <member name="F:Tools.StringUtil.StringFillOption.FillOneTimeWhenBeCut">
+            <summary>
+            在被截断的情况下只填充一次
+            </summary>
+        </member>
+        <member name="T:Tools.XmlUtil">
+            <summary>
+            XML常见操作
+            </summary>
+        </member>
+        <member name="M:Tools.XmlUtil.GetXmlAttribute(System.Xml.XmlNode,System.String)">
+            <summary>
+            得到XML节点的属性的值，如果不存在，则返回空
+            </summary>
+            <param name="node"></param>
+            <param name="attribute"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.GetValue(System.Xml.XmlNode)">
+            <summary>
+            Gets the value of the specified XmlNode.
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.GetAttribute(System.Xml.XmlNode,System.String)">
+            <summary>
+            Gets the specified attribute from the specified XmlNode.
+            </summary>
+            <param name="node"></param>
+            <param name="attName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.HasValue(System.Xml.XmlNode)">
+            <summary>
+            Checks that if the XmlNode has a value.
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.HasAttribute(System.Xml.XmlNode,System.String)">
+            <summary>
+            Checks that if the XmlNode has the specified attribute.
+            </summary>
+            <param name="node"></param>
+            <param name="attName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.AddAttribute(System.Xml.XmlNode,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="rootNode"></param>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.AddAttribute(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="rootNode"></param>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.AddNodeFromNode(System.Xml.XmlNode,System.Xml.XmlNode)">
+            <summary>
+            
+            </summary>
+            <param name="source"></param>
+            <param name="nodeToAdd"></param>
+        </member>
+        <member name="M:Tools.XmlUtil.RemoveAttribute(System.Xml.XmlNode,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="xnode"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Tools.XmlUtil.GetNamespaces(System.Xml.XmlDocument)">
+            <summary>
+            
+            </summary>
+            <param name="doc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.AddTextNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="rootNode"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:Tools.XmlUtil.CreateChild(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="rootNode"></param>
+            <param name="nodeName"></param>
+            <param name="nodeText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.RemoveChild(System.Xml.XmlNode,System.String)">
+            <summary>
+            删除节点
+            </summary>
+            <param name="rootNode"></param>
+            <param name="xpath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.ReplaceChild(System.Xml.XmlNode,System.Xml.XmlNode)">
+            <summary>
+            节点替换
+            </summary>
+            <param name="oldNode"></param>
+            <param name="newNode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.CreateChildBefore(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="rootNode"></param>
+            <param name="nodeName"></param>
+            <param name="nodeText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.CreateXmlDocument">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.CreateXmlDocument(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.CreateXmlDocumentFromStr(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="xml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.XmlUtil.GetFormattedDocument(System.Xml.XmlDocument)">
+            <summary>
+            
+            </summary>
+            <param name="xml"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.EnumUtil">
+            <summary>
+            Enum
+            </summary>
+        </member>
+        <member name="F:Tools.EnumUtil.maps">
+            <summary>
+            maps用于保存每种枚举及其对应的EnumMap对象
+            </summary>
+        </member>
+        <member name="M:Tools.EnumUtil.GetStringFromEnum(System.Enum)">
+            <summary>
+            由于C#中没有static indexer的概念，所以在这里我们用静态方法
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.EnumUtil.EnumMap">
+            <summary>
+            内嵌类，保存enum各个值和名称的对应关系
+            </summary>
+        </member>
+        <member name="T:Tools.EnumItemDescriptionAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Tools.EnumItemDescriptionAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="description"></param>
+        </member>
+        <member name="P:Tools.EnumItemDescriptionAttribute.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Tools.CacheUtil">
+            <summary>
+            CacheUtil 
+            </summary>
+        </member>
+        <member name="M:Tools.CacheUtil.ResetFactor(System.Int32)">
+            <summary>
+            设置因子，默认为1
+            </summary>
+            <param name="cacheFactor"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Clear">
+            <summary>
+            清空Cache中的项
+            </summary>
+        </member>
+        <member name="M:Tools.CacheUtil.RemoveByPattern(System.String)">
+            <summary>
+            根据给的模式匹配着清除缓存
+            </summary>
+            <param name="pattern"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Remove(System.String)">
+            <summary>
+            移除key所指定的Cache项
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Insert(System.String,System.Object)">
+            <summary>
+            将obj加入Cache
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Insert(System.String,System.Object,System.Web.Caching.CacheDependency)">
+            <summary>
+            将obj加入Cache，同时给定依赖
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <param name="dep"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Insert(System.String,System.Object,System.Int32)">
+            <summary>
+            将obj加入Cache，同时给定超时时间
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Insert(System.String,System.Object,System.Int32,System.Web.Caching.CacheItemPriority)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <param name="seconds"></param>
+            <param name="priority"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Insert(System.String,System.Object,System.Web.Caching.CacheDependency,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <param name="dep"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Insert(System.String,System.Object,System.Web.Caching.CacheDependency,System.Int32,System.Web.Caching.CacheItemPriority)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <param name="dep"></param>
+            <param name="seconds"></param>
+            <param name="priority"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Insert(System.String,System.Object,System.Web.Caching.CacheDependency,System.Int32,System.Web.Caching.CacheItemPriority,System.Web.Caching.CacheItemRemovedCallback)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <param name="dep"></param>
+            <param name="seconds"></param>
+            <param name="priority"></param>
+            <param name="ItemRemovedCallback"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.MicroInsert(System.String,System.Object,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <param name="secondFactor"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Max(System.String,System.Object)">
+            <summary>
+            将obj加入Cache使用最大缓存时间
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Max(System.String,System.Object,System.Web.Caching.CacheDependency)">
+            <summary>
+            将obj加入Cache使用最大缓存时间
+            </summary>
+            <param name="key"></param>
+            <param name="obj"></param>
+            <param name="dep"></param>
+        </member>
+        <member name="M:Tools.CacheUtil.Get(System.String)">
+            <summary>
+            得到缓存的对象
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.CacheUtil.IsTheKeyUsed(System.String)">
+            <summary>
+            检查指定的键是否已经被用
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.Web.Cookie">
+            <summary>
+            操作cookie的
+            </summary>
+        </member>
+        <member name="M:Tools.Web.Cookie.Create(System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            增加一个cookie
+            </summary>
+            <param name="name">名字</param>
+            <param name="domain">域</param>
+            <param name="value">值</param>
+            <param name="expiresDate">过期的时间</param>
+        </member>
+        <member name="M:Tools.Web.Cookie.Create(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            增加一个cookie
+            </summary>
+            <param name="name">名字</param>
+            <param name="domain">域</param>
+            <param name="value">值</param>
+            <param name="days">过期的天数</param>
+        </member>
+        <member name="M:Tools.Web.Cookie.Create(System.String,System.String,System.String)">
+            <summary>
+            创建一个新cookie,此方法的cookie生存周期为浏览器进程
+            </summary>
+            <param name="name">名字</param>
+            <param name="domain">域</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:Tools.Web.Cookie.GetCookieValue(System.String)">
+            <summary>
+            得到指定的cookie的值
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.Cookie.Exist(System.String)">
+            <summary>
+            检测是否存在cookie
+            </summary>
+            <param name="name">名字</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.Cookie.Delete(System.String,System.String)">
+            <summary>
+            删除COOKIE
+            </summary>
+            <param name="name">名字</param>
+            <param name="domain">域名，重要，特别是跨域的cookie</param>
+        </member>
+        <member name="M:Tools.Web.Cookie.DeleteCookie(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="domain"></param>
+        </member>
+        <member name="T:Tools.Convert">
+            <summary>
+            类型转换类
+            </summary>
+        </member>
+        <member name="M:Tools.Convert.ToHexCode(System.Int32)">
+            <summary>
+            2011-05-04，在GetHexString里被调用
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.GetHexString(System.Int32,System.Int32)">
+            <summary>
+            把十进制的数字value转换为t进制的字符串 2011-05-04
+            </summary>
+            <param name="num"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.ComputeHash(System.Byte[])">
+            <summary>
+            计算hash,采用FNV方法,2010-08-23增加
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.ComputeHash(System.String)">
+            <summary>
+            计算字符串的hashcode 2010-08-23增加,并采用UTF8编码
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.Join(System.Collections.IEnumerable,System.String)">
+            <summary>
+            like Array.Join() in Javascript,如果集合为null,则返回""
+            </summary>
+            <param name="items"></param>
+            <param name="delimiter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.Join(System.Collections.ICollection)">
+            <summary>
+            like Array.Join() in Javascript,用逗号连接
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.GetUnixTime">
+            <summary>
+            返回unix时间戳记
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.GetUnixTime(System.DateTime)">
+            <summary>
+            返回unix时间戳记
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.GetUnixMicTime(System.DateTime)">
+            <summary>
+            返回带秒的小数的时间
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.GetDate(System.Int64)">
+            <summary>
+            返回格林威治的标准时间
+            </summary>
+            <param name="UnixTime">参数 uint unix时间戳记</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.StrToBool(System.Object,System.Boolean)">
+            <summary>
+            string型转换为bool型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的bool类型结果</returns>
+        </member>
+        <member name="M:Tools.Convert.IPToLong(System.String)">
+            <summary>
+            把IP转化为Long
+            </summary>
+            <param name="ipAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.LongToIP(System.Int64)">
+            <summary>
+            把long转化为IP
+            </summary>
+            <param name="ipAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.SafeInt32(System.Object)">
+            <summary>
+            将long型数值转换为Int32类型
+            </summary>
+            <param name="objNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.StrToInt(System.Object,System.Int32)">
+            <summary>
+            将对象转换为Int32类型
+            </summary>
+            <param name="expression">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的int类型结果</returns>
+        </member>
+        <member name="M:Tools.Convert.StrToFloat(System.Object,System.Single)">
+            <summary>
+            string型转换为float型
+            </summary>
+            <param name="strValue">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的float类型结果</returns>
+        </member>
+        <member name="M:Tools.Convert.ConvertToFloat(System.Object)">
+            <summary>
+            原来的函数判断87.8913563553152时出错，改用该函数
+            </summary>
+            <param name="oValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Convert.StrToDouble(System.Object,System.Double)">
+            <summary>
+            string型转换为double型
+            </summary>
+            <param name="strValue">要转换的字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>转换后的double类型结果</returns>
+        </member>
+        <member name="M:Tools.Convert.StrToLong(System.String,System.Int64)">
+            <summary>
+            将输入的字符串转化long
+            </summary>
+            <param name="strInput">输入字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>long</returns>
+        </member>
+        <member name="M:Tools.Convert.StrToDateTime(System.String,System.DateTime)">
+            <summary>
+            将输入的字符串转化为日期。如果字符串的格式非法，则返回当前日期。
+            </summary>
+            <param name="strInput">输入字符串</param>
+            <param name="defValue">缺省值</param>
+            <returns>日期对象</returns>
+        </member>
+        <member name="T:Tools.IO">
+            <summary>
+            常见的文件流操作
+            </summary>
+        </member>
+        <member name="M:Tools.IO.ToAbsolutePath(System.String)">
+            <summary>
+            Convert specified path to absolute path.
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.IO.WriteStringToFile(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            用指定的编码在指定的位置创建指定内容的文件，如果文件存在，则覆盖
+            </summary>
+            <param name="content">文件的内容</param>
+            <param name="path">文件的路径包括文件名，使用绝对路径，要先确保文件夹存在</param>
+            <param name="encode">文件编码</param>
+        </member>
+        <member name="M:Tools.IO.AppendFile(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            往文件里追加内容
+            </summary>
+            <param name="content">文件的内容</param>
+            <param name="path">文件的路径包括文件名</param>
+            <param name="encode">文件编码</param>
+        </member>
+        <member name="M:Tools.IO.ReadStringFromFile(System.String,System.Text.Encoding)">
+            <summary>
+            从文件里读取内容，如果文件不存在，直接返回“”
+            </summary>
+            <param name="path">文件的路径</param>
+            <param name="encode">编码</param>
+            <returns>返回文件的内容</returns>
+        </member>
+        <member name="M:Tools.IO.MakeSureDirectoryPathExists(System.String)">
+            <summary>
+            确保文件夹存在，如果不存在则建立
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Tools.IO.IsValidFileName(System.String)">
+            <summary>
+            是否是合法的文件名，参数可以为null  2010-08-03 增加 by 杜有发
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.IO.CheckFileExists(System.String)">
+            <summary>
+            检测文件是否存在
+            </summary>
+            <param name="path">文件路径</param>
+        </member>
+        <member name="M:Tools.IO.PrepareDirectory(System.String)">
+            <summary>
+            如果目录不存在，就创建目录；给定的要是绝对路径才可以 2010-10-11 增加 by 杜有发
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Tools.IO.CopyFolder(System.String,System.String)">
+            <summary>
+            复制目录
+            </summary>
+            <param name="source">源目录</param>
+            <param name="d">目标目录</param>
+        </member>
+        <member name="M:Tools.IO.CirculateFolders(System.String,Tools.IO.Action)">
+            <summary>
+            循环目录
+            </summary>
+            <param name="source"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:Tools.IO.DeleteFolder(System.String)">
+            <summary>
+            删除一个目录，包括下面的文件
+            </summary>
+            <param name="dir"></param>
+        </member>
+        <member name="M:Tools.IO.GetHttpPage(System.String,System.String)">
+            <summary>
+            得到远程页面的代码
+            </summary>
+            <param name="url">远程页面</param>
+            <param name="remoteEncoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.IO.GetHttpPageStream(System.String,System.String)">
+            <summary>
+            得到远程页面的流
+            </summary>
+            <param name="url">远程页面</param>
+            <param name="remoteEncoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.IO.SaveHttpPage(System.String,System.String,System.String,System.String)">
+            <summary>
+            保存远程页面的代码
+            </summary>
+            <param name="url">远程页面</param>
+            <param name="path">保存地址</param>
+            <param name="remoteEncoding">远程页面的编码</param>
+            <param name="localEncoding">本地的编码</param>
+        </member>
+        <member name="T:Tools.IO.Action">
+            <summary>
+            循环目录时候执行的委托
+            </summary>
+            <param name="path"></param>
+            <param name="isFolder"></param>
+        </member>
+        <member name="T:Tools.SerializationUtil">
+            <summary>
+            序列化
+            </summary>
+        </member>
+        <member name="M:Tools.SerializationUtil.CloneObject``1(``0)">
+            <summary>
+            对象复制，对象要实现ISerializable接口
+            </summary>
+            <param name="ObjectInstance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.SerializationUtil.BinarySerialize(System.Object)">
+            <summary>
+             Binary Serializes an object
+            </summary>
+            <param name="obj">The object to serialize</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:Tools.SerializationUtil.BinaryDeSerialize``1(System.Byte[])">
+            <summary>
+             Binary DeSerializes an object
+            </summary>
+            <param name="serializedObject">The object to serialize</param>
+            <returns>The deserialized object</returns>
+        </member>
+        <member name="M:Tools.SerializationUtil.FileSerialize(System.Object,System.String)">
+            <summary>
+            Serialize the object to a file
+            </summary>
+            <param name="obj">Object to be serialized.Ensure that is Serializable !</param>
+            <param name="filePath">File( with the entire file path) where the object will be serialized to</param>
+            <returns>True on successful serialization.</returns>
+        </member>
+        <member name="M:Tools.SerializationUtil.FileDeSerialize``1(System.String)">
+            <summary>
+            Deserializes a binary formatted object.
+            </summary>
+            <param name="filePath">Full path of the file</param>
+            <returns>The deserialized object</returns>
+        </member>
+        <member name="M:Tools.SerializationUtil.SoapMemoryStreamSerialization(System.Object,System.Text.Encoding)">
+            <summary>
+            Serializes the passed object using SOAP serialization
+            </summary>
+            <param name="obj">The object to serialize</param>
+            <param name="encodingType">The encoding type to use</param>
+            <returns>A string representing the serialized object.</returns>
+            <remarks>encodingType is abstract: pass in a subtype of Encoding, for example instantiate: 
+            System.Text.UTF8Encoding</remarks>
+        </member>
+        <member name="M:Tools.SerializationUtil.SoapDeserailization``1(System.String,System.Text.Encoding)">
+            <summary>
+            Deserailizes a SOAP serialized object
+            </summary>
+            <param name="input">The XML string to deserialize.</param>
+            <param name="encodingType">The encoding type to use</param>
+            <returns>The deserialized object.</returns>
+            <remarks>encodingType is abstract: pass in a subtype of Encoding, for example instantiate: 
+            System.Text.UTF8Encoding</remarks>
+        </member>
+        <member name="T:Tools.Web.HtmlFilter">
+            <summary>
+            过滤危险的HMTL标记，只保留安全的
+            </summary>
+        </member>
+        <member name="M:Tools.Web.HtmlFilter.StripHtml(System.String)">
+            <summary>
+            剥夺HTML代码，不保留任何HTML
+            </summary>
+            <param name="html"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.HtmlFilter.CleanUrl(System.String)">
+            <summary>
+            去掉连接
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.HtmlFilter.FilterHtml(System.String)">
+            <summary>
+            过滤HTML标记
+            </summary>
+            <param name="html"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.HtmlFilter.FilterDangerousTags(System.Text.RegularExpressions.Match)">
+            <summary>
+            过滤危险的HTML标记
+            </summary>
+            <param name="match"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Web.HtmlFilter.FilterDangerousAttributes(System.Text.RegularExpressions.Match,System.String)">
+            <summary>
+            过滤危险的属性
+            </summary>
+            <param name="match"></param>
+            <param name="tag"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Tools.Web.HtmlFilter.SafeTags">
+            <summary>
+            危险的标记
+            </summary>
+        </member>
+        <member name="P:Tools.Web.HtmlFilter.SafeAttributes">
+            <summary>
+            危险的属性
+            </summary>
+        </member>
+        <member name="T:Tools.GenericUtil">
+            <summary>
+            泛型工具类
+            </summary>
+        </member>
+        <member name="M:Tools.GenericUtil.Where``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            Where 从集合中选取符合条件的元素
+            </summary>       
+        </member>
+        <member name="M:Tools.GenericUtil.ForSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0},System.Predicate{``0})">
+            <summary>
+            ForSpecification 对集合中满足predicate条件的元素执行action。如果没有条件，predicate传入null。
+            </summary>       
+        </member>
+        <member name="M:Tools.GenericUtil.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            ForEach  对集合中的每个元素执行action(只读循环，不能修改)
+            </summary>        
+        </member>
+        <member name="M:Tools.GenericUtil.ForFirstSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0},System.Predicate{``0})">
+            <summary>
+            ForSpecification 对集合中第一个满足predicate条件的元素执行action。如果没有条件，predicate传入null。
+            </summary>       
+        </member>
+        <member name="M:Tools.GenericUtil.GetFirstSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            GetFirstSpecification 返回符合条件的第一个元素
+            </summary>      
+        </member>
+        <member name="M:Tools.GenericUtil.ContainsSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            ContainsSpecification 集合中是否包含满足predicate条件的元素。
+            </summary>       
+        </member>
+        <member name="M:Tools.GenericUtil.ContainsSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0},``0@)">
+            <summary>
+            ContainsSpecification 集合中是否包含满足predicate条件的元素。
+            </summary>       
+        </member>
+        <member name="M:Tools.GenericUtil.CopyAllToList``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            CopyAllToList
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.GenericUtil.CopySpecificationToList``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.GenericUtil.RemoveOneByValue``2(System.Collections.Generic.IDictionary{``0,``1},``1)">
+            <summary>
+            RemoveOneByValue 从字典中删除第一个值与val相等的记录
+            </summary>      
+        </member>
+        <member name="M:Tools.GenericUtil.GetOneByValue``2(System.Collections.Generic.IDictionary{``0,``1},``1)">
+            <summary>
+            GetOneByValue 从字典中找出第一个值与val相等的记录的key
+            </summary>      
+        </member>
+        <member name="M:Tools.GenericUtil.Swap``1(``0@,``0@)">
+            <summary>
+            Swap 交换两个对象的引用（如果T是引用类型）或值（如果T是值类型）
+            </summary>      
+        </member>
+        <member name="M:Tools.GenericUtil.ConvertListUpper``2(System.Collections.Generic.IList{``1})">
+            <summary>
+            ConvertListUpper 将子类对象集合转换为基类对象集合
+            </summary>        
+        </member>
+        <member name="M:Tools.GenericUtil.ConvertListDown``2(System.Collections.Generic.IList{``0})">
+            <summary>
+            ConvertListDown 将基类对象集合强制转换为子类对象集合
+            </summary>        
+        </member>
+        <member name="M:Tools.GenericUtil.DataTableEach(System.Data.DataTable,System.Action{System.Data.DataRow})">
+            <summary>
+            循环datatable
+            </summary>
+            <param name="dt"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:Tools.GenericUtil.DataTableContainsSpecification(System.Data.DataTable,System.Predicate{System.Data.DataRow},System.Data.DataRow@)">
+            <summary>
+            判断datatable
+            </summary>
+            <param name="dt"></param>
+            <param name="predicate"></param>
+            <param name="dr"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.ActionResult`1">
+            <summary>
+            当T为值类型的时候，如果没有设置特殊的错误值，并正常返回的话，不要设置message属性，一旦设置就表示“出错了”
+            取消Success属性原因是，Result属性是否为null等已经可以判断了 2011-03-30
+            重新加入Success属性 2011-04-22，原因是可能产生为null的返回结果
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Tools.ActionResult`1.OK">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.ActionResult`1.Result">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.ActionResult`1.Message">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Tools.ActionResult`1.ExtraData">
+            <summary>
+            2011-01-22 增加 在QQ微博获取timeline数据时保存微博总数量以及unix时间
+            </summary>
+        </member>
+        <member name="P:Tools.ActionResult`1.Exception">
+            <summary>
+            设置了异常
+            </summary>
+        </member>
+        <member name="T:Tools.AsyncResult`1">
+            <summary>
+            来自 http://blogs.msdn.com/b/ploeh/archive/2007/02/09/agenericiasyncresultimplementation.aspx
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Tools.ContextDataStorer.Set(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Tools.ContextDataStorer.Get(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.ContextDataStorer.Remove(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="T:Tools.KeyValueData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Tools.KeyValueData.dict">
+            <summary>
+            内部存储
+            </summary>
+        </member>
+        <member name="F:Tools.KeyValueData.splitChar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Tools.KeyValueData.linkedChar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Tools.KeyValueData.firstKey">
+            <summary>
+            第一个键
+            </summary>
+        </member>
+        <member name="F:Tools.KeyValueData.firstValue">
+            <summary>
+            第一个值
+            </summary>
+        </member>
+        <member name="M:Tools.KeyValueData.#ctor(System.String,System.Char,System.Char)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <param name="theSplitChar"></param>
+            <param name="theLinkedChar"></param>
+        </member>
+        <member name="M:Tools.KeyValueData.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:Tools.KeyValueData.GetValue(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.KeyValueData.GetValues(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.KeyValueData.GetKeys">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.KeyValueData.GetFirstKey">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.KeyValueData.GetDictionary">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.KeyValueData.Update(System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="forAppend"></param>
+        </member>
+        <member name="M:Tools.KeyValueData.Update(System.String,System.String)">
+            <summary>
+            更新,覆盖原来的值
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Tools.KeyValueData.Add(System.String,System.String)">
+            <summary>
+            插入值
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Tools.KeyValueData.getKeyValueString(System.Collections.Generic.KeyValuePair{System.String,System.Collections.Generic.List{System.String}},System.Text.StringBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="kvp"></param>
+            <param name="sb"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.KeyValueData.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Singleton`1.GetInstance(Tools.Singleton{`0}.Generator)">
+            <summary>
+            
+            </summary>
+            <param name="generator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Singleton`1.Dispose">
+            <summary>
+            销毁对象
+            </summary>
+        </member>
+        <member name="P:Tools.Singleton`1.Instance">
+            <summary>
+            T一定要可以实例化,如果实例不存在，直接调用new方法进行创建
+            </summary>
+        </member>
+        <member name="T:Tools.Singleton`1.Generator">
+            <summary>
+            2010-08-17 增加 by 杜有发
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.IThreadSafeDictionary`2.MergeSafe(`0,`1)">
+            <summary>
+            Merge is similar to the SQL merge or upsert statement.  
+            </summary>
+            <param name="key">Key to lookup</param>
+            <param name="newValue">New Value</param>
+        </member>
+        <member name="M:Tools.IThreadSafeDictionary`2.RemoveSafe(`0)">
+            <summary>
+            This is a blind remove. Prevents the need to check for existence first.
+            </summary>
+            <param name="key">Key to Remove</param>
+        </member>
+        <member name="M:Tools.ThreadSafeDictionary`2.RemoveSafe(`0)">
+            <summary>
+            This is a blind remove. Prevents the need to check for existence first.
+            </summary>
+            <param name="key">Key to remove</param>
+        </member>
+        <member name="M:Tools.ThreadSafeDictionary`2.MergeSafe(`0,`1)">
+            <summary>
+            Merge does a blind remove, and then add.  Basically a blind Upsert.  
+            </summary>
+            <param name="key">Key to lookup</param>
+            <param name="newValue">New Value</param>
+        </member>
+        <member name="T:Tools.TimeSynchronize">
+            <summary>
+            单例模式运行，否则每次都要SetStandardTime来计算偏移量
+            </summary>
+        </member>
+        <member name="M:Tools.TimeSynchronize.SetStandardTime(System.DateTime)">
+            <summary>
+            设置基准时间，调整偏移量，可以多次设置
+            </summary>
+            <param name="dateTime"></param>
+        </member>
+        <member name="M:Tools.TimeSynchronize.SetStandardTime(System.DateTime,System.Boolean)">
+            <summary>
+            2011-01-17 增加 by 杜有发，是否同步本地时间为可选
+            </summary>
+            <param name="dateTime"></param>
+            <param name="syncLocalTime"></param>
+        </member>
+    </members>
+</doc>
