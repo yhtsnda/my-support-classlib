@@ -7,14 +7,15 @@ namespace Projects.Tool
 {
     internal class CacheProxy : SecondaryCache
     {
-        public  CacheProxy(ICache baseCache)
+        public CacheProxy(ICache baseCache)
         {
-            if(baseCache == null)
+            if (baseCache == null)
                 throw new ArgumentNullException("baseCache");
+
 
             var firstCache = new HttpContextCache();
             if (baseCache is AbstractCache)
-                firstCache.CacheName = ((AbstractCache) baseCache).CacheName;
+                firstCache.CacheName = ((AbstractCache)baseCache).CacheName;
             FirstCache = firstCache;
             SecondCache = baseCache;
         }

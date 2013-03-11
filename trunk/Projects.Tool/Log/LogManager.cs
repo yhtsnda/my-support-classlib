@@ -2,31 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Configuration;
+using Projects.Tool.Util;
+using Projects.Tool.Reflection;
 
 namespace Projects.Tool
 {
-    public class LogManager
+    public static class LogManager
     {
-        static InnerManager<ILogFactory> mManager;
-        static object mSyncObj = new object();
+        static InnerManager<ILogFactory> manager;
+        static object syncObj = new object();
 
         static InnerManager<ILogFactory> Manager
         {
             get
             {
-                if (mManager == null)
+                if (manager == null)
                 {
-                    lock (mSyncObj)
+                    lock (syncObj)
                     {
-                        if (mManager == null)
+                        if (manager == null)
                         {
                             var m = new InnerManager<ILogFactory>();
-                            m.AssignFactory(ToolSection.Instance.TryGetInstance<ILogFactory>("log/factory") ?? new NullLogFactory());
-                            mManager = m;
+                            var factory = new NullLogFactory();
+                            if (ToolSection.Instance == null)
+                                m.AssignFactory(factory);
+                            else
+                                m.AssignFactory(ToolSection.Instance.TryGetInstance<ILogFactory>("log/factory") ?? factory);
+                            manager = m;
                         }
                     }
                 }
-                return mManager;
+                return manager;
             }
         }
 
@@ -35,7 +42,7 @@ namespace Projects.Tool
             Manager.AssignFactory(factory);
         }
 
-        public static ILog GetLogger(string name = "default")
+        public static ILog GetLogger(string name)
         {
             return Manager.Factory.GetLogger(name);
         }

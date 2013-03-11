@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Projects.Tool
 {
-    public interface ICacheSettingable: ICache
+    public interface ICacheSettingable : ICache
     {
         void InitSetting(IEnumerable<SettingNode> settingNodes);
     }

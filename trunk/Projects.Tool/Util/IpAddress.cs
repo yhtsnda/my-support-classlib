@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using System.Text.RegularExpressions;
 
 namespace Projects.Tool.Util
 {
@@ -34,26 +33,6 @@ namespace Projects.Tool.Util
                 return "0.0.0.0";
 
             return result;
-        }
-
-        /// <summary>
-        /// 检查是否是一个有效的IP地址
-        /// </summary>
-        /// <param name="checkString">要检查的IP地址</param>
-        /// <param name="haveWildcard">是否包含有通配符</param>
-        /// <returns></returns>
-        public static bool ValidateIP(string checkString, bool haveWildcard)
-        {
-            string reg1 = @"(\d\d?|2[0-4]\d|25[0-5])\.(\d\d?|2[0-4]\d|25[0-5])\.(\d\d?|2[0-4]\d|25[0-5]|\*)\.(\d\d?|2[0-4]\d|25[0-5]|\*)(?x)";
-            string reg2 = @"(\d\d?|2[0-4]\d|25[0-5])\.(\d\d?|2[0-4]\d|25[0-5])\.(\d\d?|2[0-4]\d|25[0-5])\.(\d\d?|2[0-4]\d|25[0-5])(?x)";
-
-            Regex regex = null;
-            if (haveWildcard)
-                regex = new Regex(reg1);
-            else
-                regex = new Regex(reg2);
-
-            return regex.IsMatch(checkString);
         }
     }
 }

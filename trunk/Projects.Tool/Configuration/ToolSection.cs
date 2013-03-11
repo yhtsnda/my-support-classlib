@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Projects.Tool.Util;
 using System.Configuration;
+using System.ComponentModel;
+using Projects.Tool.Lock;
 using System.Xml.Linq;
-
 using Projects.Tool.Reflection;
 
 namespace Projects.Tool
@@ -43,22 +45,6 @@ namespace Projects.Tool
             return Type.GetType(type);
         }
 
-        public List<Type> TryGetTypes(string path, string attrKey)
-        {
-            var typeList = rootNode.TryGetNodes(path);
-            if (typeList != null)
-            {
-                return typeList.Select(item =>
-                {
-                    string type = item.Attributes[attrKey];
-                    if (type != null)
-                        return Type.GetType(type);
-                    return null;
-                }).ToList();
-            }
-            return null;
-        }
-
         public T TryGetInstance<T>(string path) where T : class
         {
             Type type = TryGetType(path);
@@ -79,7 +65,7 @@ namespace Projects.Tool
         {
             get
             {
-                return ConfigurationManager.GetSection("projects.tool") as ToolSection;
+                return ConfigurationManager.GetSection("Projects.Tool") as ToolSection;
             }
         }
     }

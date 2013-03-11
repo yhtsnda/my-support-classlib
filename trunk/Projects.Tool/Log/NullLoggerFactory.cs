@@ -72,7 +72,7 @@ namespace Projects.Tool
 
         public void Flush()
         {
-
+            
         }
     }
 }

@@ -5,55 +5,61 @@ using System.Text;
 
 namespace Projects.Tool
 {
+    /// <summary>
+    /// 抽象缓存域对象
+    /// </summary>
     public abstract class AbstractCacheDomain
     {
-        private static object mSyncRoot;
-        private static Dictionary<string, object> mSyncObjects;
-        private ICache mCache;
+        static object syncRoot;
+        static Dictionary<string, object> syncObjects;
+        ICache cache;
 
-        public  ICache Cache
+        static AbstractCacheDomain()
         {
-            get { return mCache; }
+            syncRoot = new object();
+            syncObjects = new Dictionary<string, object>();
         }
 
-        static  AbstractCacheDomain()
+        internal AbstractCacheDomain(CacheDomainOption option)
         {
-            mSyncRoot = new object();
-            mSyncObjects = new Dictionary<string, object>();
-        }
+            cache = CacheManager.GetCacher(option.GetCacheFullName());
 
-        internal  AbstractCacheDomain(CacheDomainOption option)
-        {
-            mCache = CacheManager.GetCacher(option.GetCacheFullName());
             //使用缓存代理处理
-            if(option.ContextCacheEnabled && !(mCache is AspnetCache))
-                mCache = new CacheProxy(mCache);
+            if (option.ContextCacheEnabled && !(cache is AspnetCache))
+            {
+                cache = new CacheProxy(cache);
+            }
+        }
+
+        public ICache Cache
+        {
+            get { return cache; }
         }
 
         /// <summary>
-        /// 获取排它锁对象
+        /// 获取排它锁的对象
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        static  object GetSyncObject(string name)
+        static object GetSyncObject(string name)
         {
-            object sync = mSyncObjects.TryGetValue(name);
-            if(sync == null)
+            object sync = syncObjects.TryGetValue(name);
+            if (sync == null)
             {
-                lock (mSyncRoot)
+                lock (syncRoot)
                 {
-                    sync = mSyncObjects.TryGetValue(name);
-                    if(sync == null)
+                    sync = syncObjects.TryGetValue(name);
+                    if (sync == null)
                     {
                         sync = new object();
-                        mSyncObjects[name] = sync;
+                        syncObjects[name] = sync;
                     }
                 }
             }
             return sync;
         }
 
-        internal static TEntity GetItem<TEntity>(ICache cache, CacheDomainOption<TEntity> option)
+        #region GetItem
+
+        internal TEntity GetItem<TEntity>(ICache cache, CacheDomainOption<TEntity> option)
         {
             var cacheKey = option.GetCacheKey();
             var cacheItem = cache.Get<TEntity>(cacheKey);
@@ -71,14 +77,19 @@ namespace Projects.Tool
                         //从原始数据读取
                         cacheItem = option.MissingItemHandler();
                         if (!AbstractCache.IsDefault(cacheItem))
-                            cache.Set(cacheKey, cacheItem, option.SecondesToLive);
+                            OnSetCache(cache, cacheKey, cacheItem, option.SecondesToLive);
                     }
                 }
             }
             return cacheItem;
         }
 
-        internal static TEntity GetItem<TEntity, TKey>(ICache cache, TKey key, CacheDomainOption<TEntity, TKey> option)
+        protected virtual void OnSetCache(ICache cache, string cacheKey, object entity, int secondesToLive)
+        {
+            cache.Set(cacheKey, entity, secondesToLive);
+        }
+
+        protected TEntity GetItem<TEntity, TKey>(ICache cache, TKey key, CacheDomainOption<TEntity, TKey> option)
         {
             var cacheKey = option.GetCacheKey(key);
             var cacheItem = cache.Get<TEntity>(cacheKey);
@@ -96,14 +107,14 @@ namespace Projects.Tool
                         //从原始数据读取
                         cacheItem = option.MissingItemHandler(key);
                         if (!AbstractCache.IsDefault(cacheItem))
-                            cache.Set(cacheKey, cacheItem, option.SecondesToLive);
+                            OnSetCache(cache, cacheKey, cacheItem, option.SecondesToLive);
                     }
                 }
             }
             return cacheItem;
         }
 
-        internal static TEntity GetItem<TEntity, TParam, TKey>(ICache cache, TParam param, TKey key, CacheDomainOption<TEntity, TParam, TKey> option)
+        protected TEntity GetItem<TEntity, TParam, TKey>(ICache cache, TParam param, TKey key, CacheDomainOption<TEntity, TParam, TKey> option)
         {
             var cacheKey = option.GetCacheKey(param, key);
             var cacheItem = cache.Get<TEntity>(cacheKey);
@@ -121,15 +132,14 @@ namespace Projects.Tool
                         //从原始数据读取
                         cacheItem = option.MissingItemHandler(param, key);
                         if (!AbstractCache.IsDefault(cacheItem))
-                            cache.Set(cacheKey, cacheItem, option.SecondesToLive);
+                            OnSetCache(cache, cacheKey, cacheItem, option.SecondesToLive);
                     }
                 }
             }
             return cacheItem;
         }
 
-        internal static TEntity GetItem<TEntity, TParam1, TParam2, TKey>(ICache cache, TParam1 param1, TParam2 param2, 
-            TKey key, CacheDomainOption<TEntity, TParam1, TParam2, TKey> option)
+        protected TEntity GetItem<TEntity, TParam1, TParam2, TKey>(ICache cache, TParam1 param1, TParam2 param2, TKey key, CacheDomainOption<TEntity, TParam1, TParam2, TKey> option)
         {
             var cacheKey = option.GetCacheKey(param1, param2, key);
             var cacheItem = cache.Get<TEntity>(cacheKey);
@@ -147,14 +157,23 @@ namespace Projects.Tool
                         //从原始数据读取
                         cacheItem = option.MissingItemHandler(param1, param2, key);
                         if (!AbstractCache.IsDefault(cacheItem))
-                            cache.Set(cacheKey, cacheItem, option.SecondesToLive);
+                            OnSetCache(cache, cacheKey, cacheItem, option.SecondesToLive);
                     }
                 }
             }
             return cacheItem;
         }
 
-        internal static IEnumerable<TEntity> GetItems<TEntity, TKey>(ICache cache, IEnumerable<TKey> keys, CacheDomainOption<TEntity, TKey> option)
+        #endregion
+
+        #region GetItems
+
+        protected virtual void OnSetCacheBatch<TEntity>(ICache cache, IEnumerable<TEntity> items, Func<TEntity, string> keySelector, int secondsToLive)
+        {
+            cache.SetBatch(items, keySelector, secondsToLive);
+        }
+
+        protected IEnumerable<TEntity> GetItems<TEntity, TKey>(ICache cache, IEnumerable<TKey> keys, CacheDomainOption<TEntity, TKey> option)
         {
             //CacheKey 与属性键的映射（去重）
             IDictionary<string, TKey> keyDic = keys.Distinct().ToDictionary(key => option.GetCacheKey(key));
@@ -163,7 +182,7 @@ namespace Projects.Tool
             IEnumerable<string> missing;
             var cacheItems = cache.GetBatch<TEntity>(keyDic.Keys, out missing).ToList();
 
-            if (missing.Any())
+            if (missing.Count() > 0)
             {
                 //根据缓存名获取锁对象
                 object sync = GetSyncObject(option.GetCacheFullName());
@@ -175,13 +194,11 @@ namespace Projects.Tool
                     cacheItems.AddRange(secondCacheItems);
 
                     //从数据源获取
-                    if (secondMissing.Any())
+                    if (secondMissing.Count() > 0)
                     {
                         IEnumerable<TEntity> dbItems = option.GetMissingItems(secondMissing.Select(key => keyDic[key]).ToArray());
                         //过滤掉 null 项，并加入缓存
-                        cache.SetBatch(dbItems.Where(item => !AbstractCache.IsDefault(item)), 
-                            key => option.GetCacheKey(option.EntityKeySelector(key)),
-                            option.SecondesToLive);
+                        OnSetCacheBatch(cache, dbItems.Where(item => !AbstractCache.IsDefault(item)), key => option.GetCacheKey(option.EntityKeySelector(key)), option.SecondesToLive);
                         cacheItems.AddRange(dbItems);
                     }
                 }
@@ -191,8 +208,7 @@ namespace Projects.Tool
             return cacheItems.OrderBy(entity => option.EntityKeySelector(entity), keys);
         }
 
-        internal static IEnumerable<TEntity> GetItems<TEntity, TParam, TKey>(ICache cache, TParam param, 
-            IEnumerable<TKey> keys, CacheDomainOption<TEntity, TParam, TKey> option)
+        protected IEnumerable<TEntity> GetItems<TEntity, TParam, TKey>(ICache cache, TParam param, IEnumerable<TKey> keys, CacheDomainOption<TEntity, TParam, TKey> option)
         {
             //CacheKey 与属性键的映射（去重）
             IDictionary<string, TKey> keyDic = keys.Distinct().ToDictionary(key => option.GetCacheKey(param, key));
@@ -201,7 +217,7 @@ namespace Projects.Tool
             IEnumerable<string> missing;
             var cacheItems = cache.GetBatch<TEntity>(keyDic.Keys, out missing).ToList();
 
-            if (missing.Any())
+            if (missing.Count() > 0)
             {
                 //根据缓存名获取锁对象
                 object sync = GetSyncObject(option.GetCacheFullName());
@@ -213,11 +229,11 @@ namespace Projects.Tool
                     cacheItems.AddRange(secondCacheItems);
 
                     //从数据源获取
-                    if (secondMissing.Any())
+                    if (secondMissing.Count() > 0)
                     {
                         IEnumerable<TEntity> dbItems = option.GetMissingItems(param, secondMissing.Select(key => keyDic[key]).ToArray());
                         //过滤掉 null 项，并加入缓存
-                        cache.SetBatch(dbItems.Where(item => !AbstractCache.IsDefault(item)), key => option.GetCacheKey(param, option.EntityKeySelector(key)), option.SecondesToLive);
+                        OnSetCacheBatch(cache, dbItems.Where(item => !AbstractCache.IsDefault(item)), key => option.GetCacheKey(param, option.EntityKeySelector(key)), option.SecondesToLive);
                         cacheItems.AddRange(dbItems);
                     }
                 }
@@ -227,8 +243,7 @@ namespace Projects.Tool
             return cacheItems.OrderBy(entity => option.EntityKeySelector(entity), keys);
         }
 
-        internal static IEnumerable<TEntity> GetItems<TEntity, TParam1, TParam2, TKey>(ICache cache, TParam1 param1, 
-            TParam2 param2, IEnumerable<TKey> keys, CacheDomainOption<TEntity, TParam1, TParam2, TKey> option)
+        protected IEnumerable<TEntity> GetItems<TEntity, TParam1, TParam2, TKey>(ICache cache, TParam1 param1, TParam2 param2, IEnumerable<TKey> keys, CacheDomainOption<TEntity, TParam1, TParam2, TKey> option)
         {
             //CacheKey 与属性键的映射（去重）
             IDictionary<string, TKey> keyDic = keys.Distinct().ToDictionary(key => option.GetCacheKey(param1, param2, key));
@@ -237,7 +252,7 @@ namespace Projects.Tool
             IEnumerable<string> missing;
             var cacheItems = cache.GetBatch<TEntity>(keyDic.Keys, out missing).ToList();
 
-            if (missing.Any())
+            if (missing.Count() > 0)
             {
                 //根据缓存名获取锁对象
                 object sync = GetSyncObject(option.GetCacheFullName());
@@ -249,13 +264,11 @@ namespace Projects.Tool
                     cacheItems.AddRange(secondCacheItems);
 
                     //从数据源获取
-                    if (secondMissing.Any())
+                    if (secondMissing.Count() > 0)
                     {
                         IEnumerable<TEntity> dbItems = option.GetMissingItems(param1, param2, secondMissing.Select(key => keyDic[key]).ToArray());
                         //过滤掉 null 项，并加入缓存
-                        cache.SetBatch(dbItems.Where(item => !AbstractCache.IsDefault(item)), 
-                            key => option.GetCacheKey(param1, param2, option.EntityKeySelector(key)), 
-                            option.SecondesToLive);
+                        OnSetCacheBatch(cache, dbItems.Where(item => !AbstractCache.IsDefault(item)), key => option.GetCacheKey(param1, param2, option.EntityKeySelector(key)), option.SecondesToLive);
                         cacheItems.AddRange(dbItems);
                     }
                 }
@@ -264,5 +277,6 @@ namespace Projects.Tool
             //按目标序列输出
             return cacheItems.OrderBy(entity => option.EntityKeySelector(entity), keys);
         }
+        #endregion
     }
 }

@@ -68,28 +68,28 @@ namespace Projects.Tool
         public virtual T Get<T>(string key)
         {
             T value = GetInner<T>(key);
-            //TraceCache(key, IsDefault(value) ? 0 : 1);
+            TraceCache(key, IsDefault(value) ? 0 : 1);
             return value;
         }
 
-        //protected virtual void TraceCache(string key, int missing)
-        //{
-        //    if (ProfilerContext.Current.Enabled)
-        //    {
-        //        bool isLocal = this is HttpContextCache || this is AspnetCache || this is StaticCache;
-        //        ProfilerContext.Current.Trace(isLocal ? "localcache" : "cache", String.Format("[{0}] @{3} {2}/1\r\n{1} ", GetType().Name, key, missing, CacheName));
-        //    }
-        //}
+        protected virtual void TraceCache(string key, int missing)
+        {
+            if (ProfilerContext.Current.Enabled)
+            {
+                bool isLocal = this is HttpContextCache || this is AspnetCache || this is StaticCache;
+                ProfilerContext.Current.Trace(isLocal ? "localcache" : "cache", String.Format("[{0}] @{3} {2}/1\r\n{1} ", GetType().Name, key, missing, CacheName));
+            }
+        }
 
-        //protected virtual void TraceCache(IEnumerable<string> keys, int missing)
-        //{
-        //    if (ProfilerContext.Current.Enabled)
-        //    {
-        //        bool isLocal = this is HttpContextCache || this is AspnetCache || this is StaticCache;
-        //        int count = keys.Count();
-        //        ProfilerContext.Current.Trace(isLocal ? "localcache" : "cache", String.Format("[{0}] @{4} {2}/{3}\r\n{1} ", GetType().Name, String.Join(",", keys), count - missing, count, CacheName));
-        //    }
-        //}
+        protected virtual void TraceCache(IEnumerable<string> keys, int missing)
+        {
+            if (ProfilerContext.Current.Enabled)
+            {
+                bool isLocal = this is HttpContextCache || this is AspnetCache || this is StaticCache;
+                int count = keys.Count();
+                ProfilerContext.Current.Trace(isLocal ? "localcache" : "cache", String.Format("[{0}] @{4} {2}/{3}\r\n{1} ", GetType().Name, String.Join(",", keys), count - missing, count, CacheName));
+            }
+        }
 
         protected virtual DateTime CurrentTime
         {
@@ -117,7 +117,7 @@ namespace Projects.Tool
                     missings.Add(key);
             }
             missingKeys = missings.ToArray();
-            //TraceCache(keys, missings.Count);
+            TraceCache(keys, missings.Count);
             return items;
         }
 

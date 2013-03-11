@@ -5,24 +5,21 @@ using System.Text;
 
 namespace Projects.Tool
 {
-    /// <summary>
-    /// 缓存域的通用方法类
-    /// </summary>
-	internal class CacheDomainUtil
-	{
-        public  static  string CreateCacheName<TEntity>()
+    internal class CacheDomainUtil
+    {
+        public static string CreateCacheName<TEntity>()
         {
-            return GetTypeName(typeof (TEntity));
+            return GetTypeName(typeof(TEntity));
         }
 
-        public  static  string CreateCacheName<TEntity,TKey>()
+        public static string CreateCacheName<TEntity, TKey>()
         {
-            return GetTypeName(typeof (TEntity));
+            return GetTypeName(typeof(TEntity));
         }
 
-        public  static  string CreateCacheName<TEntity,TParam,TKey>()
+        public static string CreateCacheName<TEntity, TParam, TKey>()
         {
-            return GetTypeName(typeof (TEntity)) + ":" + GetTypeName(typeof(TParam));
+            return GetTypeName(typeof(TEntity)) + ":" + GetTypeName(typeof(TParam));
         }
 
         public static string CreateCacheName<TEntity, TParam1, TParam2, TKey>()
@@ -50,16 +47,11 @@ namespace Projects.Tool
             return CreateCacheName<TEntity, TParam1, TParam2, TKey>() + ":{0}:{1}:{2}";
         }
 
-        /// <summary>
-        /// 获取类型的名称
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        static  string GetTypeName(Type type)
+        static string GetTypeName(Type type)
         {
             if (type.IsGenericType)
                 return type.FullName + ":" + String.Join(":", type.GetGenericArguments().Select(o => o.Name));
             return type.FullName;
         }
-	}
+    }
 }

@@ -26,14 +26,21 @@ namespace Projects.Tool
 
         protected override T GetInner<T>(string key)
         {
+            //Context.Items 为 hashtable
             if (Enabled)
-                return (T) Context.Items[key];
+            {
+                var data = Context.Items[key];
+                if (data == null)
+                    return default(T);
+
+                return (T)data;
+            }
             return default(T);
         }
 
         protected override void RemoveInner(string key)
         {
-            if(Enabled)
+            if (Enabled)
                 Context.Items.Remove(key);
         }
     }

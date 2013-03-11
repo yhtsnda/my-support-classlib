@@ -38,11 +38,11 @@ namespace Projects.Tool
         }
 
         /// <summary>
-        /// 获取纪元时间，可以作为数据库日期字段的默认值
+        /// 获取纪元时间，可以作为数据库日期字段的默认值(1970-1-1 00:00:01)
         /// </summary>
         public static DateTime Null
         {
-            get { return UnixEpochDateTime; }
+            get { return UnixEpochDateTime.AddHours(12); }
         }
 
         /// <summary>
@@ -132,11 +132,10 @@ namespace Projects.Tool
 
                 isSending = true;
             }
-
-            var timeUrl = ToolSection.Instance.TryGetValue("time/url");
-            if (!String.IsNullOrEmpty(timeUrl))
+            try
             {
-                try
+                var timeUrl = ToolSection.Instance.TryGetValue("time/url");
+                if (!String.IsNullOrEmpty(timeUrl))
                 {
                     ////TimeSpan diff = DateTime.Now.ToUniversalTime() - NetworkTime.UnixEpochDateTime;
                     ////var tm = (long)Math.Floor(diff.TotalMilliseconds);
@@ -155,14 +154,16 @@ namespace Projects.Tool
                     var remoteTimestamp = Int64.Parse(vs[1]);
                     timeDiff = TimeSpan.FromMilliseconds(remoteTimestamp - ((endTimestamp + beginTimestamp) / 2));
                 }
-                catch (Exception)
-                { 
-                }
             }
-
-            lock (syncLocker)
+            catch (Exception ex)
             {
-                isSending = false;
+            }
+            finally
+            {
+                lock (syncLocker)
+                {
+                    isSending = false;
+                }
             }
         }
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
-
 namespace Projects.Tool.Util
 {
     public class StringUtil
@@ -49,7 +48,6 @@ namespace Projects.Tool.Util
             }
             return sb.ToString();
         }
-
         public static string GetUniqueIdentifier(int length)
         {
             int maxSize = length;
@@ -117,6 +115,6 @@ namespace Projects.Tool.Util
             {
                 return DateTime.MinValue;
             }
-        }  
+        } 
     }
 }

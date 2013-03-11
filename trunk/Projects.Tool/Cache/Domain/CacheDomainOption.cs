@@ -5,52 +5,30 @@ using System.Text;
 
 namespace Projects.Tool
 {
-    /// <summary>
-    /// 缓存域配置
-    /// </summary>
-    internal abstract class CacheDomainOption
+    public abstract class CacheDomainOption
     {
-        /// <summary>
-        /// 缓存名称
-        /// </summary>
         public string CacheName { get; set; }
 
-        /// <summary>
-        /// 缓存键格式
-        /// </summary>
         public string CacheKeyFormat { get; set; }
 
-        /// <summary>
-        /// 缓存存在时间
-        /// </summary>
         public int SecondesToLive { get; set; }
 
-        /// <summary>
-        /// 是否允许上下文缓存
-        /// </summary>
         public bool ContextCacheEnabled { get; set; }
 
-        /// <summary>
-        /// 获取缓存的全名
-        /// </summary>
-        /// <returns></returns>
         public virtual string GetCacheFullName()
         {
             return CacheName;
         }
 
-        /// <summary>
-        /// 获取缓存键格式
-        /// </summary>
-        /// <returns></returns>
         protected virtual string GetCacheKeyFormat()
         {
             return CacheKeyFormat;
         }
     }
 
-    internal class  CacheDomainOption<TEntity> : CacheDomainOption
+    public class CacheDomainOption<TEntity> : CacheDomainOption
     {
+
         public Func<TEntity> MissingItemHandler { get; set; }
 
         public override string GetCacheFullName()
@@ -68,8 +46,8 @@ namespace Projects.Tool
             return GetCacheFullName();
         }
     }
-    
-    internal class CacheDomainOption<TEntity, TKey> : CacheDomainOption
+
+    public class CacheDomainOption<TEntity, TKey> : CacheDomainOption
     {
         public Func<TEntity, TKey> EntityKeySelector { get; set; }
 
@@ -107,7 +85,7 @@ namespace Projects.Tool
         }
     }
 
-    internal class CacheDomainOption<TEntity, TParam, TKey> : CacheDomainOption
+    public class CacheDomainOption<TEntity, TParam, TKey> : CacheDomainOption
     {
         public Func<TEntity, TKey> EntityKeySelector { get; set; }
 
@@ -146,7 +124,7 @@ namespace Projects.Tool
         }
     }
 
-    internal class CacheDomainOption<TEntity, TParam1, TParam2, TKey> : CacheDomainOption
+    public class CacheDomainOption<TEntity, TParam1, TParam2, TKey> : CacheDomainOption
     {
         public Func<TEntity, TKey> EntityKeySelector { get; set; }
 

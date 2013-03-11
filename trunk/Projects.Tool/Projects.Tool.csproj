@@ -72,6 +72,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -93,6 +94,13 @@
     <Compile Include="Cache\Caches\AbstractCache.cs" />
     <Compile Include="Cache\Caches\AspnetCache.cs" />
     <Compile Include="Cache\Caches\BlankCache.cs" />
+    <Compile Include="Cache\Caches\CacheUtil.cs" />
+    <Compile Include="Cache\Caches\SyncAspnetCache.cs" />
+    <Compile Include="Cache\Caches\SyncCacheHandler.cs" />
+    <Compile Include="Cache\Domain\PairKeyCacheDomain.cs" />
+    <Compile Include="Cache\Domain\SingleKeyCacheDomain.cs" />
+    <Compile Include="Cache\Domain\SingletonCacheDomain.cs" />
+    <Compile Include="Cache\Domain\TripletKeyCacheDomain.cs" />
     <Compile Include="Extend\CacheExtend.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -125,10 +133,19 @@
     <Compile Include="Extend\StringExtend.cs" />
     <Compile Include="JsonProvider\JsonConverterProvider.cs" />
     <Compile Include="JsonProvider\PublicContractResolver.cs" />
+    <Compile Include="Lock\ILock.cs" />
+    <Compile Include="Lock\ILockFactory.cs" />
+    <Compile Include="Lock\LockManager.cs" />
+    <Compile Include="Lock\NullLockFactory.cs" />
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Log\ILogFactory.cs" />
     <Compile Include="Log\LogManager.cs" />
     <Compile Include="Log\NullLoggerFactory.cs" />
+    <Compile Include="OAuth\OAuthAccessToken.cs" />
+    <Compile Include="OAuth\OAuthClient.cs" />
+    <Compile Include="OAuth\OAuthClientConfig.cs" />
+    <Compile Include="OAuth\OAuthException.cs" />
+    <Compile Include="OAuth\OAuthNetworkService.cs" />
     <Compile Include="Pager\IPagedList.cs" />
     <Compile Include="Pager\PagedList.cs" />
     <Compile Include="Pager\PageLinqExtensions.cs" />
@@ -136,6 +153,13 @@
     <Compile Include="Pager\PagerHelper.cs" />
     <Compile Include="Pager\PagerItem.cs" />
     <Compile Include="Pager\PagerOptions.cs" />
+    <Compile Include="Profiler\ProfilerContext.cs" />
+    <Compile Include="Profiler\ProfilerData.cs" />
+    <Compile Include="Profiler\ProfilerItem.cs" />
+    <Compile Include="Profiler\ProfilerModule.cs" />
+    <Compile Include="Profiler\ProfilerUtil.cs" />
+    <Compile Include="Profiler\ProfileStatus.cs" />
+    <Compile Include="Profiler\TraceItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\PagingResult.cs" />
     <Compile Include="Result\ResultCode.cs" />

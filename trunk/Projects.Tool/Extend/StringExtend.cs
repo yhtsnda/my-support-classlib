@@ -49,11 +49,11 @@ namespace System.Linq
         /// </summary>
         public static string SubBytesString(this string value, int length)
         {
-            if (Encoding.Default.GetByteCount(value) <= length * 2)
+            if (Encoding.Default.GetByteCount(value) <= length)
                 return value;
 
             ASCIIEncoding ascii = new ASCIIEncoding();
-            int tempLen = 0; 
+            int tempLen = 0;
             string tempString = String.Empty;
             byte[] s = ascii.GetBytes(value);
             for (int i = 0; i < s.Length; i++)
@@ -63,12 +63,14 @@ namespace System.Linq
                 else
                     tempLen += 1;
 
+                if (tempLen > length) break;
                 tempString += value.Substring(i, 1);
-                if (tempLen >= (length - 1) * 2) break;
+
             }
-            //如果截过则加上半个省略号     
-            if (System.Text.Encoding.Default.GetBytes(value).Length > length)
+
+            if (Encoding.Default.GetByteCount(value) > length)
                 tempString += "...";
+
             return tempString;
         }
 
