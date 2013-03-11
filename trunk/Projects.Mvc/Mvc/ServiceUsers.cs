@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 using Projects.Tool.Util;
 
-namespace Projects.Mvc
+namespace Projects.Framework.Web
 {
     /// <summary>
     /// 允许调用WebService的用户列表
