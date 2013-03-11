@@ -200,6 +200,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Projects.Demo.Business\Projects.Demo.Business.csproj">
+      <Project>{cca493d4-9d6d-4b89-b24f-358dfdf68d24}</Project>
+      <Name>Projects.Demo.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Projects.Framework\Projects.Framework.csproj">
+      <Project>{0352cd0d-6487-45f2-ac4b-d566b8001631}</Project>
+      <Name>Projects.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Projects.Mvc\Projects.Framework.Web.csproj">
       <Project>{c6a6aee8-a78e-48ae-9e9f-c8354456d84b}</Project>
       <Name>Projects.Framework.Web</Name>
