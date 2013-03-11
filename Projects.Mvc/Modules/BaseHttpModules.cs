@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace Projects.Mvc
+namespace Projects.Framework.Web
 {
     /// <summary>
     /// 自定义HTTP模块的基础类
