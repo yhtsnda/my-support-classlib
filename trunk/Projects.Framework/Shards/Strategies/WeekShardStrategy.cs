@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Projects.Tool;
+using Projects.Tool.Shards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using Projects.Tool;
 
 namespace Projects.Framework.Shards
 {
@@ -30,7 +30,7 @@ namespace Projects.Framework.Shards
             debug = attributes.TryGetValue("debug") == "true";
         }
 
-        public override PartitionId GetPartitionId(ShardParams shardParams)
+        public override PartitionId GetPartitionId(Tool.ShardParams shardParams)
         {
             DateTime nowtime = DateTimeExtend.FromUnixTime(shardParams.Param2);
             string tid;
@@ -46,7 +46,7 @@ namespace Projects.Framework.Shards
             return new PartitionId(table, String.Format(format, tid));
         }
 
-        public override ShardId GetShardId(ShardParams shardParams)
+        public override ShardId GetShardId(Tool.ShardParams shardParams)
         {
             return new ShardId(shard);
         }

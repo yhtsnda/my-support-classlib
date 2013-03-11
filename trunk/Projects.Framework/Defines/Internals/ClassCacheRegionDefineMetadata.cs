@@ -10,6 +10,10 @@ namespace Projects.Framework
     /// </summary>
     public class ClassCacheRegionDefineMetadata
     {
+        private ClassCacheRegionDefineMetadata()
+        {
+        }
+
         /// <summary>
         /// 实体类型
         /// </summary>
@@ -24,10 +28,6 @@ namespace Projects.Framework
         /// 获取区域参数的委托
         /// </summary>
         public Func<object, object> RegionValueFunc { get; private set; }
-
-        private ClassCacheRegionDefineMetadata()
-        {
-        }
 
         /// <summary>
         /// 根据对象获取缓存区域的键

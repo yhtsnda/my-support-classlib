@@ -2,29 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 
 namespace Projects.Framework
 {
     /// <summary>
-    /// 自定义类型定义基类
+    /// 进行类型扩展定义的定义基类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     public abstract class ClassDefine<TEntity> : ICacheMetadataProvider
     {
-        private const string DEFAULT_REGION_NAME = "_default_";
-        private ClassDefineMetadata mMetadata = new ClassDefineMetadata(typeof(TEntity));
+        const string DefaultRegionName = "_default_";
+
+        ClassDefineMetadata metadata = new ClassDefineMetadata(typeof(TEntity));
 
         public void Id(Expression<Func<TEntity, object>> memberExpression)
         {
-            mMetadata.IdMember = ReflectionHelper.GetMember(memberExpression.Body);
+            metadata.IdMember = ReflectionHelper.GetProperty(memberExpression.Body);
+            Map(memberExpression);
         }
 
+        /// <summary>
+        /// 表示对象支持缓存
+        /// </summary>
         public void Cache()
         {
-            mMetadata.IsCacheable = true;
+            metadata.IsCacheable = true;
         }
 
+        /// <summary>
+        /// 定义对象为缓存区域
+        /// </summary>
         public void CacheRegion()
         {
             CacheRegion(null, null);
@@ -32,7 +41,7 @@ namespace Projects.Framework
 
         public void Table(string table)
         {
-            mMetadata.Table = table;
+            metadata.Table = table;
         }
 
         /// <summary>
@@ -41,12 +50,27 @@ namespace Projects.Framework
         /// <param name="dependProperty"></param>
         public void CacheRegion(string regionName, Func<TEntity, object> regionValueFunc)
         {
-            regionName = regionName ?? DEFAULT_REGION_NAME;
+            regionName = regionName ?? DefaultRegionName;
 
-            if (mMetadata.CacheRegionDefines.ContainsKey(regionName))
+            if (metadata.CacheRegionDefines.ContainsKey(regionName))
                 throw new ArgumentException("已经定义了命名为 {0} 的缓存区域。", regionName);
 
-            mMetadata.CacheRegionDefines.Add(regionName, ClassCacheRegionDefineMetadata.Create<TEntity, TEntity>(regionName, regionValueFunc));
+            metadata.CacheRegionDefines.Add(regionName, ClassCacheRegionDefineMetadata.Create<TEntity, TEntity>(regionName, regionValueFunc));
+        }
+
+        /// <summary>
+        /// 定义数据属性
+        /// </summary>
+        /// <param name="memberExpr"></param>
+        public void Map(Expression<Func<TEntity, object>> memberExpr)
+        {
+            var property = ReflectionHelper.GetProperty(memberExpr.Body);
+            if (metadata.DataProperties.Contains(property))
+                throw new PlatformException("类型 {1} 属性 {0} 已经映射。", property.Name, typeof(TEntity));
+            if (!property.CanRead || !property.CanWrite)
+                throw new PlatformException("领域对象的数据属性必须是可读可写，但可以使用protected/internal。");
+
+            metadata.DataProperties.Add(property);
         }
 
         /// <summary>
@@ -55,14 +79,25 @@ namespace Projects.Framework
         /// <typeparam name="TJoin"></typeparam>
         /// <param name="memberExpression"></param>
         /// <returns></returns>
-        public ClassJoinDefine<TEntity, TJoin> JoinOne<TJoin>(
-            Expression<Func<TEntity, TJoin>> memberExpression) where TJoin : class
+        public ClassJoinOneDefine<TEntity, TJoin> JoinOne<TJoin>(
+            Expression<Func<TEntity, TJoin>> memberExpr,
+            Func<TEntity, ISpecification<TJoin>, ISpecification<TJoin>> joinExpr) where TJoin : class
         {
-            var method = ReflectionHelper.GetMethod(memberExpression.Body);
-            if (method == null)
-                throw new ArgumentNullException("method");
+            var member = GetMember(memberExpr);
 
-            return new ClassJoinDefine<TEntity, TJoin>(ClassJoinType.HasOne, method, mMetadata);
+            return new ClassJoinOneDefine<TEntity, TJoin>(metadata, member, joinExpr);
+        }
+
+        /// <summary>
+        /// 定义单一对象的对象关系。(使用外键）
+        /// </summary>
+        public ClassJoinOneDefine<TEntity, TJoin> JoinForeign<TJoin>(
+            Expression<Func<TEntity, TJoin>> memberExpr,
+            Action<TEntity, HasOneByForeignKeyDefine> foreignKeyDefine) where TJoin : class
+        {
+            var member = GetMember(memberExpr);
+
+            return new ClassJoinOneDefine<TEntity, TJoin>(metadata, member, foreignKeyDefine);
         }
 
         /// <summary>
@@ -71,22 +106,33 @@ namespace Projects.Framework
         /// <typeparam name="TJoin"></typeparam>
         /// <param name="memberExpression"></param>
         /// <returns></returns>
-        public ClassJoinDefine<TEntity, TJoin> JoinMany<TJoin>(
-            Expression<Func<TEntity, IEnumerable<TJoin>>> memberExpression) where TJoin : class
+        public ClassJoinManyDefine<TEntity, TJoin> JoinMany<TJoin>(
+            Expression<Func<TEntity, IEnumerable<TJoin>>> memberExpr,
+            Func<TEntity, ISpecification<TJoin>, ISpecification<TJoin>> joinExpr
+            ) where TJoin : class
         {
-            var method = ReflectionHelper.GetMethod(memberExpression.Body);
-            if (method == null)
-                throw new ArgumentNullException("method");
+            var member = GetMember(memberExpr);
+            return new ClassJoinManyDefine<TEntity, TJoin>(metadata, member, joinExpr);
+        }
 
-            return new ClassJoinDefine<TEntity, TJoin>(ClassJoinType.HasMany, method, mMetadata);
+        MemberInfo GetMember(LambdaExpression memberExpr)
+        {
+            var member = (MemberInfo)ReflectionHelper.GetProperty(memberExpr.Body);
+            if (member == null)
+                member = (MemberInfo)ReflectionHelper.GetMethod(memberExpr.Body);
+
+            if (member == null)
+                throw new ArgumentNullException("member");
+
+            return member;
         }
 
         ClassDefineMetadata ICacheMetadataProvider.GetCacheMetadata()
         {
-            if (mMetadata.IsCacheable && mMetadata.IdMember == null)
+            if (metadata.IsCacheable && metadata.IdMember == null)
                 throw new ArgumentException("当使用对象缓存必须指定主键属性。");
 
-            return mMetadata;
+            return metadata;
         }
     }
 }

@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-
 using Projects.Tool;
-using Projects.Framework.Shards;
 
-namespace Projects.Framework.Specification
+namespace Projects.Framework
 {
     /// <summary>
     /// 规约扩展

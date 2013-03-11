@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Castle.DynamicProxy;
+using Projects.Tool;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using Castle.DynamicProxy;
-using Projects.Tool;
 
 namespace Projects.Framework
 {
@@ -14,7 +13,7 @@ namespace Projects.Framework
 
         IInvocation Invocation { get; }
 
-        ClassDefineMetadata CacheMetadata { get; }
+        ClassDefineMetadata DefineMetadata { get; }
 
         string CacheKey { get; }
 

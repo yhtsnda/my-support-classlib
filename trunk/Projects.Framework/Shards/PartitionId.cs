@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Projects.Framework.Shards
+namespace Projects.Tool.Shards
 {
     /// <summary>
     /// 分表的标识

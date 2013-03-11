@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Projects.Tool.Reflection;
 
-namespace Projects.Framework.Specification
+namespace Projects.Framework
 {
     /// <summary>
     /// 规约对象的工厂
@@ -17,8 +18,8 @@ namespace Projects.Framework.Specification
         /// <returns></returns>
         public static ISpecification<T> Create<T>()
         {
-            //return RepositoryFramework.CreateSpecification<T>();
-            return DependencyResolver.Resolve<ISpecificationProvider>().CreateSpecification<T>();
+            return RepositoryFramework.CreateSpecification<T>();
+            //return DependencyResolver.Resolve<ISpecificationProvider>().CreateSpecification<T>();
         }
     }
 }

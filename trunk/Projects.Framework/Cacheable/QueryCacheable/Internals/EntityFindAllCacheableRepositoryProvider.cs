@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Castle.DynamicProxy;
+using Projects.Tool;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using Castle.DynamicProxy;
-using Projects.Tool;
-using Projects.Framework.Specification;
 
 namespace Projects.Framework
 {
@@ -20,21 +18,21 @@ namespace Projects.Framework
 
         public override IQueryTimestamp GetCacheData()
         {
-            return CacheManager.GetCacher(CacheMetadata.EntityType).Get<ListCacheData>(CacheKey);
+            return RepositoryFramework.GetCacher(DefineMetadata).Get<ListCacheData>(CacheKey);
         }
 
         public override void ProcessCache(IQueryTimestamp cacheData)
         {
             var cd = (ListCacheData)cacheData;
             IRepository<TEntity> repository = (IRepository<TEntity>)Invocation.InvocationTarget;
-            Invocation.ReturnValue = repository.GetList(cd.ShardParams, cd.Ids.Cast<int>().ToArray());
+            Invocation.ReturnValue = repository.GetList(cd.ShardParams, cd.Ids);
         }
 
         public override bool ProcessSource()
         {
-            var metadata = CacheMetadata;
+            var metadata = DefineMetadata;
             Invocation.Proceed();
-            ICache cache = CacheManager.GetCacher(CacheMetadata.EntityType);
+            ICache cache = RepositoryFramework.GetCacher(metadata);
 
             //IList接口
             IList items = (IList)Invocation.ReturnValue;

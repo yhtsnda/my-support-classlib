@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Projects.Framework.Specification
+namespace Projects.Framework
 {
     /// <summary>
     /// 排序规则

@@ -6,7 +6,7 @@ using System.Text;
 namespace Projects.Framework
 {
     /// <summary>
-    /// 领域对象验证的接口
+    /// 领域对象验证接口
     /// </summary>
     public interface IValidatable
     {

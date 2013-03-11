@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminUsageAttribute.cs" />
+    <Compile Include="Bootstrap\Bootstrapper.cs" />
+    <Compile Include="Bootstrap\IBootstrapperTask.cs" />
+    <Compile Include="Bootstrap\IStartupTask.cs" />
     <Compile Include="Cacheable\CacheData\CacheData.cs" />
     <Compile Include="Cacheable\CacheData\CacheKeyGenerator\CacheKeyUtil.cs" />
     <Compile Include="Cacheable\CacheData\CacheKeyGenerator\ConstantExpressionVisitor.cs" />
@@ -56,11 +60,15 @@
     <Compile Include="Cacheable\CacheData\ICacheKeySupport.cs" />
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\EntityInterceptor.cs" />
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\HasManyClassJoinProcesser.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\HasOneByForeignKeyClassJoinProcesser.cs" />
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\HasOneClassJoinProcesser.cs" />
+    <Compile Include="Cacheable\DependCacheDomains\CacheDependDefine.cs" />
+    <Compile Include="Cacheable\DependCacheDomains\DependCacheDomain.cs" />
+    <Compile Include="Cacheable\DependCacheDomains\PairKeyDependCacheDomain.cs" />
+    <Compile Include="Cacheable\DependCacheDomains\SingleKeyDependCacheDomain.cs" />
     <Compile Include="Cacheable\QueryCacheable\IEntityDefineSupport.cs" />
     <Compile Include="Cacheable\QueryCacheable\IRepositoryCacheable.cs" />
     <Compile Include="Cacheable\QueryCacheable\RepositoryExtend.cs" />
-    <Compile Include="Cacheable\CommonCacheable\CacheDependencyResolver.cs" />
     <Compile Include="Cacheable\QueryCacheable\Internals\AbstractCacheableRepositoryProvider.cs" />
     <Compile Include="Cacheable\QueryCacheable\Internals\CacheableRepositoryInterceptor.cs" />
     <Compile Include="Cacheable\QueryCacheable\Internals\CommonCacheableRepositoryProvider.cs" />
@@ -73,16 +81,60 @@
     <Compile Include="Cacheable\CacheData\ListCacheData.cs" />
     <Compile Include="Cacheable\CacheData\PagingCacheData.cs" />
     <Compile Include="Cacheable\CacheData\QueryCacheData.cs" />
+    <Compile Include="Commands\CommandBus.cs" />
+    <Compile Include="Commands\DefaultCommandBus.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandBus.cs" />
+    <Compile Include="Commands\ICommandExecutor.cs" />
+    <Compile Include="Configurations\CommandConfiguation.cs" />
+    <Compile Include="Configurations\FrameworkConfiguation.cs" />
+    <Compile Include="Configurations\InterceptorConfiguation.cs" />
+    <Compile Include="Configurations\MetadataConfiguration.cs" />
+    <Compile Include="Configurations\RepositoryConfiguation.cs" />
+    <Compile Include="Configurations\ServiceConfiguation.cs" />
+    <Compile Include="Configurations\ShardConfiguration.cs" />
+    <Compile Include="Containers\Container.cs" />
+    <Compile Include="Containers\DependencyResolver.cs" />
+    <Compile Include="Containers\IDependencyContainer.cs" />
+    <Compile Include="Containers\IDependencyRegister.cs" />
+    <Compile Include="Containers\IDependencyResolver.cs" />
+    <Compile Include="DataContext.cs" />
+    <Compile Include="Defines\CacheRegion.cs" />
+    <Compile Include="Defines\CascadeImpl.cs" />
+    <Compile Include="Defines\CascadeType.cs" />
     <Compile Include="Defines\ClassDefine.cs" />
     <Compile Include="Defines\ClassJoinCacheDefine.cs" />
     <Compile Include="Defines\ClassJoinDefine.cs" />
-    <Compile Include="Defines\Internals\CacheRegion.cs" />
+    <Compile Include="Defines\ClassJoinManyCascadeDefine.cs" />
+    <Compile Include="Defines\ClassJoinManyDefine.cs" />
+    <Compile Include="Defines\ClassJoinOneCascadeDefine.cs" />
+    <Compile Include="Defines\ClassJoinOneDefine.cs" />
+    <Compile Include="Defines\ClassJoinType.cs" />
+    <Compile Include="Defines\HasOneByForeignKeyDefine.cs" />
+    <Compile Include="Defines\Internals\CascadeJoinManyProcessor.cs" />
+    <Compile Include="Defines\Internals\CascadeJoinOneProcessor.cs" />
     <Compile Include="Defines\Internals\ClassCacheRegionDefineMetadata.cs" />
     <Compile Include="Defines\Internals\ClassDefineMetadata.cs" />
+    <Compile Include="Defines\Internals\ClassJoinCacheDefineMetadata.cs" />
+    <Compile Include="Defines\Internals\ClassJoinCacheDependDefineMetadata.cs" />
+    <Compile Include="Defines\Internals\ClassJoinCascadeDefineMetadata.cs" />
     <Compile Include="Defines\Internals\ClassJoinDefineMetadata.cs" />
-    <Compile Include="Defines\Internals\ClassJoinType.cs" />
     <Compile Include="Defines\Internals\ICacheMetadataProvider.cs" />
-    <Compile Include="Defines\Internals\IClassJoinProcesser.cs" />
+    <Compile Include="Defines\Internals\IClassJoinCascadeProcessor.cs" />
+    <Compile Include="Defines\Internals\IClassJoinDataProcesser.cs" />
+    <Compile Include="GlobalConfig.cs" />
+    <Compile Include="IService.cs" />
+    <Compile Include="Persistences\AbstractPersister.cs" />
+    <Compile Include="Persistences\DataSourcePersister.cs" />
+    <Compile Include="Persistences\DataWrapper.cs" />
+    <Compile Include="Persistences\IPersister.cs" />
+    <Compile Include="Persistences\PersisterImpl.cs" />
+    <Compile Include="Persistences\SecondLevelPersister.cs" />
+    <Compile Include="Persistences\SessionCache.cs" />
+    <Compile Include="Persistences\SessionPersister.cs" />
+    <Compile Include="PlatformException.cs" />
+    <Compile Include="Proxys\CollectionProxy.cs" />
+    <Compile Include="Proxys\EntityProxy.cs" />
     <Compile Include="RepositoryFrameworks\LazyloadSupportException.cs" />
     <Compile Include="RepositoryFrameworks\PersistentMethodAttribute.cs" />
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\IRepositoryMethodInvocation.cs" />
@@ -90,23 +142,35 @@
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\RepositoryGetMethodInvocation.cs" />
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor.cs" />
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\RepositoryPersistentMethodInvocation.cs" />
+    <Compile Include="Shards\AbstractRepository.cs" />
+    <Compile Include="Shards\IShardedRepository.cs" />
+    <Compile Include="Shards\ShardedRepository.cs" />
     <Compile Include="Shards\Strategies\ModShardStrategy.cs" />
     <Compile Include="Shards\Strategies\NoShardStrategy.cs" />
     <Compile Include="Shards\Strategies\WeekShardStrategy.cs" />
+    <Compile Include="Specification\Linqs\LinqDatabase.cs" />
+    <Compile Include="Specification\Linqs\LinqShardSession.cs" />
+    <Compile Include="Specification\Linqs\LinqShardSessionFactory.cs" />
+    <Compile Include="Specification\Linqs\LinqSpecification.cs" />
+    <Compile Include="Specification\Linqs\LinqSpecificationProvider.cs" />
     <Compile Include="Specification\Orderable.cs" />
     <Compile Include="Specification\QueryOrderExpression.cs" />
     <Compile Include="Specification\SpecificationFactory.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="Utils\EntityUtil.cs" />
     <Compile Include="Utils\PrettyTypeExtend.cs" />
+    <Compile Include="Utils\Property\DefaultAccessValues.cs" />
     <Compile Include="Utils\Property\DefaultGetter.cs" />
     <Compile Include="Utils\Property\DefaultPropertyAccessor.cs" />
+    <Compile Include="Utils\Property\DefaultSetter.cs" />
+    <Compile Include="Utils\Property\IAccessValues.cs" />
     <Compile Include="Utils\Property\IGetter.cs" />
     <Compile Include="Utils\Property\IPropertyAccessor.cs" />
+    <Compile Include="Utils\Property\ISetter.cs" />
     <Compile Include="Utils\Property\PropertyAccessorFactory.cs" />
     <Compile Include="Interceptors\AbstractRepositoryFrameworkInterceptor.cs" />
     <Compile Include="Interceptors\DefaultRepositoryFrameworkInterceptor.cs" />
     <Compile Include="Interceptors\IRepositoryFrameworkInterceptor.cs" />
-    <Compile Include="Shards\ShardRepository.cs.cs" />
-    <Compile Include="Shards\ShardedRepository.cs.cs" />
     <Compile Include="Shards\Strategies\AbstractShardStrategy.cs" />
     <Compile Include="ActionResult.cs" />
     <Compile Include="Shards\IShardRepository.cs" />
@@ -114,28 +178,30 @@
     <Compile Include="Shards\IShardSessionFactory.cs" />
     <Compile Include="Shards\IShardStrategy.cs" />
     <Compile Include="Shards\PartitionId.cs" />
-    <Compile Include="DefaultDependencyResolver.cs" />
-    <Compile Include="DependencyResolver.cs" />
-    <Compile Include="IDependencyRegister.cs" />
-    <Compile Include="IDependencyResolver.cs" />
     <Compile Include="RepositoryFrameworks\ILifecycle.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ISimpleRepository.cs" />
     <Compile Include="RepositoryFrameworks\IValidatable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryFrameworks\RepositoryConfiguation.cs" />
     <Compile Include="RepositoryFrameworks\RepositoryFramework.cs" />
     <Compile Include="ResultKey.cs" />
     <Compile Include="Shards\ShardConfiguationExtend.cs" />
     <Compile Include="Shards\ShardId.cs" />
-    <Compile Include="SpecificationFactory.cs" />
     <Compile Include="Specification\AbstractSpecification.cs" />
     <Compile Include="Specification\ISpecification.cs" />
     <Compile Include="Specification\ISpecificationProvider.cs" />
     <Compile Include="Specification\QueryOrder.cs" />
     <Compile Include="Specification\SpecificationExtensions.cs" />
+    <Compile Include="Utils\Property\TargetAccessImpl.cs" />
     <Compile Include="Utils\ProxyGeneratorUtil.cs" />
+    <Compile Include="Utils\Proxys\EntityProxyProvider.cs" />
+    <Compile Include="Utils\Proxys\GenericListProxyProvider.cs" />
+    <Compile Include="Utils\Proxys\IProxyProvider.cs" />
+    <Compile Include="Utils\Proxys\PagingResultProxyProvider.cs" />
+    <Compile Include="Utils\Proxys\ProxyProvider.cs" />
+    <Compile Include="Utils\Proxys\SourceEntityProxyProvider.cs" />
     <Compile Include="Utils\ReflectionHelper.cs" />
+    <Compile Include="WebRequestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
@@ -146,9 +212,7 @@
   <ItemGroup>
     <None Include="Projects.Framework.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

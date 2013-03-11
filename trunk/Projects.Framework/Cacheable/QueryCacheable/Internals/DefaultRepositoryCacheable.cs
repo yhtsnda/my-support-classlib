@@ -11,14 +11,29 @@ namespace Projects.Framework
     /// 仓储接口的缓存支持实现
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal class DefaultRepositoryCacheable<T> : IRepositoryCacheable<T> where T : class,IRepository
+    internal class DefaultRepositoryCacheable<T> : IRepositoryCacheable<T>
+        where T : class,IRepository
     {
-        private List<CacheRegion> depends = new List<CacheRegion>();
-        private T resository;
+        List<CacheRegion> depends = new List<CacheRegion>();
+        T resository;
+        string cacheKey;
 
         public DefaultRepositoryCacheable(T resository)
         {
             this.resository = resository;
+            if (resository == null)
+                throw new ArgumentNullException("resository", String.Format("类型 {0} 的仓储并未实现。", typeof(T).FullName));
+        }
+
+        public DefaultRepositoryCacheable(T resository, string cacheKey)
+            : this(resository)
+        {
+            this.cacheKey = cacheKey;
+        }
+
+        public string CacheKey
+        {
+            get { return cacheKey; }
         }
 
         public T Proxy()
@@ -27,9 +42,13 @@ namespace Projects.Framework
 
             var type = typeof(CacheableRepositoryInterceptor<>).MakeGenericType(entityType);
             var interceptor = Projects.Tool.Reflection.FastActivator.Create(type);
+            ICacheableInterceptor ci = (ICacheableInterceptor)interceptor;
+            ci.SetRegions(depends);
+            ci.SetCacheKey(cacheKey);
+
             ((ICacheableInterceptor)interceptor).SetRegions(depends);
 
-            T p = ProxyGeneratorUtil.Instance.CreateInterfaceProxyWithTarget<T>(resository, (IInterceptor)interceptor);
+            T p = ProxyProvider.Generator.CreateInterfaceProxyWithTarget<T>(resository, (IInterceptor)interceptor);
             return p;
         }
 

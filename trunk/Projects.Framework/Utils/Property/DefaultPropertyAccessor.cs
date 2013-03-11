@@ -7,130 +7,122 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 
-using Projects.Tool.Reflection;
-
 namespace Projects.Framework
 {
-    internal class DefaultPropertyAccessor : IPropertyAccessor
+    public class DefaultPropertyAccessor : IPropertyAccessor
     {
-        Type mEntityType;
-        Func<object, object[]> mGetterValuesHandler;
-        Action<object, object[]> mSetterValuesHandler;
-        Func<object, IDictionary> mDictionaryHandler;
-        Dictionary<string, IGetter> mGetters;
-        PropertyInfo[] mProperties;
+        Type entityType;
+        Dictionary<string, IGetter> getters;
+        Dictionary<string, ISetter> setters;
+
+        Func<object, object[]> getDatasHandler;
+        Action<object, object[]> setDatasHandler;
+
+        Func<object, IDictionary> dictionaryHandler;
+
 
         public DefaultPropertyAccessor(Type entityType)
         {
-            this.mEntityType = entityType;
-            var properties = entityType.GetProperties(BindingFlags.Instance | BindingFlags.Public |
-                BindingFlags.NonPublic | BindingFlags.GetProperty).Where(o => o.CanWrite).ToList();
+            this.entityType = entityType;
 
+            var properties = entityType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).ToList();
+            CreateGetters(properties.Where(o => o.CanRead));
+            CreateSetters(properties.Where(o => o.CanWrite));
+
+            var repositoryProperties = properties.Where(o => o.CanRead && o.CanWrite).ToList();
+
+            getDatasHandler = ReflectionHelper.CreateGetDatasHandler(entityType, repositoryProperties);
+            setDatasHandler = ReflectionHelper.CreateSetDatasHandler(entityType, repositoryProperties);
+
+            CreateToDictionary(entityType);
         }
 
-        #region IPropertyAccessor接口实现
         public Type EntityType
         {
-            get { return mEntityType; }
+            get { return entityType; }
         }
 
         public IGetter GetGetter(string propertyName)
         {
-            return mGetters.TryGetValue(propertyName);
+            return getters.TryGetValue(propertyName);
         }
 
-        public object[] GetPropertyValues(object target)
+        public ISetter GetSetter(string propertyName)
         {
-            return mGetterValuesHandler(target);
+            return setters.TryGetValue(propertyName);
         }
 
-        public void SetPropertyValues(object target, object[] values)
+        public Func<object, object[]> GetDatasHandler
         {
-            mSetterValuesHandler(target, values);
+            get { return getDatasHandler; }
+        }
+
+        public Action<object, object[]> SetDatasHandler
+        {
+            get { return setDatasHandler; }
+        }
+
+        public void MergeData(object source, object target)
+        {
+            var values = getDatasHandler(source);
+            setDatasHandler(target, values);
+        }
+
+        void CreateToDictionary(Type entityType)
+        {
+            var fields = entityType.GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+            var param = Expression.Parameter(typeof(object), "target");
+
+            var target = Expression.Variable(entityType, "entity");
+            var dic = Expression.Variable(typeof(Hashtable), "dic");
+            List<Expression> blocks = new List<Expression>();
+
+            //var entity = (type)target;
+            blocks.Add(Expression.Assign(target, Expression.Convert(param, entityType)));
+            //dic = new Hashtable(int);
+            blocks.Add(Expression.Assign(dic, Expression.New(typeof(Hashtable).GetConstructor(new Type[] { typeof(int) }), Expression.Constant(fields.Length))));
+
+            MethodInfo addMethod = typeof(Hashtable).GetMethod("Add");
+            foreach (var field in fields)
+            {
+                blocks.Add(Expression.Call(dic, addMethod,
+                    Expression.Convert(Expression.Constant(field.Name), typeof(object)),
+                    Expression.Convert(Expression.Field(target, field), typeof(object)))
+                    );
+            }
+            LabelTarget returnTarget = Expression.Label(typeof(Hashtable));
+            var returnExpr = Expression.Return(returnTarget, dic);
+
+            blocks.Add(returnExpr);
+            blocks.Add(Expression.Label(returnTarget, Expression.Constant(new Hashtable())));
+
+            var main = Expression.Block(new ParameterExpression[] { target, dic }, blocks);
+            dictionaryHandler = (Func<object, IDictionary>)Expression.Lambda(typeof(Func<object, IDictionary>), main, param).Compile();
+        }
+
+        void CreateGetters(IEnumerable<PropertyInfo> properties)
+        {
+            getters = new Dictionary<string, IGetter>();
+            foreach (var property in properties)
+                getters.Add(property.Name, new DefaultGetter(property));
+        }
+
+        void CreateSetters(IEnumerable<PropertyInfo> properties)
+        {
+            setters = new Dictionary<string, ISetter>();
+            foreach (var property in properties)
+                setters.Add(property.Name, new DefaultSetter(property));
         }
 
         public object CreateInstance()
         {
-            return Projects.Tool.Reflection.FastActivator.Create(mEntityType);
+            return Projects.Tool.Reflection.FastActivator.Create(entityType);
         }
 
-        public IDictionary ToDictionary(object target)
+        public System.Collections.IDictionary ToDictionary(object target)
         {
-            return mDictionaryHandler(target);
+            return dictionaryHandler(target);
         }
-        #endregion 
-
-        #region 私有方法
-        private void CreateGetters(List<PropertyInfo> properties)
-        {
-            mGetters = new Dictionary<string, IGetter>();
-            foreach (var prop in properties)
-                mGetters.Add(prop.Name, new DefaultGetter(prop));
-        }
-
-        /// <summary>
-        /// 创建Setter函数
-        /// </summary>
-        private void CreateSetterValues(Type entityType, List<PropertyInfo> properties)
-        {
-            var param1 = Expression.Parameter(typeof(object), "target");
-            var param2 = Expression.Parameter(typeof(object[]), "values");
-
-            List<Expression> blocks = new List<Expression>();
-            var target = Expression.Variable(entityType, "entity");
-            blocks.Add(Expression.Assign(target, Expression.Convert(param1, entityType)));
-            for (int i = 0; i < properties.Count; i++)
-            {
-                var property = properties[i];
-                var value = Expression.ArrayAccess(param2, Expression.Constant(i));
-                blocks.Add(Expression.Call(target, property.GetSetMethod(true), 
-                    Expression.Convert(value, property.PropertyType)));
-            }
-            var main = Expression.Block(new ParameterExpression[] { target }, blocks);
-            mSetterValuesHandler = (Action<object, object[]>)Expression
-                .Lambda(typeof(Action<object, object[]>), main, param1, param2)
-                .Compile();
-        }
-
-        /// <summary>
-        /// 创建Getter函数
-        /// </summary>
-        private void CreateGetterValues(Type entityType, List<PropertyInfo> properties)
-        {
-            var param = Expression.Parameter(typeof(object), "target");
-
-            var target = Expression.Variable(entityType, "entity");
-            var values = Expression.Variable(typeof(object[]), "values");
-
-            List<Expression> blocks = new List<Expression>();
-            blocks.Add(Expression.Assign(target, Expression.Convert(param, entityType)));
-            blocks.Add(Expression.Assign(values, Expression.NewArrayBounds(typeof(object), 
-                Expression.Constant(properties.Count))));
-
-            for (var i = 0; i < properties.Count; i++)
-            {
-                var left = Expression.ArrayAccess(values, Expression.Constant(i));
-                var right = Expression.Convert(Expression.Property(target, properties[i]), typeof(object));
-                blocks.Add(Expression.Assign(left, right));
-            }
-            LabelTarget returnTarget = Expression.Label(typeof(object[]));
-            var returnExpr = Expression.Return(returnTarget, values);
-
-            blocks.Add(returnExpr);
-            blocks.Add(Expression.Label(returnTarget, Expression.Constant(new object[0])));
-
-            var main = Expression.Block(new ParameterExpression[] { target, values }, blocks);
-            mGetterValuesHandler = (Func<object, object[]>)Expression
-                .Lambda(typeof(Func<object, object[]>), main, param)
-                .Compile();
-        }
-
-        private void CreateToDictionary(Type entityType)
-        {
-            var fields = entityType.GetFields(BindingFlags.Public | BindingFlags.Instance);
-            var properties = entityType.GetProperties(BindingFlags.Public | BindingFlags.Instance | 
-                BindingFlags.GetProperty).ToList();
-        }
-        #endregion
     }
 }

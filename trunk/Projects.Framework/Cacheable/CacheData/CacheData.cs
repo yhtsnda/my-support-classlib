@@ -15,14 +15,12 @@ namespace Projects.Framework
 
         public object Convert(Type type)
         {
+            if (type == null)
+                throw new ArgumentNullException("type");
+
             if (Data != null)
-            {
-                type = ToCacheType(type);
-                var pa = PropertyAccessorFactory.GetPropertyAccess(type);
-                object entity = pa.CreateInstance();
-                pa.SetPropertyValues(entity, Data);
-                return entity;
-            }
+                return EntityUtil.SetValueForCache(type, Data);
+
             return null;
         }
 
@@ -31,22 +29,11 @@ namespace Projects.Framework
             if (entity == null)
                 throw new ArgumentNullException("entity");
 
-            var type = ToCacheType(entity.GetType());
-            var pa = PropertyAccessorFactory.GetPropertyAccess(type);
             CacheData cd = new CacheData()
             {
-                Data = pa.GetPropertyValues(entity)
+                Data = EntityUtil.GetValuesForCache(entity)
             };
             return cd;
-        }
-
-        static Type ToCacheType(Type type)
-        {
-            var metadata = RepositoryFramework.GetDefineMetadata(type);
-            if (metadata != null)
-                return metadata.EntityType;
-
-            return type;
         }
     }
 }

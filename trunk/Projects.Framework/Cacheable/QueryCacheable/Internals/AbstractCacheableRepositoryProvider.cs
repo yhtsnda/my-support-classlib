@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Castle.DynamicProxy;
+using Projects.Tool;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Castle.DynamicProxy;
-using Projects.Tool;
-
 namespace Projects.Framework
 {
-    internal abstract class AbstractCacheableRepositoryProvider<TEntity> : 
-        ICacheableRepositoryProvider<TEntity>
+    internal abstract class AbstractCacheableRepositoryProvider<TEntity> : ICacheableRepositoryProvider<TEntity>
         where TEntity : class
     {
         IInvocation invocation;
@@ -22,7 +20,7 @@ namespace Projects.Framework
             set { invocation = value; }
         }
 
-        public ClassDefineMetadata CacheMetadata
+        public ClassDefineMetadata DefineMetadata
         {
             get
             {
@@ -43,6 +41,10 @@ namespace Projects.Framework
                     cacheKey = RepositoryFramework.CacheKeyGenerator.CreateCacheKey(invocation.Method, invocation.Arguments);
                 return cacheKey;
             }
+            set
+            {
+                cacheKey = value;
+            }
         }
 
         public abstract bool IsMatch();
@@ -51,6 +53,10 @@ namespace Projects.Framework
 
         public abstract void ProcessCache(IQueryTimestamp cacheData);
 
+        /// <summary>
+        /// 处理原始数据
+        /// </summary>
+        /// <returns>数据源是否具备数据</returns>
         public abstract bool ProcessSource();
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 namespace Projects.Framework
 {
     /// <summary>
-    /// 对象的生命周期接口
+    /// 对象生命周期接口
     /// </summary>
     public interface ILifecycle
     {

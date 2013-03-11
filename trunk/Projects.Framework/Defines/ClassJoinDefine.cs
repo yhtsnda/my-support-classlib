@@ -1,57 +1,137 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Linq.Expressions;
 using System.Reflection;
-
-using Projects.Framework.Specification;
+using System.Text;
 
 namespace Projects.Framework
 {
     /// <summary>
     /// 定义对象关联的信息
     /// </summary>
-    public class ClassJoinDefine<TEntity, TJoin> where TJoin : class
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TJoin"></typeparam>
+    public abstract class ClassJoinDefine<TEntity, TJoin> where TJoin : class
     {
-        private ClassDefineMetadata mMetadata;
-        private MethodInfo mMethod;
-        private ClassJoinType mJoinType;
-        private ClassJoinCacheDefine<TEntity, TJoin> mCacheDefine;
+        ClassDefineMetadata metadata;
+        MemberInfo member;
+        ClassJoinType joinType;
+        ClassJoinDefineMetadata joinMetadata;
 
-        internal ClassJoinDefine(ClassJoinType joinType, MethodInfo method, 
-            ClassDefineMetadata metadata)
+        private ClassJoinDefine(ClassDefineMetadata metadata, ClassJoinType joinType, MemberInfo member)
         {
-            this.mJoinType = joinType;
-            this.mMetadata = metadata;
-            this.mMethod = method;
+            this.metadata = metadata;
+            this.joinType = joinType;
+            this.member = member;
+
+            joinMetadata = new ClassJoinDefineMetadata();
+            joinMetadata.JoinName = member.Name;
+
+            var property = member as PropertyInfo;
+            if (property != null)
+            {
+                var getMethod = property.GetGetMethod(true);
+                if (getMethod == null)
+                    throw new PlatformException("类型 {0} 的级联属性 {1} 必须可读。", member.DeclaringType, member.Name);
+
+                joinMetadata.Method = getMethod;
+                joinMetadata.JoinType = MethodJoinType.PropertyGet;
+
+                // set
+                var setMethod = property.GetSetMethod(true);
+                if (setMethod == null)
+                    throw new PlatformException("类型 {0} 的级联属性 {1} 必须可写。", member.DeclaringType, member.Name);
+
+                var setDefine = new ClassJoinDefineMetadata();
+                setDefine.Method = setMethod;
+                setDefine.JoinType = MethodJoinType.PropertySet;
+                setDefine.JoinName = member.Name;
+
+                AddClassJoinDefine(setDefine.Method, setDefine);
+                //metadata.ClassJoinDefines.Add(setDefine.Method, setDefine);
+            }
+            else
+            {
+                joinMetadata.JoinType = MethodJoinType.Method;
+                joinMetadata.Method = (MethodInfo)member;
+            }
+            AddClassJoinDefine(joinMetadata.Method, joinMetadata);
+            //metadata.ClassJoinDefines.Add(joinMetadata.Method, joinMetadata);
         }
 
-        /// <summary>
-        /// 定义对象加载的规约表达式
-        /// </summary>
-        /// <param name="specAction"></param>
-        public ClassJoinCacheDefine<TEntity, TJoin> On(Func<TEntity, ISpecification<TJoin>, 
-            ISpecification<TJoin>> specAction)
+        internal ClassJoinDefine(ClassDefineMetadata metadata, ClassJoinType joinType, MemberInfo member, Action<TEntity, HasOneByForeignKeyDefine> foreignKeyDefine)
+            : this(metadata, joinType, member)
         {
-            var joinDefine = new ClassJoinDefineMetadata()
+            switch (joinType)
             {
-                Method = mMethod
-            };
-            switch (mJoinType)
+                case ClassJoinType.HasOneByForeignKey:
+                    joinMetadata.DataProcesser = new HasOneByForeignKeyClassJoinProcesser<TEntity, TJoin>(foreignKeyDefine, joinMetadata);
+                    break;
+                default:
+                    throw new NotSupportedException();
+            }
+        }
+
+        internal ClassJoinDefine(ClassDefineMetadata metadata, ClassJoinType joinType, MemberInfo member, Func<TEntity, ISpecification<TJoin>, ISpecification<TJoin>> joinExpr)
+            : this(metadata, joinType, member)
+        {
+            switch (joinType)
             {
                 case ClassJoinType.HasOne:
-                    joinDefine.Processer = 
-                        new HasOneClassJoinProcesser<TEntity, TJoin>(specAction, joinDefine);
+                    joinMetadata.DataProcesser = new HasOneClassJoinProcesser<TEntity, TJoin>(joinExpr, joinMetadata);
                     break;
                 case ClassJoinType.HasMany:
-                    joinDefine.Processer = 
-                        new HasManyClassJoinProcesser<TEntity, TJoin>(specAction, joinDefine);
+                    joinMetadata.DataProcesser = new HasManyClassJoinProcesser<TEntity, TJoin>(joinExpr, joinMetadata);
                     break;
+                default:
+                    throw new NotSupportedException();
             }
-
-            this.mMetadata.ClassJoinDefines.Add(mMethod, joinDefine);
-            mCacheDefine = new ClassJoinCacheDefine<TEntity, TJoin>(joinDefine);
-            return mCacheDefine;
         }
+
+        void AddClassJoinDefine(MethodInfo method, ClassJoinDefineMetadata joinMetadata)
+        {
+            InnerAddClassJoinDefine(metadata.EntityType, method, joinMetadata);
+        }
+
+        void InnerAddClassJoinDefine(Type type, MethodInfo method, ClassJoinDefineMetadata joinMetadata)
+        {
+            var innerMethod = type.GetMethod(method.Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, Type.DefaultBinder, method.GetParameters().Select(o => o.ParameterType).ToArray(), null);
+            if (innerMethod != null)
+                metadata.ClassJoinDefines[innerMethod] = joinMetadata;
+            if (type.BaseType != null)
+                InnerAddClassJoinDefine(type.BaseType, method, joinMetadata);
+
+        }
+
+        protected MemberInfo Member
+        {
+            get { return member; }
+        }
+
+        protected ClassJoinDefineMetadata JoinMetadata
+        {
+            get { return joinMetadata; }
+        }
+
+        protected ClassDefineMetadata Metadata
+        {
+            get { return metadata; }
+        }
+
+        protected void OnCascade()
+        {
+            joinMetadata.JoinCascade.CascataType = CascadeType.All;
+            if (member is PropertyInfo)
+                metadata.CascadeProperties.Add((PropertyInfo)member);
+            if (member is MethodInfo)
+                metadata.CascadeMethods.Add((MethodInfo)member);
+        }
+
+        protected void OnCache()
+        {
+            joinMetadata.JoinCache.IsCacheable = true;
+        }
+
     }
 }

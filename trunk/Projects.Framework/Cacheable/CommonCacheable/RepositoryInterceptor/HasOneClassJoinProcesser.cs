@@ -2,54 +2,51 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Reflection;
-
-using Projects.Tool;
-using Projects.Framework.Specification;
+using System.Text;
 
 namespace Projects.Framework
 {
-    internal class HasOneClassJoinProcesser<TEntity, TJoin> : IClassJoinProcesser where TJoin : class
+    internal class HasOneClassJoinProcesser<TEntity, TJoin> : IClassJoinDataProcesser where TJoin : class
     {
-        private ClassJoinDefineMetadata mMetadata;
-        private Func<TEntity, ISpecification<TJoin>, ISpecification<TJoin>> mSpecAction;
+        ClassJoinDefineMetadata metadata;
+        Func<TEntity, ISpecification<TJoin>, ISpecification<TJoin>> specAction;
 
-        public HasOneClassJoinProcesser(
-            Func<TEntity, ISpecification<TJoin>, ISpecification<TJoin>> specAction, 
-            ClassJoinDefineMetadata metadata)
+        public HasOneClassJoinProcesser(Func<TEntity, ISpecification<TJoin>, ISpecification<TJoin>> specAction, ClassJoinDefineMetadata metadata)
         {
-            this.mSpecAction = specAction;
-            this.mMetadata = metadata;
+            this.specAction = specAction;
+            this.metadata = metadata;
         }
 
         public TJoin Process(TEntity entity)
         {
             ISpecification<TJoin> specification = SpecificationFactory.Create<TJoin>();
             IRepository<TJoin> repository = DependencyResolver.Resolve<IRepository<TJoin>>();
-            specification = mSpecAction(entity, specification);
+            if (repository == null)
+                throw new PlatformException("类型 {0} 未实现仓储。", typeof(TJoin).FullName);
+            specification = specAction(entity, specification);
 
-            //如果为主键,则使用Get方式
+            //如果为主键的获取表达式，则使用Get方式。
             object id;
             if (IsIdentityExpression(specification.CriteriaExpression, out id))
                 return repository.Get(specification.ShardParams, id);
 
-            if (mMetadata.IsCacheable)
-            {
-                return repository.Cache()
-                    .Depend(mMetadata.GetCacheRegions(entity))
+            ///缓存查询
+            if (metadata.JoinCache.IsCacheable)
+                return repository
+                    .Cache()
+                    .Depend(metadata.JoinCache.GetCacheRegions(entity))
                     .Proxy()
                     .FindOne(specification);
-            }
             return repository.FindOne(specification);
         }
 
-        object IClassJoinProcesser.Process(object entity)
+        object IClassJoinDataProcesser.Process(object entity)
         {
             return Process((TEntity)entity);
         }
 
-        private bool IsIdentityExpression(Expression<Func<TJoin, bool>> expression, out object value)
+        bool IsIdentityExpression(Expression<Func<TJoin, bool>> expression, out object value)
         {
             value = null;
             var metadata = RepositoryFramework.GetDefineMetadata(typeof(TJoin));
@@ -134,5 +131,4 @@ namespace Projects.Framework
             return base.VisitConstant(node);
         }
     }
-
 }

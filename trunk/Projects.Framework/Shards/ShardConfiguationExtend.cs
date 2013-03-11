@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Projects.Tool.Shards;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using Projects.Framework.Shards;
 
 namespace Projects.Framework
 {
@@ -17,15 +16,13 @@ namespace Projects.Framework
             this.entityType = entityType;
         }
 
-        public ShardConfig ShardStrategy<TShardStrategy>(IDictionary<string, string> attributes = null)
-            where TShardStrategy : IShardStrategy
+        public ShardConfig ShardStrategy<TShardStrategy>(IDictionary<string, string> attributes = null) where TShardStrategy : IShardStrategy
         {
             RepositoryFramework.RegisterShardStragety(entityType, typeof(TShardStrategy), attributes);
             return this;
         }
 
-        public ShardConfig ShardStrategy<TShardStrategy>(object attributes) 
-            where TShardStrategy : IShardStrategy
+        public ShardConfig ShardStrategy<TShardStrategy>(object attributes) where TShardStrategy : IShardStrategy
         {
             var pa = PropertyAccessorFactory.GetPropertyAccess(attributes.GetType());
             var d = pa.ToDictionary(attributes);

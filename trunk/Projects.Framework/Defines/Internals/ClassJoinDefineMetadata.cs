@@ -1,16 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
+using System.Text;
 
 namespace Projects.Framework
 {
+    /// <summary>
+    /// 规约元数据
+    /// </summary>
     public class ClassJoinDefineMetadata
     {
         public ClassJoinDefineMetadata()
         {
-            CacheDepends = new List<ClassCacheRegionDefineMetadata>();
+            JoinCache = new ClassJoinCacheDefineMetadata();
+            JoinCascade = new ClassJoinCascadeDefineMetadata();
+        }
+
+        public MethodJoinType JoinType
+        {
+            get;
+            set;
+        }
+
+        public string JoinName
+        {
+            get;
+            set;
         }
 
         public MethodInfo Method
@@ -19,28 +35,21 @@ namespace Projects.Framework
             set;
         }
 
-        internal IClassJoinProcesser Processer
+        internal IClassJoinDataProcesser DataProcesser
         {
             get;
             set;
         }
 
-        public bool IsCacheable
-        {
-            get;
-            set;
-        }
+        public ClassJoinCacheDefineMetadata JoinCache { get; private set; }
 
-        public List<ClassCacheRegionDefineMetadata> CacheDepends
-        {
-            get;
-            private set;
-        }
+        public ClassJoinCascadeDefineMetadata JoinCascade { get; private set; }
+    }
 
-        public List<CacheRegion> GetCacheRegions(object entity)
-        {
-            return CacheDepends.Select(o => CacheRegion.
-                Create(o.RegionName, o.GetRegionCacheKey(entity))).ToList();
-        }
+    public enum MethodJoinType
+    {
+        PropertyGet,
+        PropertySet,
+        Method
     }
 }
