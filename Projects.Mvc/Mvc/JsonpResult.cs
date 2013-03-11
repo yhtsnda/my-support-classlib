@@ -4,7 +4,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-namespace Projects.Mvc
+
+namespace Projects.Framework.Web
 {
     /// <summary>
     /// jsonp返回message，则封装
