@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Projects.Accesses.Builders
+namespace Projects.Framework.Builders
 {
     /// <summary>
     /// 通用Where子句建立者(SQL Server等)

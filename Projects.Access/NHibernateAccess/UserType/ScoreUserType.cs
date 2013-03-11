@@ -6,7 +6,7 @@ using System.Text;
 using NHibernate;
 using NHibernate.SqlTypes;
 
-namespace Projects.Accesses.NHibernateRepository
+namespace Projects.Framework.NHibernateAccess
 {
     /// <summary>
     /// ScoreUserType

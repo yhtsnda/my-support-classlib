@@ -6,7 +6,7 @@ using System.Reflection;
 
 using Projects.Framework;
 
-namespace Projects.Accesses.Builders
+namespace Projects.Framework.Builders
 {
     /// <summary>
     /// 默认的存储映射解析器

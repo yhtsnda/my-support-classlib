@@ -5,7 +5,7 @@ using System.Text;
 using NHibernate.SqlTypes;
 using NHibernate.UserTypes;
 
-namespace Projects.Accesses.NHibernateRepository
+namespace Projects.Framework.NHibernateAccess
 {
     /// <summary>
     /// AbstractUserType

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Projects.Accesses.Builders
+namespace Projects.Framework.Builders
 {
     /// <summary>
     /// MySQL 的Where Clause Builder

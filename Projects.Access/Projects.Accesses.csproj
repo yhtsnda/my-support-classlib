@@ -43,10 +43,10 @@
       <HintPath>..\Assembly\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\Assembly\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\Assembly\MongoDB.1.3.1\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\Assembly\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\Assembly\MongoDB.1.3.1\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\Assembly\NHibernate.dll</HintPath>
@@ -72,14 +72,14 @@
     <Compile Include="Builders\WhereClauseBuilder.cs" />
     <Compile Include="IBatisNetAccess\IBatisNetSpecification.cs" />
     <Compile Include="IBatisNetAccess\IBatisNetSpecificationProvider.cs" />
-    <Compile Include="MongoAccess\Linq\MongoExpressionTreeVisitor.cs" />
+    <Compile Include="MongoAccess\Linq\MongoExpressionTreeVistor.cs" />
     <Compile Include="MongoAccess\Linq\MongoNodeTypeProvider.cs" />
     <Compile Include="MongoAccess\Linq\MongoQueryExecutor.cs" />
-    <Compile Include="MongoAccess\Linq\MongoQueryModelVisitor.cs" />
+    <Compile Include="MongoAccess\Linq\MongoQueryModelVistor.cs" />
     <Compile Include="MongoAccess\Linq\MongoQueryParser.cs" />
-    <Compile Include="MongoAccess\Linq\MongoQueryable.cs" />
+    <Compile Include="MongoAccess\Linq\MonogQueryable.cs" />
     <Compile Include="MongoAccess\Linq\QueryData.cs" />
-    <Compile Include="MongoAccess\MongoManager.cs.cs" />
+    <Compile Include="MongoAccess\MongoManager.cs" />
     <Compile Include="MongoAccess\MongoMap.cs" />
     <Compile Include="MongoAccess\MongoRepositoryExtend.cs" />
     <Compile Include="MongoAccess\MongoSession.cs" />
@@ -87,12 +87,16 @@
     <Compile Include="MongoAccess\MongoShardSession.cs" />
     <Compile Include="MongoAccess\MongoSpecification.cs" />
     <Compile Include="MongoAccess\MongoSpecificationProvider.cs" />
+    <Compile Include="NHibernateAccess\Events\RaiseEventListener.cs" />
+    <Compile Include="NHibernateAccess\NHibernateMappingExtend.cs" />
     <Compile Include="NHibernateAccess\NHibernateRepositoryExtend.cs" />
     <Compile Include="NHibernateAccess\NHibernateShardSession.cs" />
     <Compile Include="NHibernateAccess\NHibernateShardSessionFactory.cs" />
     <Compile Include="NHibernateAccess\NHibernateSpecification.cs" />
     <Compile Include="NHibernateAccess\NHibernateSpecificationProvider.cs" />
     <Compile Include="NHibernateAccess\ProfilterLoggerFactory.cs" />
+    <Compile Include="NHibernateAccess\Projections\ArithmeticOperatorProjection.cs" />
+    <Compile Include="NHibernateAccess\Projections\OperatorProjection.cs" />
     <Compile Include="NHibernateAccess\UserType\AbstractUserType.cs" />
     <Compile Include="NHibernateAccess\UserType\JsonClobListUserType.cs" />
     <Compile Include="NHibernateAccess\UserType\JsonClobUserType.cs" />
@@ -117,9 +121,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <None Include="NHibernateAccess\NHibernateAccess.cd" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

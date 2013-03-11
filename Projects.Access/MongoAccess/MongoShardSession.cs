@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Projects.Tool.Pager;
-using Projects.Framework.Shards;
-using Projects.Framework.Specification;
+using MongoDB.Driver;
+using Projects.Tool;
+using Projects.Tool.Shards;
+using Projects.Framework;
 
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework.MongoAccess
 {
     internal class MongoShardSession<TEntity> : IShardSession<TEntity>
     {
@@ -71,7 +72,7 @@ namespace Projects.Accesses.MongoAccess
             return session.FindAll<TEntity>(spec);
         }
 
-        public PagedList<TEntity> FindPaging(ISpecification<TEntity> spec)
+        public PagingResult<TEntity> FindPaging(ISpecification<TEntity> spec)
         {
             return session.FindPaging<TEntity>(spec);
         }
@@ -85,5 +86,6 @@ namespace Projects.Accesses.MongoAccess
         {
 
         }
+
     }
 }

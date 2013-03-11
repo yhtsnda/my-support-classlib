@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-using Projects.Framework.Shards;
-using Projects.Framework.Specification;
+using Projects.Tool;
+using Projects.Framework;
 
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework.MongoAccess
 {
     public class MongoSpecificationProvider : ISpecificationProvider
     {

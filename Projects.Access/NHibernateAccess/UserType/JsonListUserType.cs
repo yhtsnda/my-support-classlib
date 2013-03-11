@@ -8,7 +8,7 @@ using Projects.Tool.Util;
 using NHibernate;
 using NHibernate.SqlTypes;
 
-namespace Projects.Accesses.NHibernateRepository
+namespace Projects.Framework.NHibernateAccess
 {
     /// <summary>
     /// JsonListUserType

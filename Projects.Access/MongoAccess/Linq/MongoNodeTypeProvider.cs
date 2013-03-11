@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Remotion.Linq.Parsing.Structure;
 using System.Reflection;
 
-using Remotion.Linq.Parsing.Structure;
-
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework.MongoAccess
 {
     internal class MongoNodeTypeProvider : INodeTypeProvider
     {

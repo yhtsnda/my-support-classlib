@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Linq.Expressions;
+using System.Text;
 
+using Projects.Tool;
 using Projects.Framework;
-using Projects.Framework.Shards;
-using Projects.Framework.Specification;
 
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework.MongoAccess
 {
     public class MongoSpecification<T> : AbstractSpecification, ISpecification<T>, IOrderedSpecification<T>, IConditionSpecification<T>
     {
@@ -85,7 +84,7 @@ namespace Projects.Accesses.MongoAccess
 
         internal IQueryable<T> GetQuery()
         {
-            return new MongoQueryable<T>(new MongoQueryExecutor(GetSession(), shardParams));
+            return new MonogQueryable<T>(new MongoQueryExecutor(GetSession(), shardParams));
         }
 
         internal IQueryable<T> Query

@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Remotion.Linq;
-
 using MongoDB.Driver;
-
 using Projects.Tool;
-using Projects.Framework.Shards;
 
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework.MongoAccess
 {
     internal class MongoQueryExecutor : IQueryExecutor
     {
@@ -30,7 +26,7 @@ namespace Projects.Accesses.MongoAccess
 
         QueryData GetQueryData<T>(QueryModel queryModel)
         {
-            var query = MongoQueryModelVisitor.GetQueryData(queryModel);
+            var query = MongoQueryModelVistor.GetQueryData(queryModel);
             if (query.EntityType != typeof(T))
                 throw new ArgumentException();
 

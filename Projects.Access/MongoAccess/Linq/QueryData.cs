@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Remotion.Linq.Clauses;
-
 using MongoDB.Driver.Builders;
 using MongoDB.Driver;
-
 using Projects.Tool;
 
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework.MongoAccess
 {
     internal class QueryData
     {
