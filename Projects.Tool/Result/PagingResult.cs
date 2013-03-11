@@ -8,10 +8,8 @@ namespace Projects.Tool
     public class PagingResult<TEntity>
     {
         List<TEntity> items;
-        public int TotalCount { get; set; }
-        public IList<TEntity> Items { get { return items; } }
 
-        public PagingResult(int totalCount) 
+        public PagingResult(int totalCount)
         {
             TotalCount = totalCount;
             items = new List<TEntity>();
@@ -24,6 +22,13 @@ namespace Projects.Tool
                 this.items = new List<TEntity>();
             else
                 this.items = new List<TEntity>(items);
+        }
+
+        public int TotalCount { get; set; }
+
+        public IList<TEntity> Items
+        {
+            get { return items; }
         }
 
         public void AddRange(IEnumerable<TEntity> items)
@@ -42,8 +47,8 @@ namespace Projects.Tool
         /// <param name="selectQuery">目标数据的查询，不带分页的参数</param>
         /// <param name="pageIndex">分页的页索引，从0开始</param>
         /// <param name="pageSize">分页的大小。如果值为0,则表示不分页；如果为负值，表示不返回总数。</param>
-        public static PagingResult<TEntity> Create<TEntity>(IQueryable<TEntity> countQuery, IQueryable<TEntity> selectQuery, int pageIndex,
-            int pageSize, bool ignoreTotalCount = false)
+        /// <returns></returns>
+        public static PagingResult<TEntity> Create<TEntity>(IQueryable<TEntity> countQuery, IQueryable<TEntity> selectQuery, int pageIndex, int pageSize, bool ignoreTotalCount = false)
         {
             int totalCount = -1;
             if (pageSize > 0 && pageSize != Int32.MaxValue)
@@ -57,16 +62,19 @@ namespace Projects.Tool
                 result = selectQuery.ToArray();
             else
                 result = selectQuery.Skip(pageIndex * pageSize).Take(pageSize).ToArray();
-            
             paging.AddRange(result);
+
+            #region [zhangcl 2011-08-03　Add]处理取所有记录返回总数的问题
             if (paging.TotalCount == -1)
+            {
                 paging.TotalCount = paging.Items.Count;
+            }
+            #endregion 
 
             return paging;
         }
 
-        public static PagingResult<Tuple<TEntity, TJoin>> TupleJoin<TEntity, TJoin, TKey>(this PagingResult<TEntity> paging, IEnumerable<TJoin> joins, 
-            Func<TEntity, TKey> entityKeySelector, Func<TJoin, TKey> joinKeySelector)
+        public static PagingResult<Tuple<TEntity, TJoin>> TupleJoin<TEntity, TJoin, TKey>(this PagingResult<TEntity> paging, IEnumerable<TJoin> joins, Func<TEntity, TKey> entityKeySelector, Func<TJoin, TKey> joinKeySelector)
         {
             PagingResult<Tuple<TEntity, TJoin>> output = new PagingResult<Tuple<TEntity, TJoin>>(paging.TotalCount);
             output.AddRange(paging.Items.TupleJoin<TEntity, TJoin, TKey>(joins, entityKeySelector, joinKeySelector));

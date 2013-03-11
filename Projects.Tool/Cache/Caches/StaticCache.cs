@@ -6,26 +6,27 @@ using System.Collections;
 
 namespace Projects.Tool
 {
-    /// <summary>
-    /// 静态缓存
-    /// </summary>
     public class StaticCache : AbstractCache
     {
-        private static Hashtable mStaticDic = Hashtable.Synchronized(new Hashtable());
+        static Hashtable staticDic = Hashtable.Synchronized(new Hashtable());
 
         protected override void SetInner<T>(string key, T value, DateTime expiredTime)
         {
-            mStaticDic[key] = value;
+            staticDic[key] = value;
         }
 
         protected override T GetInner<T>(string key)
         {
-            return (T) mStaticDic[key];
+            var data = staticDic[key];
+            if (data == null)
+                return default(T);
+
+            return (T)data;
         }
 
         protected override void RemoveInner(string key)
         {
-            mStaticDic.Remove(key);
+            staticDic.Remove(key);
         }
     }
 }

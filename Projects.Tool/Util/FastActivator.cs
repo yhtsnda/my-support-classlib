@@ -5,6 +5,7 @@ using System.Text;
 using System.Linq.Expressions;
 using System.Configuration;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace Projects.Tool.Reflection
 {
@@ -14,7 +15,7 @@ namespace Projects.Tool.Reflection
 
         public static T Create<T>()
         {
-            return TypeFactory<T>.Create.Invoke();
+            return (T)Create(typeof(T));
         }
 
         public static object Create(string type)
@@ -31,21 +32,12 @@ namespace Projects.Tool.Reflection
                 {
                     if (!factoryCache.TryGetValue(type, out f))
                     {
-                        factoryCache[type] = f = Expression.Lambda<Func<object>>(Expression.New(type), new ParameterExpression[0]).Compile();
+                        f = Expression.Lambda<Func<object>>(Expression.Convert(Expression.New(type), typeof(object)), new ParameterExpression[0]).Compile();
+                        factoryCache[type] = f;
                     }
                 }
             }
             return f.Invoke();
-        }
-
-        static class TypeFactory<T>
-        {
-            public static readonly Func<T> Create;
-
-            static TypeFactory()
-            {
-                FastActivator.TypeFactory<T>.Create = Expression.Lambda<Func<T>>(Expression.New(typeof(T)), new ParameterExpression[0]).Compile();
-            }
         }
     }
 

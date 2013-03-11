@@ -8,6 +8,7 @@ namespace Projects.Tool
     public interface ICacheFactory
     {
         ICache GetCacher(string name);
+
         ICache GetCacher(Type type);
     }
 }

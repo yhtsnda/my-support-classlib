@@ -29,7 +29,10 @@ namespace Projects.Tool
 
         protected override T GetInner<T>(string key)
         {
-            return (T)InnerCache.Get(key);
+            var data = InnerCache.Get(key);
+            if (data == null)
+                return default(T);
+            return (T)data;
         }
 
         protected override void RemoveInner(string key)

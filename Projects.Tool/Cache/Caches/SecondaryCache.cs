@@ -5,56 +5,83 @@ using System.Text;
 
 namespace Projects.Tool
 {
+    /// <summary>
+    /// 抽象支持二级缓存的缓存对象
+    /// </summary>
     public class SecondaryCache : AbstractCache
     {
-        private ICache mFirstCache;
-        private ICache mSecondCache;
+        ICache firstCache;
+        ICache secondCache;
 
-        public  ICache FirstCache
+        public SecondaryCache()
         {
-            get { return mFirstCache; }
-            protected set { mFirstCache = value; }
         }
 
-        public  ICache SecondCache
+        public SecondaryCache(ICache firstCache, ICache secondCache)
         {
-            get { return mSecondCache; }
-            protected set { mSecondCache = value; }
+            if (firstCache == null)
+                throw new ArgumentNullException("firstCache");
+            if (secondCache == null)
+                throw new ArgumentNullException("secondCache");
+            if (firstCache.GetType() == secondCache.GetType())
+                throw new ConfigurationException(String.Format("一二级缓存的类型不能一致，当前皆为 {0}。", firstCache.GetType().FullName));
+
+            this.firstCache = firstCache;
+            this.secondCache = secondCache;
+        }
+
+        public ICache FirstCache
+        {
+            get { return firstCache; }
+            protected set { firstCache = value; }
+        }
+
+        public ICache SecondCache
+        {
+            get { return secondCache; }
+            protected set { secondCache = value; }
         }
 
         public override void InitSetting(IEnumerable<SettingNode> settingNodes)
         {
             base.InitSetting(settingNodes);
 
-            mFirstCache = CacheUtil.TryCreateCache(settingNodes, "firstType");
-            mSecondCache = CacheUtil.TryCreateCache(settingNodes, "secondType");
-            if(mFirstCache == null)
-                mFirstCache = new AspnetCache();
-            if(mSecondCache == null)
-                throw  new MissConfigurationException(settingNodes, "secondType");
+            firstCache = CacheUtil.TryCreateCache(settingNodes, "firstType");
+            secondCache = CacheUtil.TryCreateCache(settingNodes, "secondType");
+            if (firstCache == null)
+                firstCache = new AspnetCache();
 
-            if(mFirstCache.GetType() == SecondCache.GetType())
-                throw new ConfigurationException(String.Format("一二级缓存的类型不能一致，当前皆为 {0}。", mFirstCache.GetType().FullName));
+            if (secondCache == null)
+                throw new MissConfigurationException(settingNodes, "secondType");
 
-            if (mFirstCache != this)
-                CacheUtil.InitCache(mFirstCache, CacheUtil.GetCacheSettingNode(settingNodes, mFirstCache));
-            if(mSecondCache != this)
-                CacheUtil.InitCache(mSecondCache,CacheUtil.GetCacheSettingNode(settingNodes,mSecondCache));
+            if (firstCache.GetType() == secondCache.GetType())
+                throw new ConfigurationException(String.Format("一二级缓存的类型不能一致，当前皆为 {0}。", firstCache.GetType().FullName));
+
+            if (firstCache != this)
+                CacheUtil.InitCache(firstCache, CacheUtil.GetCacheSettingNode(settingNodes, firstCache));
+            if (secondCache != this)
+                CacheUtil.InitCache(secondCache, CacheUtil.GetCacheSettingNode(settingNodes, secondCache));
         }
 
         protected override void SetInner<T>(string key, T value, DateTime expiredTime)
         {
             OnSetFirstCache(key, value, expiredTime);
-            mSecondCache.Set(key, value);
+            secondCache.Set(key, value);
+        }
+
+        protected virtual void OnSetFirstCache<T>(string key, T value, DateTime expiredTime)
+        {
+            //丢弃时间，使用默认时间
+            firstCache.Set(key, value);
         }
 
         protected override T GetInner<T>(string key)
         {
-            T value = mFirstCache.Get<T>(key);
+            T value = firstCache.Get<T>(key);
             if (!IsDefault(value))
                 return value;
 
-            value = mSecondCache.Get<T>(key);
+            value = secondCache.Get<T>(key);
             if (!IsDefault(value))
                 OnSetFirstCache(key, value, CurrentTime.AddSeconds(ExpiredSeconds));
             return value;
@@ -62,13 +89,16 @@ namespace Projects.Tool
 
         protected override void RemoveInner(string key)
         {
-            throw new NotImplementedException();
+            firstCache.Remove(key);
+            secondCache.Remove(key);
         }
 
-        protected  virtual  void OnSetFirstCache<T>(string key, T value, DateTime expiredTime)
+        protected override void TraceCache(string key, int missing)
         {
-            //丢弃缓存的时间
-            mFirstCache.Set(key, value);
+        }
+
+        protected override void TraceCache(IEnumerable<string> keys, int missing)
+        {
         }
     }
 }

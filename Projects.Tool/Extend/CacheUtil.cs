@@ -7,135 +7,325 @@ using Projects.Tool.Reflection;
 
 namespace Projects.Tool
 {
-    internal class CacheUtil
+    public class CacheUnit
     {
-        public static ICache GetDefaultCache(bool init = true)
+        public static CacheUnit<TEntity> Create<TEntity>(string cacheKeyFormat, int secodesToLive, Func<TEntity> missingItemHandler = null)
         {
-            SettingNode cacheNode = ToolSection.Instance.TryGetNode("cache");
-            List<SettingNode> settingNodes = new List<SettingNode> { cacheNode };
-            ICache cache = CacheUtil.TryCreateCache(cacheNode, "type");
-            if (cache == null)
-                cache = new AspnetCache();
-
-            if (init)
-                CacheUtil.InitCache(cache, CacheUtil.GetCacheSettingNode(settingNodes, cache));
-            return cache;
+            return new CacheUnit<TEntity>(cacheKeyFormat, secodesToLive, missingItemHandler);
         }
 
-        /// <summary>
-        /// 尝试创建缓存实例
-        /// </summary>
-        /// <param name="node">允许为空</param>
-        /// <param name="typePath"></param>
-        /// <returns></returns>
-        public static ICache TryCreateCache(SettingNode node, string typePath)
+        public static CacheUnit<TEntity> Create<TEntity>(string cacheName, string cacheKeyFormat, int secodesToLive, Func<TEntity> missingItemHandler = null)
         {
-            if (node != null)
+            return new CacheUnit<TEntity>(cacheName, cacheKeyFormat, secodesToLive, missingItemHandler);
+        }
+
+        public static CacheUnit<TEntity, TKey> Create<TEntity, TKey>(string cacheKeyFormat, int secodesToLive, Func<TEntity, TKey> entityKeySelector, Func<TKey, TEntity> missingItemHandler = null, Func<IEnumerable<TKey>, IEnumerable<TEntity>> missingItemsHandler = null, Func<TKey, string> formatingHandler = null)
+        {
+            return new CacheUnit<TEntity, TKey>(cacheKeyFormat, secodesToLive, entityKeySelector, missingItemHandler, missingItemsHandler, formatingHandler);
+        }
+
+        public static CacheUnit<TEntity, TParam, TKey> Create<TEntity, TParam, TKey>(string cacheKeyFormat, int secodesToLive, Func<TEntity, TKey> entityKeySelector, Func<TParam, TKey, TEntity> missingItemHandler = null, Func<TParam, IEnumerable<TKey>, IEnumerable<TEntity>> missingItemsHandler = null)
+        {
+            return new CacheUnit<TEntity, TParam, TKey>(cacheKeyFormat, secodesToLive, entityKeySelector, missingItemHandler, missingItemsHandler);
+        }
+
+        public static CacheUnit<TEntity, TParam1, TParam2, TKey> Create<TEntity, TParam1, TParam2, TKey>(string cacheKeyFormat, int secodesToLive, Func<TEntity, TKey> entityKeySelector, Func<TParam1, TParam2, TKey, TEntity> missingItemHandler = null, Func<TParam1, TParam2, IEnumerable<TKey>, IEnumerable<TEntity>> missingItemsHandler = null)
+        {
+            return new CacheUnit<TEntity, TParam1, TParam2, TKey>(cacheKeyFormat, secodesToLive, entityKeySelector, missingItemHandler, missingItemsHandler);
+        }
+    }
+
+    public class AbstractCacheUnit<TEntity>
+    {
+        protected ICache cache;
+        protected string cacheKeyFormat;
+        protected int secodesToLive;
+
+        protected AbstractCacheUnit(string cacheName, string cacheKeyFormat, int secodesToLive)
+        {
+            this.cacheKeyFormat = cacheKeyFormat;
+            this.secodesToLive = secodesToLive;
+            cache = CacheManager.GetCacher(cacheName);
+        }
+
+        protected AbstractCacheUnit(string cacheKeyFormat, int secodesToLive)
+        {
+            this.cacheKeyFormat = cacheKeyFormat;
+            this.secodesToLive = secodesToLive;
+            cache = CacheManager.GetCacher<TEntity>();
+        }
+
+        public ICache Cache { get { return cache; } }
+
+        protected string GetCacheKey()
+        {
+            return cacheKeyFormat;
+        }
+
+        protected string GetCacheKey<TParam>(TParam param)
+        {
+            return GetCacheKey(param, null);
+        }
+
+        protected string GetCacheKey<TParam>(TParam param, Func<TParam, string> formateSelector)
+        {
+            if (formateSelector != null)
+                return formateSelector(param);
+            return cacheKeyFormat.Format(param);
+        }
+
+        protected string GetCacheKey<TParam1, TParam2>(TParam1 param1, TParam2 param2)
+        {
+            return cacheKeyFormat.Format(param1, param2);
+        }
+
+        protected string GetCacheKey<TParam1, TParam2, TParam3>(TParam1 param1, TParam2 param2, TParam3 param3)
+        {
+            return cacheKeyFormat.Format(param1, param2, param3);
+        }
+
+        protected static bool IsDefault<T>(T value)
+        {
+            return EqualityComparer<T>.Default.Equals(value, default(T));
+        }
+    }
+
+    public class CacheUnit<TEntity> : AbstractCacheUnit<TEntity>
+    {
+        Func<TEntity> missingItemHandler;
+
+        public CacheUnit(string cacheKeyFormat, int secodesToLive, Func<TEntity> missingItemHandler = null)
+            : base(cacheKeyFormat, secodesToLive)
+        {
+            this.missingItemHandler = missingItemHandler;
+        }
+
+        public CacheUnit(string cacheName, string cacheKeyFormat, int secodesToLive, Func<TEntity> missingItemHandler = null)
+            : base(cacheName, cacheKeyFormat, secodesToLive)
+        {
+            this.missingItemHandler = missingItemHandler;
+        }
+
+        public TEntity GetItem()
+        {
+            return cache.GetItem(cacheKeyFormat, secodesToLive, missingItemHandler);
+        }
+
+        public void RemoveCache()
+        {
+            cache.Remove(GetCacheKey());
+        }
+
+        public void RemoveCache(Predicate<TEntity> selector)
+        {
+            TEntity entity = GetItemFromCache();
+            if (!IsDefault(entity))
             {
-                string typeName = node.TryGetValue(typePath);
-                if (!String.IsNullOrEmpty(typeName))
-                {
-                    Type type = Type.GetType(typeName);
-                    return (ICache)FastActivator.Create(type);
-                }
+                if (selector(entity))
+                    RemoveCache();
             }
-            return null;
         }
 
-        public static ICache TryCreateCache(IEnumerable<SettingNode> nodes, string typePath)
+        public void SetItemToCache(TEntity entity)
         {
-            string typeName = TryGetValue(nodes, typePath);
-            if (!String.IsNullOrEmpty(typeName))
+            cache.Set(GetCacheKey(), entity);
+        }
+
+        public TEntity GetItemFromCache()
+        {
+            return cache.Get<TEntity>(GetCacheKey());
+        }
+    }
+
+    public class CacheUnit<TEntity, TKey> : AbstractCacheUnit<TEntity>
+    {
+        Func<TEntity, TKey> entityKeySelector;
+        Func<TKey, TEntity> missingItemHandler;
+        Func<IEnumerable<TKey>, IEnumerable<TEntity>> missingItemsHandler;
+        Func<TKey, string> formatingHandler;
+
+        public CacheUnit(string cacheKeyFormat, int secodesToLive, Func<TEntity, TKey> entityKeySelector = null, Func<TKey, TEntity> missingItemHandler = null, Func<IEnumerable<TKey>, IEnumerable<TEntity>> missingItemsHandler = null, Func<TKey, string> formatingHandler = null)
+            : base(cacheKeyFormat, secodesToLive)
+        {
+            this.entityKeySelector = entityKeySelector;
+            this.missingItemHandler = missingItemHandler;
+            this.missingItemsHandler = missingItemsHandler;
+            this.formatingHandler = formatingHandler;
+
+            if (missingItemHandler == null && missingItemsHandler == null)
+                throw new ArgumentNullException("missingItemHandler and missingItemsHandler is null");
+
+            if (missingItemHandler == null)
+                this.missingItemHandler = key => missingItemsHandler(new TKey[] { key }).FirstOrDefault();
+            if (missingItemsHandler == null)
+                this.missingItemsHandler = keys => keys.Select(key => missingItemHandler(key));
+        }
+
+        public TEntity GetItem(TKey key)
+        {
+            return cache.GetItem(key, InnerGetCacheKey(key), secodesToLive, missingItemHandler);
+        }
+
+        public IEnumerable<TEntity> GetItems(IEnumerable<TKey> keys)
+        {
+            return cache.GetItems(keys, InnerGetCacheKey, secodesToLive, entityKeySelector, missingItemsHandler);
+        }
+
+        public void RemoveCache(TKey key)
+        {
+            cache.Remove(InnerGetCacheKey(key));
+        }
+
+        public void RemoveCache(IEnumerable<TKey> keys)
+        {
+            foreach (TKey key in keys)
+                cache.Remove(InnerGetCacheKey(key));
+        }
+
+        public void RemoveCache(TKey key, Predicate<TEntity> selector)
+        {
+            TEntity entity = GetItemFromCache(key);
+            if (!IsDefault(entity))
             {
-                Type type = Type.GetType(typeName);
-                return (ICache)FastActivator.Create(type);
+                if (selector(entity))
+                    RemoveCache(key);
             }
-            return null;
         }
 
-        public static void InitCache(ICache cache, IEnumerable<SettingNode> settingNodes)
+        public void SetItemToCache(TEntity entity)
         {
-            if (cache == null)
-                throw new ArgumentNullException("cache");
-
-            if (cache is ICacheSettingable)
-                ((ICacheSettingable)cache).InitSetting(settingNodes);
+            cache.Set(InnerGetCacheKey(entityKeySelector(entity)), entity);
         }
 
-        /// <summary>
-        /// 获取缓存对象的设置项，可能返回空
-        /// </summary>
-        /// <param name="rootNode">允许为空</param>
-        /// <param name="cache"></param>
-        /// <returns></returns>
-        public static IEnumerable<SettingNode> GetCacheSettingNode(IEnumerable<SettingNode> rootNodes, ICache cache)
+        public void SetItemToCache(TEntity entity, TKey key)
         {
-            if (cache == null)
-                throw new ArgumentNullException("cache");
+            cache.Set(InnerGetCacheKey(key), entity);
+        }
 
-            string name = cache.GetType().Name;
-            name = name.Substring(0, 1).ToLower() + name.Substring(1);
+        public TEntity GetItemFromCache(TKey key)
+        {
+            return cache.Get<TEntity>(InnerGetCacheKey(key));
+        }
 
-            rootNodes = rootNodes.Where(o => o != null);
-            List<SettingNode> settingNodes = new List<SettingNode>();
-            foreach (SettingNode rootNode in rootNodes)
+        internal string InnerGetCacheKey(TKey key)
+        {
+            return GetCacheKey(key, formatingHandler);
+        }
+    }
+
+    public class CacheUnit<TEntity, TParam, TKey> : AbstractCacheUnit<TEntity>
+    {
+        Func<TEntity, TKey> entityKeySelector;
+        Func<TParam, TKey, TEntity> missingItemHandler;
+        Func<TParam, IEnumerable<TKey>, IEnumerable<TEntity>> missingItemsHandler;
+
+        public CacheUnit(string cacheKeyFormat, int secodesToLive, Func<TEntity, TKey> entityKeySelector, Func<TParam, TKey, TEntity> missingItemHandler = null, Func<TParam, IEnumerable<TKey>, IEnumerable<TEntity>> missingItemsHandler = null)
+            : base(cacheKeyFormat, secodesToLive)
+        {
+            this.entityKeySelector = entityKeySelector;
+            this.missingItemHandler = missingItemHandler;
+            this.missingItemsHandler = missingItemsHandler;
+
+            if (missingItemHandler == null && missingItemsHandler == null)
+                throw new ArgumentNullException("missingItemHandler and missingItemsHandler is null");
+
+            if (missingItemHandler == null)
+                this.missingItemHandler = (param, key) => missingItemsHandler(param, new TKey[] { key }).FirstOrDefault();
+            if (missingItemsHandler == null)
+                this.missingItemsHandler = (param, keys) => keys.Select(key => missingItemHandler(param, key));
+        }
+
+        public TEntity GetItem(TParam param, TKey key)
+        {
+            return cache.GetItem(param, key, cacheKeyFormat, secodesToLive, missingItemHandler);
+        }
+
+        public IEnumerable<TEntity> GetItems(TParam param, IEnumerable<TKey> keys)
+        {
+            return cache.GetItem(param, keys, cacheKeyFormat, secodesToLive, missingItemsHandler);
+        }
+
+        public void RemoveCache(TParam param, TKey key)
+        {
+            cache.Remove(GetCacheKey(param, key));
+        }
+
+        public void RemoveCache(TParam param, TKey key, Predicate<TEntity> selector)
+        {
+            TEntity entity = GetItemFromCache(param, key);
+            if (!IsDefault(entity))
             {
-                SettingNode targetNode = rootNode.TryGetNode(name);
-                settingNodes.Add(targetNode);
-                settingNodes.Add(rootNode);
+                if (selector(entity))
+                    RemoveCache(param, key);
             }
-            return settingNodes.Where(o => o != null);
         }
 
-        public static IEnumerable<SettingNode> Combine(IEnumerable<SettingNode> nodes)
+        public void SetItemToCache(TParam param, TEntity entity)
         {
-            return nodes.Where(o => o != null);
+            cache.Set(GetCacheKey(param, entityKeySelector(entity)), entity);
         }
 
-        public static IEnumerable<SettingNode> Combine(params SettingNode[] nodes)
+        public TEntity GetItemFromCache(TParam param, TKey key)
         {
-            return nodes.Where(o => o != null);
+            return cache.Get<TEntity>(GetCacheKey(param, key));
+        }
+    }
+
+    public class CacheUnit<TEntity, TParam1, TParam2, TKey> : AbstractCacheUnit<TEntity>
+    {
+        Func<TEntity, TKey> entityKeySelector;
+        Func<TParam1, TParam2, TKey, TEntity> missingItemHandler;
+        Func<TParam1, TParam2, IEnumerable<TKey>, IEnumerable<TEntity>> missingItemsHandler;
+
+        public CacheUnit(string cacheKeyFormat, int secodesToLive, Func<TEntity, TKey> entityKeySelector, Func<TParam1, TParam2, TKey, TEntity> missingItemHandler = null, Func<TParam1, TParam2, IEnumerable<TKey>, IEnumerable<TEntity>> missingItemsHandler = null)
+            : base(cacheKeyFormat, secodesToLive)
+        {
+            this.entityKeySelector = entityKeySelector;
+            this.missingItemHandler = missingItemHandler;
+            this.missingItemsHandler = missingItemsHandler;
+
+            if (missingItemHandler == null && missingItemsHandler == null)
+                throw new ArgumentNullException("missingItemHandler and missingItemsHandler is null");
+
+            if (missingItemHandler == null)
+                this.missingItemHandler = (param1, param2, key) => missingItemsHandler(param1, param2, new TKey[] { key }).FirstOrDefault();
+            if (missingItemsHandler == null)
+                this.missingItemsHandler = (param1, param2, keys) => keys.Select(key => missingItemHandler(param1, param2, key));
         }
 
-        public static IEnumerable<SettingNode> Combine(SettingNode node, IEnumerable<SettingNode> nodes)
+        public TEntity GetItem(TParam1 param1, TParam2 param2, TKey key)
         {
-            List<SettingNode> items = new List<SettingNode>();
-            items.Add(node);
-            items.AddRange(nodes);
-            return items.Where(o => o != null);
+            return cache.GetItem(param1, param2, key, cacheKeyFormat, secodesToLive, missingItemHandler);
         }
 
-        public static string TryGetValue(IEnumerable<SettingNode> settingNodes, string path)
+        public IEnumerable<TEntity> GetItems(TParam1 param1, TParam2 param2, IEnumerable<TKey> keys)
         {
-            foreach (SettingNode node in settingNodes)
+            return cache.GetItem(param1, param2, keys, cacheKeyFormat, secodesToLive, missingItemsHandler);
+        }
+
+        public void RemoveCache(TParam1 param1, TParam2 param2, TKey key)
+        {
+            cache.Remove(GetCacheKey(param1, param2, key));
+        }
+
+        public void RemoveCache(TParam1 param1, TParam2 param2, TKey key, Predicate<TEntity> selector)
+        {
+            TEntity entity = GetItemFromCache(param1, param2, key);
+            if (!IsDefault(entity))
             {
-                string v = node.TryGetValue(path);
-                if (!String.IsNullOrEmpty(v))
-                    return v;
+                if (selector(entity))
+                    RemoveCache(param1, param2, key);
             }
-            return null;
         }
 
-        public static SettingNode TryGetNode(IEnumerable<SettingNode> settingNodes, string path)
+        public void SetItemToCache(TParam1 param1, TParam2 param2, TEntity entity)
         {
-            foreach (SettingNode node in settingNodes)
-            {
-                SettingNode targetNode = node.TryGetNode(path);
-                if (targetNode != null)
-                    return targetNode;
-            }
-            return null;
+            cache.Set(GetCacheKey(param1, param2, entityKeySelector(entity)), entity);
         }
 
-        public static IEnumerable<SettingNode> TryGetNodes(IEnumerable<SettingNode> settingNodes, string path)
+        public TEntity GetItemFromCache(TParam1 param1, TParam2 param2, TKey key)
         {
-            foreach (SettingNode node in settingNodes)
-            {
-                IEnumerable<SettingNode> nodes = node.TryGetNodes(path);
-                if (nodes.Count() > 0)
-                    return nodes;
-            }
-            return new List<SettingNode>();
+            return cache.Get<TEntity>(GetCacheKey(param1, param2, key));
         }
     }
 }

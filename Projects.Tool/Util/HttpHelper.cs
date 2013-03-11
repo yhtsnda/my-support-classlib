@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.IO;
+using System.Web;
+using System.Collections.Specialized;
+using System.Security.Cryptography;
 
 namespace Projects.Tool.Util
 {
@@ -210,6 +213,23 @@ namespace Projects.Tool.Util
                     encodeBuilder.Append('%' + Convert.ToString((char)symbol, 16).ToUpper());
             }
             return encodeBuilder.ToString();
+        }
+
+        /// <summary>
+        /// 参数求MD5哈希
+        /// </summary>
+        public static string EncodeParams(NameValueCollection nameValues)
+        {
+            List<Tuple<string, string>> lists = new List<Tuple<string, string>>();
+            foreach (string key in nameValues.Keys)
+                lists.Add(new Tuple<string, string>(key, UrlEncode((string)nameValues[key])));
+
+            lists = lists.OrderBy(o => o.Item1).ThenBy(o => o.Item2).ToList();
+
+            string arguments = String.Join("&", lists.Select(o => o.Item1 + "=" + o.Item2));
+            MD5 md5 = new MD5CryptoServiceProvider();
+            var bytes = md5.ComputeHash(Encoding.UTF8.GetBytes(arguments));
+            return BitConverter.ToString(bytes);
         }
     }
 }
