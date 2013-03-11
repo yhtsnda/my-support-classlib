@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Projects.Tool;
 
-namespace Projects.Mvc
+namespace Projects.Framework.Web
 {
     /// <summary>
     /// 业务异常类

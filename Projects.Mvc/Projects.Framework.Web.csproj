@@ -8,8 +8,8 @@
     <ProjectGuid>{C6A6AEE8-A78E-48AE-9E9F-C8354456D84B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Projects.Mvc</RootNamespace>
-    <AssemblyName>Projects.Mvc</AssemblyName>
+    <RootNamespace>Projects.Framework.Web</RootNamespace>
+    <AssemblyName>Projects.Framework.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -78,28 +78,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mvc\ActionResults\ExcelResult.cs" />
+    <Compile Include="Api\ActionResults\ExcelResult.cs" />
+    <Compile Include="Api\ApiControllerActionInvoker.cs" />
+    <Compile Include="Api\ApiControllerFactory.cs" />
+    <Compile Include="Api\Attributes\FrameworkAuthorizeAttribute.cs" />
+    <Compile Include="Extendtions\Filter\CompressAttribute.cs" />
+    <Compile Include="Extendtions\Html\ScriptExtend.cs" />
+    <Compile Include="Extendtions\Routes\AreaRegistrationContextExtension.cs" />
+    <Compile Include="Extendtions\Routes\CustomRoute.cs" />
+    <Compile Include="Extendtions\Routes\RouteDataExtension.cs" />
+    <Compile Include="Extendtions\Routes\RouteParser.cs" />
     <Compile Include="ProjectBaseException.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Modules\BaseHttpModules.cs" />
     <Compile Include="Modules\HandlerErrorModule.cs" />
-    <Compile Include="Mvc\ActionResults\AjaxApiDataResult.cs" />
-    <Compile Include="Mvc\ActionResults\BuildingSiteCheckHttpLoginRedirectResult.cs" />
-    <Compile Include="Mvc\ActionResults\BuildingSiteCheckHttpUnauthorizedResult.cs" />
-    <Compile Include="Mvc\ActionResults\OpenApiDataResult.cs" />
-    <Compile Include="Mvc\Attributes\AjaxApiAttribute.cs" />
-    <Compile Include="Mvc\Attributes\AllowAnonymousAttribute.cs" />
-    <Compile Include="Mvc\Attributes\ApiAttribute.cs" />
-    <Compile Include="Mvc\Attributes\CustomActionNameAttribute.cs" />
-    <Compile Include="Mvc\Attributes\OpenApiAttribute.cs" />
-    <Compile Include="Mvc\CustomViewEngine.cs" />
-    <Compile Include="Mvc\Extends\FormAjaxOptions.cs" />
-    <Compile Include="Mvc\Extends\HtmlHelperExtension.cs" />
-    <Compile Include="Mvc\Extends\InvokeActionResultExtend.cs" />
-    <Compile Include="Mvc\Extends\KnockoutBind.cs" />
-    <Compile Include="Mvc\Extends\KnockoutBindExtend.cs" />
-    <Compile Include="Mvc\Extends\MetroExtend.cs" />
+    <Compile Include="Api\ActionResults\AjaxApiDataResult.cs" />
+    <Compile Include="Api\ActionResults\FrameworkHttpLoginRedirectResult.cs" />
+    <Compile Include="Api\ActionResults\FrameworkHttpUnauthorizedResult.cs" />
+    <Compile Include="Api\ActionResults\OpenApiDataResult.cs" />
+    <Compile Include="Api\Attributes\AjaxApiAttribute.cs" />
+    <Compile Include="Api\Attributes\AllowAnonymousAttribute.cs" />
+    <Compile Include="Api\Attributes\ApiAttribute.cs" />
+    <Compile Include="Extendtions\Filter\CustomActionNameAttribute.cs" />
+    <Compile Include="Api\Attributes\OpenApiAttribute.cs" />
+    <Compile Include="Extendtions\ViewEngine\CustomViewEngine.cs" />
+    <Compile Include="Extendtions\Others\FormAjaxOptions.cs" />
+    <Compile Include="Extendtions\Html\HtmlHelperExtension.cs" />
+    <Compile Include="Extendtions\Controller\InvokeActionResultExtend.cs" />
+    <Compile Include="Extendtions\Knockout\KnockoutBind.cs" />
+    <Compile Include="Extendtions\Knockout\KnockoutBindExtend.cs" />
+    <Compile Include="Extendtions\Html\MetroExtend.cs" />
     <Compile Include="Mvc\JsonpResult.cs" />
     <Compile Include="Mvc\MvcHelper.cs" />
     <Compile Include="Mvc\ServiceUsers.cs" />
@@ -116,6 +125,7 @@
       <Name>Projects.Tool</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
