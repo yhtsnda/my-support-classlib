@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Linq.Expressions;
-
 using Remotion.Linq;
+using System.Linq.Expressions;
 using Remotion.Linq.Parsing.Structure;
 using Remotion.Linq.Parsing.ExpressionTreeVisitors.Transformation;
 
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework.MongoAccess
 {
     internal static class MongoQueryParser
     {

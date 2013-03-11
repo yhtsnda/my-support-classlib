@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Linq.Expressions;
-
 using Remotion.Linq;
 using Remotion.Linq.Clauses;
 using Remotion.Linq.Collections;
 using Remotion.Linq.Clauses.ResultOperators;
-
+using System.Linq.Expressions;
 using MongoDB.Bson.Serialization;
 
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework.MongoAccess
 {
-    internal class MongoQueryModelVisitor : QueryModelVisitorBase
+    internal class MongoQueryModelVistor : QueryModelVisitorBase
     {
         QueryData queryData = new QueryData();
 
         public static QueryData GetQueryData(QueryModel queryModel)
         {
-            var vistor = new MongoQueryModelVisitor();
+            var vistor = new MongoQueryModelVistor();
             vistor.VisitQueryModel(queryModel);
             return vistor.queryData;
         }

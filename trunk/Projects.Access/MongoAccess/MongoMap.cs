@@ -1,11 +1,10 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using MongoDB.Bson.Serialization;
-
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework
 {
     public abstract class MongoMap<TEntity>
     {

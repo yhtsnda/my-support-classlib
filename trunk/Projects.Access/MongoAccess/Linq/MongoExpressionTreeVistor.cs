@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Remotion.Linq.Parsing;
 using System.Linq.Expressions;
-
+using Remotion.Linq.Clauses.Expressions;
+using Remotion.Linq;
 using MongoDB.Driver.Builders;
 using MongoDB.Bson;
+using Remotion.Linq.Clauses.ResultOperators;
 using MongoDB.Driver;
 
-using Remotion.Linq;
-using Remotion.Linq.Parsing;
-using Remotion.Linq.Clauses.Expressions;
-using Remotion.Linq.Clauses.ResultOperators;
-
-namespace Projects.Accesses.MongoAccess
+namespace Projects.Framework.MongoAccess
 {
     internal class MongoExpressionTreeVisitor : ThrowingExpressionTreeVisitor
     {
@@ -102,7 +100,7 @@ namespace Projects.Accesses.MongoAccess
         protected override Expression VisitMemberExpression(MemberExpression expression)
         {
             VisitExpression(expression.Expression);
-            name = MongoQueryModelVisitor.GetMemberName(expression);
+            name = MongoQueryModelVistor.GetMemberName(expression);
             return expression;
         }
 

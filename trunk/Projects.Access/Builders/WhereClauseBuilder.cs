@@ -7,7 +7,7 @@ using System.Reflection;
 
 using Projects.Tool.Util;
 
-namespace Projects.Accesses.Builders
+namespace Projects.Framework.Builders
 {
     public abstract class WhereClauseBuilder<TEntity> : ExpressionVisitor, IWhereClauseBuilder<TEntity>
         where TEntity : class, new()

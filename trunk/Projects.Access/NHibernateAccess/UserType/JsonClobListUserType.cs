@@ -8,7 +8,7 @@ using Projects.Tool.Util;
 using NHibernate;
 using NHibernate.SqlTypes;
 
-namespace Projects.Accesses.NHibernateRepository
+namespace Projects.Framework.NHibernateAccess
 {
     /// <summary>
     /// JsonClobListUserType
@@ -59,7 +59,11 @@ namespace Projects.Accesses.NHibernateRepository
             List<T> list = new List<T>(source.Count);
             foreach (var item in source)
             {
-                list.Add(item);
+                var c = item as ICloneable;
+                if (c != null)
+                    list.Add((T)c.Clone());
+                else
+                    list.Add(item);
             }
 
             return list;
