@@ -1,0 +1,472 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tools.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Tools.Cache.MongoDbCache">
+            <summary>
+            可以单例运行，目前表名是固定的(CacheDB.CacheTable)，没有分表
+            </summary>
+        </member>
+        <member name="M:Tools.Cache.ICache.Get(System.String)">
+            <summary>
+            2010-09-10 增加 by 杜有发，为了方便HttpRuntimeCache实现该类；如果是MongoDbCache，则返回document对象
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Cache.BaseMongoDbCache.GetDateTimeFromUnixTime(System.Int64)">
+            <summary>    
+            将unixtime转换为.NET的DateTime    
+            </summary>    
+            <param name="timeStamp">秒数</param>    
+            <returns>转换后的时间</returns>    
+        </member>
+        <member name="M:Tools.Cache.BaseMongoDbCache.GetUnixTimeFromDateTime(System.DateTime)">
+            <summary>    
+            将.NET的DateTime转换为unix time    
+            </summary>    
+            <param name="dateTime">待转换的时间</param>    
+            <returns>转换后的unix time</returns>    
+        </member>
+        <member name="M:Tools.Cache.BaseMongoDbCache.Set(System.String,System.Byte[],System.DateTime)">
+            <summary>
+            时间参数直接DateTime.Now就可以了
+            </summary>
+            <param name="key"></param>
+            <param name="data"></param>
+            <param name="expiry"></param>
+        </member>
+        <member name="M:Tools.Cache.BaseMongoDbCache.Set(System.String,System.Object,System.Int32)">
+            <summary>
+            2010-09-10 增加 by 杜有发，直接存储data
+            </summary>
+            <param name="key"></param>
+            <param name="data"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:Tools.Cache.BaseMongoDbCache.Set(System.String,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="data"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:Tools.Cache.BaseMongoDbCache.Set(System.String,System.Byte[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="data"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:Tools.Cache.BaseMongoDbCache.Get(System.String)">
+            <summary>
+            该方法返回Document
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Cache.BaseMongoDbCache.GetDocument(System.String)">
+            <summary>
+            2010-09-28 增加 by 杜有发
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Cache.MongoDbCache.#ctor">
+            <summary>
+            单例模式需要空构造函数
+            </summary>
+        </member>
+        <member name="T:Tools.Cache.HttpRuntimeCache">
+            <summary>
+            2010-09-27 增加 by 杜有发，使用web本身的HttpRuntimeCache，依赖于Tools.CacheUtil
+            </summary>
+        </member>
+        <member name="M:Tools.Cache.HttpRuntimeCache.Get(System.String)">
+            <summary>
+            2010-09-10 增加 by 杜有发，为了方便HttpRuntimeCache实现该类
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.Json.RawJsonString">
+            <summary>
+            json序列化的时候直接输出内容，该类不做json验证
+            </summary>
+        </member>
+        <member name="T:Nd.Research.Plugin.HttpRequestPlugin">
+            <summary>
+            Summary description for HttpRequestPlugin
+            </summary>
+        </member>
+        <member name="T:Tools.Plugin.PluginBase">
+            <summary>
+            插件的基类，具体的插件都继承该类。如果插件要初始化，请在构造函数里做
+            </summary>
+        </member>
+        <member name="T:Tools.Plugin.IPlugin">
+            <summary>
+            基本可以不用，使用PluginBase就好了
+            </summary>
+        </member>
+        <member name="P:Tools.Plugin.PluginBase.Id">
+            <summary>
+            要求唯一
+            </summary>
+        </member>
+        <member name="T:Tools.MongoDbUtil">
+            <summary>
+            MongoDbUtil 除了插入，其他方法一律用Document对象（ordered dictionary）
+            </summary>
+        </member>
+        <member name="M:Tools.MongoDbUtil.FindOne(System.String,System.String,System.String,MongoDB.Document)">
+            <summary>
+            可能返回null
+            </summary>
+            <param name="connectionString"></param>
+            <param name="dbName"></param>
+            <param name="tableName"></param>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.MongoDbUtil.DocumentListToJsonString(System.Collections.Generic.IList{MongoDB.Document})">
+            <summary>
+            2010-09-10增加，把IList~Document转换为json字符串格式输出
+            </summary>
+            <param name="docList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.MongoDbUtil.FindAndModify(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            自带的FindAndModify方法如果找不到记录，则返回null；这里判断如果找不到记录，则自动插入，再返回记录 2011-01-05 增加 by 杜有发
+            </summary>
+            <param name="connectionString"></param>
+            <param name="dbName"></param>
+            <param name="tableName"></param>
+            <param name="data"></param>
+            <param name="selector"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Tools.JobScheduler.DEFAULT_GROUP_NAME">
+            <summary>
+            默认组名
+            </summary>
+        </member>
+        <member name="M:Tools.JobScheduler.Start">
+            <summary>
+            开始调度
+            </summary>
+        </member>
+        <member name="M:Tools.JobScheduler.AddJob(System.DateTime,System.Type)">
+            <summary>
+            增加一个单次执行的任务
+            </summary>
+            <param name="runUtcTime"></param>
+            <param name="runJob"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.AddJob(System.DateTime,System.Type,System.Collections.Hashtable,System.String)">
+            <summary>
+            增加一个单次执行的任务，名称不能重复，参数里名称可以为空
+            </summary>
+            <param name="runUtcTime"></param>
+            <param name="runJob"></param>
+            <param name="dataMap"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.PrepareJobDetail(System.String,System.Type,System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="runJob"></param>
+            <param name="dataMap"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.AddJob(System.String,System.Type,System.Collections.Hashtable,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="cron"></param>
+            <param name="runJob"></param>
+            <param name="dataMap"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.AddRepeatableJob(System.DateTime,System.Type,System.Int32)">
+            <summary>
+            周期性任务
+            </summary>
+            <param name="runUtcTime"></param>
+            <param name="runJob"></param>
+            <param name="intervalSeconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.GetJobName(System.String,System.Nullable{System.DateTime})">
+            <summary>
+            
+            </summary>
+            <param name="jobName"></param>
+            <param name="runUtcTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.GetTriggerName(System.String)">
+            <summary>
+            2011-02-18 增加 by 杜有发
+            </summary>
+            <param name="jobName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.AddRepeatableJob(System.DateTime,System.Type,System.Int32,System.Collections.Hashtable,System.String)">
+            <summary>
+            周期性任务,名称不能重复
+            </summary>
+            <param name="runUtcTime"></param>
+            <param name="runJob"></param>
+            <param name="intervalSeconds"></param>
+            <param name="dataMap"></param>
+            <param name="theJobName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.RemoveJob(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.GetJobData(System.String)">
+            <summary>
+            得到job的数据，只读的，无法修改
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.SetJobData(System.String,Quartz.JobDataMap)">
+            <summary>
+            2011-02-18 
+            </summary>
+            <param name="name"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.CheckIfTheJobNameExists(System.String)">
+            <summary>
+            判断该任务名称是否重复
+            </summary>
+            <param name="jobName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.JobScheduler.GetJobDataMapFromHashtable(System.Collections.Hashtable)">
+            <summary>
+            得到任务数据
+            </summary>
+            <param name="ht"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.Json.RawJsonStringConverter">
+            <summary>
+            给定的需要直接调用tostring方法，输出原生json的类
+            </summary>
+        </member>
+        <member name="M:Tools.Json.RawJsonStringConverter.#ctor(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Tools.Json.RawJsonStringConverter.CanConvert(System.Type)">
+            <summary>
+            转换的时候，先得到 和 要转换的类型 匹配的Converter （GetMatchingConverter方法），调用Converter.CanConvert,如果true，则返回该Converter
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.Plugin.PluginExecutionContext">
+            <summary>
+            插件执行上下文数据，比如传入参数
+            </summary>
+        </member>
+        <member name="T:Tools.Plugin.ExecuteDirection">
+            <summary>
+            多个插件直接执行流程
+            </summary>
+        </member>
+        <member name="F:Tools.Plugin.ExecuteDirection.Continue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Tools.Plugin.ExecuteDirection.Break">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Tools.Plugin.PluginExecutor">
+            <summary>
+            插件执行者，其实是一个字典，里面存储插件标识，和对应的插件；执行时，传入标识和插件上下文数据即可
+            </summary>
+        </member>
+        <member name="T:Tools.Plugin.PluginManager">
+            <summary>
+            插件管理器，一个hook可以有多个插件执行者
+            </summary>
+        </member>
+        <member name="M:Tools.Plugin.PluginManager.Add(System.String,Tools.Plugin.PluginBase)">
+            <summary>
+            PluginBase要设置id属性
+            </summary>
+            <param name="hook"></param>
+            <param name="plugin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Plugin.PluginManager.Execute(System.String,System.String,Tools.Plugin.PluginExecutionContext)">
+            <summary>
+            id可以为空，则表示全部执行过去
+            </summary>
+            <param name="hook"></param>
+            <param name="id"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Tools.Plugin.PluginManager.BeSureExist(System.String)">
+            <summary>
+            确保插件存在
+            </summary>
+            <param name="hook"></param>
+        </member>
+        <member name="T:Tools.Cache.SpecialMongoDbCache">
+            <summary>
+            从特定的mongodb里的表里获取值，非对象
+            </summary>
+        </member>
+        <member name="M:Tools.Cache.SpecialMongoDbCache.Get(System.String)">
+            <summary>
+            2010-09-25 修改 by 杜有发
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Cache.SpecialMongoDbCache.GetString(System.String)">
+            <summary>
+            不直接调用GetDocument是因为这里只取2列而已
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tools.Json.JsonTransfer">
+            <summary>
+            JSON传输结果类
+            </summary>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.#ctor(System.Object)">
+            <summary>
+            默认追加到_contentKey里
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.Add(System.String,System.Object)">
+            <summary>
+            追加响应键值对,value必须是可以序列化的对象
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.Add(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
+            <summary>
+            增加一个字典对象，其中只保留指定的key，如果specifiedKeys=*，则全部保留 2010-09-13 增加 by 杜有发
+            </summary>
+            <param name="key"></param>
+            <param name="dict"></param>
+            <param name="specifiedKeys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.Remove(System.String)">
+            <summary>
+            2010-09-13 增加 by 杜有发
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.Add(System.String,System.String,System.Boolean)">
+            <summary>
+            2010-09-13 增加 by 杜有发，如果isJson=true，则直接添加一个json字符串到输出里，以json的形式输出
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <param name="isJson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.SetError(System.Object)">
+            <summary>
+            增加错误键
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.ClearError">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.Clear">
+            <summary>
+            2010-08-09 增加 by 杜有发，清空所有已经添加的对象
+            </summary>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.ToJson">
+            <summary>
+            结果以JSON格式输出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.ToJson(System.Object)">
+            <summary>
+            2010-09-24 增加 by 杜有发
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.ToJson(System.Object,System.Boolean,System.Boolean)">
+            <summary>
+            2011-02-15 增加 by 杜有发
+            </summary>
+            <param name="obj"></param>
+            <param name="indented"></param>
+            <param name="ignoreNull"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.SerializeObject(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.DeserializeObject``1(System.String)">
+            <summary>
+            2010-09-24 增加 by 杜有发
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tools.Json.JsonTransfer.ToString">
+            <summary>
+            2010-07-28重写tostring方法 增加 by 杜有发
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
