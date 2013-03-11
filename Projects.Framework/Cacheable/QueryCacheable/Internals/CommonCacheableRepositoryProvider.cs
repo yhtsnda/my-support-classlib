@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Projects.Tool;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using Projects.Tool;
 
 namespace Projects.Framework
 {
@@ -17,7 +16,7 @@ namespace Projects.Framework
 
         public override IQueryTimestamp GetCacheData()
         {
-            return CacheManager.GetCacher(CacheMetadata.EntityType).Get<QueryCacheData>(CacheKey);
+            return RepositoryFramework.GetCacher(DefineMetadata).Get<QueryCacheData>(CacheKey);
         }
 
         public override void ProcessCache(IQueryTimestamp cacheData)
@@ -28,9 +27,9 @@ namespace Projects.Framework
 
         public override bool ProcessSource()
         {
-            var metadata = CacheMetadata;
+            var metadata = DefineMetadata;
             Invocation.Proceed();
-            ICache cache = CacheManager.GetCacher(CacheMetadata.EntityType);
+            ICache cache = RepositoryFramework.GetCacher(DefineMetadata);
 
             object data = Invocation.ReturnValue;
             if (data != null)
@@ -40,7 +39,7 @@ namespace Projects.Framework
                     Data = data
                 });
             }
-            return true;
+            return data != null;
         }
     }
 }

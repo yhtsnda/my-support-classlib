@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Projects.Framework.Shards
+namespace Projects.Tool.Shards
 {
     /// <summary>
     /// 定义分区分表策略接口
@@ -21,5 +21,8 @@ namespace Projects.Framework.Shards
         /// <param name="shardParams"></param>
         /// <returns></returns>
         PartitionId GetPartitionId(ShardParams shardParams);
+
+
+        //IEnumerable<PartitionId> GetPartitionIdList(ShardId shardId);
     }
 }

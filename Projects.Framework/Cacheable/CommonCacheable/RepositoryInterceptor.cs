@@ -1,22 +1,22 @@
-﻿using System;
+﻿using Castle.DynamicProxy;
+using Projects.Tool;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Castle.DynamicProxy;
-
-using Projects.Tool;
-
 namespace Projects.Framework
 {
-    public class RepositoryInterceptor : IInterceptor
+    internal class RepositoryInterceptor : IInterceptor
     {
-        private ILog mLog = LogManager.GetLogger<RepositoryInterceptor>();
-        private static List<IRepositoryMethodInvocation> mInvocations;
+        ILog log = LogManager.GetLogger<RepositoryInterceptor>();
+
+        static List<IRepositoryMethodInvocation> invocations;
 
         static RepositoryInterceptor()
         {
-            mInvocations = new List<IRepositoryMethodInvocation>
+            invocations = new List<IRepositoryMethodInvocation>()
             {
                 new RepositoryPersistentMethodInvocation(),
                 new RepositoryGetMethodInvocation(),
@@ -26,7 +26,40 @@ namespace Projects.Framework
 
         public void Intercept(IInvocation invocation)
         {
-            throw new NotImplementedException();
+            using (var tr = ProfilerContext.Profile(invocation.TargetType.FullName + "." + invocation.Method.Name))
+            {
+                var entityType = ReflectionHelper.GetEntityTypeFromRepositoryType(invocation.TargetType);
+                var metadata = RepositoryFramework.GetDefineMetadata(entityType);
+
+                if (metadata != null)
+                {
+                    var mi = invocations.FirstOrDefault(o => o.IsMatch(invocation));
+                    if (mi != null)
+                    {
+                        mi.Process(invocation, metadata);
+                        ProxyEntity(invocation);
+                        return;
+                    }
+                }
+
+                invocation.Proceed();
+                ProxyEntity(invocation);
+            }
+        }
+
+
+        /// <summary>
+        /// 对返回对象进行代理处理
+        /// </summary>
+        void ProxyEntity(IInvocation invocation)
+        {
+            var data = invocation.ReturnValue;
+            if (data != null && (!ProxyProvider.IsProxy(data) || ProxyProvider.IsProxyChanged(data)))
+            {
+                var proxy = ProxyProvider.GetSourceProxy(data, RepositoryFramework.RaisePostLoad);
+                if (proxy != data)
+                    invocation.ReturnValue = proxy;
+            }
         }
     }
 }

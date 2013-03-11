@@ -7,48 +7,36 @@ using System.Text;
 
 namespace Projects.Framework
 {
-    /// <summary>
-    /// 默认的Getter的动态实现
-    /// </summary>
     public class DefaultGetter : IGetter
     {
-        PropertyInfo mMethod;
-        string mPropertyName;
-        Func<object, object> mGetter;
+        PropertyInfo method;
+        string propertyName;
+        Func<object, object> getter;
 
         public DefaultGetter(PropertyInfo method)
         {
-            this.mMethod = method;
-            this.mPropertyName = method.Name;
+            this.method = method;
+            this.propertyName = method.Name;
             CreateGetter();
         }
 
         void CreateGetter()
         {
             var instance = Expression.Parameter(typeof(object), "instance");
-            var property = Expression.Property(Expression.Convert(instance, mMethod.ReflectedType), mMethod);
+            var property = Expression.Property(Expression.Convert(instance, method.ReflectedType), method);
             var main = Expression.Convert(property, typeof(object));
-            mGetter = (Func<object, object>)Expression
-                .Lambda(typeof(Func<object, object>), main, instance)
-                .Compile();
+
+            getter = (Func<object, object>)Expression.Lambda(typeof(Func<object, object>), main, instance).Compile();
         }
 
-        /// <summary>
-        /// 属性的Get方法
-        /// </summary>
-        /// <param name="target">实例对象</param>
-        /// <returns></returns>
         public object Get(object target)
         {
-            return mGetter(target);
+            return getter(target);
         }
 
-        /// <summary>
-        /// 属性名称
-        /// </summary>
         public string PropertyName
         {
-            get { return mPropertyName; }
+            get { return propertyName; }
         }
     }
 }

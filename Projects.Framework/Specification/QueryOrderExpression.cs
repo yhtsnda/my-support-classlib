@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 
-namespace Projects.Framework.Specification
+namespace Projects.Framework
 {
     public class QueryOrderExpression
     {

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Projects.Tool;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using Projects.Tool;
-using Projects.Framework.Shards;
 
 namespace Projects.Framework
 {

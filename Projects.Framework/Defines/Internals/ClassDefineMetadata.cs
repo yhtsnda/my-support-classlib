@@ -1,31 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
+using System.Text;
 
 namespace Projects.Framework
 {
     /// <summary>
-    /// 类型的元数据定义
+    /// 类型定义的元数据定义
     /// </summary>
     public class ClassDefineMetadata
     {
-        #region 私有字段
-        private Type mEntityType;
-        private Dictionary<MethodInfo, ClassJoinDefineMetadata> mClassJoinDefines;
-        private Dictionary<string, ClassCacheRegionDefineMetadata> mCacheRegionDefines;
-        #endregion
+        static object syncRoot = new object();
 
-        #region 公共属性
-       
-        public Type EntityType
+        Type entityType;
+        Dictionary<MethodInfo, ClassJoinDefineMetadata> classJoinDefines;
+        Dictionary<string, ClassCacheRegionDefineMetadata> cacheRegionDefines;
+        List<PropertyInfo> dataProperties;
+        List<PropertyInfo> cascadeProperties;
+        List<MethodInfo> cascadeMethods;
+
+        Func<object, object[]> getValuesHandler;
+        Action<object, object[]> setValuesHandler;
+
+        public ClassDefineMetadata(Type entityType)
         {
-            get { return mEntityType; }
+            this.entityType = entityType;
+            classJoinDefines = new Dictionary<MethodInfo, ClassJoinDefineMetadata>();
+            cacheRegionDefines = new Dictionary<string, ClassCacheRegionDefineMetadata>(StringComparer.CurrentCultureIgnoreCase);
+
+            IsValidatableImplementor = entityType.GetInterface(typeof(IValidatable).FullName) != null;
+            IsLifecycleImplementor = entityType.GetInterface(typeof(ILifecycle).FullName) != null;
+
+            dataProperties = new List<PropertyInfo>();
+            cascadeProperties = new List<PropertyInfo>();
+            cascadeMethods = new List<MethodInfo>();
         }
 
-        public string Table { get; set; }
+        /// <summary>
+        /// 定义的对象类型
+        /// </summary>
+        public Type EntityType
+        {
+            get { return entityType; }
+        }
 
+        public string Table
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 对象的主键属性
+        /// </summary>
         public MemberInfo IdMember { get; set; }
 
         /// <summary>
@@ -49,11 +77,26 @@ namespace Projects.Framework
         public bool IsValidatableImplementor { get; set; }
 
         /// <summary>
+        /// 映射的列
+        /// </summary>
+        public IList<PropertyInfo> DataProperties { get { return dataProperties; } }
+
+        /// <summary>
+        /// 级联属性
+        /// </summary>
+        public IList<PropertyInfo> CascadeProperties { get { return cascadeProperties; } }
+
+        /// <summary>
+        /// 级联方法
+        /// </summary>
+        public IList<MethodInfo> CascadeMethods { get { return cascadeMethods; } }
+
+        /// <summary>
         /// 区域缓存集合
         /// </summary>
         public Dictionary<string, ClassCacheRegionDefineMetadata> CacheRegionDefines
         {
-            get { return mCacheRegionDefines; }
+            get { return cacheRegionDefines; }
         }
 
         /// <summary>
@@ -61,41 +104,35 @@ namespace Projects.Framework
         /// </summary>
         public IDictionary<MethodInfo, ClassJoinDefineMetadata> ClassJoinDefines
         {
-            get { return mClassJoinDefines; }
+            get { return classJoinDefines; }
         }
-        #endregion
 
-        #region 构造函数
-        public ClassDefineMetadata(Type entityType)
-        {
-            this.mEntityType = entityType;
-            mClassJoinDefines = new Dictionary<MethodInfo, ClassJoinDefineMetadata>();
-            mCacheRegionDefines = new Dictionary<string, ClassCacheRegionDefineMetadata>
-            (StringComparer.CurrentCultureIgnoreCase);
-
-            IsValidatableImplementor = mEntityType.GetInterface(typeof(IValidatable).FullName) != null;
-            IsLifecycleImplementor = mEntityType.GetInterface(typeof(ILifecycle).FullName) != null;
-        }
-        #endregion
-
-        #region 公共方法
         /// <summary>
         /// 获取给定对象的相关缓存依赖的键值
         /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public List<string> GetCacheRegionKeys(object entity)
         {
             if (entity == null)
                 throw new ArgumentNullException("entity");
-            if (!mEntityType.IsAssignableFrom(entity.GetType()))
+
+            if (!EntityType.IsAssignableFrom(entity.GetType()))
                 throw new ArgumentException("entity");
 
-            return CacheRegionDefines.Values.Select(item=>item.GetRegionCacheKey(entity)).ToList();
+            return CacheRegionDefines.Values.Select(o => o.GetRegionCacheKey(entity)).ToList();
         }
 
+        /// <summary>
+        /// 获取给定对象的对象缓存键
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public string GetCacheKey(object entity)
         {
             if (entity == null)
                 throw new ArgumentNullException("entity");
+
             var pa = PropertyAccessorFactory.GetPropertyAccess(EntityType);
             return GetCacheKeyById(pa.GetGetter(IdMember.Name).Get(entity));
         }
@@ -103,14 +140,16 @@ namespace Projects.Framework
         /// <summary>
         /// 通过标识获取对象缓存键
         /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public string GetCacheKeyById(object id)
         {
-            return "#" + mEntityType.FullName + ":" + id.ToString();
+            return "#" + entityType.FullName + ":" + id.ToString();
         }
 
         public ClassJoinDefineMetadata GetClassJoinDefineMetadata(MethodInfo method)
         {
-            return mClassJoinDefines.TryGetValue(method);
+            return classJoinDefines.TryGetValue(method);
         }
 
         public void CheckCacheRegions(IEnumerable<CacheRegion> regions)
@@ -118,10 +157,57 @@ namespace Projects.Framework
             regions.ForEach(o =>
             {
                 if (!CacheRegionDefines.ContainsKey(o.RegionName))
-                    throw new Exception(String.Format("类型 {1} 缓存区域 {0} 尚未进行定义",
-                        o.RegionName, EntityType.FullName));
+                    throw new PlatformException("类型 {1} 缓存区域 {0} 尚未进行定义。", o.RegionName, EntityType.FullName);
             });
         }
-        #endregion
+
+        /// <summary>
+        /// 合并数据
+        /// </summary>
+        internal void MergeData(object source, object destination)
+        {
+            if (destination == source || destination == null || source == null)
+                return;
+
+            var datas = GetData(source);
+            SetDatas(destination, datas);
+        }
+
+        internal object CreateInstanceFormDatas(object[] datas)
+        {
+            var entity = Projects.Tool.Reflection.FastActivator.Create(entityType);
+            SetDatas(entity, datas);
+            return entity;
+        }
+
+        internal void SetDatas(object entity, object[] datas)
+        {
+            if (setValuesHandler == null)
+            {
+                lock (syncRoot)
+                {
+                    if (setValuesHandler == null)
+                    {
+                        setValuesHandler = ReflectionHelper.CreateSetDatasHandler(entityType, dataProperties);
+                    }
+                }
+            }
+            setValuesHandler(entity, datas);
+        }
+
+        internal object[] GetData(object entity)
+        {
+            if (getValuesHandler == null)
+            {
+                lock (syncRoot)
+                {
+                    if (getValuesHandler == null)
+                    {
+                        getValuesHandler = ReflectionHelper.CreateGetDatasHandler(entityType, dataProperties);
+                    }
+                }
+            }
+            return getValuesHandler(entity);
+        }
     }
 }

@@ -159,16 +159,38 @@ namespace Projects.Framework
 
         static void SerializeExpression(Expression expr, StringBuilder sb, int depth, Hashtable objectsInUse)
         {
-            IDictionary<string, object> result = new Dictionary<string, object>();
-            result.Add("Expression", expr.ToString());
-            ConstantExpressionVisitor vistor = new ConstantExpressionVisitor(expr);
-            int num = 1;
-            foreach (var cs in vistor.Constants)
+            var e = Evaluator.PartialEval(expr, CanBeEvaluatedLocally);
+            SerializeString(e.ToString(), sb);
+
+            //IDictionary<string, object> result = new Dictionary<string, object>();
+            //result.Add("Expression", expr.ToString());
+            //ConstantExpressionVisitor vistor   = new ConstantExpressionVisitor(expr);
+            //int num                            = 1;
+            //foreach (var cs in vistor.Constants)
+            //{
+            //    result.Add("Ref" + num.ToString(), cs);
+            //    num++;
+            //}
+            //SerializeDictionary(result, sb, depth, objectsInUse);
+        }
+
+        static Func<Expression, bool> CanBeEvaluatedLocally
+        {
+            get
             {
-                result.Add("Ref" + num.ToString(), cs);
-                num++;
+                return expression =>
+                {
+                    // don't evaluate parameters
+                    if (expression.NodeType == ExpressionType.Parameter)
+                        return false;
+
+                    // can't evaluate queries
+                    if (typeof(IQueryable).IsAssignableFrom(expression.Type))
+                        return false;
+
+                    return true;
+                };
             }
-            SerializeDictionary(result, sb, depth, objectsInUse);
         }
 
         static void SerializeValueInternal(object o, StringBuilder sb, int depth, Hashtable objectsInUse)

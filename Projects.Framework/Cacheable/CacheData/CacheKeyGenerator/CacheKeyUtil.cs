@@ -24,5 +24,6 @@ namespace Projects.Framework
 
             return String.Format("##{0}:{1}:{2}", entityType.FullName, regionName, value);
         }
+
     }
 }

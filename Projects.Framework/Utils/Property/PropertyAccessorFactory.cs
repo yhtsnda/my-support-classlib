@@ -6,29 +6,56 @@ using System.Text;
 namespace Projects.Framework
 {
     /// <summary>
-    /// 对象属性访问工厂
+    /// 提升对象属性访问的性能
     /// </summary>
-    public class PropertyAccessorFactory
+    public static class PropertyAccessorFactory
     {
-        private static Dictionary<Type, IPropertyAccessor> mAccessors = 
-            new Dictionary<Type, IPropertyAccessor>();
-        private static object mSyncRoot = new object();
+        static Dictionary<Type, IPropertyAccessor> accessors = new Dictionary<Type, IPropertyAccessor>();
+        static object syncRoot = new object();
 
         public static IPropertyAccessor GetPropertyAccess(Type type)
         {
             IPropertyAccessor accessor;
-            if (!mAccessors.TryGetValue(type, out accessor))
+            if (!accessors.TryGetValue(type, out accessor))
             {
-                lock (mSyncRoot)
+                lock (syncRoot)
                 {
-                    if (!mAccessors.TryGetValue(type, out accessor))
+                    if (!accessors.TryGetValue(type, out accessor))
                     {
                         accessor = new DefaultPropertyAccessor(type);
-                        mAccessors.Add(type, accessor);
+                        accessors.Add(type, accessor);
                     }
                 }
             }
             return accessor;
+        }
+
+        public static void SetId(object entity, object value)
+        {
+            if (entity == null)
+                throw new ArgumentNullException("entity");
+
+            var entityType = entity.GetType();
+            var metadata = RepositoryFramework.GetDefineMetadata(entityType);
+            if (metadata == null)
+                throw new ArgumentNullException("metadata");
+
+            var pa = GetPropertyAccess(metadata.EntityType);
+            pa.GetSetter(metadata.IdMember.Name).Set(entity, value);
+        }
+
+        public static object GetId(object entity)
+        {
+            if (entity == null)
+                throw new ArgumentNullException("entity");
+
+            var entityType = entity.GetType();
+            var metadata = RepositoryFramework.GetDefineMetadata(entityType);
+            if (metadata == null)
+                throw new ArgumentNullException("metadata");
+
+            var pa = GetPropertyAccess(metadata.EntityType);
+            return pa.GetGetter(metadata.IdMember.Name).Get(entity);
         }
     }
 }

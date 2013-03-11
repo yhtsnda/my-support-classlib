@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Projects.Framework;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Reflection;
 
-using Projects.Framework.Specification;
-
-namespace Projects.Framework.Shards
+namespace Projects.Tool.Shards
 {
+    /// <summary>
+    /// shard session工厂对象接口
+    /// </summary>
     public interface IShardSessionFactory
     {
         ISpecificationProvider SpecificationProvider { get; }
+
         IShardSession<TEntity> OpenSession<TEntity>(ShardParams shardParams);
     }
 }

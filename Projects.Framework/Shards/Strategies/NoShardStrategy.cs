@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Projects.Framework.Shards;
+using Projects.Tool;
+using Projects.Tool.Shards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Projects.Framework.Shards
+namespace Nd.Repository.Shards
 {
     public class NoShardStrategy : AbstractShardStrategy
     {

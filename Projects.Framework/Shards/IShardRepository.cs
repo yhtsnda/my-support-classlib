@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Projects.Framework.Specification;
+using Projects.Framework;
 
-namespace Projects.Framework
+namespace Projects.Tool.Shards
 {
     /// <summary>
     /// 不具有分区能力的仓储
