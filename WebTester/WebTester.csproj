@@ -200,9 +200,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Projects.Mvc\Projects.Mvc.csproj">
+    <ProjectReference Include="..\Projects.Mvc\Projects.Framework.Web.csproj">
       <Project>{c6a6aee8-a78e-48ae-9e9f-c8354456d84b}</Project>
-      <Name>Projects.Mvc</Name>
+      <Name>Projects.Framework.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188aaba2-82fd-4899-b537-4d49e80abe0c}</Project>

@@ -9,17 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Framework", "Proje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Mapping", "Projects.Mapping\Projects.Mapping.csproj", "{15C80E60-2717-4BB0-8A35-A41A833E1C91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Mvc", "Projects.Mvc\Projects.Mvc.csproj", "{C6A6AEE8-A78E-48AE-9E9F-C8354456D84B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Framework.Web", "Projects.Mvc\Projects.Framework.Web.csproj", "{C6A6AEE8-A78E-48AE-9E9F-C8354456D84B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Purviews", "Projects.Purviews\Projects.Purviews.csproj", "{59D3663C-CC15-4660-A931-6CC05EE5A4BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Purviews.Client", "Projects.Purviews.Client\Projects.Purviews.Client.csproj", "{92646163-5C72-493B-A816-6E45B6DEFF9D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Repositories", "Projects.Repositories\Projects.Repositories.csproj", "{C8CB12EF-B56A-4D46-8B58-96D7AA7A8A93}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Tool.Exceptions", "Projects.Tool.Exceptions\Projects.Tool.Exceptions.csproj", "{D09A952F-7C36-4DBB-BBF4-378378698AEB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Tool.Interceptor", "Projects.Tool.Interceptor\Projects.Tool.Interceptor.csproj", "{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Tool.Log4NetProvider", "Projects.Tool.Log4NetProvider\Projects.Tool.Log4NetProvider.csproj", "{6F777998-863C-4F94-B578-099C54590B45}"
 EndProject
@@ -58,6 +54,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.UnitTest", "Warehouse.UnitTest\Warehouse.UnitTest.csproj", "{30BD82B9-D1DB-407C-8F20-CFA53AE28C22}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.AccessUnitTest", "Projects.AccessUnitTest\Projects.AccessUnitTest.csproj", "{EA17A730-2234-4369-A42E-A51B7AB6AF39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Tool.RedisProvider", "Projects.Tool.RedisProvider\Projects.Tool.RedisProvider.csproj", "{45845BCF-0354-45BB-B12D-FD4B368FE2CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,22 +129,6 @@ Global
 		{C8CB12EF-B56A-4D46-8B58-96D7AA7A8A93}.SimpleDebug|Any CPU.Build.0 = Debug|Any CPU
 		{C8CB12EF-B56A-4D46-8B58-96D7AA7A8A93}.WebAppSubfield|Any CPU.ActiveCfg = Release|Any CPU
 		{C8CB12EF-B56A-4D46-8B58-96D7AA7A8A93}.WebAppSubfield|Any CPU.Build.0 = Release|Any CPU
-		{D09A952F-7C36-4DBB-BBF4-378378698AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D09A952F-7C36-4DBB-BBF4-378378698AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D09A952F-7C36-4DBB-BBF4-378378698AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D09A952F-7C36-4DBB-BBF4-378378698AEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D09A952F-7C36-4DBB-BBF4-378378698AEB}.SimpleDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D09A952F-7C36-4DBB-BBF4-378378698AEB}.SimpleDebug|Any CPU.Build.0 = Debug|Any CPU
-		{D09A952F-7C36-4DBB-BBF4-378378698AEB}.WebAppSubfield|Any CPU.ActiveCfg = Release|Any CPU
-		{D09A952F-7C36-4DBB-BBF4-378378698AEB}.WebAppSubfield|Any CPU.Build.0 = Release|Any CPU
-		{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6}.SimpleDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6}.SimpleDebug|Any CPU.Build.0 = Debug|Any CPU
-		{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6}.WebAppSubfield|Any CPU.ActiveCfg = Release|Any CPU
-		{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6}.WebAppSubfield|Any CPU.Build.0 = Release|Any CPU
 		{6F777998-863C-4F94-B578-099C54590B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6F777998-863C-4F94-B578-099C54590B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F777998-863C-4F94-B578-099C54590B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -243,16 +225,23 @@ Global
 		{EA17A730-2234-4369-A42E-A51B7AB6AF39}.SimpleDebug|Any CPU.Build.0 = Debug|Any CPU
 		{EA17A730-2234-4369-A42E-A51B7AB6AF39}.WebAppSubfield|Any CPU.ActiveCfg = Release|Any CPU
 		{EA17A730-2234-4369-A42E-A51B7AB6AF39}.WebAppSubfield|Any CPU.Build.0 = Release|Any CPU
+		{45845BCF-0354-45BB-B12D-FD4B368FE2CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45845BCF-0354-45BB-B12D-FD4B368FE2CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45845BCF-0354-45BB-B12D-FD4B368FE2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45845BCF-0354-45BB-B12D-FD4B368FE2CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45845BCF-0354-45BB-B12D-FD4B368FE2CB}.SimpleDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45845BCF-0354-45BB-B12D-FD4B368FE2CB}.SimpleDebug|Any CPU.Build.0 = Debug|Any CPU
+		{45845BCF-0354-45BB-B12D-FD4B368FE2CB}.WebAppSubfield|Any CPU.ActiveCfg = Release|Any CPU
+		{45845BCF-0354-45BB-B12D-FD4B368FE2CB}.WebAppSubfield|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D09A952F-7C36-4DBB-BBF4-378378698AEB} = {A76C0542-826A-4278-8798-62C80BD19FB4}
-		{CC5AD0C6-4482-48C5-A8F8-6E077110BAA6} = {A76C0542-826A-4278-8798-62C80BD19FB4}
 		{6F777998-863C-4F94-B578-099C54590B45} = {A76C0542-826A-4278-8798-62C80BD19FB4}
 		{600CBFEC-4F21-4CB1-9E7C-CC28309E8525} = {A76C0542-826A-4278-8798-62C80BD19FB4}
 		{188AABA2-82FD-4899-B537-4D49E80ABE0C} = {A76C0542-826A-4278-8798-62C80BD19FB4}
+		{45845BCF-0354-45BB-B12D-FD4B368FE2CB} = {A76C0542-826A-4278-8798-62C80BD19FB4}
 		{63BC8A7D-9A63-4C8A-A094-0EF8A1B651D6} = {74B0CB81-685F-4B6B-B057-673865DB3734}
 		{A0B39A9E-3D55-4FE4-87FF-4E1B5C11444C} = {74B0CB81-685F-4B6B-B057-673865DB3734}
 		{EA17A730-2234-4369-A42E-A51B7AB6AF39} = {74B0CB81-685F-4B6B-B057-673865DB3734}
