@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BuildingSiteCheck.Resource
+namespace Projects.Framework.Resource
 {
     internal class ResourceCollector : IResourceCollector
     {

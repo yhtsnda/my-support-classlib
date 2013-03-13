@@ -4,7 +4,7 @@ using System.Web.UI;
 using System.Web;
 
 [assembly: TagPrefix("Projects.Resource", "Projects")]
-namespace BuildingSiteCheck.Resource
+namespace Projects.Framework.Resource
 {
     [ToolboxData("<{0}:Resource runat=\"server\" ></{0}:Resource>")]
     [ParseChildren(true, "Path")]

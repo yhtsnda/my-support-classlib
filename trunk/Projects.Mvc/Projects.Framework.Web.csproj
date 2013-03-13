@@ -120,12 +120,15 @@
     <Compile Include="Resource\ResourceType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Projects.Framework\Projects.Framework.csproj">
+      <Project>{0352cd0d-6487-45f2-ac4b-d566b8001631}</Project>
+      <Name>Projects.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188aaba2-82fd-4899-b537-4d49e80abe0c}</Project>
       <Name>Projects.Tool</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
