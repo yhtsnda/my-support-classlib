@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 
 
-namespace BuildingSiteCheck.Resource
+namespace Projects.Framework.Resource
 {
     public class GlobalConfig
     {

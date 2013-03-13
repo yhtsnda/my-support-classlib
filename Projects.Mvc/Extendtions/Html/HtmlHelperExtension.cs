@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
 
-using BuildingSiteCheck.Resource;
+using Projects.Framework.Resource;
 
 namespace System.Web.Mvc
 {
@@ -17,7 +17,7 @@ namespace System.Web.Mvc
         /// </summary>
         public static IHtmlString Include(this HtmlHelper htmlHelper, Action<IResourceCollector> collector)
         {
-            return htmlHelper.Raw(BuildingSiteCheck.Resource.Resource.Include(collector));
+            return htmlHelper.Raw(Projects.Framework.Resource.Resource.Include(collector));
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace System.Web.Mvc
         /// </remarks>
         public static string WrapperUrl(this HtmlHelper htmlHelper, string staticFileUrl)
         {
-            return BuildingSiteCheck.Resource.Resource.WrapperUrl(staticFileUrl);
+            return Projects.Framework.Resource.Resource.WrapperUrl(staticFileUrl);
         }
 
         /// <summary>

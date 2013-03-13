@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BuildingSiteCheck.Resource
+namespace Projects.Framework.Resource
 {
     /// <summary>
     /// 资源类型
