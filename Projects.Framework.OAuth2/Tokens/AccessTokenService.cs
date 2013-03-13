@@ -8,13 +8,14 @@ using Projects.Tool;
 
 namespace Projects.Framework.OAuth2
 {
-    public class AccessTokenService
+    public class AccessTokenService : IService
     {
         private static CacheDomain<AccessToken, string> cacheAccessToken =
             CacheDomain.CreateSingleKey<AccessToken, string>(o => o.Token, 
             GetAccessTokenInner, null, 
             "accessToken", 
             "accessToken:{0}");
+
         private static IAccessTokenRepository repository = DependencyResolver.Resolve<IAccessTokenRepository>();
         /// <summary>
         /// accessToken的过期时间

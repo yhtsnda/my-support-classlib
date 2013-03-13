@@ -8,7 +8,7 @@ using Projects.Tool;
 
 namespace Projects.Framework.OAuth2
 {
-    public class OAuthClientService
+    public class OAuthClientService : IService
     {
         //client缓存
         private static CacheDomain<OAuthClient, int> cacheOauthClient = CacheDomain.CreateSingleKey<OAuthClient, int>(o => o.Id, GetOauthClientInner, null, "oauthClient", "cache:oauthClient:{0}");
