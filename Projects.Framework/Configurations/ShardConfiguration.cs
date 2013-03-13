@@ -1,12 +1,12 @@
-﻿using Projects.Framework.Shards;
-using Nd.Repository.Shards;
-using Projects.Tool;
-using Projects.Tool.Reflection;
-using Projects.Tool.Shards;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using Projects.Framework.Shards;
+using Projects.Tool;
+using Projects.Tool.Reflection;
+using Projects.Tool.Shards;
 
 namespace Projects.Framework.Configurations
 {
