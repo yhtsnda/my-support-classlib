@@ -1,12 +1,16 @@
 ﻿<?xml version="1.0"?>
 <Projects.Tool>
+  <!--JSON序列化器-->
+  <util jsonProvider="Projects.Tool.JsonConverterProvider,Projects.Tool" />
   <!--仓储相关程序集设置-->
   <repository>
     <assembly name="Projects.Demo.Repository"/>
+    <assembly name="Projects.Repository.OAuth2"/>
   </repository>
   <!--服务相关程序集设置-->
   <service>
     <assembly name="Projects.Demo.Business"/>
+    <assembly name="Projects.Framework.OAuth2"/>
   </service>
   <shard
    defaultSessionFactory="Projects.Framework.NHibernateAccess.NHibernateShardSessionFactory, Projects.Accesses"

@@ -121,9 +121,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Api\Controllers\OAuth2Controller.cs" />
+    <Compile Include="Controllers\OpenApiBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\AutofacControllerFactory.cs" />
     <Compile Include="Extensions\AutofacServiceLocator.cs" />
+    <Compile Include="Extensions\ResultWrapper.cs" />
+    <Compile Include="Filters\CountRestrictAttribute.cs" />
+    <Compile Include="Filters\OAuthAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,7 +228,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Api\Models\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -234,6 +243,10 @@
       <Project>{146daa88-0ff1-47bc-814c-265cd1797fbd}</Project>
       <Name>Projects.Demo.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Projects.Framework.OAuth2\Projects.Framework.OAuth2.csproj">
+      <Project>{cb5729d8-00f8-45ea-b3dc-334d1037a275}</Project>
+      <Name>Projects.Framework.OAuth2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Projects.Framework\Projects.Framework.csproj">
       <Project>{0352cd0d-6487-45f2-ac4b-d566b8001631}</Project>
       <Name>Projects.Framework</Name>
@@ -241,6 +254,10 @@
     <ProjectReference Include="..\Projects.Mvc\Projects.Framework.Web.csproj">
       <Project>{c6a6aee8-a78e-48ae-9e9f-c8354456d84b}</Project>
       <Name>Projects.Framework.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Projects.Repository.OAuth2\Projects.Repository.OAuth2.csproj">
+      <Project>{a834741e-02b6-423f-b8fd-1a4aa18d59b9}</Project>
+      <Name>Projects.Repository.OAuth2</Name>
     </ProjectReference>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188aaba2-82fd-4899-b537-4d49e80abe0c}</Project>
