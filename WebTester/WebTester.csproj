@@ -83,7 +83,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -262,10 +261,6 @@
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188aaba2-82fd-4899-b537-4d49e80abe0c}</Project>
       <Name>Projects.Tool</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Warehouse.RecordProcessor\Warehouse.RecordProcessor.csproj">
-      <Project>{28ff9c5e-9180-4c73-b5ee-d516b4d1835f}</Project>
-      <Name>Warehouse.RecordProcessor</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
