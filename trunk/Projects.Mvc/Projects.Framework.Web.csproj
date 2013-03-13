@@ -82,12 +82,12 @@
     <Compile Include="Api\ApiControllerActionInvoker.cs" />
     <Compile Include="Api\ApiControllerFactory.cs" />
     <Compile Include="Api\Attributes\FrameworkAuthorizeAttribute.cs" />
-    <Compile Include="Extendtions\Filter\CompressAttribute.cs" />
-    <Compile Include="Extendtions\Html\ScriptExtend.cs" />
-    <Compile Include="Extendtions\Routes\AreaRegistrationContextExtension.cs" />
-    <Compile Include="Extendtions\Routes\CustomRoute.cs" />
-    <Compile Include="Extendtions\Routes\RouteDataExtension.cs" />
-    <Compile Include="Extendtions\Routes\RouteParser.cs" />
+    <Compile Include="Extensions\Filter\CompressAttribute.cs" />
+    <Compile Include="Extensions\Html\ScriptExtend.cs" />
+    <Compile Include="Extensions\Routes\AreaRegistrationContextExtension.cs" />
+    <Compile Include="Extensions\Routes\CustomRoute.cs" />
+    <Compile Include="Extensions\Routes\RouteDataExtension.cs" />
+    <Compile Include="Extensions\Routes\RouteParser.cs" />
     <Compile Include="ProjectBaseException.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,15 +100,15 @@
     <Compile Include="Api\Attributes\AjaxApiAttribute.cs" />
     <Compile Include="Api\Attributes\AllowAnonymousAttribute.cs" />
     <Compile Include="Api\Attributes\ApiAttribute.cs" />
-    <Compile Include="Extendtions\Filter\CustomActionNameAttribute.cs" />
+    <Compile Include="Extensions\Filter\CustomActionNameAttribute.cs" />
     <Compile Include="Api\Attributes\OpenApiAttribute.cs" />
-    <Compile Include="Extendtions\ViewEngine\CustomViewEngine.cs" />
-    <Compile Include="Extendtions\Others\FormAjaxOptions.cs" />
-    <Compile Include="Extendtions\Html\HtmlHelperExtension.cs" />
-    <Compile Include="Extendtions\Controller\InvokeActionResultExtend.cs" />
-    <Compile Include="Extendtions\Knockout\KnockoutBind.cs" />
-    <Compile Include="Extendtions\Knockout\KnockoutBindExtend.cs" />
-    <Compile Include="Extendtions\Html\MetroExtend.cs" />
+    <Compile Include="Extensions\ViewEngine\CustomViewEngine.cs" />
+    <Compile Include="Extensions\Others\FormAjaxOptions.cs" />
+    <Compile Include="Extensions\Html\HtmlHelperExtension.cs" />
+    <Compile Include="Extensions\Controller\InvokeActionResultExtend.cs" />
+    <Compile Include="Extensions\Knockout\KnockoutBind.cs" />
+    <Compile Include="Extensions\Knockout\KnockoutBindExtend.cs" />
+    <Compile Include="Extensions\Html\MetroExtend.cs" />
     <Compile Include="Mvc\JsonpResult.cs" />
     <Compile Include="Mvc\MvcHelper.cs" />
     <Compile Include="Mvc\ServiceUsers.cs" />
