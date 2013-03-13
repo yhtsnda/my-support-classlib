@@ -1,9 +1,8 @@
 ﻿using Projects.Framework.Configurations;
-using Nd.Repository;
-using Nd.Repository.Shards;
 using Projects.Tool;
 using Projects.Tool.Reflection;
 using Projects.Tool.Shards;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
