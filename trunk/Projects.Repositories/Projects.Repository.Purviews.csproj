@@ -8,8 +8,8 @@
     <ProjectGuid>{C8CB12EF-B56A-4D46-8B58-96D7AA7A8A93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Projects.Repositories</RootNamespace>
-    <AssemblyName>Projects.Repositories</AssemblyName>
+    <RootNamespace>Projects.Repository.Purviews</RootNamespace>
+    <AssemblyName>Projects.Repository.Purviews</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,12 +46,12 @@
   <ItemGroup>
     <Compile Include="AbstractSimpleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Purviews\AccessRepository.cs" />
-    <Compile Include="Purviews\ActionRepository.cs" />
-    <Compile Include="Purviews\DomainRepository.cs" />
-    <Compile Include="Purviews\ModelRepository.cs" />
-    <Compile Include="Purviews\ResourceRepository.cs" />
-    <Compile Include="Purviews\RoleRepository.cs" />
+    <Compile Include="AccessRepository.cs" />
+    <Compile Include="ActionRepository.cs" />
+    <Compile Include="DomainRepository.cs" />
+    <Compile Include="ModelRepository.cs" />
+    <Compile Include="ResourceRepository.cs" />
+    <Compile Include="RoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Projects.Access\Projects.Accesses.csproj">
