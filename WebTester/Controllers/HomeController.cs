@@ -24,5 +24,11 @@ namespace WebTester.Controllers
             var result = memberService.CreateMember(member);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Get(int id)
+        {
+            var result = memberService.GetMemberById(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

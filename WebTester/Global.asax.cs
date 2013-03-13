@@ -6,6 +6,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+using Projects.Tool.Util;
+using Projects.Framework.Web;
+
 namespace WebTester
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -32,9 +35,16 @@ namespace WebTester
 
         protected void Application_Start()
         {
+            var serviceLocator = new AutofacServiceLocator();
+            serviceLocator.RegisterRepository();
+            serviceLocator.RegisterMvc();
+            serviceLocator.Build();
+
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            ControllerBuilder.Current.SetControllerFactory(new ApiControllerFactory());
         }
     }
 }

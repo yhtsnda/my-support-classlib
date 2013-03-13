@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?>
+<Projects.Tool>
+  <!--仓储相关程序集设置-->
+  <repository>
+    <assembly name="Projects.Demo.Repository"/>
+  </repository>
+  <!--服务相关程序集设置-->
+  <service>
+    <assembly name="Projects.Demo.Business"/>
+  </service>
+  <shard
+   defaultSessionFactory="Projects.Framework.NHibernateAccess.NHibernateShardSessionFactory, Projects.Accesses"
+   defaultStrategy="Projects.Framework.Shards.NoShardStrategy,Projects.Framework"
+   defaultShard="demo">
+    <shardIds>
+      <shardId id="demo" connectionName="demo"></shardId>
+    </shardIds>
+  </shard>
+</Projects.Tool>
