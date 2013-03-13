@@ -37,7 +37,7 @@ namespace Projects.Tool
         ProfilerContext()
         {
             data = new ProfilerData();
-            var configStatus = ConfigurationManager.AppSettings["nd.profiler.status"];
+            var configStatus = ConfigurationManager.AppSettings["profiler.status"];
             status = ToProfileStatus(configStatus, false, false);
 
             var context = HttpContext.Current;
