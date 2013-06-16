@@ -188,6 +188,8 @@
     <Compile Include="Util\Value.cs" />
     <Compile Include="Util\Workbench.cs" />
     <Compile Include="Util\WorkbenchUtil.cs" />
+    <Compile Include="Validation\Arguments.cs" />
+    <Compile Include="Validation\ArgumentStrings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

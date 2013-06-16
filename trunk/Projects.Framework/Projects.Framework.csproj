@@ -173,7 +173,6 @@
     <Compile Include="Interceptors\IRepositoryFrameworkInterceptor.cs" />
     <Compile Include="Shards\Strategies\AbstractShardStrategy.cs" />
     <Compile Include="ActionResult.cs" />
-    <Compile Include="Shards\IShardRepository.cs" />
     <Compile Include="Shards\IShardSession.cs" />
     <Compile Include="Shards\IShardSessionFactory.cs" />
     <Compile Include="Shards\IShardStrategy.cs" />
