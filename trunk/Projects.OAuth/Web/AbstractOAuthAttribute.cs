@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 namespace Projects.OAuth
 {
+    /// <summary>
+    /// OAuth认证抽象基类
+    /// </summary>
     public class AbstractOAuthAttribute : AuthorizeAttribute
     {
         public override void OnAuthorization(AuthorizationContext filterContext)

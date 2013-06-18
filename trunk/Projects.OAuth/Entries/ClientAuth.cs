@@ -54,5 +54,10 @@ namespace Projects.OAuth
         /// 备注
         /// </summary>
         public virtual string Remark { get; set; }
+
+        /// <summary>
+        /// 客户端的回调地址
+        /// </summary>
+        public virtual string CallbackPath { get; set; }
     }
 }

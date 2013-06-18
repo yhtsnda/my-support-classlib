@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Projects.Tool;
 using Projects.Framework;
 
 namespace Projects.OAuth
 {
-    public interface IUserProxyRepository : INoShardRepository<UserProxy>
+    public interface IAuthorizationCodeRepository : INoShardRepository<AuthorizationCode>
     {
-        UserProxy GetUserProxy(string userName);
     }
 }

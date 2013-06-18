@@ -6,7 +6,6 @@ using System.Web;
 
 using Projects.Tool;
 using Projects.Framework;
-using Projects.OAuth.Message;
 
 namespace Projects.OAuth
 {
@@ -29,7 +28,7 @@ namespace Projects.OAuth
 
             AuthResponseType responseType;
             if (!AuthResponseTypeExtend.TryParse(GetValue(request, Protocal.RESPONSE_TYPE), out responseType))
-                throw new OAuthException(AuthorizationRequestErrorCodes.InvalidRequest, "response_type error", 400);
+                throw new OAuthException(AccessTokenRequestErrorCode.InvalidRequest, "response_type error", 400);
 
             string state = request[Protocal.STATE];
             return new AuthRequest(clientId, responseType, redirectUri, state);
@@ -85,7 +84,7 @@ namespace Projects.OAuth
                 accessToken = request[Protocal.OLD_ACCESS_TOKEN];
 
             if (String.IsNullOrWhiteSpace(accessToken))
-                throw new OAuthException(BearerTokenError.InvalidToken, "access token is null", 400);
+                throw new OAuthException(BearerTokenError.InvalidToken, "access token is null", 401);
 
             return accessToken;
         }

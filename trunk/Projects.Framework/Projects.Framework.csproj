@@ -145,6 +145,7 @@
     <Compile Include="Shards\AbstractRepository.cs" />
     <Compile Include="Shards\IShardedRepository.cs" />
     <Compile Include="Shards\ShardedRepository.cs" />
+    <Compile Include="Shards\ShardedRepositoryExtend.cs" />
     <Compile Include="Shards\Strategies\ModShardStrategy.cs" />
     <Compile Include="Shards\Strategies\NoShardStrategy.cs" />
     <Compile Include="Shards\Strategies\WeekShardStrategy.cs" />
