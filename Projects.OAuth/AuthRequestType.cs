@@ -23,9 +23,9 @@ namespace Projects.OAuth
 
     internal static class AuthResponseTypeExtend
     {
-        public static bool TryParse(string value, out AuthRequestType responseType)
+        public static bool TryParse(string value, out AuthResponseType responseType)
         {
-            responseType = AuthRequestType.AuthorizationCode;
+            responseType = AuthResponseType.AuthorizationCode;
             if (String.IsNullOrEmpty(value))
                 return false;
 
@@ -33,22 +33,22 @@ namespace Projects.OAuth
             switch (value)
             {
                 case "token":
-                    responseType = AuthRequestType.AccessToken;
+                    responseType = AuthResponseType.AccessToken;
                     return true;
                 case "code":
-                    responseType = AuthRequestType.AuthorizationCode;
+                    responseType = AuthResponseType.AuthorizationCode;
                     return true;
             }
             return false;
         }
 
-        public static string ToValue(this AuthRequestType responseType)
+        public static string ToValue(this AuthResponseType responseType)
         {
             switch (responseType)
             {
-                case AuthRequestType.AccessToken:
+                case AuthResponseType.AccessToken:
                     return "token";
-                case AuthRequestType.AuthorizationCode:
+                case AuthResponseType.AuthorizationCode:
                     return "code";
             }
             return "";

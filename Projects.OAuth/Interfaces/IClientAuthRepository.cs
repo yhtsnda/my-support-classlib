@@ -7,7 +7,7 @@ using Projects.Framework;
 
 namespace Projects.OAuth
 {
-    public interface IClientAuthRepository : IShardRepository<ClientAuth>
+    public interface IClientAuthRepository : INoShardRepository<ClientAuth>
     {
     }
 }

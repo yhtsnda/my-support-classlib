@@ -6,7 +6,7 @@ using Projects.Framework;
 
 namespace Projects.OAuth
 {
-    public interface IServerAccessGrantRepository : IShardRepository<ServerAccessGrant>
+    public interface IServerAccessGrantRepository : INoShardRepository<ServerAccessGrant>
     {
     }
 }

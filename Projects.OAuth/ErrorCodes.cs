@@ -82,9 +82,19 @@ namespace Projects.OAuth
         public const string InvalidGrant = "invalid_grant";
 
         /// <summary>
+        /// 提供的重定向URI与预先注册的值不匹配。
+        /// </summary>
+        public const string RedirectUriMismatch = "redirect_uri_mismatch";
+
+        /// <summary>
         /// 包含的访问许可——它的类型或其它属性——不被授权服务器所支持。
         /// </summary>
         public const string UnsupportedGrantType = "unsupported_grant_type";
+
+        /// <summary>
+        /// 请求的响应类型不为授权服务器所支持。
+        /// </summary>
+        public const string UnsupportedResponseType = "unsupported_response_type";
 
         /// <summary>
         /// 请求的作用域是无效的、未知的，或格式不正确的。

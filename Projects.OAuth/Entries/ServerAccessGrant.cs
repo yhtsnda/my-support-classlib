@@ -67,6 +67,11 @@ namespace Projects.OAuth
         public virtual int UserId { get; set; }
 
         /// <summary>
+        /// 授权的类型
+        /// </summary>
+        public virtual GrantType GrantType { get; set; }
+
+        /// <summary>
         /// 重置验证票据
         /// </summary>
         public virtual void Reset()

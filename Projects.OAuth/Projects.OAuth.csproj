@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entries\AuthorizationCode.cs" />
     <Compile Include="Entries\ClientAuth.cs" />
+    <Compile Include="Interfaces\IAuthorizationCodeRepository.cs" />
     <Compile Include="Message\AuthRequest.cs" />
     <Compile Include="Message\AuthResponse.cs" />
     <Compile Include="Entries\UserProxy.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="OAuthService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\AbstractOAuthAttribute.cs" />
+    <Compile Include="Web\HttpRequestHeader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Projects.Framework\Projects.Framework.csproj">
