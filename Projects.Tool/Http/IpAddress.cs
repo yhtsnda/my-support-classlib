@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace Projects.Tool.Util
+namespace Projects.Tool.Http
 {
     public static class IpAddress
     {

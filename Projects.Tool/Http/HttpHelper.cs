@@ -8,7 +8,9 @@ using System.Web;
 using System.Collections.Specialized;
 using System.Security.Cryptography;
 
-namespace Projects.Tool.Util
+using Projects.Tool.Util;
+
+namespace Projects.Tool.Http
 {
     /// <summary>
     /// 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using Projects.Tool;
 using Projects.Tool.Util;
+using Projects.Tool.Http;
 
 namespace Projects.Tool.OAuth
 {

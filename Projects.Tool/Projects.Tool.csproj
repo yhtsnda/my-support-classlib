@@ -132,6 +132,16 @@
     <Compile Include="Extend\EnumerableExtend.cs" />
     <Compile Include="Extend\LinqExtend.cs" />
     <Compile Include="Extend\StringExtend.cs" />
+    <Compile Include="Http\AbstractHttpClient.cs" />
+    <Compile Include="Http\HttpClient.cs" />
+    <Compile Include="Http\InnerWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Http\OpenApiHttpClient.cs" />
+    <Compile Include="Http\TimeoutWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Http\UriBuilder.cs" />
     <Compile Include="JsonProvider\JsonConverterProvider.cs" />
     <Compile Include="JsonProvider\PublicContractResolver.cs" />
     <Compile Include="Lock\ILock.cs" />
@@ -162,21 +172,24 @@
     <Compile Include="Profiler\ProfileStatus.cs" />
     <Compile Include="Profiler\TraceItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\DelegateAccessor.cs" />
+    <Compile Include="Reflection\TypeAccessor.cs" />
     <Compile Include="Result\PagingResult.cs" />
     <Compile Include="Result\ResultCode.cs" />
+    <Compile Include="Util\CookieAuthentication.cs" />
     <Compile Include="Util\CRC16Helper.cs" />
     <Compile Include="Util\ExcelBuilder.cs" />
     <Compile Include="Util\ExcelColumnCache.cs">
       <DependentUpon>ExcelBuilder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Util\HttpBase.cs" />
+    <Compile Include="Http\HttpBase.cs" />
     <Compile Include="Util\ShardParams.cs" />
     <Compile Include="Util\AcquireLock.cs" />
     <Compile Include="Util\FastActivator.cs" />
     <Compile Include="Util\FileHelper.cs" />
-    <Compile Include="Util\HttpHelper.cs" />
+    <Compile Include="Http\HttpHelper.cs" />
     <Compile Include="Util\InterfaceValidator.cs" />
-    <Compile Include="Util\IpAddress.cs" />
+    <Compile Include="Http\IpAddress.cs" />
     <Compile Include="Util\JsonConverter.cs" />
     <Compile Include="Util\NetworkTime.cs" />
     <Compile Include="Util\ProtoInt.cs" />
@@ -191,6 +204,7 @@
     <Compile Include="Validation\Arguments.cs" />
     <Compile Include="Validation\ArgumentStrings.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
