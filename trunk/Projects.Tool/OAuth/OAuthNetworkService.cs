@@ -6,6 +6,8 @@ using Projects.Tool.Util;
 using System.Net;
 using System.IO;
 
+using Projects.Tool.Http;
+
 namespace Projects.Tool.OAuth
 {
     /// <summary>

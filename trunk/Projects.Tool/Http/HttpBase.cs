@@ -8,7 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System.Security.Authentication;
 
-namespace Projects.Tool
+namespace Projects.Tool.Http
 {
     /// <summary>
     /// HttpBase类提供了对http请求的封装,Encoding.UTF8
