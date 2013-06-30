@@ -92,6 +92,11 @@ namespace Projects.OAuth
         public const string UnsupportedGrantType = "unsupported_grant_type";
 
         /// <summary>
+        /// 包含的帐号类型——它的类型或其它属性——不被授权服务器所支持。
+        /// </summary>
+        public const string UnsupportedAccountType = "unsupported_account_type";
+
+        /// <summary>
         /// 请求的响应类型不为授权服务器所支持。
         /// </summary>
         public const string UnsupportedResponseType = "unsupported_response_type";

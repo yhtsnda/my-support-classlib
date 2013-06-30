@@ -28,10 +28,15 @@ namespace Projects.OAuth
         /// <summary>
         /// 可刷新凭证
         /// </summary>
-        RefreshToken = 3
+        RefreshToken = 3,
+
+        /// <summary>
+        /// 使用信任客户端的 AppToken 获得用户的 UserToken
+        /// </summary>
+        UserToken = 4,
     }
 
-    internal class GrantTypeEntend
+    internal static class GrantTypeExtend
     {
         public static bool TryParse(string value, out GrantType grantType)
         {
@@ -54,6 +59,9 @@ namespace Projects.OAuth
                 case "client_credentials":
                     grantType = GrantType.ClientCredentials;
                     return true;
+                case "user_token":
+                    grantType = GrantType.UserToken;
+                    return true;
             }
             return false;
         }
@@ -71,6 +79,8 @@ namespace Projects.OAuth
                     break;
                 case GrantType.RefreshToken:
                     return "refresh_token";
+                case GrantType.UserToken:
+                    return "user_token";
             }
             return "";
         }

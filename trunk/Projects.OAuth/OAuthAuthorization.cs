@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Routing;
+
+using Projects.Tool;
 using Projects.Framework;
+using System.Web;
 
 namespace Projects.OAuth
 {
@@ -41,11 +45,11 @@ namespace Projects.OAuth
             }
         }
 
-        public static AccessGrant CurrentToken
+        public static ServerAccessGrant CurrentToken
         {
             get
             {
-                AccessGrant accessGrant;
+                ServerAccessGrant accessGrant;
                 TryValidToken(out accessGrant);
                 return accessGrant;
             }
@@ -53,14 +57,14 @@ namespace Projects.OAuth
 
         public static ServerAccessGrant ValidToken()
         {
-            AccessGrant accessGrant;
+            ServerAccessGrant accessGrant;
             if (!TryValidToken(out accessGrant))
                 throw new OAuthException("ticket invalid", "ticket required", 500);
 
             return accessGrant;
         }
 
-        public static bool TryValidToken(out AccessGrant accessGrant)
+        public static bool TryValidToken(out ServerAccessGrant accessGrant)
         {
             var context = HttpContext.Current;
             if (context != null)
