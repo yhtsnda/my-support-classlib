@@ -30,5 +30,12 @@ namespace Projects.OAuth
         public int UserId { get; set; }
 
         public DateTime CreateTime { get; set; }
+
+        public virtual DateTime ExpireTime { get; set; }
+
+        public virtual bool IsEffect()
+        {
+            return ExpireTime >= DateTime.Now;
+        }
     }
 }

@@ -60,6 +60,10 @@ namespace Projects.OAuth
         /// </summary>
         internal const string ACCESS_TOKEN = "access_token";
 
+        /// The "access_token" string.
+        /// </summary>
+        internal const string ACCESSTOKEN = "accesstoken";
+
         /// <summary>
         /// The "access_token" string.
         /// </summary>

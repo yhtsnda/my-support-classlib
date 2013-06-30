@@ -11,7 +11,8 @@ namespace Projects.OAuth
     public class ServerAccessGrant
     {
         //默认的过期时间为一天
-        private const int DEFAULT_EXPIRE_SECONDS = 3600 * 60 * 24;
+        private const int DEFAULT_EXPIRE_SECONDS = 3600 * 24;
+        private const int DEFAULT_REFRESH_EXPIRE_SECONDS = 3600 * 24 * 30;
 
         public ServerAccessGrant(int clientId, int userId = 0)
         {
@@ -20,10 +21,10 @@ namespace Projects.OAuth
 
             this.AccessToken = Guid.NewGuid().ToString("N");
             this.RefreshToken = Guid.NewGuid().ToString("N");
-            var effectSpan = this.ExpireTime - this.CreateTime;
             //重置创建时间
             this.CreateTime = DateTime.Now;
             this.ExpireTime = this.CreateTime.AddSeconds(DEFAULT_EXPIRE_SECONDS);
+            this.RefreshExpireTime = this.CreateTime.AddSeconds(DEFAULT_REFRESH_EXPIRE_SECONDS);
         }
 
         /// <summary>
@@ -52,6 +53,11 @@ namespace Projects.OAuth
         public virtual DateTime ExpireTime { get; set; }
 
         /// <summary>
+        /// Refresh token的过期时间
+        /// </summary>
+        public virtual DateTime RefreshExpireTime { get; set; }
+
+        /// <summary>
         /// 创建时间
         /// </summary>
         public virtual DateTime CreateTime { get; set; }
@@ -72,19 +78,6 @@ namespace Projects.OAuth
         public virtual GrantType GrantType { get; set; }
 
         /// <summary>
-        /// 重置验证票据
-        /// </summary>
-        public virtual void Reset()
-        {
-            this.AccessToken = Guid.NewGuid().ToString("N");
-            this.RefreshToken = Guid.NewGuid().ToString("N");
-            var effectSpan = this.ExpireTime - this.CreateTime;
-            //重置创建时间
-            this.CreateTime = DateTime.Now;
-            this.ExpireTime = this.CreateTime.Add(effectSpan);
-        }
-
-        /// <summary>
         /// 判断票据是否有效
         /// </summary>
         /// <returns>
@@ -94,6 +87,18 @@ namespace Projects.OAuth
         public virtual bool IsEffective()
         {
             return this.ExpireTime >= DateTime.Now;
+        }
+
+        /// <summary>
+        /// 判断刷新票据是否有效
+        /// </summary>
+        /// <returns>
+        /// True = 刷新票据有效
+        /// False = 刷新票据失效
+        /// </returns>
+        public virtual bool IsRefreshEffective()
+        {
+            return this.RefreshExpireTime >= DateTime.Now;
         }
     }
 }

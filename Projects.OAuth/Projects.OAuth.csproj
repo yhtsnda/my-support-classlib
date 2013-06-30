@@ -41,24 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entries\AccountType.cs" />
     <Compile Include="Entries\AuthorizationCode.cs" />
     <Compile Include="Entries\ClientAuth.cs" />
     <Compile Include="Interfaces\IAuthorizationCodeRepository.cs" />
-    <Compile Include="Message\AuthRequest.cs" />
-    <Compile Include="Message\AuthResponse.cs" />
+    <Compile Include="Message\Authorizes\AuthRequest.cs" />
     <Compile Include="Entries\UserProxy.cs" />
-    <Compile Include="ErrorCodes.cs" />
-    <Compile Include="AuthRequestType.cs" />
-    <Compile Include="ClientAuthStatus.cs" />
+    <Compile Include="Entries\ErrorCodes.cs" />
+    <Compile Include="Entries\AuthRequestType.cs" />
+    <Compile Include="Entries\ClientAuthStatus.cs" />
     <Compile Include="Entries\ServerAccessGrant.cs" />
-    <Compile Include="GrantType.cs" />
+    <Compile Include="Entries\GrantType.cs" />
     <Compile Include="Interfaces\IClientAuthRepository.cs" />
     <Compile Include="Interfaces\IServerAccessGrantRepository.cs" />
     <Compile Include="Interfaces\IUserProxyRepository.cs" />
     <Compile Include="Message\MessageUtility.cs" />
     <Compile Include="Message\Protocal.cs" />
-    <Compile Include="Message\TokenRequest.cs" />
-    <Compile Include="Message\TokenResponse.cs" />
+    <Compile Include="Message\Tokens\TokenRequest.cs" />
     <Compile Include="OAuthAuthorization.cs" />
     <Compile Include="OAuthException.cs" />
     <Compile Include="OAuthService.cs" />
