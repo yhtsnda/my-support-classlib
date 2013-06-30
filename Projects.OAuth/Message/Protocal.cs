@@ -41,6 +41,11 @@ namespace Projects.OAuth
         internal const string CLIENT_SECRET = "client_secret";
 
         /// <summary>
+        /// The "token" string
+        /// </summary>
+        internal const string TOKEN = "token";
+
+        /// <summary>
         /// The "code" string.
         /// </summary>
         internal const string CODE = "code";
@@ -108,5 +113,20 @@ namespace Projects.OAuth
         /// The "grant_type" string.
         /// </summary>
         internal const string GRANT_TYPE = "grant_type";
+
+        /// <summary>
+        /// The "account_type" string.
+        /// </summary>
+        internal const string ACCOUNT_TYPE = "account_type";
+
+        /// <summary>
+        /// The "authorization_code" string.
+        /// </summary>
+        internal const string AUTHORIZATION_CODE = "authorization_code";
+
+        /// <summary>
+        /// The "client_credentials" string.
+        /// </summary>
+        internal const string CLIENT_CREDENTIALS = "client_credentials";
     }
 }
