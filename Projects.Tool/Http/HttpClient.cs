@@ -52,20 +52,20 @@ namespace Projects.Tool.Http
 
         public override T HttpGet<T>(string url, string key, string value)
         {
-            UriBuilder builder = new UriBuilder(url);
+            UriPathBuilder builder = new UriPathBuilder(url);
             builder.Append(key, value);
             return HttpGet<T>(builder.ToString());
         }
 
         public override T HttpGet<T>(string url, NameValueCollection data)
         {
-            UriBuilder builder = new UriBuilder(url).AppendMany(data);
+            UriPathBuilder builder = new UriPathBuilder(url).AppendMany(data);
             return HttpGet<T>(builder.ToString());
         }
 
         public override T HttpGet<T>(string url, object values)
         {
-            UriBuilder builder = new UriBuilder(url).AppendMany(UriBuilder.ToNameValueCollection(values));
+            UriPathBuilder builder = new UriPathBuilder(url).AppendMany(UriPathBuilder.ToNameValueCollection(values));
             return HttpGet<T>(builder.ToString());
         }
 
@@ -94,19 +94,19 @@ namespace Projects.Tool.Http
 
         public override T HttpPost<T>(string url, object values)
         {
-            return HttpPost<T>(url, UriBuilder.ToNameValueCollection(values));
+            return HttpPost<T>(url, UriPathBuilder.ToNameValueCollection(values));
         }
 
         public override T HttpPostJson<T>(string url, object instance, object values)
         {
-            return HttpPostJson<T>(url, instance, UriBuilder.ToNameValueCollection(values));
+            return HttpPostJson<T>(url, instance, UriPathBuilder.ToNameValueCollection(values));
         }
 
         public override T HttpPostJson<T>(string url, object instance, NameValueCollection data = null)
         {
             Arguments.NotNull(instance, "instance");
 
-            UriBuilder builder = new UriBuilder(url);
+            UriPathBuilder builder = new UriPathBuilder(url);
             if (data != null)
                 builder.AppendMany(data);
 
@@ -127,12 +127,12 @@ namespace Projects.Tool.Http
 
         public override T UploadFile<T>(string url, string fileName, object values)
         {
-            return UploadFile<T>(url, fileName, UriBuilder.ToNameValueCollection(values));
+            return UploadFile<T>(url, fileName, UriPathBuilder.ToNameValueCollection(values));
         }
 
         public override T UploadFile<T>(string url, string fileName, NameValueCollection data = null)
         {
-            UriBuilder builder = new UriBuilder(url);
+            UriPathBuilder builder = new UriPathBuilder(url);
             if (data != null)
                 builder.AppendMany(data);
 

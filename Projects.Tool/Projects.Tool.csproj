@@ -134,6 +134,7 @@
     <Compile Include="Extend\StringExtend.cs" />
     <Compile Include="Http\AbstractHttpClient.cs" />
     <Compile Include="Http\HttpClient.cs" />
+    <Compile Include="Http\HttpContextExtend.cs" />
     <Compile Include="Http\InnerWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -141,7 +142,7 @@
     <Compile Include="Http\TimeoutWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Http\UriBuilder.cs" />
+    <Compile Include="Http\UriPathBuilder.cs" />
     <Compile Include="JsonProvider\JsonConverterProvider.cs" />
     <Compile Include="JsonProvider\PublicContractResolver.cs" />
     <Compile Include="Lock\ILock.cs" />
@@ -185,7 +186,7 @@
     <Compile Include="Http\HttpBase.cs" />
     <Compile Include="Util\ShardParams.cs" />
     <Compile Include="Util\AcquireLock.cs" />
-    <Compile Include="Util\FastActivator.cs" />
+    <Compile Include="Reflection\FastActivator.cs" />
     <Compile Include="Util\FileHelper.cs" />
     <Compile Include="Http\HttpHelper.cs" />
     <Compile Include="Util\InterfaceValidator.cs" />

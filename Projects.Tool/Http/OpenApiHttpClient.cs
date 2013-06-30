@@ -9,7 +9,7 @@ using Projects.Tool.Util;
 
 namespace Projects.Tool.Http
 {
-    public class OpenApiHttpClient<T> : AbstractHttpClient
+    public class OpenApiHttpClient : AbstractHttpClient
     {
         public override int Timeout { get; set; }
 
@@ -38,22 +38,22 @@ namespace Projects.Tool.Http
 
         public override T HttpGet<T>(string url, string key, string value)
         {
-            UriBuilder builder = new UriBuilder(url);
+            UriPathBuilder builder = new UriPathBuilder(url);
             builder.Append(key, value);
             return HttpGet<T>(builder.ToString());
         }
 
         public override T HttpGet<T>(string url, NameValueCollection data)
         {
-            UriBuilder builder = new UriBuilder(url);
+            UriPathBuilder builder = new UriPathBuilder(url);
             builder.AppendMany(data);
             return HttpGet<T>(builder.ToString());
         }
 
         public override T HttpGet<T>(string url, object values)
         {
-            UriBuilder builder = new UriBuilder(url);
-            builder.AppendMany(UriBuilder.ToNameValueCollection(values));
+            UriPathBuilder builder = new UriPathBuilder(url);
+            builder.AppendMany(UriPathBuilder.ToNameValueCollection(values));
             return HttpGet<T>(builder.ToString());
         }
 
@@ -106,21 +106,21 @@ namespace Projects.Tool.Http
 
         public virtual OpenApiResult<T> HttpGetForResult<T>(string url, string key, string value)
         {
-            UriBuilder builder = new UriBuilder(url);
+            UriPathBuilder builder = new UriPathBuilder(url);
             builder.Append(key, value);
             return HttpGetForResult<T>(builder.ToString());
         }
 
         public virtual OpenApiResult<T> HttpGetForResult<T>(string url, NameValueCollection data)
         {
-            UriBuilder builder = new UriBuilder(url);
+            UriPathBuilder builder = new UriPathBuilder(url);
             builder.AppendMany(data);
             return HttpGetForResult<T>(builder.ToString());
         }
 
         public virtual OpenApiResult<T> HttpGetForResult<T>(string url, object values)
         {
-            return HttpGetForResult<T>(url, UriBuilder.ToNameValueCollection(values));
+            return HttpGetForResult<T>(url, UriPathBuilder.ToNameValueCollection(values));
         }
 
         public virtual OpenApiResult<T> HttpPostForResult<T>(string url, string key, string value)
@@ -132,7 +132,7 @@ namespace Projects.Tool.Http
 
         public virtual OpenApiResult<T> HttpPostForResult<T>(string url, object values)
         {
-            return HttpPostForResult<T>(url, UriBuilder.ToNameValueCollection(values));
+            return HttpPostForResult<T>(url, UriPathBuilder.ToNameValueCollection(values));
         }
 
         public virtual OpenApiResult<T> HttpPostForResult<T>(string url, NameValueCollection data)
@@ -150,7 +150,7 @@ namespace Projects.Tool.Http
 
         public virtual OpenApiResult<T> HttpPostJsonForResult<T>(string url, object instance, object values)
         {
-            return HttpPostJsonForResult<T>(url, instance, UriBuilder.ToNameValueCollection(values));
+            return HttpPostJsonForResult<T>(url, instance, UriPathBuilder.ToNameValueCollection(values));
         }
 
         public virtual OpenApiResult<T> HttpPostJsonForResult<T>(string url, object instance, NameValueCollection data = null)
@@ -171,14 +171,14 @@ namespace Projects.Tool.Http
 
         public virtual OpenApiResult<T> UploadFileForResult<T>(string url, string filename, object values)
         {
-            return UploadFileForResult<T>(url, filename, UriBuilder.ToNameValueCollection(values));
+            return UploadFileForResult<T>(url, filename, UriPathBuilder.ToNameValueCollection(values));
         }
 
         public virtual OpenApiResult<T> UploadFileForResult<T>(string url, string filename, NameValueCollection data = null)
         {
             Func<OpenApiResult<T>> func = () =>
             {
-                UriBuilder builder = new UriBuilder(url);
+                UriPathBuilder builder = new UriPathBuilder(url);
                 builder.AppendMany(data);
                 url = builder.ToString();
                 using (var client = CreateWebClient())
