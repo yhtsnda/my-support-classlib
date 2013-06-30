@@ -93,6 +93,15 @@ namespace Projects.OAuth
         /// </summary>
         internal const string PASSWORD = "password";
 
+        /// <summary>
+        /// The "platcode" string.
+        /// </summary>
+        public const string PLATCODE = "platcode";
+
+        /// <summary>
+        /// The "third_token" string.
+        /// </summary>
+        public const string THIRD_TOKEN = "third_token";
 
         /// <summary>
         /// The "error_uri" string.
