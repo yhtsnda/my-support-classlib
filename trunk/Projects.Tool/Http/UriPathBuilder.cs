@@ -13,14 +13,14 @@ namespace Projects.Tool.Http
     /// <summary>
     /// 标准URI的构建类
     /// </summary>
-    public class UriBuilder
+    public class UriPathBuilder
     {
         public static readonly char PathSeparatorChar = '/';
 
         private StringBuilder InnerBuilder =  new StringBuilder();
         private string BaseUrl = String.Empty;
 
-        protected UriBuilder()
+        protected UriPathBuilder()
         {
             
         }
@@ -29,7 +29,7 @@ namespace Projects.Tool.Http
         /// 标准URI的构建类
         /// </summary>
         /// <param name="baseUrl"></param>
-        public UriBuilder(string baseUrl)
+        public UriPathBuilder(string baseUrl)
         {
             Arguments.NotNull(baseUrl, "baseUrl");
             this.BaseUrl = baseUrl;
@@ -43,7 +43,7 @@ namespace Projects.Tool.Http
         /// <param name="key">建值</param>
         /// <param name="value">数据</param>
         /// <returns></returns>
-        public UriBuilder Append(string key, string value)
+        public UriPathBuilder Append(string key, string value)
         {
             Arguments.NotNull(key, "key");
             InnerBuilder.AppendFormat("{0}={1}&", key, HttpUtility.UrlEncode(value));
@@ -56,7 +56,7 @@ namespace Projects.Tool.Http
         /// <param name="key">键值</param>
         /// <param name="value">数据</param>
         /// <returns></returns>
-        public UriBuilder Append(string key, object value)
+        public UriPathBuilder Append(string key, object value)
         {
             string v = (String)Convert.ChangeType(value, typeof(String));
             return Append(key, v);
@@ -68,7 +68,7 @@ namespace Projects.Tool.Http
         /// <param name="key">键值</param>
         /// <param name="items">对象数据</param>
         /// <returns></returns>
-        public UriBuilder AppendMany(string key, IEnumerable items)
+        public UriPathBuilder AppendMany(string key, IEnumerable items)
         {
             Arguments.NotNull(key, "key");
 
@@ -85,7 +85,7 @@ namespace Projects.Tool.Http
         /// </summary>
         /// <param name="data">参数数据</param>
         /// <returns></returns>
-        public UriBuilder AppendMany(NameValueCollection data)
+        public UriPathBuilder AppendMany(NameValueCollection data)
         {
             if (data != null && data.Count > 0)
             {
@@ -138,6 +138,28 @@ namespace Projects.Tool.Http
                 }
             }
             return data;
+        }
+
+        /// <summary>
+        /// 合并路径
+        /// </summary>
+        /// <param name="paths">路径参数</param>
+        /// <returns>合并结果</returns>
+        public static string Combine(params string[] paths)
+        {
+            Arguments.NotNull(paths, "paths");
+
+            List<string> items = new List<string>();
+            for (var i = 0; i < paths.Length; i++)
+            {
+                var path = paths[i];
+                Arguments.NotNull(path, "paths");
+
+                path = path.Trim().Trim(new char[] { PathSeparatorChar });
+                if (path.Length > 0)
+                    items.Add(path);
+            }
+            return String.Join(PathSeparatorChar.ToString(), items);
         }
     }
 }
