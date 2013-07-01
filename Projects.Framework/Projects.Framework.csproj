@@ -143,10 +143,11 @@
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor.cs" />
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\RepositoryPersistentMethodInvocation.cs" />
     <Compile Include="Shards\AbstractRepository.cs" />
-    <Compile Include="Shards\IShardedRepository.cs" />
-    <Compile Include="Shards\ShardedRepository.cs" />
+    <Compile Include="Shards\Obsoletes\IShardedRepository.cs" />
+    <Compile Include="Shards\Obsoletes\ShardedRepository.cs" />
     <Compile Include="Shards\ShardedRepositoryExtend.cs" />
     <Compile Include="Shards\Strategies\ModShardStrategy.cs" />
+    <Compile Include="Shards\Strategies\MonthShardStrategy.cs" />
     <Compile Include="Shards\Strategies\NoShardStrategy.cs" />
     <Compile Include="Shards\Strategies\WeekShardStrategy.cs" />
     <Compile Include="Specification\Linqs\LinqDatabase.cs" />

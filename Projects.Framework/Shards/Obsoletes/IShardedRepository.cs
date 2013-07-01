@@ -10,6 +10,7 @@ namespace Projects.Framework
     /// 不具有分区能力的仓储
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
+    [Obsolete("请用 INoShardRepository<TEntity> ")]
     public interface IShardRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         /// <summary>
@@ -31,6 +32,7 @@ namespace Projects.Framework
     /// 通过单元标识进行分区的仓储
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
+    [Obsolete("请用 IShardedRepositoy<TEntity, TParam> ")]
     public interface IUnitShardRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         /// <summary>
@@ -57,6 +59,7 @@ namespace Projects.Framework
         IList<TEntity> GetList(int unitId, IEnumerable ids);
     }
 
+    [Obsolete("请用 IShardedRepositoy<TEntity, TParam> ")]
     public interface ICourseShardRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         /// <summary>
@@ -88,6 +91,7 @@ namespace Projects.Framework
     /// 通过单元标识及用户标识进行分区的仓储
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
+    [Obsolete("请用 IShardedRepositoy<TEntity, TParam1, TParam2> ")]
     public interface IUnitUserShardRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         /// <summary>
@@ -121,6 +125,7 @@ namespace Projects.Framework
     /// 通过用户标识进行分区的仓储
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
+    [Obsolete("请用 IShardedRepositoy<TEntity, TParam> ")]
     public interface IUserShardRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         /// <summary>
