@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Projects.Framework;
+
 namespace Projects.UserCenter
 {
-    public class Class1
+    public interface IClientAppRepository : INoShardRepository<ClientApp>
     {
     }
 }
