@@ -78,6 +78,11 @@ namespace Projects.UserCenter
         public virtual UserStatus Status { get; protected set; }
 
         /// <summary>
+        /// 扩展数据
+        /// </summary>
+        public virtual string ExtendField { get; protected set; }
+
+        /// <summary>
         /// 验证密码正确性
         /// </summary>
         /// <param name="inputPassword">输入的密码</param>

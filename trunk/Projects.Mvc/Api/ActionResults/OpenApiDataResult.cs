@@ -24,13 +24,19 @@ namespace Projects.Framework.Web
 
         public override void ExecuteResult(ControllerContext context)
         {
-            if(context == null)
+            if (context == null)
                 throw new ArgumentNullException("context");
+
+            var callback = context.HttpContext.Request["callback"];
+            var content = Tool.Util.JsonConverter.ToJson(Data);
+            if (!string.IsNullOrEmpty(callback))
+                content = callback + "(" + Tool.Util.JsonConverter.ToJson(Data) + ")";
+
             HttpResponseBase response = context.HttpContext.Response;
             response.ContentType = "application/json";
+            response.ContentEncoding = Encoding.UTF8;
 
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            response.Write(serializer.Serialize(Data));
+            response.Write(content);
         }
 
         public class OpenApiData
