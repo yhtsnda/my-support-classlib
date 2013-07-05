@@ -9,7 +9,7 @@ namespace Projects.Framework.Web
 {
     public class ApiControllerFactory : DefaultControllerFactory
     {
-        //[System.Diagnostics.DebuggerHidden]
+        [System.Diagnostics.DebuggerHidden]
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
             var iController = base.GetControllerInstance(requestContext, controllerType);

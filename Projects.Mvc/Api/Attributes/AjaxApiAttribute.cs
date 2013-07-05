@@ -11,8 +11,13 @@ namespace Projects.Framework.Web
     {
         public override void OnException(ExceptionContext filterContext)
         {
-            filterContext.Result = new AjaxApiDataResult(filterContext.Exception, GetResponseCode(filterContext));
-            filterContext.ExceptionHandled = true;
+            object ar = filterContext.HttpContext.Items[ApiControllerActionInvoker.ActionResultInvoker];
+            if (ar == null)
+            {
+                filterContext.Result = new AjaxApiDataResult(filterContext.Exception, GetResponseCode(filterContext));
+                filterContext.ExceptionHandled = true;
+            }
+            base.OnException(filterContext);
         }
     }
 }

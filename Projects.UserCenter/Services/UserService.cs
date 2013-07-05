@@ -1,4 +1,5 @@
-﻿using Projects.Framework;
+﻿using Projects.Tool;
+using Projects.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,10 +70,25 @@ namespace Projects.UserCenter
         /// <summary>
         /// 正常登录
         /// </summary>
-        /// <returns></returns>
+        /// <returns>操作结果</returns>
         public ResultWrapper<LoginResultCode, User> Login(string userName, string password)
         {
-            throw new NotImplementedException();
+            Arguments.NotNullOrWhiteSpace(userName, "userName");
+            Arguments.NotNullOrWhiteSpace(password, "password");
+
+            var spec = userRepository.CreateSpecification().Where(o => o.UserName == userName);
+            var user = userRepository.FindOne(spec);
+            if (user == null)
+                return new ResultWrapper<LoginResultCode, User>(LoginResultCode.UserNotFound,
+                    LoginResultCode.UserNotFound.ToMessage());
+            if(user.ValidatePassword(password))
+            {
+                user.Password = "";
+                return new ResultWrapper<LoginResultCode, User>(LoginResultCode.Success,
+                    user, LoginResultCode.Success.ToMessage());
+            }
+            return new ResultWrapper<LoginResultCode, User>(LoginResultCode.WrongPassword,
+                LoginResultCode.WrongPassword.ToMessage());
         }
 
         /// <summary>
@@ -82,14 +98,43 @@ namespace Projects.UserCenter
         public ResultWrapper<LoginResultCode, User> LoginWithMapping(string mappingKey, 
             string password, MappingType type)
         {
-            throw new NotImplementedException();
+            if (type == MappingType.None)
+                return Login(mappingKey, password);
+
+            var mapping = mappingService.GetMappingByMappingKey(mappingKey, type);
+            if (mapping == null)
+                return new ResultWrapper<LoginResultCode, User>(LoginResultCode.MappingNotFound,
+                    LoginResultCode.Success.ToMessage());
+            var user = userRepository.Get(mapping.LocalUserId);
+            if (type == MappingType.Mobile || type == MappingType.IdCard)
+            {
+
+                if (user != null && user.ValidatePassword(password))
+                {
+                    user.Password = "";
+                    return new ResultWrapper<LoginResultCode, User>(LoginResultCode.Success,
+                        user, LoginResultCode.Success.ToMessage());
+                }
+            }
+            if (type == MappingType.SinaWeibo || type == MappingType.Tencent)
+            {
+                if (user != null)
+                {
+                    user.Password = "";
+                    return new ResultWrapper<LoginResultCode, User>(LoginResultCode.Success,
+                        user, LoginResultCode.Success.ToMessage());
+                }
+            }
+            return new ResultWrapper<LoginResultCode, User>(LoginResultCode.WrongPassword,
+                LoginResultCode.WrongPassword.ToMessage());
         }
 
         /// <summary>
         /// 正常注册
         /// </summary>
-        /// <returns></returns>
-        public ResultWrapper<RegisterResultCode, User> Register()
+        /// <param name="model">注册模型</param>
+        /// <returns>注册结果</returns>
+        public ResultWrapper<RegisterResultCode, User> Register(UserRegisterModel model)
         {
             throw new NotImplementedException();
         }
@@ -97,8 +142,9 @@ namespace Projects.UserCenter
         /// <summary>
         /// 注册并设置映射信息
         /// </summary>
-        /// <returns></returns>
-        public ResultWrapper<RegisterResultCode, User> RegisterWithMapping()
+        /// <param name="model">注册模型</param>
+        /// <returns>注册结果</returns>
+        public ResultWrapper<RegisterResultCode, User> RegisterWithMapping(MappingRegisterModel model)
         {
             throw new NotImplementedException();
         }
@@ -131,8 +177,7 @@ namespace Projects.UserCenter
             if (user.Status == UserStatus.Disabled)
                 return CreateModifyResult(ModifyResultCode.UserHasDisabled, "该用户已经被禁用,不能修改密码");
 
-            if (!user.ValidatePassword(oldPwd))
-                return CreateModifyResult(ModifyResultCode.
+            throw new NotImplementedException();
         }
 
         public ResultWrapper<ModifyResultCode> ModifyUser()
