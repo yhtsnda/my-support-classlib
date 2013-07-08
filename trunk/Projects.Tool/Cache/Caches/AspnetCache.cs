@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Caching;
 using System.Web;
+using Projects.Tool.Reflection;
 
 namespace Projects.Tool
 {
@@ -24,15 +25,11 @@ namespace Projects.Tool
 
         protected override void SetInner<T>(string key, T value, DateTime expiredTime)
         {
-            InnerCache.Insert(key, value, null, expiredTime, Cache.NoSlidingExpiration, CacheItemPriority.Default, null);
-        }
+            if (value == null)
+                return;
 
-        protected override T GetInner<T>(string key)
-        {
-            var data = InnerCache.Get(key);
-            if (data == null)
-                return default(T);
-            return (T)data;
+            T clone = (T)value.DeepClone();
+            InnerCache.Insert(key, clone, null, expiredTime, Cache.NoSlidingExpiration, CacheItemPriority.Default, null);
         }
 
         protected override void RemoveInner(string key)
@@ -40,5 +37,10 @@ namespace Projects.Tool
             InnerCache.Remove(key);
         }
 
+        protected override object GetInner(Type type, string key)
+        {
+            var value = InnerCache.Get(key);
+            return value.DeepClone();
+        }
     }
 }

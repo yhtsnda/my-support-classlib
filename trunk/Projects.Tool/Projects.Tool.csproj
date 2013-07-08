@@ -173,6 +173,7 @@
     <Compile Include="Profiler\ProfileStatus.cs" />
     <Compile Include="Profiler\TraceItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\DeepCloneExtend.cs" />
     <Compile Include="Reflection\DelegateAccessor.cs" />
     <Compile Include="Reflection\TypeAccessor.cs" />
     <Compile Include="Result\PagingResult.cs" />
