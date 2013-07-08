@@ -9,6 +9,7 @@ using Projects.Tool.Shards;
 using Projects.Framework.Shards;
 using Castle.DynamicProxy;
 using Projects.Tool.Util;
+using System.Linq.Expressions;
 
 namespace Projects.Framework
 {
@@ -17,6 +18,7 @@ namespace Projects.Framework
     /// </summary>
     public static class RepositoryFramework
     {
+        internal const string CacheRegionKey = "cache:region";
         static FrameworkConfiguation shardConfiguation;
 
         static RepositoryFramework()
@@ -112,7 +114,7 @@ namespace Projects.Framework
             return shardConfiguation.GetDefineMetadata(entityType);
         }
 
-        internal static ClassDefineMetadata GetDefineMetadataAndCheck(Type entityType)
+        public static ClassDefineMetadata GetDefineMetadataAndCheck(Type entityType)
         {
             var metadata = GetDefineMetadata(entityType);
             if (metadata == null)
@@ -273,19 +275,38 @@ namespace Projects.Framework
             if (depends.Count > 0)
             {
                 var time = NetworkTime.Now.Ticks;
-                ICache dependCache = RepositoryFramework.GetCacher(metadata, "cache:depend");
-                dependCache.SetBatch(depends.Select(o => new CacheItem<long>(o, time)), DateTime.MaxValue);
+                ICache dependCache = RepositoryFramework.GetCacherForCacheRegion();
+                var items = depends.Select(o => new CacheItem<long>(o, time)).ToList();
+                dependCache.SetBatch(items, DateTime.MaxValue);
             }
         }
 
-        public static T GetProxy<T>(T entity) where T : class
+        public static TJoin GetJoin<TJoin>(object entity, Expression<Func<TJoin>> memberExpr)
         {
-            return (T)ProxyProvider.GetProxy(entity);
+            if (entity == null)
+                throw new ArgumentNullException("entity");
+
+            var metadata = RepositoryFramework.GetDefineMetadata(entity.GetType());
+            var method = ReflectionHelper.GetMethod(memberExpr.Body);
+            var joinDefine = metadata.GetClassJoinDefineMetadata(method);
+            if (joinDefine == null)
+                throw new PlatformException("类型 {1} 方法 {0} 未进行关联的定义。", method.Name, method.DeclaringType.FullName);
+
+            return (TJoin)joinDefine.DataProcesser.Process(entity);
         }
 
         public static void FetchObject<T>(T entity) where T : class
         {
             ProxyProvider.Fetch(entity);
+        }
+
+        public static T CloneEntity<T>(T entity)
+        {
+            if (entity == null)
+                return entity;
+
+            var metadata = GetDefineMetadataAndCheck(entity.GetType());
+            return (T)metadata.CloneEntity(entity);
         }
 
         internal static object Raise(object entity, RaiseType raiseType, UniqueRaise ur = null)
@@ -297,8 +318,6 @@ namespace Projects.Framework
                 throw new PlatformException("无法获取对象的定义 {0}", entity.GetType().FullName);
 
             var interceptors = RepositoryFramework.GetInterceptors(metadata.EntityType);
-
-            entity = ProxyProvider.GetProxy(entity);
 
             if (ur == null)
                 ur = new UniqueRaise(raiseType, metadata, entity, true);
@@ -340,39 +359,17 @@ namespace Projects.Framework
             return entity;
         }
 
-        internal class UniqueRaise : IDisposable
+        /// <summary>
+        /// 获取用于查询缓存的缓存
+        /// </summary>
+        /// <param name="metadata"></param>
+        /// <returns></returns>
+        internal static ICache GetCacherForQuery(ClassDefineMetadata metadata)
         {
-            const string UniqueRaiseKey = "_UniqueRaiseKey_";
-            string key = null;
+            if (metadata == null)
+                throw new ArgumentNullException("metadata");
 
-            public bool NotRaised
-            {
-                get;
-                private set;
-            }
-
-            public bool AutoDisposed
-            {
-                get;
-                private set;
-            }
-
-            public UniqueRaise(RaiseType raiseType, ClassDefineMetadata metadata, object entity, bool autoDisposed)
-            {
-                var pa = PropertyAccessorFactory.GetPropertyAccess(metadata.EntityType);
-                key = String.Format("{0}:{1}:{2}", metadata.EntityType.FullName, pa.GetGetter(metadata.IdMember.Name).Get(entity), raiseType);
-                NotRaised = !WorkbenchUtil<string, bool>.GetValue(UniqueRaiseKey, key);
-                if (NotRaised)
-                    WorkbenchUtil<string, bool>.SetValue(UniqueRaiseKey, key, true);
-
-                AutoDisposed = autoDisposed;
-            }
-
-            public void Dispose()
-            {
-                if (NotRaised)
-                    WorkbenchUtil<string, bool>.SetValue(UniqueRaiseKey, key, false);
-            }
+            return GetCacher(metadata, "@@" + metadata.EntityType.FullName);
         }
 
         internal static ICache GetCacher(ClassDefineMetadata metadata)
@@ -381,7 +378,7 @@ namespace Projects.Framework
                 throw new ArgumentNullException("metadata");
 
             var cache = CacheManager.GetCacher(metadata.EntityType);
-            if (cache is HttpContextCache)
+            if (!metadata.IsContextCacheable || cache is HttpContextCache)
                 return cache;
 
             return new SecondaryCacheEx(cache);
@@ -395,13 +392,13 @@ namespace Projects.Framework
                 throw new ArgumentNullException("name");
 
             var cache = CacheManager.GetCacher(name);
-            if (cache is HttpContextCache)
+            if (!metadata.IsContextCacheable || cache is HttpContextCache)
                 return cache;
 
             return new SecondaryCacheEx(cache);
         }
 
-        internal static ICache GetCacher(string name)
+        static ICache GetCacher(string name)
         {
             if (String.IsNullOrEmpty(name))
                 throw new ArgumentNullException("name");
@@ -413,6 +410,11 @@ namespace Projects.Framework
             return new SecondaryCacheEx(cache);
         }
 
+        internal static ICache GetCacherForCacheRegion()
+        {
+            return GetCacher(CacheRegionKey);
+        }
+
         class SecondaryCacheEx : SecondaryCache
         {
             public SecondaryCacheEx(ICache cache)
@@ -420,23 +422,52 @@ namespace Projects.Framework
                 FirstCache = new HttpContextCache();
                 SecondCache = cache;
             }
+        }
+    }
 
-            protected override T GetInner<T>(string key)
-            {
-                return base.GetInner<T>(key);
-            }
+    internal enum RaiseType
+    {
+        Unknown,
+        PreCreate,
+        PreUpdate,
+        PreDelete,
+        PostCreate,
+        PostUpdate,
+        PostDelete,
+        PostLoad
+    }
+
+    internal class UniqueRaise : IDisposable
+    {
+        const string UniqueRaiseKey = "_UniqueRaiseKey_";
+        string key = null;
+
+        public bool NotRaised
+        {
+            get;
+            private set;
         }
 
-        internal enum RaiseType
+        public bool AutoDisposed
         {
-            Unknown,
-            PreCreate,
-            PreUpdate,
-            PreDelete,
-            PostCreate,
-            PostUpdate,
-            PostDelete,
-            PostLoad
+            get;
+            private set;
+        }
+
+        public UniqueRaise(RaiseType raiseType, ClassDefineMetadata metadata, object entity, bool autoDisposed)
+        {
+            key = String.Format("{0}:{1}:{2}", metadata.EntityType.FullName, EntityUtil.GetId(entity), raiseType);
+            NotRaised = !WorkbenchUtil<string, bool>.GetValue(UniqueRaiseKey, key);
+            if (NotRaised)
+                WorkbenchUtil<string, bool>.SetValue(UniqueRaiseKey, key, true);
+
+            AutoDisposed = autoDisposed;
+        }
+
+        public void Dispose()
+        {
+            if (NotRaised)
+                WorkbenchUtil<string, bool>.SetValue(UniqueRaiseKey, key, false);
         }
     }
 }
