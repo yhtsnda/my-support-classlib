@@ -58,7 +58,10 @@ namespace Projects.Framework.NHibernateAccess
             if (session == null)
             {
                 workbench.AttachDisposeHandler(DisposeSessions);
-                session = factory.OpenSession(new ShardInterceptor(partitionId));
+                using (var scope = ProfilerContext.Profile("open nhibernate inner session"))
+                {
+                    session = factory.OpenSession(new ShardInterceptor(partitionId));
+                }
                 WorkbenchUtil<ShardId, ISession>.SetValue(SessionCacheKey, shardId, session);
             }
             return session;
@@ -84,7 +87,10 @@ namespace Projects.Framework.NHibernateAccess
                     factory = sessionFactories.TryGetValue(shardId);
                     if (factory == null)
                     {
-                        factory = CreateSessionFactory(shardId);
+                        using (var scope = ProfilerContext.Profile("create session factory"))
+                        {
+                            factory = CreateSessionFactory(shardId);
+                        }
                         sessionFactories.Add(shardId, factory);
                     }
                 }

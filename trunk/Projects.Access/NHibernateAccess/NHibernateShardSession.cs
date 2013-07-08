@@ -38,7 +38,6 @@ namespace Projects.Framework.NHibernateAccess
             var merge = MergeEntity(session, entity);
             session.Update(merge);
             session.Flush();
-            EntityUtil.MergeObject(merge, entity);
         }
         public void Delete(TEntity entity)
         {
@@ -100,7 +99,7 @@ namespace Projects.Framework.NHibernateAccess
             if (!session.Contains(entity))
             {
                 var impl = session.GetSessionImplementation();
-                var entityPersister = impl.GetEntityPersister(entity.GetType().FullName, entity);
+                var entityPersister = impl.GetEntityPersister(null, entity);
                 var id = entityPersister.GetIdentifier(entity, impl.EntityMode);
 
                 EntityKey key = new EntityKey(id, entityPersister, impl.EntityMode);
@@ -118,6 +117,7 @@ namespace Projects.Framework.NHibernateAccess
         void RemoveEntityFromSession<TEntity>(ISession session, object id)
         {
             var impl = session.GetSessionImplementation();
+
             var entityPersister = impl.Factory.GetEntityPersister(typeof(TEntity).FullName);
             EntityKey key = new EntityKey(id, entityPersister, impl.EntityMode);
             if (impl.PersistenceContext.ContainsEntity(key))
