@@ -89,6 +89,7 @@
     <Compile Include="MongoAccess\MongoSpecificationProvider.cs" />
     <Compile Include="NHibernateAccess\Events\RaiseEventListener.cs" />
     <Compile Include="NHibernateAccess\NHibernateMappingExtend.cs" />
+    <Compile Include="NHibernateAccess\NHibernateOriginalObjectProvider.cs" />
     <Compile Include="NHibernateAccess\NHibernateRepositoryExtend.cs" />
     <Compile Include="NHibernateAccess\NHibernateShardSession.cs" />
     <Compile Include="NHibernateAccess\NHibernateShardSessionFactory.cs" />

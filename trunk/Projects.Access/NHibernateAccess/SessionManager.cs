@@ -31,6 +31,7 @@ namespace Projects.Framework.NHibernateAccess
 
         public SessionManager()
         {
+            EntityUtil.OriginalObjectProvider = new NHibernateOriginalObjectProvider();
             LoggerProvider.SetLoggersFactory(new ProfilterLoggerFactory());
             sessionFactories = new Dictionary<ShardId, ISessionFactory>();
         }
