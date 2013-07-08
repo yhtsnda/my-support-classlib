@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,24 @@ namespace Projects.Tool
         public bool Contains<T>(string key)
         {
             return false;
+        }
+
+
+        public object Get(Type type, string key)
+        {
+            return null;
+        }
+
+
+        public IEnumerable GetBatch(Type type, IEnumerable<string> keys)
+        {
+            return new ArrayList();
+        }
+
+        public IEnumerable GetBatch(Type type, IEnumerable<string> keys, out IEnumerable<string> missingKeys)
+        {
+            missingKeys = keys;
+            return new ArrayList();
         }
     }
 }

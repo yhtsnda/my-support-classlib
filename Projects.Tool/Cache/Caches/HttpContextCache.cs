@@ -15,7 +15,7 @@ namespace Projects.Tool
 
         bool Enabled
         {
-            get { return Context != null; }
+            get { return Context.IsAvailable(); }
         }
 
         protected override void SetInner<T>(string key, T value, DateTime expiredTime)
@@ -24,24 +24,17 @@ namespace Projects.Tool
                 Context.Items[key] = value;
         }
 
-        protected override T GetInner<T>(string key)
-        {
-            //Context.Items 为 hashtable
-            if (Enabled)
-            {
-                var data = Context.Items[key];
-                if (data == null)
-                    return default(T);
-
-                return (T)data;
-            }
-            return default(T);
-        }
-
         protected override void RemoveInner(string key)
         {
             if (Enabled)
                 Context.Items.Remove(key);
+        }
+
+        protected override object GetInner(Type type, string key)
+        {
+            if (Enabled)
+                return Context.Items[key];
+            return null;
         }
     }
 }

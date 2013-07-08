@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,10 +52,7 @@ namespace Projects.Tool
             if (expiredSeconds <= 0)
                 expiredSeconds = _expiredSeconds;
             DateTime expriedTime = CurrentTime.AddSeconds(expiredSeconds);
-            foreach (CacheItem<T> item in items)
-            {
-                SetInner(item.Key, item.Value, expriedTime);
-            }
+            SetBatch(items, expriedTime);
         }
 
         public virtual void SetBatch<T>(IEnumerable<CacheItem<T>> items, DateTime expiredTime)
@@ -67,8 +65,16 @@ namespace Projects.Tool
 
         public virtual T Get<T>(string key)
         {
-            T value = GetInner<T>(key);
-            TraceCache(key, IsDefault(value) ? 0 : 1);
+            var v = Get(typeof(T), key);
+            if (v == null)
+                return default(T);
+            return (T)v;
+        }
+
+        public virtual object Get(Type type, string key)
+        {
+            object value = GetInner(type, key);
+            TraceCache(key, value == null ? 0 : 1);
             return value;
         }
 
@@ -96,7 +102,30 @@ namespace Projects.Tool
             get { return NetworkTime.Now; }
         }
 
-        protected abstract T GetInner<T>(string key);
+        protected abstract object GetInner(Type type, string key);
+
+        public virtual IEnumerable GetBatch(Type type, IEnumerable<string> keys)
+        {
+            IEnumerable<string> missingKeys;
+            return GetBatch(type, keys, out missingKeys);
+        }
+
+        public virtual IEnumerable GetBatch(Type type, IEnumerable<string> keys, out IEnumerable<string> missingKeys)
+        {
+            ArrayList items = new ArrayList();
+            List<string> missings = new List<string>();
+            foreach (string key in keys)
+            {
+                object value = Get(type, key);
+                if (value != null)
+                    items.Add(value);
+                else
+                    missings.Add(key);
+            }
+            missingKeys = missings.ToArray();
+            TraceCache(keys, missings.Count);
+            return items;
+        }
 
         public virtual IEnumerable<T> GetBatch<T>(IEnumerable<string> keys)
         {
@@ -110,7 +139,7 @@ namespace Projects.Tool
             List<string> missings = new List<string>();
             foreach (string key in keys)
             {
-                T value = GetInner<T>(key);
+                T value = Get<T>(key);
                 if (value != null)
                     items.Add(value);
                 else
@@ -130,7 +159,7 @@ namespace Projects.Tool
 
         public virtual bool Contains<T>(string key)
         {
-            return GetInner<T>(key) != null;
+            return Get<T>(key) != null;
         }
 
         internal static bool IsDefault<T>(T value)

@@ -89,6 +89,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accumlator\Accumlator.cs" />
+    <Compile Include="Accumlator\AccumlatorDataInt32.cs" />
+    <Compile Include="Accumlator\AccumlatorDataInt64.cs" />
+    <Compile Include="Accumlator\AccumlatorType.cs" />
+    <Compile Include="Accumlator\IAccumlator.cs" />
     <Compile Include="Attributes\ExcelCaptionAttribute.cs" />
     <Compile Include="Cache\CacheItem.cs" />
     <Compile Include="Cache\CacheManager.cs" />
