@@ -9,34 +9,17 @@ namespace Projects.Framework
 {
     public static class EntityUtil
     {
-        public static object[] GetValuesForCache(object entity)
+        static Dictionary<Type, Action<object, object>> clones = new Dictionary<Type, Action<object, object>>();
+        static object syncRoot = new object();
+
+        static EntityUtil()
         {
-            if (entity == null)
-                throw new ArgumentNullException("entity");
-
-            var cache = GetCache((object)entity);
-            var metadata = RepositoryFramework.GetDefineMetadata(cache.GetType());
-            if (metadata != null)
-                return metadata.GetData(entity);
-
-            var pa = PropertyAccessorFactory.GetPropertyAccess(cache.GetType());
-            return pa.GetDatasHandler(entity);
+            OriginalObjectProvider = new EmptyOriginalObjectProvider();
         }
 
-        public static object SetValueForCache(Type type, object[] values)
-        {
-            var metadata = RepositoryFramework.GetDefineMetadata(type);
-            if (metadata != null)
-                return metadata.CreateInstanceFormDatas(values);
+        public static IOriginalObjectProvider OriginalObjectProvider { get; set; }
 
-            var pa = PropertyAccessorFactory.GetPropertyAccess(type);
-            var entity = pa.CreateInstance();
-            pa.SetDatasHandler(entity, values);
-
-            return entity;
-        }
-
-        public static void CheckVirtualType(Type type)
+        internal static void CheckVirtualType(Type type)
         {
             List<string> novirtuals = new List<string>();
 
@@ -68,47 +51,14 @@ namespace Projects.Framework
             return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(PagingResult<>) || IsPagingResult(type.BaseType);
         }
 
-        public static object GetCache(object entity)
+        public static object GetId(object entity)
         {
             if (entity == null)
-                return entity;
+                throw new ArgumentNullException("entity");
 
-            var metadata = RepositoryFramework.GetDefineMetadata(entity.GetType());
-            if (metadata == null)
-                return entity;
-
-            var pa = PropertyAccessorFactory.GetPropertyAccess(metadata.EntityType);
-            var poco = pa.CreateInstance();
-            pa.MergeData(entity, poco);
-
-            return poco;
-        }
-
-        public static object GetPersistent(object entity)
-        {
-            return GetCache(entity);
-        }
-
-        public static void MergeObject(object source, object destination)
-        {
-            if (destination == source || destination == null || source == null)
-                return;
-
-            var metadata = RepositoryFramework.GetDefineMetadata(destination.GetType());
-            if (metadata != null)
-                metadata.MergeData(source, destination);
-            else
-            {
-                var pa = PropertyAccessorFactory.GetPropertyAccess(destination.GetType());
-                pa.MergeData(source, destination);
-            }
-        }
-
-        public static void Persistent<TEntity>(TEntity entity, Action<TEntity> action) where TEntity : class
-        {
-            var persistent = EntityUtil.GetPersistent(entity) as TEntity;
-            action(persistent);
-            EntityUtil.MergeObject(persistent, entity);
+            var metadata = RepositoryFramework.GetDefineMetadataAndCheck(entity.GetType());
+            var ta = TypeAccessor.GetAccessor(metadata.EntityType);
+            return ta.GetProperty(metadata.IdMember.Name, entity);
         }
     }
 }

@@ -133,8 +133,10 @@
     <Compile Include="Persistences\SessionCache.cs" />
     <Compile Include="Persistences\SessionPersister.cs" />
     <Compile Include="PlatformException.cs" />
-    <Compile Include="Proxys\CollectionProxy.cs" />
-    <Compile Include="Proxys\EntityProxy.cs" />
+    <Compile Include="Proxys\IProxy.cs" />
+    <Compile Include="Proxys\ProxyCollection.cs" />
+    <Compile Include="Proxys\EntityProxyInterceptor.cs" />
+    <Compile Include="Proxys\ProxyProvider.cs" />
     <Compile Include="RepositoryFrameworks\LazyloadSupportException.cs" />
     <Compile Include="RepositoryFrameworks\PersistentMethodAttribute.cs" />
     <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\IRepositoryMethodInvocation.cs" />
@@ -159,7 +161,9 @@
     <Compile Include="Specification\QueryOrderExpression.cs" />
     <Compile Include="Specification\SpecificationFactory.cs" />
     <Compile Include="Status.cs" />
+    <Compile Include="Utils\AuthenticationTicketSerializer.cs" />
     <Compile Include="Utils\EntityUtil.cs" />
+    <Compile Include="Utils\IOriginalObjectProvider.cs" />
     <Compile Include="Utils\PrettyTypeExtend.cs" />
     <Compile Include="Utils\Property\DefaultAccessValues.cs" />
     <Compile Include="Utils\Property\DefaultGetter.cs" />

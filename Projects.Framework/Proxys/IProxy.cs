@@ -5,7 +5,10 @@ using System.Text;
 
 namespace Projects.Framework
 {
-    class CollectionProxy
+    public interface IProxy
     {
+        object GetSource();
+
+        void Reset();
     }
 }

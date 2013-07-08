@@ -35,11 +35,6 @@ namespace Projects.Framework
         /// </summary>
         public readonly static string SiteUrl = GetAppSetting("Url.Site");
 
-        ///// <summary>
-        ///// 旧有课程地址 
-        ///// </summary>
-        //public readonly static string SiteOldCourseUrl = GetAppSetting("Url.Old.Course");
-
         /// <summary>
         /// 在职教育api验证身份码
         /// </summary>
@@ -70,52 +65,10 @@ namespace Projects.Framework
         /// </summary>
         public readonly static string AttachmentUrl = GetAppSetting("Resource.AttachmentUrl");
 
-        ///// <summary>
-        ///// SEO的stopWord
-        ///// </summary>
-        //public readonly static string SeoStopWord = GetAppSetting("SEO.StopWord");
-
-        ///// <summary>
-        ///// 模考赛图片
-        ///// </summary>
-        //public readonly static string ActiveUrl = AttachmentUrl + GetAppSetting("UploadFile.Active");
-
-        ///// <summary>
-        ///// 任务图片
-        ///// </summary>
-        //public readonly static string TaskImgUrl = AttachmentUrl + GetAppSetting("UploadFile.Task");
-
-        ///// <summary>
-        ///// 成就图片
-        ///// </summary>
-        //public readonly static string AchievementImgUrl = AttachmentUrl + GetAppSetting("UploadFile.Achievement");
-
-        ///// <summary>
-        ///// 充值地址
-        ///// </summary>
-        //public readonly static string PaySiteUrl = GetAppSetting("Url.Pay");
-
-
         /// <summary>
         /// 用户中心地址
         /// </summary>
         public readonly static string UserSiteUrl = GetAppSetting("Url.User");
-
-        ///// <summary>
-        ///// 聊天站点
-        ///// </summary>
-        //public readonly static string ChatSiteUrl = GetAppSetting("Url.Chat");
-
-        ///// <summary>
-        ///// 腾讯开放平台Api接口地址
-        ///// </summary>
-        //public readonly static string QQApiUrl = GetAppSetting("Url.QQApi");
-
-        ///// <summary>
-        ///// 腾讯开放平台Api测试接口地址,因为腾讯测试应用不允许用域名访问API
-        ///// </summary>
-        //public readonly static string QQDebugApiUrl = GetAppSetting("Url.Debug.QQApi");
-
 
         #endregion
 
@@ -152,10 +105,14 @@ namespace Projects.Framework
         /// </summary>
         public readonly static string UploadFileRemitVoucherPath = GetAppSetting("UploadFile.RemitVoucher");
 
+        public readonly static string UploadFileRetrievePasswordVoucherPath = GetAppSetting("UploadFile.RetrievePassword");
+
         /// <summary>
         /// 上传文件映射目录下的一级目录（用于持久化地址和访问）
         /// </summary>
         public readonly static string UploadFolderPath = GetAppSetting("UploadFile.Folder");
+
+        public readonly static string UploadCourseLogoPath = GetAppSetting("UploadFile.CourseLogo");
 
         public readonly static string UploadFileActivePath = GetAppSetting("UploadFile.ActivePath");
 
@@ -163,6 +120,21 @@ namespace Projects.Framework
         /// 证书模板存放路径
         /// </summary>
         public readonly static string UploadMasterplatePath = GetAppSetting("UploadFile.Masterplate");
+
+        /// <summary>
+        /// 报名信息模板
+        /// </summary>
+        public readonly static string UploadEnrollTemplatePath = GetAppSetting("UploadFile.EnrollTemplate");
+
+        /// <summary>
+        /// 用户报名文件
+        /// </summary>
+        public readonly static string UploadUserEnrollFilePath = GetAppSetting("UploadFile.UserEnrollFile");
+
+        /// <summary>
+        /// 项目手机应用下载地址保存路径
+        /// </summary>
+        public readonly static string UploadProjectMobileAppPath = GetAppSetting("UploadFile.ProjectMobileApp");
 
         /// <summary>
         /// 上传文件映射目录（供前端用）
@@ -178,126 +150,10 @@ namespace Projects.Framework
 
         #endregion
 
-        ///// <summary>
-        ///// 是否启用权限验证：没有该配置节默认为启用true
-        ///// </summary>
-        //public readonly static bool AuthEnable = GetAppSettingForBool("Auth.Enable", false);
-
         /// <summary>
         /// 允许上传文件的类型
         /// </summary>
         public readonly static string UploadAllowedFileTypes = GetAppSetting("UploadFile.Type");
-
-        ///// <summary>
-        ///// 后台模考赛发送短信授权码
-        ///// </summary>
-        //public readonly static string MessageCode = GetAppSetting("Message.Code");
-
-        //#region EHR配置
-        ///// <summary>
-        ///// 91EHR考试开始时间
-        ///// </summary>
-        //public readonly static string EhrBeginTime = GetAppSetting("91EHR.BeginTime");
-
-        ///// <summary>
-        ///// 91EHR考试结束时间
-        ///// </summary>
-        //public readonly static string EhrEndTime = GetAppSetting("91EHR.EndTime");
-
-        ///// <summary>
-        ///// 91EHR密钥
-        ///// </summary>
-        //public readonly static string EhrDesKey = GetAppSetting("91EHR.Key");
-
-        ///// <summary>
-        ///// 91EHR注册前缀名
-        ///// </summary>
-        //public readonly static string EhrRegisterName = GetAppSetting("91EHR.RegisterName");
-
-        ///// <summary>
-        ///// 91EHR注册邮箱后缀
-        ///// </summary>
-        //public readonly static string EhrRegisterEmailName = GetAppSetting("91EHR.RegisterEmailName");
-
-        ///// <summary>
-        ///// 91EHR链接验证失败回调地址
-        ///// </summary>
-        //public readonly static string EhrFailUrl = GetAppSetting("91EHR.FailUrl");
-
-        ///// <summary>
-        ///// 91EHR配置UnitId
-        ///// </summary>
-        //public readonly static string EhrUnitId = GetAppSetting("91EHR.UnitId");
-        //#endregion
-
-        //#region 食品安全配置
-        ///// <summary>
-        ///// FSKQuiz开始时间
-        ///// </summary>
-        //public readonly static string FSKQuizBeginTime = GetAppSetting("FSKQuiz.BeginTime");
-
-        ///// <summary>
-        ///// FSKQuiz考试结束时间
-        ///// </summary>
-        //public readonly static string FSKQuizEndTime = GetAppSetting("FSKQuiz.EndTime");
-
-        ///// <summary>
-        ///// FSKQuiz密钥
-        ///// </summary>
-        //public readonly static string FSKQuizDesKey = GetAppSetting("FSKQuiz.Key");
-
-        ///// <summary>
-        ///// FSKQuiz注册前缀名
-        ///// </summary>
-        //public readonly static string FSKQuizRegisterName = GetAppSetting("FSKQuiz.RegisterName");
-
-        ///// <summary>
-        ///// FSKQuiz注册邮箱后缀
-        ///// </summary>
-        //public readonly static string FSKQuizRegisterEmailName = GetAppSetting("FSKQuiz.RegisterEmailName");
-
-        ///// <summary>
-        ///// FSKQuiz链接验证失败回调地址
-        ///// </summary>
-        //public readonly static string FSKQuizFailUrl = GetAppSetting("FSKQuiz.FailUrl");
-
-        ///// <summary>
-        ///// FSKQuiz配置UnitId
-        ///// </summary>
-        //public readonly static string FSKQuizUnitId = GetAppSetting("FSKQuiz.UnitId");
-        //#endregion
-
-        //#region 建议提交
-        ///// <summary>
-        ///// 建议提交入口
-        ///// </summary>
-        //public readonly static string SiteCrm = GetAppSetting("Url.Crm");
-
-        //public readonly static string CrmKeyCode = GetAppSetting("Crm.KeyCode");
-
-        //public readonly static string CrmProjCode = GetAppSetting("Crm.ProjCode");
-
-        //public readonly static string CrmQT = GetAppSetting("Crm.QuestionTypeId");
-        //#endregion
-
-        //#region 竞赛相关配置
-        //public readonly static int CriticalSeconds = GetAppSettingForInt("Race.CriticalSeconds");
-        //#endregion
-
-        ///// <summary>
-        ///// 91天铭酒窝社区API接口URL
-        ///// </summary>
-        //public readonly static string TmApiUrl = GetAppSetting("91Tm.ApiUrl");
-
-        ///// <summary>
-        ///// 91天铭酒窝社区API接口WEB FLAG
-        ///// </summary>
-        //public readonly static string TmWebFlag = GetAppSetting("91Tm.WEB_FLAG");
-
-        ///// <summary>
-        ///// 91天铭酒窝社区API接口API KEY
-        ///// </summary>
-        //public readonly static string TmUapApiKey = GetAppSetting("91Tm.UAP_API_KEY");
 
         /// <summary>
         /// 默认平台代码
@@ -319,72 +175,10 @@ namespace Projects.Framework
         /// </summary>
         public readonly static string ApiKey = GetAppSetting("UapApiKey");
 
-        ///// <summary>
-        ///// 所有课程id
-        ///// </summary>
-        //public readonly static string AllCourse = GetAppSetting("allCourse");
-
-        ///// <summary>
-        ///// Lucene索引的存放路径
-        ///// </summary>
-        //public readonly static string LucenePath = GetAppSetting("LuceneIndexPath");
-
-        ///// <summary>
-        ///// PanGu文件地址
-        ///// </summary>
-        //public readonly static string PanGuFile = GetAppSetting("PanGuConfig");
-
-        ///// <summary>
-        ///// lucene 接口站
-        ///// </summary>
-        //public readonly static string SearchSiteUrl = GetAppSetting("Url.Search");
-
-        ///// <summary>
-        ///// 页面Keyword
-        ///// </summary>
-        //public readonly static string PageKeyword = GetAppSetting("Page.Keyword");
-
-        ///// <summary>
-        ///// 页面Description
-        ///// </summary>
-        //public readonly static string PageDescription = GetAppSetting("Page.Description");
-
-        ///// <summary>
-        ///// 系统消息的logoUrl
-        ///// </summary>
-        //public readonly static string SystemLogoUrl = GetAppSetting("SystemLogoUrl");
-
-        ///// <summary>
-        ///// 平台型产品开放性接口
-        ///// </summary>
-        //public readonly static string EPApi = GetAppSetting("EP.API");
-
-        ///// <summary>
-        ///// 短信SMS_Sign_Key
-        ///// </summary>
-        //public readonly static string SMSSignKey = GetAppSetting("SMS.Sign.Key");
-
         /// <summary>
-        /// 资源标识密钥（前缀），完整密钥：SignKey + IP
+        /// 所有课程id
         /// </summary>
-        //public readonly static string SignKey = GetAppSetting("Video.Sign.Key");
-
-        /// <summary>
-        /// 不支持264编码的视频格式，以“|”间隔
-        /// </summary>
-        public readonly static string VideoFomatsNonsupport264 = GetAppSetting("Video.FomatsNonsupport264");
-
-        public readonly static int VideoStatIntervalSeconds = GetAppSettingForInt("Video.StatIntervalSeconds");
-
-        /// <summary>
-        /// 视频就绪时间戳
-        /// </summary>
-        public readonly static int VideoDistributionSeconds = GetAppSettingForInt("Video.DistributionSeconds");
-
-        /// <summary>
-        /// 文档就绪时间戳
-        /// </summary>
-        public readonly static int DocumentDistributionSeconds = GetAppSettingForInt("Document.DistributionSeconds");
+        public readonly static string AllCourse = GetAppSetting("allCourse");
 
         /// <summary>
         /// 快钱的key
@@ -422,9 +216,64 @@ namespace Projects.Framework
         public readonly static string BillPrivatePath = GetAppSetting("99bill.privatePath");
 
         /// <summary>
+        /// 支付宝网关地址
+        /// </summary>
+        public readonly static string AlipayGatewayUrl = GetAppSetting("Alipay.gateway");
+        /// <summary>
+        /// 支付宝服务器异步通知页面地址
+        /// </summary>
+        public readonly static string AlipayNotifyUrl = GetAppSetting("Alipay.notifyUrl");
+        /// <summary>
+        /// 支付宝页面跳转同步通知页面地址
+        /// </summary>
+        public readonly static string AlipayReturnUrl = GetAppSetting("Alipay.returnUrl");
+
+        /// <summary>
         /// cmsapi
         /// </summary>
         public readonly static string CmsApi = GetAppSetting("cms.api");
+
+        /// <summary>
+        /// 不支持264编码的视频格式，以“|”间隔
+        /// </summary>
+        public readonly static string VideoFomatsNonsupport264 = GetAppSetting("Video.FomatsNonsupport264");
+
+        /// <summary>
+        /// 视频上报间隔时间
+        /// </summary>
+        public readonly static int VideoStatIntervalSeconds = GetAppSettingForInt("Video.StatIntervalSeconds");
+
+        /// <summary>
+        /// 文档上报间隔时间
+        /// </summary>
+        public readonly static int DocumentStatIntervalSeconds = GetAppSettingForInt("Document.StatIntervalSeconds");
+
+        /// <summary>
+        /// 视频就绪时间戳
+        /// </summary>
+        public readonly static int VideoDistributionSeconds = GetAppSettingForInt("Video.DistributionSeconds");
+
+        /// <summary>
+        /// 转码中的视频重置间隔（小时）
+        /// </summary>
+        public readonly static int VideoResetHours = GetAppSettingForInt("Video.ResetHours");
+
+        ///// <summary>
+        ///// 临时
+        ///// </summary>
+        //public readonly static string VideoNDCDNAddress = GetAppSetting("Video.ND.CDN.Address");
+
+        /// <summary>
+        /// 文档就绪时间戳
+        /// </summary>
+        public readonly static int DocumentDistributionSeconds = GetAppSettingForInt("Document.DistributionSeconds");
+
+        public readonly static string UploadFileEsotericaAttachFilePath = GetAppSetting("UploadFile.esotericaAttachFile");
+        public readonly static string TyCloudAppendResourceUrl = GetAppSetting("TyCloud.appendResourceUrl");
+        public readonly static string TyCloudEditResourceUrl = GetAppSetting("TyCloud.editResourceUrl");
+        public readonly static string TyCloudGetContentUrl = GetAppSetting("TyCloud.getContentUrl");
+
+        public readonly static string VideoTypeIds = GetAppSetting("Video.TypeIds");
 
         /// <summary>
         /// 获取设置

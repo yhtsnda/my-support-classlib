@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Projects.Tool.Reflection;
 
 namespace Projects.Framework
 {
@@ -20,8 +21,7 @@ namespace Projects.Framework
         List<PropertyInfo> cascadeProperties;
         List<MethodInfo> cascadeMethods;
 
-        Func<object, object[]> getValuesHandler;
-        Action<object, object[]> setValuesHandler;
+        List<Action<object, object>> dataCloners;
 
         public ClassDefineMetadata(Type entityType)
         {
@@ -35,6 +35,8 @@ namespace Projects.Framework
             dataProperties = new List<PropertyInfo>();
             cascadeProperties = new List<PropertyInfo>();
             cascadeMethods = new List<MethodInfo>();
+
+            IsContextCacheable = true;
         }
 
         /// <summary>
@@ -51,15 +53,22 @@ namespace Projects.Framework
             set;
         }
 
+        public IFetchable FetchableObject { get; set; }
+
         /// <summary>
         /// 对象的主键属性
         /// </summary>
-        public MemberInfo IdMember { get; set; }
+        public PropertyInfo IdMember { get; set; }
 
         /// <summary>
         /// 当前对象是否可以缓存
         /// </summary>
         public bool IsCacheable { get; set; }
+
+        /// <summary>
+        /// 当前对象是否支持上下文缓存
+        /// </summary>
+        public bool IsContextCacheable { get; set; }
 
         /// <summary>
         /// 是否禁用通用缓存
@@ -133,8 +142,7 @@ namespace Projects.Framework
             if (entity == null)
                 throw new ArgumentNullException("entity");
 
-            var pa = PropertyAccessorFactory.GetPropertyAccess(EntityType);
-            return GetCacheKeyById(pa.GetGetter(IdMember.Name).Get(entity));
+            return GetCacheKeyById(EntityUtil.GetId(entity));
         }
 
         /// <summary>
@@ -152,6 +160,10 @@ namespace Projects.Framework
             return classJoinDefines.TryGetValue(method);
         }
 
+        /// <summary>
+        /// 进行缓存区域的校验
+        /// </summary>
+        /// <param name="regions"></param>
         public void CheckCacheRegions(IEnumerable<CacheRegion> regions)
         {
             regions.ForEach(o =>
@@ -164,50 +176,19 @@ namespace Projects.Framework
         /// <summary>
         /// 合并数据
         /// </summary>
-        internal void MergeData(object source, object destination)
+        internal object CloneEntity(object source)
         {
-            if (destination == source || destination == null || source == null)
-                return;
+            if (source == null)
+                return null;
 
-            var datas = GetData(source);
-            SetDatas(destination, datas);
-        }
-
-        internal object CreateInstanceFormDatas(object[] datas)
-        {
-            var entity = Projects.Tool.Reflection.FastActivator.Create(entityType);
-            SetDatas(entity, datas);
-            return entity;
-        }
-
-        internal void SetDatas(object entity, object[] datas)
-        {
-            if (setValuesHandler == null)
+            if (dataCloners == null || dataCloners.Count == 0)
             {
-                lock (syncRoot)
-                {
-                    if (setValuesHandler == null)
-                    {
-                        setValuesHandler = ReflectionHelper.CreateSetDatasHandler(entityType, dataProperties);
-                    }
-                }
+                var ta = TypeAccessor.GetAccessor(entityType);
+                dataCloners = dataProperties.Select(o => ta.GetPropertyClone(o.Name)).ToList();
             }
-            setValuesHandler(entity, datas);
-        }
-
-        internal object[] GetData(object entity)
-        {
-            if (getValuesHandler == null)
-            {
-                lock (syncRoot)
-                {
-                    if (getValuesHandler == null)
-                    {
-                        getValuesHandler = ReflectionHelper.CreateGetDatasHandler(entityType, dataProperties);
-                    }
-                }
-            }
-            return getValuesHandler(entity);
+            var target = Nd.Tool.Reflection.FastActivator.Create(entityType);
+            dataCloners.ForEach(o => o(source, target));
+            return target;
         }
     }
 }
