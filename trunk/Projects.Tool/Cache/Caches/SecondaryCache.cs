@@ -75,18 +75,6 @@ namespace Projects.Tool
             firstCache.Set(key, value);
         }
 
-        protected override T GetInner<T>(string key)
-        {
-            T value = firstCache.Get<T>(key);
-            if (!IsDefault(value))
-                return value;
-
-            value = secondCache.Get<T>(key);
-            if (!IsDefault(value))
-                OnSetFirstCache(key, value, CurrentTime.AddSeconds(ExpiredSeconds));
-            return value;
-        }
-
         protected override void RemoveInner(string key)
         {
             firstCache.Remove(key);
@@ -99,6 +87,18 @@ namespace Projects.Tool
 
         protected override void TraceCache(IEnumerable<string> keys, int missing)
         {
+        }
+
+        protected override object GetInner(Type type, string key)
+        {
+            object value = firstCache.Get(type, key);
+            if (value != null)
+                return value;
+
+            value = secondCache.Get(type, key);
+            if (value != null)
+                OnSetFirstCache(key, value, CurrentTime.AddSeconds(ExpiredSeconds));
+            return value;
         }
     }
 }

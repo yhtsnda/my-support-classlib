@@ -52,6 +52,11 @@ namespace Projects.Tool
             this.option = option;
         }
 
+        public CacheDomainOption<TEntity, TParam1, TParam2, TKey> Option
+        {
+            get { return option; }
+        }
+
         /// <summary>
         /// 检索缓存域或数据源的三键对象。
         /// </summary>

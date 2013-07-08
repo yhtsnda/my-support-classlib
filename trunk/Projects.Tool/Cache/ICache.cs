@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,12 @@ namespace Projects.Tool
 {
     public interface ICache
     {
+        object Get(Type type, string key);
+
+        IEnumerable GetBatch(Type type, IEnumerable<string> keys);
+
+        IEnumerable GetBatch(Type type, IEnumerable<string> keys, out IEnumerable<string> missingKeys);
+
         void Set<T>(string key, T value);
 
         void Set<T>(string key, T value, int secondsToLive);
