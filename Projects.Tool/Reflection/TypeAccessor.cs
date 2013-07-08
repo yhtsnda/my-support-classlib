@@ -36,7 +36,7 @@ namespace Projects.Tool.Reflection
             propertyGetterDic = new Dictionary<string, Func<object, object>>();
             propertySetterDic = new Dictionary<string, Action<object, object>>();
 
-            var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).ToList();
+            var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).Where(o => o.GetIndexParameters().Length == 0).ToList();
             propertyGetterDic = properties.Where(o => o.CanRead).ToDictionary(o => o.Name, o => DelegateAccessor.CreatePropertyGetter(o));
             propertySetterDic = properties.Where(o => o.CanWrite).ToDictionary(o => o.Name, o => DelegateAccessor.CreatePropertySetter(o));
 
