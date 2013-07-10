@@ -10,10 +10,23 @@ namespace Projects.UserCenter
     /// </summary>
     public class LoginStateLog
     {
-        public int UserId { get; set; }
+        public LoginStateLog(int userId)
+        {
+            this.UserId = userId;
+            this.LastLogin = DateTime.Now;
+            this.LoginTimes = 1;
+        }
 
-        public DateTime LastLogin { get; set; }
+        public virtual int UserId { get; set; }
 
-        public int LoginTimes { get; set; }
+        public virtual DateTime LastLogin { get; set; }
+
+        public virtual int LoginTimes { get; set; }
+
+        public virtual void ChangeLoginState()
+        {
+            this.LoginTimes = DateTime.Now;
+            this.LoginTimes += 1;
+        }
     }
 }

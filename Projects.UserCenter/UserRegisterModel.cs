@@ -20,10 +20,6 @@ namespace Projects.UserCenter
 
         public string IpAddress { get; protected set; }
 
-        public string Browser { get; protected set; }
-
-        public string FromUrl { get; protected set; }
-
         public string ExtendField { get; protected set; }
 
         public long PlatCode { get; protected set; }

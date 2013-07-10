@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Projects.Tool;
 
 namespace Projects.UserCenter
 {
@@ -18,7 +19,10 @@ namespace Projects.UserCenter
         /// <param name="regplatCode">注册码(12位)</param>
         public RegisterLog(int userId, string userName, long regplatCode)
         {
-
+            this.UserId = userId;
+            this.UserName = userName;
+            SpiltRegPlatCode(regplatCode);
+            this.CreateTime = DateTime.Now;
         }
 
         /// <summary>
@@ -55,5 +59,14 @@ namespace Projects.UserCenter
         /// 创建日期
         /// </summary>
         public virtual DateTime CreateTime { get; protected set; }
+
+        private void SpiltRegPlatCode(long code)
+        {
+            Arguments.That(code.ToString().Length == 12, "code", "regplat code must 12 - bit integer");
+
+            this.ClientAppId = Convert.ToInt32(code.ToString().Substring(0, 4));
+            this.TerminalType = Convert.ToInt32(code.ToString().Substring(4, 4));
+            this.SourceCode = Convert.ToInt32(code.ToString().Substring(8, 4));
+        }
     }
 }
