@@ -163,6 +163,7 @@
     <Compile Include="Repositories\Specification\QueryOrderExpression.cs" />
     <Compile Include="Repositories\Specification\SpecificationFactory.cs" />
     <Compile Include="Status.cs" />
+    <Compile Include="Utils\AbstractServerDetector.cs" />
     <Compile Include="Utils\AuthenticationTicketSerializer.cs" />
     <Compile Include="Utils\EntityUtil.cs" />
     <Compile Include="Utils\IOriginalObjectProvider.cs" />
