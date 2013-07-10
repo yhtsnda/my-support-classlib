@@ -28,6 +28,11 @@ namespace Projects.Framework.NHibernateAccess
             get { return specificationProvider; }
         }
 
+        internal SessionManager SessionManager
+        {
+            get { return manager; }
+        }
+
         public IShardSession<TEntity> OpenSession<TEntity>(ShardParams shardParams)
         {
             var strategy = RepositoryFramework.GetShardStrategy(typeof(TEntity));
@@ -37,8 +42,11 @@ namespace Projects.Framework.NHibernateAccess
             var shardId = strategy.GetShardId(shardParams);
             var partitionId = strategy.GetPartitionId(shardParams);
 
-            var session = manager.OpenSession(shardId, partitionId);
-            return new NHibernateShardSession<TEntity>(session);
+            using (var scope = ProfilerContext.Profile("open nhibernate session"))
+            {
+                var session = manager.OpenSession(shardId, partitionId);
+                return new NHibernateShardSession<TEntity>(session);
+            }
         }
     }
 }

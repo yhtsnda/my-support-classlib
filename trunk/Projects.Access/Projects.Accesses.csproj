@@ -51,6 +51,18 @@
     <Reference Include="NHibernate">
       <HintPath>..\Assembly\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\packages\ServiceStack.Common.3.9.55\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\packages\ServiceStack.Common.3.9.55\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\packages\ServiceStack.Redis.3.9.40\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.3.9.55\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -82,12 +94,14 @@
     <Compile Include="MongoAccess\MongoManager.cs" />
     <Compile Include="MongoAccess\MongoMap.cs" />
     <Compile Include="MongoAccess\MongoRepositoryExtend.cs" />
+    <Compile Include="MongoAccess\MongoServerDetector.cs" />
     <Compile Include="MongoAccess\MongoSession.cs" />
     <Compile Include="MongoAccess\MongoShardSessionFactory.cs" />
     <Compile Include="MongoAccess\MongoShardSession.cs" />
     <Compile Include="MongoAccess\MongoSpecification.cs" />
     <Compile Include="MongoAccess\MongoSpecificationProvider.cs" />
     <Compile Include="NHibernateAccess\Events\RaiseEventListener.cs" />
+    <Compile Include="NHibernateAccess\NHibernateDatabaseServerDetector.cs" />
     <Compile Include="NHibernateAccess\NHibernateMappingExtend.cs" />
     <Compile Include="NHibernateAccess\NHibernateOriginalObjectProvider.cs" />
     <Compile Include="NHibernateAccess\NHibernateRepositoryExtend.cs" />
@@ -110,6 +124,8 @@
     <Compile Include="NHibernateAccess\SessionExtend.cs" />
     <Compile Include="NHibernateAccess\SessionManager.cs" />
     <Compile Include="NHibernateAccess\ShardInterceptor.cs" />
+    <Compile Include="RedisAccess\RedisManager.cs" />
+    <Compile Include="RedisAccess\RedisServerDetector.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Projects.Framework\Projects.Framework.csproj">
@@ -122,6 +138,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
