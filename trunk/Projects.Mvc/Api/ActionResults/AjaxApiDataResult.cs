@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projects.Tool.Util;
+using System;
 using System.Globalization;
 using System.Web;
 using System.Web.Mvc;
@@ -42,43 +43,25 @@ namespace Projects.Framework.Web
             if (context == null)
                 throw new ArgumentNullException("context");
 
-            HttpResponseBase response = context.HttpContext.Response;
-            response.ContentType = "application/json";
+            var response = context.HttpContext.Response;
+            response.ContentType = "application/json; charset=utf-8";
+
+            var data = Exception == null ? Data : new
+            {
+                code = Code,
+                error = Exception.Message,
+                exception = Exception.ToString()
+            };
 
             if (Exception != null)
-                if (Code >= 1000)
-                    response.StatusCode = Code / 1000;
-                else
-                    response.StatusCode = Code;
-
-
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            if (Exception != null)
             {
-                response.Write(serializer.Serialize(new
-                {
-                    code = Code,
-                    error = Exception.Message,
-                    exception = Exception.ToString()
-                }));
+                var code = Code >= 1000 ? Code / 1000 : Code;
+                if (code < 400 || code > 599)
+                    code = 500;
+                response.StatusCode = code;
             }
-            else
-            {
-                //response.Write(serializer.Serialize(this.Data));
-                //增加jsonp的自动支持
-                var callbackMethodName = context.HttpContext.Request.Params["jsoncallback"];
-                var output = string.Empty;
-                if (!string.IsNullOrEmpty(callbackMethodName))
-                {
-                    response.ContentType = "application/x-javascript";
-                    output = string.Format(CultureInfo.CurrentCulture, "{0}({1});", callbackMethodName, serializer.Serialize(this.Data));
-                }
-                else
-                {
-                    output = serializer.Serialize(this.Data);
-                }
-                response.Write(output);
-            }
+
+            response.Write(JsonConverter.ToJson(data));
         }
     }
 }

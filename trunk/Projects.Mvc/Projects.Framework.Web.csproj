@@ -66,6 +66,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -78,7 +79,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ActionResults\BrowserCacheActionResult.cs" />
+    <Compile Include="Api\ActionResults\BrowserCacheImageResult.cs" />
+    <Compile Include="Api\ActionResults\CustomJsonResult.cs" />
     <Compile Include="Api\ActionResults\ExcelResult.cs" />
+    <Compile Include="Api\ActionResults\ImageResult.cs" />
+    <Compile Include="Api\ActionResults\JsonpResultImpl.cs" />
+    <Compile Include="Api\ActionResults\XmlResult.cs" />
+    <Compile Include="Api\Attributes\NotModifiedFilterAttribute.cs" />
     <Compile Include="Api\ApiControllerActionInvoker.cs" />
     <Compile Include="Api\ApiControllerFactory.cs" />
     <Compile Include="Api\Attributes\FrameworkAuthorizeAttribute.cs" />
@@ -86,6 +94,9 @@
     <Compile Include="Extensions\Html\ScriptExtend.cs" />
     <Compile Include="Extensions\Routes\AreaRegistrationContextExtension.cs" />
     <Compile Include="Extensions\Routes\CustomRoute.cs" />
+    <Compile Include="Extensions\Routes\DomainRoutes\DomainData.cs" />
+    <Compile Include="Extensions\Routes\DomainRoutes\DomainRoute.cs" />
+    <Compile Include="Extensions\Routes\DomainRoutes\LinkExtensions.cs" />
     <Compile Include="Extensions\Routes\RouteDataExtension.cs" />
     <Compile Include="Extensions\Routes\RouteParser.cs" />
     <Compile Include="ProjectBaseException.cs">

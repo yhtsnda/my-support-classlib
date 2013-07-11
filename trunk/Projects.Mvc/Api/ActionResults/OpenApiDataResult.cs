@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projects.Tool.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +18,9 @@ namespace Projects.Framework.Web
             Data = new OpenApiData {Data = data};
         }
 
-        public OpenApiDataResult(Exception exception, int code)
+        public OpenApiDataResult(Exception exception, int code, object data = null)
         {
-            Data = new OpenApiData {Code = code, Message = exception.Message};
+            Data = new OpenApiData {Code = code, Message = exception.Message, Data = data};
         }
 
         public override void ExecuteResult(ControllerContext context)
@@ -27,16 +28,16 @@ namespace Projects.Framework.Web
             if (context == null)
                 throw new ArgumentNullException("context");
 
-            var callback = context.HttpContext.Request["callback"];
-            var content = Tool.Util.JsonConverter.ToJson(Data);
-            if (!string.IsNullOrEmpty(callback))
-                content = callback + "(" + Tool.Util.JsonConverter.ToJson(Data) + ")";
+            var response = context.HttpContext.Response;
 
-            HttpResponseBase response = context.HttpContext.Response;
-            response.ContentType = "application/json";
-            response.ContentEncoding = Encoding.UTF8;
-
-            response.Write(content);
+            string callback;
+            if (JsonpResultImpl.IsJsonpRequest(context.HttpContext.Request, out callback))
+                JsonpResultImpl.Write(context.HttpContext.Response, callback, Data);
+            else
+            {
+                response.ContentType = "application/json;charset=utf-8";
+                response.Write(JsonConverter.ToJson(Data));
+            }
         }
 
         public class OpenApiData
