@@ -19,16 +19,16 @@ namespace Projects.Framework
     public static class RepositoryFramework
     {
         internal const string CacheRegionKey = "cache:region";
-        static FrameworkConfiguation shardConfiguation;
+        static FrameworkConfiguation frameworkConfiguation;
 
         static RepositoryFramework()
         {
-            shardConfiguation = new FrameworkConfiguation();
+            frameworkConfiguation = new FrameworkConfiguation();
         }
 
-        internal static FrameworkConfiguation ShardConfiguation
+        internal static FrameworkConfiguation FrameworkConfiguation
         {
-            get { return shardConfiguation; }
+            get { return frameworkConfiguation; }
         }
 
         /// <summary>
@@ -36,8 +36,8 @@ namespace Projects.Framework
         /// </summary>
         public static ICacheKeyGenerator CacheKeyGenerator
         {
-            get { return shardConfiguation.CacheKeyGenerator; }
-            set { shardConfiguation.CacheKeyGenerator = value; }
+            get { return frameworkConfiguation.CacheKeyGenerator; }
+            set { frameworkConfiguation.CacheKeyGenerator = value; }
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Projects.Framework
         /// </summary>
         public static IEnumerable<Assembly> RepositoryAssemblies
         {
-            get { return shardConfiguation.RepositoryAssemblies; }
+            get { return frameworkConfiguation.RepositoryAssemblies; }
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Projects.Framework
         /// </summary>
         public static void Configure(IDependencyRegister register)
         {
-            shardConfiguation.Configure(register);
+            frameworkConfiguation.Configure(register);
         }
 
         /// <summary>
@@ -63,7 +63,12 @@ namespace Projects.Framework
         /// <returns></returns>
         public static IShardSessionFactory GetSessionFactory(Type entityType)
         {
-            return shardConfiguation.GetSessionFactory(entityType);
+            return frameworkConfiguation.GetSessionFactory(entityType);
+        }
+
+        public static IShardSessionFactory GetSessionFactoryByFactoryType(Type factoryType)
+        {
+            return frameworkConfiguation.ShardConfiguration.CreateShardSessionFactory(factoryType);
         }
 
         /// <summary>
@@ -73,7 +78,7 @@ namespace Projects.Framework
         /// <param name="shardSessionFactoryType"></param>
         public static void RegisterShardSessionFactory(Type entityType, Type shardSessionFactoryType)
         {
-            shardConfiguation.RegisterShardSessionFactory(entityType, shardSessionFactoryType);
+            frameworkConfiguation.RegisterShardSessionFactory(entityType, shardSessionFactoryType);
         }
 
         /// <summary>
@@ -82,7 +87,7 @@ namespace Projects.Framework
         /// <param name="assembly"></param>
         public static void RegisterDefineMetadata(Assembly assembly)
         {
-            shardConfiguation.RegisterDefineMetadata(assembly);
+            frameworkConfiguation.RegisterDefineMetadata(assembly);
         }
 
         /// <summary>
@@ -111,7 +116,7 @@ namespace Projects.Framework
         /// <returns></returns>
         public static ClassDefineMetadata GetDefineMetadata(Type entityType)
         {
-            return shardConfiguation.GetDefineMetadata(entityType);
+            return frameworkConfiguation.GetDefineMetadata(entityType);
         }
 
         public static ClassDefineMetadata GetDefineMetadataAndCheck(Type entityType)
@@ -130,7 +135,7 @@ namespace Projects.Framework
         /// <returns></returns>
         public static IEnumerable<IRepositoryFrameworkInterceptor> GetInterceptors(Type entityType)
         {
-            return shardConfiguation.GetInterceptors(entityType);
+            return frameworkConfiguation.GetInterceptors(entityType);
         }
 
         /// <summary>
@@ -140,7 +145,7 @@ namespace Projects.Framework
         /// <param name="interceptor"></param>
         public static void RegisterInterceptor(Type entityType, IRepositoryFrameworkInterceptor interceptor)
         {
-            shardConfiguation.RegisterInterceptor(entityType, interceptor);
+            frameworkConfiguation.RegisterInterceptor(entityType, interceptor);
         }
 
         /// <summary>
@@ -149,7 +154,7 @@ namespace Projects.Framework
         /// <param name="interceptor"></param>
         public static void RegisterInterceptor(IRepositoryFrameworkInterceptor interceptor)
         {
-            shardConfiguation.RegisterInterceptor(interceptor);
+            frameworkConfiguation.RegisterInterceptor(interceptor);
         }
 
         /// <summary>
@@ -159,7 +164,7 @@ namespace Projects.Framework
         /// <returns></returns>
         public static IShardStrategy GetShardStrategy(Type entityType)
         {
-            return shardConfiguation.GetShardStrategy(entityType);
+            return frameworkConfiguation.GetShardStrategy(entityType);
         }
 
         /// <summary>
@@ -170,7 +175,7 @@ namespace Projects.Framework
         /// <param name="attributes"></param>
         public static void RegisterShardStragety(Type entityType, Type shardStragegyType, IDictionary<string, string> attributes = null)
         {
-            shardConfiguation.RegisterShardStragety(entityType, shardStragegyType, attributes);
+            frameworkConfiguation.RegisterShardStragety(entityType, shardStragegyType, attributes);
         }
 
         /// <summary>
@@ -180,7 +185,7 @@ namespace Projects.Framework
         /// <returns></returns>
         public static ISpecification<TEntity> CreateSpecification<TEntity>()
         {
-            return shardConfiguation.GetSessionFactory(typeof(TEntity), true).SpecificationProvider.CreateSpecification<TEntity>();
+            return frameworkConfiguation.GetSessionFactory(typeof(TEntity), true).SpecificationProvider.CreateSpecification<TEntity>();
         }
 
         /// <summary>
@@ -191,7 +196,7 @@ namespace Projects.Framework
         /// <returns></returns>
         public static IShardSession<TEntity> OpenSession<TEntity>(ShardParams shardParams)
         {
-            return shardConfiguation.GetSessionFactory(typeof(TEntity), true).OpenSession<TEntity>(shardParams);
+            return frameworkConfiguation.GetSessionFactory(typeof(TEntity), true).OpenSession<TEntity>(shardParams);
         }
 
         /// <summary>
@@ -300,13 +305,22 @@ namespace Projects.Framework
             ProxyProvider.Fetch(entity);
         }
 
-        public static T CloneEntity<T>(T entity)
+        internal static object CloneEntity(object source)
         {
-            if (entity == null)
-                return entity;
+            if (source == null)
+                return source;
 
-            var metadata = GetDefineMetadataAndCheck(entity.GetType());
-            return (T)metadata.CloneEntity(entity);
+            var metadata = GetDefineMetadataAndCheck(source.GetType());
+            return metadata.CloneEntity(source);
+        }
+
+        internal static void CloneEntity(object source, object target)
+        {
+            if (source == null)
+                return;
+
+            var metadata = GetDefineMetadataAndCheck(source.GetType());
+            metadata.CloneEntity(source, target);
         }
 
         internal static object Raise(object entity, RaiseType raiseType, UniqueRaise ur = null)

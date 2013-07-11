@@ -191,7 +191,7 @@ namespace Projects.Framework.Configurations
             return CreateShardSessionFactory(factoryType);
         }
 
-        IShardSessionFactory CreateShardSessionFactory(Type factoryType)
+        internal IShardSessionFactory CreateShardSessionFactory(Type factoryType)
         {
             var factory = factoryInstances.TryGetValue(factoryType);
             if (factory == null)

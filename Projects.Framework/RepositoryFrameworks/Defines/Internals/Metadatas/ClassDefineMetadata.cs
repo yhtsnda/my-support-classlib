@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Projects.Tool.Reflection;
+using Projects.Tool;
 
 namespace Projects.Framework
 {
@@ -189,6 +190,21 @@ namespace Projects.Framework
             var target = Projects.Tool.Reflection.FastActivator.Create(entityType);
             dataCloners.ForEach(o => o(source, target));
             return target;
+        }
+
+        internal void CloneEntity(object source, object target)
+        {
+            if (source == null)
+                return;
+
+            Arguments.NotNull(target, "target");
+
+            if (dataCloners == null || dataCloners.Count == 0)
+            {
+                var ta = TypeAccessor.GetAccessor(entityType);
+                dataCloners = dataProperties.Select(o => ta.GetPropertyClone(o.Name)).ToList();
+            }
+            dataCloners.ForEach(o => o(source, target));
         }
     }
 }

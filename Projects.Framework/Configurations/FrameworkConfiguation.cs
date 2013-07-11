@@ -48,6 +48,36 @@ namespace Projects.Framework.Shards
             set;
         }
 
+        public ShardConfiguration ShardConfiguration
+        {
+            get { return shardConfig; }
+        }
+
+        public MetadataConfiguration MetadataConfiguration
+        {
+            get { return metadataConfig; }
+        }
+
+        public InterceptorConfiguation InterceptorConfiguation
+        {
+            get { return interceptorConfig; }
+        }
+
+        public RepositoryConfiguation RepositoryConfiguation
+        {
+            get { return repositoryConfig; }
+        }
+
+        public ServiceConfiguation ServiceConfiguation
+        {
+            get { return serviceConfig; }
+        }
+
+        public CommandConfiguation CommandConfiguation
+        {
+            get { return commandConfig; }
+        }
+
         public void Configure(IDependencyRegister register)
         {
             var section = ToolSection.Instance;
