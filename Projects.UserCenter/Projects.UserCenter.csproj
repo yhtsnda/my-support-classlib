@@ -49,6 +49,7 @@
     <Compile Include="ResultWrapper.cs" />
     <Compile Include="Services\LogService.cs" />
     <Compile Include="Services\MappingService.cs" />
+    <Compile Include="Services\ClientAppService.cs" />
     <Compile Include="UserRegisterModel.cs" />
     <Compile Include="Users\AccountType.cs" />
     <Compile Include="Logs\LoginStateLog.cs" />
