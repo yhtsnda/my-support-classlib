@@ -64,6 +64,11 @@ namespace Projects.Framework.NHibernateAccess
                 }
                 WorkbenchUtil<ShardId, ISession>.SetValue(SessionCacheKey, shardId, session);
             }
+            if (TransactionScope.IsScope && !TransactionScope.IsLinkWidhTranscation(session))
+            {
+                ProfilerContext.Current.Trace("platform", "open a transaction session");
+                TransactionScope.Push(new NHibernateTranscation(session.BeginTransaction()), session);
+            }
             return session;
         }
 
@@ -185,6 +190,26 @@ namespace Projects.Framework.NHibernateAccess
                 {
                     return Depends.Count + Depends.Sum(o => o.DependCount);
                 }
+            }
+        }
+
+        class NHibernateTranscation : Projects.Framework.ITransaction
+        {
+            NHibernate.ITransaction innerTran;
+
+            public NHibernateTranscation(NHibernate.ITransaction innerTran)
+            {
+                this.innerTran = innerTran;
+            }
+
+            public void Commit()
+            {
+                innerTran.Commit();
+            }
+
+            public void Rollback()
+            {
+                innerTran.Rollback();
             }
         }
     }
