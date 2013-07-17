@@ -162,6 +162,7 @@
     <Compile Include="Repositories\Specification\Orderable.cs" />
     <Compile Include="Repositories\Specification\QueryOrderExpression.cs" />
     <Compile Include="Repositories\Specification\SpecificationFactory.cs" />
+    <Compile Include="RepositoryFrameworks\TransactionScope.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Utils\AbstractServerDetector.cs" />
     <Compile Include="Utils\AuthenticationTicketSerializer.cs" />
