@@ -163,4 +163,33 @@ namespace Projects.OAuth
             return OAuthService.CreateAuthorizationCode(ClientId, result.UserId);
         }
     }
+
+    public class AuthCodeRequest
+    {
+        public int ClientId { get; set; }
+
+        public Uri RedirectUri { get; set; }
+
+        public string State { get; set; }
+
+        public string Scope { get; set; }
+
+        public long PlatCode { get; set; }
+
+        public string ExtendField { get; set; }
+
+        public void Parse(HttpRequestBase request)
+        {
+            ClientId = MessageUtility.GetInt32(request, Protocal.CLIENT_ID);
+            AuthResponseType responseType;
+            if (!AuthResponseTypeExtend.TryParse(MessageUtility.GetString(request, Protocal.RESPONSE_TYPE), out responseType))
+                throw new OAuthException(AuthRequestErrorCode.UnsupportedResponseType, "invalid response type", 400);
+
+            RedirectUri = new Uri(MessageUtility.GetString(request, Protocal.REDIRECT_URI));
+            State = MessageUtility.TryGetString(request, Protocal.STATE);
+            Scope = MessageUtility.TryGetString(request, Protocal.SCOPE);
+            PlatCode = MessageUtility.GetInt64(request, "platcode");
+            ExtendField = MessageUtility.TryGetString(request, "extendfield");
+        }
+    }
 }

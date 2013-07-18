@@ -35,8 +35,6 @@ namespace Projects.UserCenter
             this.RealName = realName;
             this.Email = email;
             this.IpAddress = ipAddress;
-            this.Browser = browser;
-            this.FromUrl = fromUrl;
             this.ExtendField = extendField;
         }
     }

@@ -110,7 +110,7 @@ namespace Projects.OAuth
     /// <summary>
     /// 持有票据错误
     /// </summary>
-    public static class BearerTokenError
+    public static class BearerTokenErrorCode
     {
         /// <summary>
         /// 请求缺少某个必需参数，包含一个不支持的参数或参数值，参数重复，使用多种方式包含访问令牌，或者请求格式不正确。

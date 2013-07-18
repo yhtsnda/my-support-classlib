@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientAppModel.cs" />
     <Compile Include="Interfaces\IClientAppRepository.cs" />
     <Compile Include="Interfaces\ILoginLogRepository.cs" />
     <Compile Include="Interfaces\ILoginStateLogRepository.cs" />

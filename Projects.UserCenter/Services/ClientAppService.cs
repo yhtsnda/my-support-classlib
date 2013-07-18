@@ -34,32 +34,7 @@ namespace Projects.UserCenter
         /// <param name="client"></param>
         public void ModifyClientAppInfo(ClientApp client)
         {
-        }
-
-        /// <summary>
-        /// 将制定的应用无效化
-        /// </summary>
-        /// <param name="clientId">应用ID</param>
-        public void DisabledClientApp(int clientId)
-        {
-        }
-
-        /// <summary>
-        /// 将指定的应用有效
-        /// </summary>
-        /// <param name="clientId">应用ID</param>
-        public void EnabledClientApp(int clientId)
-        {
-
-        }
-
-        /// <summary>
-        /// 将指定的应用设置为限制
-        /// </summary>
-        /// <param name="clientId">应用ID</param>
-        public void LimitedClientApp(int clientId)
-        {
-
+            clientRepository.Update(client);
         }
 
         /// <summary>
@@ -69,16 +44,37 @@ namespace Projects.UserCenter
         /// <returns>新的应用秘钥</returns>
         public string RefreshClientAppSecrect(int clientId)
         {
+            var clientApp = clientRepository.Get(clientId);
+            if (clientApp == null)
+                throw new ArgumentNullException("指定的应用不存在");
+            if (clientApp.Status == ClientAppStatus.Disabled)
+                throw new ArgumentNullException("指定的应用已被禁用,无法修改秘钥");
+
+            clientApp.ChangeSecretCode();
+            clientRepository.Update(clientApp);
+            return clientApp.SecretCode;
         }
 
+        /// <summary>
+        /// 获取应用信息
+        /// </summary>
+        /// <param name="clientId">应用ID</param>
+        /// <returns>应用对象</returns>
         public ClientApp GetClientApp(int clientId)
         {
-
+            return clientRepository.Get(clientId);
         }
 
+
+        /// <summary>
+        /// 获取应用信息
+        /// </summary>
+        /// <param name="appName">应用名称</param>
+        /// <returns>应用对象</returns>
         public ClientApp GetClientAppByName(string appName)
         {
-
+            var spec = clientRepository.CreateSpecification().Where(o => o.Title == appName);
+            return clientRepository.FindOne(spec);
         }
 
         /// <summary>

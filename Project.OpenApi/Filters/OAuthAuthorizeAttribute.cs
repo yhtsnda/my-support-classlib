@@ -7,15 +7,13 @@ using System.Web.Mvc;
 
 namespace Projects.OpenApi
 {
-    public class OAuthAuthorizeAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
+    public class OAuthAuthorizeAttribute : AbstractOAuthAttribute
     {
-        protected override void OnValidSuccess(AuthorizationContext filterContext, 
-            ServerAccessGrant accessGrant)
+        protected override void OnValidSuccess(AuthorizationContext filterContext, ServerAccessGrant accessGrant)
         {
-            OAuthAuthorization.AppendRequestData(filterContext.RequestContext,
-                "userId", accessGrant.UserId);
-            OAuthAuthorization.AppendRequestData(filterContext.RequestContext,
-                "appId", accessGrant.ClientId);
+            OAuthAuthorization.AppendRequestData(filterContext.RequestContext, "userId", accessGrant.UserId);
+            OAuthAuthorization.AppendRequestData(filterContext.RequestContext, "appId", accessGrant.ClientId);
         }
     }
 }

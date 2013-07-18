@@ -12,6 +12,8 @@ namespace Projects.OAuth
 {
     public class OAuthService : IService
     {
+        internal const int TOKEN_EXPIRE_CODE = 401408;
+
         IClientAuthRepository clientRepository;
         IServerAccessGrantRepository serverAccessRepository;
         IUserProxyRepository userProxRepository;
@@ -37,6 +39,22 @@ namespace Projects.OAuth
                     null,
                     SERVER_ACCESSGRANT_CACHENAME,
                     SERVER_ACCESS_GRANT_CACHEFORMAT);
+        }
+
+        public AuthCodeRequest Authorize(HttpContextBase context)
+        {
+            Arguments.NotNull(context, "context");
+
+            var codeRequest = MessageUtility.ParseAuthCodeRequest(context.Request);
+            var client = GetClientAuth(codeRequest.ClientId);
+
+            if (client == null)
+                OAuthError(AccessTokenRequestErrorCode.InvoidClient, "client id invalid.");
+            if(client.Status != ClientAuthStatus.Enabled)
+                OAuthError(AccessTokenRequestErrorCode.UnauthorizedClient, "client unauthorized", 401);
+
+            client.ValidateCallbackUri(codeRequest.RedirectUri);
+            return codeRequest;
         }
 
         public object Process(HttpContextBase context)
@@ -75,6 +93,26 @@ namespace Projects.OAuth
             if (!String.IsNullOrEmpty(accessToken))
                 return GetServerAccessGrant(accessToken);
             return null;
+        }
+
+        public virtual ServerAccessGrant TokenValid(HttpContextBase context)
+        {
+            Arguments.NotNull(context, "context");
+            var accessToken = MessageUtility.ParseAccessToken(context.Request);
+            return TokenValid(accessToken);
+        }
+
+        public virtual ServerAccessGrant TokenValid(string accessToken)
+        {
+            Arguments.NotNull(accessToken, "accessToken");
+            var accessGrant = GetServerAccessGrant(accessToken);
+
+            if(accessGrant == null)
+                OAuthError(BearerTokenErrorCode.InvalidToken, "access token invalid", 401000);
+            if(!accessGrant.IsEffective())
+                OAuthError(BearerTokenErrorCode.InvalidToken, "access token expired", TOKEN_EXPIRE_CODE);
+
+            return accessGrant;
         }
 
         public ServerAccessGrant GetServerAccessGrant(string accessToken)
