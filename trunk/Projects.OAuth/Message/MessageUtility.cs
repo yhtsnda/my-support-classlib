@@ -110,9 +110,17 @@ namespace Projects.OAuth
                 accessToken = request[Protocal.OLD_ACCESS_TOKEN];
 
             if (String.IsNullOrWhiteSpace(accessToken))
-                throw new OAuthException(BearerTokenError.InvalidToken, "access token is null", 401);
+                throw new OAuthException(BearerTokenErrorCode.InvalidToken, "access token is null", 401);
 
             return accessToken;
+        }
+
+        public static AuthCodeRequest ParseAuthCodeRequest(HttpRequestBase request)
+        {
+            Arguments.NotNull(request, "request");
+            var codeRequest = new AuthCodeRequest();
+            codeRequest.Parse(request);
+            return codeRequest;
         }
 
         public static string GetString(HttpRequestBase request, string key)

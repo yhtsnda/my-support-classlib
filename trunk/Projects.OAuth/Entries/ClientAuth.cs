@@ -59,5 +59,12 @@ namespace Projects.OAuth
         /// 客户端的回调地址
         /// </summary>
         public virtual string CallbackPath { get; set; }
+
+        public virtual void ValidateCallbackUri(Uri callbackUri)
+        {
+            var rpUri = new Uri(this.CallbackPath);
+            if (!String.Equals(callbackUri.AbsoluteUri, rpUri.AbsoluteUri, StringComparison.InvariantCulture))
+                throw new OAuthException(AuthRequestErrorCode.RedirectUriMismatch, "callback uri mismatch", 400);
+        }
     }
 }

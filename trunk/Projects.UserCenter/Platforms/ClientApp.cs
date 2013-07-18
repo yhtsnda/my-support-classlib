@@ -57,17 +57,22 @@ namespace Projects.UserCenter
         /// 应用秘钥(接入OAuth)
         /// </summary>
         public virtual string SecretCode { get; protected set; }
-
+        
         /// <summary>
         /// 开关应用
         /// </summary>
-        /// <param name="enabled">是否启用</param>
-        public virtual void SwitchClientApp(bool enabled)
+        public virtual void SwitchClientApp(ClientAppStatus status)
         {
-            if (enabled)
-                this.Status = ClientAppStatus.Enabled;
-            else
-                this.Status = ClientAppStatus.Disabled;
+            if(this.Status != status)
+                this.Status = status;
+        }
+
+        /// <summary>
+        /// 变更秘钥
+        /// </summary>
+        public virtual void ChangeSecretCode()
+        {
+            this.SecretCode = Guid.NewGuid().ToString("N").ToLower();
         }
 
         void IValidatable.Validate()

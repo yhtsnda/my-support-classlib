@@ -79,7 +79,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\V1\User\UserController.cs" />
+    <Compile Include="Areas\V1\Controllers\ClientController.cs" />
+    <Compile Include="Areas\V1\Controllers\UserController.cs" />
+    <Compile Include="Areas\V1\V1AreaRegistration.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Filters\AppValidateAttribute.cs" />
     <Compile Include="Filters\OAuthAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -101,7 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\V1\OAuth\" />
+    <Folder Include="Areas\V1\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
