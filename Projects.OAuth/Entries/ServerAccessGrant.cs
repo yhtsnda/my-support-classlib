@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Projects.Tool;
 
 namespace Projects.OAuth
 {
@@ -99,6 +100,20 @@ namespace Projects.OAuth
         public virtual bool IsRefreshEffective()
         {
             return this.RefreshExpireTime >= DateTime.Now;
+        }
+
+        public virtual object ToModel()
+        {
+            return new
+            {
+                access_token = AccessToken,
+                refresh_token = RefreshToken,
+                client_id = ClientId,
+                expire_in = (int)(ExpireTime - DateTime.Now).TotalSeconds,
+                create_timestamp = (int)CreateTime.ToUnixTime(),
+                scope = Scope,
+                user_id = UserId
+            };
         }
     }
 }
