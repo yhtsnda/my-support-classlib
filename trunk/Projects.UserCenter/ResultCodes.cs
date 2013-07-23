@@ -16,6 +16,8 @@ namespace Projects.UserCenter
 
     public enum RegisterResultCode
     {
+        Success = 10000,
+        Error = 10001
     }
 
     public enum ModifyResultCode

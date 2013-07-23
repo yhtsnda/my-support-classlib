@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Projects.Framework;
 using Projects.Framework.Web;
 using Projects.UserCenter;
+using Projects.OAuth;
 
 namespace Projects.OpenApi.Areas.V1.Controllers
 {
@@ -14,10 +15,12 @@ namespace Projects.OpenApi.Areas.V1.Controllers
     public class UserController : Controller
     {
         private UserService userService;
+        private OAuthService oauthService;
 
-        public UserController(UserService userService)
+        public UserController(UserService userService, OAuthService oauthService)
         {
             this.userService = userService;
+            this.oauthService = oauthService;
         }
 
         /// <summary>
@@ -26,9 +29,14 @@ namespace Projects.OpenApi.Areas.V1.Controllers
         /// <remarks>/v1/{app}/{terminal}/{source}/user/reg</remarks>
         [HttpPost]
         [CustomActionName("reg")]
-        public object Register(UserRegisterModel model)
+        public object Register(UserRegisterModel model, int appId)
         {
-            throw new NotImplementedException();
+            if (String.IsNullOrEmpty(model.IpAddress))
+                model.IpAddress = Projects.Tool.Http.IpAddress.GetIP();
+            var result = userService.Register(model);
+            if (result.Code == RegisterResultCode.Success)
+                return oauthService.CreateServerAccessGrant(appId, result.Data.UserId).ToModel();
+            return new OpenApiDataResult(new PlatformException(result.Message), (int)result.Code);
         }
 
         /// <summary>
@@ -37,20 +45,37 @@ namespace Projects.OpenApi.Areas.V1.Controllers
         /// <remarks>/v1/{app}/{terminal}/{source}/user/reg/third</remarks>
         [HttpPost]
         [CustomActionName("reg/third")]
-        public object RegisterFromThrid(MappingRegisterModel model)
+        public object RegisterFromThrid(MappingRegisterModel model, int appId)
         {
-            throw new NotImplementedException();
+            if (String.IsNullOrEmpty(model.IpAddress))
+                model.IpAddress = Projects.Tool.Http.IpAddress.GetIP();
+            var result = userService.RegisterWithMapping(model);
+            if (result.Code == RegisterResultCode.Success)
+                return oauthService.CreateServerAccessGrant(appId, result.Data.UserId).ToModel();
+            return new OpenApiDataResult(new PlatformException(result.Message), (int)result.Code);
         }
 
         /// <summary>
         /// 用户登录
-        /// </summary>
+        /// </summary> 
         /// <remarks>/v1/{app}/{terminal}/{source}/user/login</remarks>
         [HttpGet]
         [CustomActionName("login")]
-        public object Login()
+        public object Login(string userName, string password, int appId)
         {
-            throw new NotImplementedException();
+            if (String.IsNullOrEmpty(userName))
+                throw new ArgumentException("用户名不能为空");
+            if (String.IsNullOrEmpty(password))
+                throw new ArgumentException("用户密码不能为空");
+            //尝试登陆
+            var result = userService.Login(userName, password);
+            //登陆成功
+            if (result.Code == LoginResultCode.Success)
+            {
+                var code = oauthService.CreateAuthorizationCode(appId, result.Data.UserId);
+                return code;
+            }
+            return new OpenApiDataResult(new PlatformException(result.Message, (int)result.Code));
         }
 
         /// <summary>
@@ -60,6 +85,17 @@ namespace Projects.OpenApi.Areas.V1.Controllers
         [HttpGet]
         [CustomActionName("login/third")]
         public object LoginWithMapping()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 将AuthoCode转换为AccessToken
+        /// </summary>
+        /// <remarks>/v1/{app}/{terminal}/{source}/user/exchange/accesstoken</remarks>
+        [HttpGet]
+        [CustomActionName("exchange/accesstoken")]
+        public object ExchangeAccessToken()
         {
             throw new NotImplementedException();
         }

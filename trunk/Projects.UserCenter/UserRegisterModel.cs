@@ -18,7 +18,7 @@ namespace Projects.UserCenter
 
         public string Email { get; protected set; }
 
-        public string IpAddress { get; protected set; }
+        public string IpAddress { get; set; }
 
         public string ExtendField { get; protected set; }
 

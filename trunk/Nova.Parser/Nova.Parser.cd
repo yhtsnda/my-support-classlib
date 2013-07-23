@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Nova.Parser.AbstractExpression">
+    <Position X="5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAgAAAQACAQAAAAAAAEAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AbstractExpression.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Nova.Parser.MySQLASTVisitor">
+    <Position X="1" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLASTVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ExpressionConst">
+    <Position X="1.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExpressionConst.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DMLStatement">
+    <Position X="7.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DMLStatement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Nova.Parser.DMLQueryStatement">
+    <Position X="7" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>DMLQueryStatement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Nova.Parser.DMLDeleteStatement">
+    <Position X="12.5" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DMLDeleteStatement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DMLUpdateStatement">
+    <Position X="6.75" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DMLUpdateStatement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DMLInsertReplaceStatement">
+    <Position X="9.25" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DMLInsertReplaceStatement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DMLReplaceStatement">
+    <Position X="11" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DMLReplaceStatement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DMLInsertStatement">
+    <Position X="8.25" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DMLInsertStatement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DMLSelectStatement">
+    <Position X="11.75" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DMLSelectStatement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DMLSelectUnionStatement">
+    <Position X="11.75" Y="1" Width="2.25" />
+    <InheritanceLine Type="Nova.Parser.DMLQueryStatement" FixedToPoint="true">
+      <Path>
+        <Point X="7.875" Y="1.75" />
+        <Point X="7.875" Y="1.5" />
+        <Point X="11.75" Y="1.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DMLSelectUnionStatement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.PrimaryExpression">
+    <Position X="3.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PrimaryExpression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.Identifier" Collapsed="true">
+    <Position X="3" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgAAAAAAAAQABEgAAABAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Identifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Nova.Parser.IASTNode">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IASTNode.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Nova.Parser.IExpression">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAACAQAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IExpression.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Nova.Parser.IStatement">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IStatement.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Nova.Parser.IFragment">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IFragment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Nova.Parser.IASTVisitor">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IASTVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Nova.Parser.IQueryExpression">
+    <Position X="4.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IQueryExpression.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Nova.Parser.StatementType" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAACA=</HashCode>
+      <FileName>StatementType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Nova.Parser.ExpressionPrecedence" Collapsed="true">
+    <Position X="0.5" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAABAAAAAgEAAAkASQABAAEAAgAAABBAASAMQA=</HashCode>
+      <FileName>ExpressionPrecedence.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
