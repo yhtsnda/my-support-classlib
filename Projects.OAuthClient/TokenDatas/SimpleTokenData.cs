@@ -9,7 +9,7 @@ namespace Projects.OAuthClient
     /// <summary>
     /// 凭据数据基础类
     /// </summary>
-    public class SimpleTokenData
+    public abstract class SimpleTokenData
     {
         public SimpleTokenData(int clientId, string clientSecret)
         {

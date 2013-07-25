@@ -62,7 +62,6 @@
     <Compile Include="Platforms\ClientApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserCenterException.cs" />
-    <Compile Include="UserCenterUtility.cs" />
     <Compile Include="Users\User.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Users\UserStatus.cs" />

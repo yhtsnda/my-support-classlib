@@ -9,205 +9,123 @@ using Projects.Tool.Util;
 
 namespace Projects.Tool.Http
 {
-    public class OpenApiHttpClient : AbstractHttpClient
+    public class OpenApiHttpClient : ApiHttpClient
     {
-        public override int Timeout { get; set; }
-
         public OpenApiHttpClient()
-        {
-            this.Timeout = 3000;
-        }
-
-        protected override Uri OnCreateWebRequestUri(Uri uri)
-        {
-            return uri;
-        }
-
-        protected override void OnGetWebRequest(WebRequest request)
+            : base()
         {
         }
 
-        protected override void OnGetWebResponse(WebRequest request)
+        public OpenApiHttpClient(int timeout, WebHeaderCollection headers = null, Encoding encoding = null, string host = null)
+            : base(timeout, headers, encoding, host)
         {
         }
 
-        public override T HttpGet<T>(string url)
+        public virtual OpenApiResult<T> HttpGetForResult<T>(string url)
         {
-            return ProcessResult(HttpGetForResult<T>(url), url);
-        }
-
-        public override T HttpGet<T>(string url, string key, string value)
-        {
-            UriPathBuilder builder = new UriPathBuilder(url);
-            builder.Append(key, value);
-            return HttpGet<T>(builder.ToString());
-        }
-
-        public override T HttpGet<T>(string url, NameValueCollection data)
-        {
-            UriPathBuilder builder = new UriPathBuilder(url);
-            builder.AppendMany(data);
-            return HttpGet<T>(builder.ToString());
-        }
-
-        public override T HttpGet<T>(string url, object values)
-        {
-            UriPathBuilder builder = new UriPathBuilder(url);
-            builder.AppendMany(UriPathBuilder.ToNameValueCollection(values));
-            return HttpGet<T>(builder.ToString());
-        }
-
-        public override T HttpPost<T>(string url, NameValueCollection data)
-        {
-            return ProcessResult(HttpPostForResult<T>(url, data), url);
-        }
-
-        public override T HttpPost<T>(string url, string key, string value)
-        {
-            return ProcessResult(HttpPostForResult<T>(url, key, value), url);
-        }
-
-        public override T HttpPost<T>(string url, object values)
-        {
-             return ProcessResult(HttpPostForResult<T>(url, values), url);
-        }
-
-        public override T HttpPostJson<T>(string url, object instance, object values)
-        {
-            return ProcessResult(HttpPostJsonForResult<T>(url, instance, values), url);
-        }
-
-        public override T HttpPostJson<T>(string url, object instance, NameValueCollection data = null)
-        {
-            return ProcessResult(HttpPostJsonForResult<T>(url, instance, data), url);
-        }
-
-        public override T UploadFile<T>(string url, string fileName, object values)
-        {
-            return ProcessResult(UploadFileForResult<T>(url, fileName, values), url);
-        }
-
-        public override T UploadFile<T>(string url, string fileName, NameValueCollection data = null)
-        {
-            return ProcessResult(UploadFileForResult<T>(url, fileName, data), url);
-        }
-
-         public virtual OpenApiResult<T> HttpGetForResult<T>(string url)
-        {
-            Func<OpenApiResult<T>> func = () =>
-            {
-                using (var client = CreateWebClient())
-                {
-                    return ParseOpenApiResult<T>(client.DownloadString(url));
-                }
-            };
-            return InvokeResult<T>(func);
+            return base.HttpGetInner<OpenApiResult<T>>(url);
         }
 
         public virtual OpenApiResult<T> HttpGetForResult<T>(string url, string key, string value)
         {
-            UriPathBuilder builder = new UriPathBuilder(url);
-            builder.Append(key, value);
-            return HttpGetForResult<T>(builder.ToString());
+            url = new UriPathBuilder(url).Append(key, value).ToString();
+            return base.HttpGetInner<OpenApiResult<T>>(url);
         }
 
         public virtual OpenApiResult<T> HttpGetForResult<T>(string url, NameValueCollection data)
         {
-            UriPathBuilder builder = new UriPathBuilder(url);
-            builder.AppendMany(data);
-            return HttpGetForResult<T>(builder.ToString());
+            url = new UriPathBuilder(url).AppendMany(data).ToString();
+            return base.HttpGetInner<OpenApiResult<T>>(url);
         }
 
         public virtual OpenApiResult<T> HttpGetForResult<T>(string url, object values)
         {
-            return HttpGetForResult<T>(url, UriPathBuilder.ToNameValueCollection(values));
+            url = new UriPathBuilder(url).AppendMany(values).ToString();
+            return base.HttpGetInner<OpenApiResult<T>>(url);
         }
 
         public virtual OpenApiResult<T> HttpPostForResult<T>(string url, string key, string value)
         {
             var data = new NameValueCollection();
             data.Add(key, value);
-            return HttpPostForResult<T>(url, data);
+            return base.HttpPostInner<OpenApiResult<T>>(url, data);
         }
 
         public virtual OpenApiResult<T> HttpPostForResult<T>(string url, object values)
         {
-            return HttpPostForResult<T>(url, UriPathBuilder.ToNameValueCollection(values));
+            var data = UriPathBuilder.ToNameValueCollection(values);
+            return base.HttpPostInner<OpenApiResult<T>>(url, data);
         }
 
         public virtual OpenApiResult<T> HttpPostForResult<T>(string url, NameValueCollection data)
         {
-            Func<OpenApiResult<T>> func = () =>
-            {
-                using (var client = CreateWebClient())
-                {
-                    var buffer = client.UploadValues(url, "POST", data);
-                    return ParseOpenApiResult<T>(Encoding.UTF8.GetString(buffer));
-                }
-            };
-            return InvokeResult<T>(func);
+            return base.HttpPostInner<OpenApiResult<T>>(url, data);
+        }
+
+        public virtual OpenApiResult<T> HttpPostJsonForResult<T>(string url, object instance)
+        {
+            return base.HttpPostJsonInner<OpenApiResult<T>>(url, instance);
         }
 
         public virtual OpenApiResult<T> HttpPostJsonForResult<T>(string url, object instance, object values)
         {
-            return HttpPostJsonForResult<T>(url, instance, UriPathBuilder.ToNameValueCollection(values));
+            url = new UriPathBuilder(url).AppendMany(values).ToString();
+            return base.HttpPostJsonInner<OpenApiResult<T>>(url, instance);
         }
 
-        public virtual OpenApiResult<T> HttpPostJsonForResult<T>(string url, object instance, NameValueCollection data = null)
+        public virtual OpenApiResult<T> HttpPostJsonForResult<T>(string url, object instance, NameValueCollection data)
         {
-            Func<OpenApiResult<T>> func = () =>
-            {
-                Arguments.NotNull(instance, "instance");
+            url = new UriPathBuilder(url).AppendMany(data).ToString();
+            return base.HttpPostJsonInner<OpenApiResult<T>>(url, instance);
+        }
 
-                var json = JsonConverter.ToJson(instance);
-                using (var client = CreateWebClient())
-                {
-                    client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                    return ParseOpenApiResult<T>(client.UploadString(url, json));
-                }
-            };
-            return InvokeResult<T>(func);
+        public virtual OpenApiResult<T> UploadFileForResult<T>(string url, string filename)
+        {
+            return base.HttpUploadFileInner<OpenApiResult<T>>(url, filename);
         }
 
         public virtual OpenApiResult<T> UploadFileForResult<T>(string url, string filename, object values)
         {
-            return UploadFileForResult<T>(url, filename, UriPathBuilder.ToNameValueCollection(values));
+            url = new UriPathBuilder(url).AppendMany(values).ToString();
+            return base.HttpUploadFileInner<OpenApiResult<T>>(url, filename);
         }
 
-        public virtual OpenApiResult<T> UploadFileForResult<T>(string url, string filename, NameValueCollection data = null)
+        public virtual OpenApiResult<T> UploadFileForResult<T>(string url, string filename, NameValueCollection data)
         {
-            Func<OpenApiResult<T>> func = () =>
-            {
-                UriPathBuilder builder = new UriPathBuilder(url);
-                builder.AppendMany(data);
-                url = builder.ToString();
-                using (var client = CreateWebClient())
-                {
-                    var buffer = client.UploadFile(url, filename);
-                    return ParseOpenApiResult<T>(Encoding.UTF8.GetString(buffer));
-                }
-            };
-            return InvokeResult<T>(func);
+            url = new UriPathBuilder(url).AppendMany(data).ToString();
+            return base.HttpUploadFileInner<OpenApiResult<T>>(url, filename);
         }
 
-        protected virtual OpenApiResult<T> ParseOpenApiResult<T>(string json)
+        protected override T HttpGetInner<T>(string url)
         {
-            if (String.IsNullOrEmpty(json) || json == "null")
-                return new OpenApiResult<T>() { Data = default(T) };
+            var result = base.HttpGetInner<OpenApiResult<T>>(url);
+            return ProcessResult<T>(result, url);
+        }
 
-            return JsonConverter.FromJson<OpenApiResult<T>>(json);
+        protected override T HttpPostInner<T>(string url, NameValueCollection data)
+        {
+            var result = base.HttpPostInner<OpenApiResult<T>>(url, data);
+            return ProcessResult<T>(result, url);
+        }
+
+        protected override T HttpPostJsonInner<T>(string url, object instance)
+        {
+            var result = base.HttpPostJsonInner<OpenApiResult<T>>(url, instance);
+            return ProcessResult<T>(result, url);
+        }
+
+        protected override T HttpUploadFileInner<T>(string url, string filename)
+        {
+            var result = base.HttpUploadFileInner<OpenApiResult<T>>(url, filename);
+            return ProcessResult<T>(result, url);
         }
 
         protected virtual T ProcessResult<T>(OpenApiResult<T> result, string url)
         {
             if (result.Code == 0)
                 return result.Data;
-            throw new Exception("服务器调用 " + url + " 发生异常: \r\n" + result.Message);
-        }
 
-        protected virtual OpenApiResult<T> InvokeResult<T>(Func<OpenApiResult<T>> func)
-        {
-            return func();
+            throw new Exception("服务器调用 " + url + " 发生异常: \r\n" + result.Message);
         }
     }
 

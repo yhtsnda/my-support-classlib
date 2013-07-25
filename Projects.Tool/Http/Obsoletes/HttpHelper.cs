@@ -69,6 +69,7 @@ namespace Projects.Tool.Http
     /// <summary>
     /// 
     /// </summary>
+    [Obsolete("使用 HttpClient")]
     public class HttpHelper
     {
         /// <summary>

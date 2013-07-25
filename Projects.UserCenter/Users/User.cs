@@ -17,7 +17,7 @@ namespace Projects.UserCenter
             this.UserName = userName;
             //当用户的密码长度小于30,认为没有加密过
             if (password.Length < 30)
-                this.Password = UserCenterUtility.EncryptPassword(password).ToLower();
+                this.Password = Projects.Tool.Util.StringUtil.EncryptPassword(password).ToLower();
             else
                 this.Password = password.ToLower();
             this.RegPlatCode = regplatcode;

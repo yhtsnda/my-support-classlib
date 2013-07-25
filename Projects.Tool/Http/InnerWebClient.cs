@@ -12,17 +12,18 @@ namespace Projects.Tool.Http
         private int Timeout;
         private Func<Uri, Uri> onCreateWebRequestUriHandler;
         private Action<WebRequest> onGetWebRequestHandler;
-        private Action<WebRequest> onGetWebResponseHandler;
+        private Action<WebResponse> onGetWebResponseHandler;
 
         public InnerWebClient(int timeout,
             Func<Uri, Uri> onCreateWebRequestUriHandler,
             Action<WebRequest> onGetWebRequestHandler,
-            Action<WebRequest> onGetWebResponseHandler)
+            Action<WebResponse> onGetWebResponseHandler)
         {
             this.Timeout = timeout;
             this.onCreateWebRequestUriHandler = onCreateWebRequestUriHandler;
             this.onGetWebRequestHandler = onGetWebRequestHandler;
             this.onGetWebResponseHandler = onGetWebResponseHandler;
+            Encoding = Encoding.UTF8;
         }
 
         protected override WebRequest GetWebRequest(Uri address)
@@ -37,7 +38,7 @@ namespace Projects.Tool.Http
         protected override WebResponse GetWebResponse(WebRequest request)
         {
             var response = base.GetWebResponse(request);
-            onGetWebResponseHandler(request);
+            onGetWebResponseHandler(response);
             return response;
         }
     }

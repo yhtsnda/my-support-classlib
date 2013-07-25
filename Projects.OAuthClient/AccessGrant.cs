@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projects.Tool;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,6 +56,37 @@ namespace Projects.OAuthClient
         public virtual bool IsEffective()
         {
             return this.ExpireTime >= DateTime.Now;
+        }
+
+        internal class InnerAccessGrant
+        {
+            public string access_token;
+
+            public string refresh_token;
+
+            public int expire_in;
+
+            public int create_timestamp;
+
+            public int client_id;
+
+            public int user_id;
+
+            public string scope;
+
+            public AccessGrant Convert()
+            {
+                return new AccessGrant()
+                {
+                    AccessToken = access_token,
+                    ClientId = client_id,
+                    ExpireTime = DateTime.Now.AddSeconds(expire_in),
+                    RefreshToken = refresh_token,
+                    CreateTime = DateTimeExtend.FromUnixTime(create_timestamp),
+                    Scope = scope,
+                    UserId = user_id
+                };
+            }
         }
     }
 }

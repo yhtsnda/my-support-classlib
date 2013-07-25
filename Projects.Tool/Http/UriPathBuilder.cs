@@ -101,6 +101,11 @@ namespace Projects.Tool.Http
             return this;
         }
 
+        public UriPathBuilder AppendMany(object values)
+        {
+            return AppendMany(ToNameValueCollection(values));
+        }
+
         /// <summary>
         /// 获取组装的URL
         /// </summary>

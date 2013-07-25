@@ -188,7 +188,7 @@ namespace Projects.UserCenter
                 return CreateModifyResult(ModifyResultCode.PasswordNoMatch, "旧密码错误,无法修改");
             //这样认为没有加密
             if (newPwd.Length < 30)
-                newPwd = UserCenterUtility.EncryptPassword(newPwd);
+                newPwd = Projects.Tool.Util.StringUtil.EncryptPassword(newPwd);
             user.Password = newPwd;
             userRepository.Update(user);
 

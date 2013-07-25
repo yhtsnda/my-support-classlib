@@ -57,21 +57,27 @@ namespace Projects.OAuth
 
         public static ServerAccessGrant ValidToken()
         {
-            ServerAccessGrant accessGrant;
-            if (!TryValidToken(out accessGrant))
-                throw new OAuthException("ticket invalid", "ticket required", 500);
+            return ValidToken(new HttpContextWrapper(HttpContext.Current));
+        }
 
+        public static ServerAccessGrant ValidToken(HttpContextBase context)
+        {
+            var accessGrant = oauthService.TokenValid(context);
+            context.Items[ContextAccessGrantKey] = accessGrant;
             return accessGrant;
         }
 
         public static bool TryValidToken(out ServerAccessGrant accessGrant)
         {
             var context = HttpContext.Current;
-            if (context != null)
+            if (context.IsAvailable())
             {
                 accessGrant = oauthService.TryGetToken(new HttpContextWrapper(context));
-                context.Items[ContextAccessGrantKey] = accessGrant;
-                return accessGrant != null;
+                if (accessGrant != null && accessGrant.IsEffective())
+                {
+                    context.Items[ContextAccessGrantKey] = accessGrant;
+                    return true;
+                }
             }
             accessGrant = null;
             return false;
