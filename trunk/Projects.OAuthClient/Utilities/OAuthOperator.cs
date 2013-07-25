@@ -22,7 +22,8 @@ namespace Projects.OAuthClient
         /// <returns>认证码</returns>
         public static OpenApiResult<AuthorizationCode> GetCode(AuthorizeData authorizeData)
         {
-            var url = UriPathBuilder.Combine(OAuthContext.OAuthServicePath, "token");
+            UpdateClient();
+            var url = UriPathBuilder.Combine(OAuthService.OAuthServicePath, "token");
 
             var data = new NameValueCollection();
             authorizeData.UpdateDatas(data);
@@ -37,12 +38,17 @@ namespace Projects.OAuthClient
         /// <returns>授权对象</returns>
         public static OpenApiResult<AccessGrant> GetToken(SimpleTokenData tokenData)
         {
-            var url = UriPathBuilder.Combine(OAuthContext.OAuthServicePath, "token");
+            UpdateClient();
+            var url = UriPathBuilder.Combine(OAuthService.OAuthServicePath, "token");
 
             var data = new NameValueCollection();
             tokenData.UpdateDatas(data);
+            var innerResult = client.HttpPostForResult<AccessGrant.InnerAccessGrant>(url, data);
 
-            return client.HttpPostForResult<AccessGrant>(url, data);
+            var result = new OpenApiResult<AccessGrant>() { Code = innerResult.Code, Message = innerResult.Message };
+            if (innerResult.Data != null)
+                result.Data = innerResult.Data.Convert();
+            return result;
         }
 
         /// <summary>
@@ -52,10 +58,20 @@ namespace Projects.OAuthClient
         /// <returns>授权对象</returns>
         public static AccessGrant GetAccessGent(string accessToken)
         {
+            UpdateClient();
             Arguments.NotNullOrEmpty(accessToken, "accessToken");
 
-            var url = UriPathBuilder.Combine(OAuthContext.OAuthServicePath, "valid");
-            return client.HttpGet<AccessGrant>(url, Protocal.ACCESS_TOKEN, accessToken);
+            var url = UriPathBuilder.Combine(OAuthService.OAuthServicePath, "valid");
+            var innerResult = client.HttpGetForResult<AccessGrant.InnerAccessGrant>(url, Protocal.ACCESS_TOKEN, accessToken);
+            if (innerResult.Code == 0)
+                return innerResult.Data.Convert();
+
+            return null;
+        }
+
+        private static void UpdateClient()
+        {
+            client.Host = OAuthService.OAuthServiceHost;
         }
     }
 }

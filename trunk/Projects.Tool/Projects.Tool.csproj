@@ -139,7 +139,7 @@
     <Compile Include="Extend\EnumerableExtend.cs" />
     <Compile Include="Extend\LinqExtend.cs" />
     <Compile Include="Extend\StringExtend.cs" />
-    <Compile Include="Http\AbstractHttpClient.cs" />
+    <Compile Include="Http\ApiHttpClient.cs" />
     <Compile Include="Http\HttpClient.cs" />
     <Compile Include="Http\HttpContextExtend.cs" />
     <Compile Include="Http\InnerWebClient.cs">
@@ -196,7 +196,7 @@
     <Compile Include="Util\AcquireLock.cs" />
     <Compile Include="Reflection\FastActivator.cs" />
     <Compile Include="Util\FileHelper.cs" />
-    <Compile Include="Http\HttpHelper.cs" />
+    <Compile Include="Http\Obsoletes\HttpHelper.cs" />
     <Compile Include="Util\InterfaceValidator.cs" />
     <Compile Include="Http\IpAddress.cs" />
     <Compile Include="Util\JsonConverter.cs" />

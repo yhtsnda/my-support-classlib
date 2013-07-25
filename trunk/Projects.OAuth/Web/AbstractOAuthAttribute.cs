@@ -14,7 +14,7 @@ namespace Projects.OAuth
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             var oauthService = Projects.Framework.DependencyResolver.Resolve<OAuthService>();
-            var accessGrant = OAuthAuthorization.ValidToken();
+            var accessGrant = OAuthAuthorization.ValidToken(filterContext.HttpContext);
             OnValidateSuccess(filterContext, accessGrant);
         }
 
