@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 using System.Net;
 using System.Web.SessionState;
 
-namespace Projects.Tool.Profiler
+namespace Projects.Tool.Diagnostics
 {
     public class ProfilerModule : IHttpModule, IRequiresSessionState
     {

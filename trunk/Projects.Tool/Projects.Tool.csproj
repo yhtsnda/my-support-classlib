@@ -172,13 +172,6 @@
     <Compile Include="Pager\PagerHelper.cs" />
     <Compile Include="Pager\PagerItem.cs" />
     <Compile Include="Pager\PagerOptions.cs" />
-    <Compile Include="Profiler\ProfilerContext.cs" />
-    <Compile Include="Profiler\ProfilerData.cs" />
-    <Compile Include="Profiler\ProfilerItem.cs" />
-    <Compile Include="Profiler\ProfilerModule.cs" />
-    <Compile Include="Profiler\ProfilerUtil.cs" />
-    <Compile Include="Profiler\ProfileStatus.cs" />
-    <Compile Include="Profiler\TraceItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\DeepCloneExtend.cs" />
     <Compile Include="Reflection\DelegateAccessor.cs" />

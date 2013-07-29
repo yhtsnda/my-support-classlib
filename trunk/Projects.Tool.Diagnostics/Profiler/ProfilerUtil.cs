@@ -8,7 +8,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Security;
 
-namespace Projects.Tool.Profiler
+namespace Projects.Tool.Diagnostics
 {
     public static class ProfilerUtil
     {
