@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Projects.Tool.Profiler
+namespace Projects.Tool.Diagnostics
 {
     public enum ProfileStatus
     {

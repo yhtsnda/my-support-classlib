@@ -10,11 +10,9 @@ using System.Globalization;
 using System.Security;
 using System.Collections;
 using System.Web.Caching;
-
-using Projects.Tool.Profiler;
 using System.Collections.Concurrent;
 
-namespace Projects.Tool
+namespace Projects.Tool.Diagnostics
 {
     public class ProfilerContext
     {
