@@ -1,5 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using Projects.Tool;
+using Projects.Tool.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace Projects.Framework
                 if (value == null)
                 {
                     // 调用源接口，并将结果写入缓存
-                    using (MonitorImpl.Repository(invocation.Method))
+                    using (MonitorContext.Repository(invocation.Method))
                         invocation.Proceed();
 
                     var entity = invocation.ReturnValue;
@@ -44,13 +45,15 @@ namespace Projects.Framework
                     //if (ProfilerContext.Current.Enabled)
                     //    ProfilerContext.Current.Trace("platform", String.Format("hit get\r\n{0}", cacheKey));
                     //invocation.ReturnValue = value.Convert(metadata.EntityType);
-
+                    using (MonitorContext.Repository(invocation.Method, true))
+                    {
+                    }
                     invocation.ReturnValue = value;
                 }
             }
             else
             {
-                using (MonitorImpl.Repository(invocation.Method))
+                using (MonitorContext.Repository(invocation.Method))
                     invocation.Proceed();
             }
         }

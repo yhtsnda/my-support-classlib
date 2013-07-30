@@ -1,6 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using Projects.Tool;
-using Projects.Tool.Profiler;
+using Projects.Tool.Diagnostics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,8 +27,8 @@ namespace Projects.Framework
         Type[] providers = new Type[]{
             typeof(EntityFindAllCacheableRepositoryProvider<T>),
             typeof(EntityPagingCacheableRepositoryProvider<T>),
-            typeof(EntityFindOneCacheableRepositoryProvider<T>),
-            typeof(CommonCacheableRepositoryProvider<T>)
+            typeof(EntityFindOneCacheableRepositoryProvider<T>)//,
+            //typeof(CommonCacheableRepositoryProvider<T>)
         };
 
         public void SetRegions(List<CacheRegion> regions)
@@ -69,7 +69,8 @@ namespace Projects.Framework
                             ProfilerContext.Current.Trace("platform", String.Format("hit  {1}\r\n{0}", ProfilerUtil.JsonFormat(provider.CacheKey), regionStr));
 
                         //处理缓存
-                        provider.ProcessCache(cacheData);
+                        using (MonitorContext.Repository(invocation.Method, true))
+                            provider.ProcessCache(cacheData);
                         return;
                     }
 

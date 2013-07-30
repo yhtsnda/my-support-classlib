@@ -3,8 +3,6 @@ using Projects.Tool.Shards;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Projects.Framework.Shards
 {
@@ -47,10 +45,7 @@ namespace Projects.Framework.Shards
 
         public virtual void Create(TEntity entity)
         {
-            using (var tr = ProfilerContext.Profile(typeof(TEntity).FullName + "#Create"))
-            {
-                OpenSession(entity).Create(entity);
-            }
+            OpenSession(entity).Create(entity);
         }
 
         public virtual void Create(TEntity entity, object id)
@@ -61,18 +56,12 @@ namespace Projects.Framework.Shards
 
         public virtual void Update(TEntity entity)
         {
-            using (var tr = ProfilerContext.Profile(typeof(TEntity).FullName + "#Update"))
-            {
-                OpenSession(entity).Update(entity);
-            }
+            OpenSession(entity).Update(entity);
         }
 
         public virtual void Delete(TEntity entity)
         {
-            using (var tr = ProfilerContext.Profile(typeof(TEntity).FullName + "#Delete"))
-            {
-                OpenSession(entity).Delete(entity);
-            }
+            OpenSession(entity).Delete(entity);
         }
 
         public virtual void SessionEvict(TEntity entity)
@@ -87,10 +76,7 @@ namespace Projects.Framework.Shards
 
         public virtual TEntity Get(ShardParams shardParams, object id)
         {
-            using (var tr = ProfilerContext.Profile(typeof(TEntity).FullName + "#Get"))
-            {
-                return OpenSession(shardParams).Get(id);
-            }
+            return OpenSession(shardParams).Get(id);
         }
 
         public virtual IList<TEntity> GetList(ShardParams shardParams, IEnumerable ids)
@@ -98,34 +84,22 @@ namespace Projects.Framework.Shards
             if (!ids.GetEnumerator().MoveNext())
                 return new List<TEntity>();
 
-            using (var tr = ProfilerContext.Profile(typeof(TEntity).FullName + "#GetList"))
-            {
-                return OpenSession(shardParams).GetList(ids);
-            }
+            return OpenSession(shardParams).GetList(ids);
         }
 
         public virtual TEntity FindOne(ISpecification<TEntity> spec)
         {
-            using (var tr = ProfilerContext.Profile(typeof(TEntity).FullName + "#FindOne"))
-            {
-                return OpenSession(spec).FindOne(spec);
-            }
+            return OpenSession(spec).FindOne(spec);
         }
 
         public virtual IList<TEntity> FindAll(ISpecification<TEntity> spec)
         {
-            using (var tr = ProfilerContext.Profile(typeof(TEntity).FullName + "#FindAll"))
-            {
-                return OpenSession(spec).FindAll(spec);
-            }
+            return OpenSession(spec).FindAll(spec);
         }
 
         public virtual PagingResult<TEntity> FindPaging(ISpecification<TEntity> spec)
         {
-            using (var tr = ProfilerContext.Profile(typeof(TEntity).FullName + "#FindPaging"))
-            {
-                return OpenSession(spec).FindPaging(spec);
-            }
+            return OpenSession(spec).FindPaging(spec);
         }
 
         public virtual ISpecification<TEntity> CreateSpecification(ShardParams shardParams)
@@ -141,10 +115,7 @@ namespace Projects.Framework.Shards
 
         public virtual int Count(ISpecification<TEntity> spec)
         {
-            using (var tr = ProfilerContext.Profile(typeof(TEntity).FullName + "#Count"))
-            {
-                return OpenSession(spec).Count(spec);
-            }
+            return OpenSession(spec).Count(spec);
         }
     }
 }

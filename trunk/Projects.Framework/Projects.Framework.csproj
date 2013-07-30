@@ -52,12 +52,6 @@
     <Compile Include="Bootstrap\IStartupTask.cs" />
     <Compile Include="DependCacheDomains\SingletonDependCacheDomain.cs" />
     <Compile Include="DependCacheDomains\TripletKeyDependCacheDomain.cs" />
-    <Compile Include="Monitors\MonitorHttpModule.cs" />
-    <Compile Include="Monitors\MonitorImpl.cs" />
-    <Compile Include="Monitors\PageMonitor.cs" />
-    <Compile Include="Monitors\PageMonitorData.cs" />
-    <Compile Include="Monitors\RepositoryMonitor.cs" />
-    <Compile Include="Monitors\RepositoryMonitorData.cs" />
     <Compile Include="RepositoryFrameworks\Cacheable\CacheData\CacheKeyGenerator\CacheKeyUtil.cs" />
     <Compile Include="RepositoryFrameworks\Cacheable\CacheData\CacheKeyGenerator\ConstantExpressionVisitor.cs" />
     <Compile Include="RepositoryFrameworks\Cacheable\CacheData\CacheKeyGenerator\DefaultCacheKeyGenerator.cs" />
@@ -168,7 +162,6 @@
     <Compile Include="Utils\AuthenticationTicketSerializer.cs" />
     <Compile Include="Utils\EntityUtil.cs" />
     <Compile Include="Utils\IOriginalObjectProvider.cs" />
-    <Compile Include="Utils\PrettyTypeExtend.cs" />
     <Compile Include="RepositoryFrameworks\Interceptors\AbstractRepositoryFrameworkInterceptor.cs" />
     <Compile Include="RepositoryFrameworks\Interceptors\DefaultRepositoryFrameworkInterceptor.cs" />
     <Compile Include="RepositoryFrameworks\Interceptors\IRepositoryFrameworkInterceptor.cs" />
@@ -197,6 +190,14 @@
     <Compile Include="WebRequestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Projects.Tool.Caches\Projects.Tool.Caches.csproj">
+      <Project>{dcf74584-f64b-46ed-bb87-3ea5f46eb8bd}</Project>
+      <Name>Projects.Tool.Caches</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Projects.Tool.Diagnostics\Projects.Tool.Diagnostics.csproj">
+      <Project>{223ca59e-63fe-4288-a464-dffdffe31f24}</Project>
+      <Name>Projects.Tool.Diagnostics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188AABA2-82FD-4899-B537-4D49E80ABE0C}</Project>
       <Name>Projects.Tool</Name>
