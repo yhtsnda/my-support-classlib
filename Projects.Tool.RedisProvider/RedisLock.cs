@@ -28,7 +28,7 @@ namespace Projects.Tool.RedisProvider
         public bool AcquireLock(string key, int timeout)
         {
             var locker = GetLocker(key);
-            Monitor.TryEnter(locker, TimeSpan.FromSeconds(timeout), ref lockTaken);
+            lockTaken = System.Threading.Monitor.TryEnter(locker, timeout);
             //进程锁获取失败
             if (!lockTaken)
                 return false;
@@ -36,32 +36,17 @@ namespace Projects.Tool.RedisProvider
             try
             {
                 redisClient = RedisClientProvider.CreateRedisClient(connName);
-                redisLocker = redisClient.AcquireLock(key, TimeSpan.FromSeconds(timeout));
-                return redisLocker != null;
-            }
-            catch (TimeoutException ex)
-            {
-                //redis锁获取失败
-                if (lockTaken)
-                    Monitor.Exit(locker);
-
-                if (redisLocker != null)
-                    redisLocker.Dispose();
-
-                return false;
+                redisLocker = new InnerRedisLock(redisClient, key, TimeSpan.FromMilliseconds(timeout));
+                return true;
             }
             catch (Exception ex)
             {
-                //redis锁获取失败
-                if (lockTaken)
-                    Monitor.Exit(locker);
+                System.Threading.Monitor.Exit(locker);
 
                 if (redisLocker != null)
                     redisLocker.Dispose();
-
-                throw ex;
             }
-
+            return false;
         }
 
         public void ReleaseLock(string key)
@@ -72,16 +57,19 @@ namespace Projects.Tool.RedisProvider
             var locker = GetLocker(key);
 
             if (lockTaken)
-                Monitor.Exit(locker);
+                System.Threading.Monitor.Exit(locker);
 
             RemoveLocker(key);
+            Dispose();
         }
 
-
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             if (redisClient != null)
+            {
                 redisClient.Dispose();
+                redisClient = null;
+            }
         }
 
         object GetLocker(string key)
