@@ -11,173 +11,93 @@ using System.Security;
 using System.Collections;
 using System.Web.Caching;
 using System.Collections.Concurrent;
+using System.IO;
+using Projects.Tool.Util;
 
 namespace Projects.Tool.Diagnostics
 {
     public class ProfilerContext
     {
         const string ProfilerItemKey = "__ProfilerItemKey__";
-        const string ProfilerValueKey = "__profiler__";
-        const string StackTraceValueKey = "__stacktrace__";
-
-        const int StaticMaxCount = 10;
         const int MaxItemCount = 500;
 
         ProfilerData data;
         Stopwatch watch;
-        ProfileStatus status;
-        Stack<ProfilerItem> profilerStack;
+        Stack<WatchItem> watchStack;
         int profilerCounter = 0;
-        bool isStackTrace;
+        bool profilerEnabled = false;
 
         static ConcurrentQueue<ProfilerData> cache = new ConcurrentQueue<ProfilerData>();
 
         ProfilerContext()
         {
             data = new ProfilerData();
-            var configStatus = ConfigurationManager.AppSettings["profiler.status"];
-            status = ToProfileStatus(configStatus, false, false);
 
             var context = HttpContext.Current;
-            if (context != null)
+            if (context.IsAvailable())
             {
-                bool isProfilerPage = context.Request.Url.ToString().Contains("profiler.aspx");
-                bool isSingleUserRequest = false;
-                isStackTrace = false;
-
-                var ckProfiler = context.Request.Cookies[ProfilerValueKey];
-                if (ckProfiler != null)
-                {
-                    isSingleUserRequest = ckProfiler.Value == ((int)ProfileStatus.SingleUserRequest).ToString();
-                    configStatus = ckProfiler.Value;
-                }
-
-                var ckStackTrace = context.Request.Cookies[StackTraceValueKey];
-                if (ckStackTrace != null)
-                    isStackTrace = ckStackTrace.Value == "true";
-
-                status = ToProfileStatus(configStatus, isProfilerPage, isSingleUserRequest);
-
-                var rtProfiler = context.Request.QueryString[ProfilerValueKey];
-                var rtStackTrace = context.Request.QueryString[StackTraceValueKey];
-
-                if (rtProfiler != null)
-                {
-                    if (rtProfiler == "request")
-                    {
-                        isSingleUserRequest = true;
-                    }
-
-                    status = ToProfileStatus(rtProfiler, isProfilerPage, isSingleUserRequest);
-                    context.Response.Cookies.Add(new HttpCookie(ProfilerValueKey, status.ToString().ToLower()) { Expires = DateTime.Now.AddDays(1) });
-                }
-
-                if (rtStackTrace != null)
-                {
-                    isStackTrace = rtStackTrace == "true";
-                    context.Response.Cookies.Add(new HttpCookie(StackTraceValueKey, isStackTrace.ToString().ToLower()) { Expires = DateTime.Now.AddDays(1) });
-                }
-
-                data.Url = HttpContext.Current.Request.Url.PathAndQuery;
+                data.Url = context.Request.Url.PathAndQuery;
             }
 
-            profilerStack = new Stack<ProfilerItem>();
-        }
-
-        string GetCookieValue(HttpContext context, string key)
-        {
-            var cookie = context.Request.Cookies[key];
-            if (cookie != null)
-                return cookie.Value;
-
-            return null;
+            watchStack = new Stack<WatchItem>();
         }
 
         public static ProfilerContext Current
         {
             get
             {
-                ProfilerContext current = (ProfilerContext)Projects.Tool.Util.Workbench.Current.Items[ProfilerItemKey];
+                var wb = Workbench.Current;
+                ProfilerContext current = (ProfilerContext)wb.Items[ProfilerItemKey];
                 if (current == null)
                 {
                     current = new ProfilerContext();
-                    Projects.Tool.Util.Workbench.Current.Items[ProfilerItemKey] = current;
+                    wb.Items[ProfilerItemKey] = current;
                 }
                 return current;
             }
         }
 
-        public static string GetSql()
-        {
-            return String.Join("\r\n", Current.Data.Traces.Where(o => o.Type == "nhibernate" || o.Type == "mongo").Select(o => o.Title).ToArray());
-        }
 
         /// <summary>
         /// 开启一个监视块
         /// </summary>
-        /// <param name="message"></param>
-        public static void BeginProfile(string message)
+        public static void BeginWatch(string message)
         {
-            Current.InnerBeginProfile(message);
+            Current.InnerBeginWatch(message);
         }
 
         /// <summary>
         /// 结束上一个监视块
         /// </summary>
-        public static void EndProfile()
+        public static void EndWatch()
         {
-            Current.InnerEndProfile();
+            Current.InnerEndWatch();
         }
 
-        public static IDisposable Profile(string message)
+        /// <summary>
+        /// 获取一个监控块范围
+        /// </summary>
+        public static IDisposable Watch(string message)
         {
-            return new ProfileScope(message);
+            return new WatchScope(message);
         }
 
-        public ProfileStatus Status
+        /// <summary>
+        /// 获取 profile 数据
+        /// </summary>
+        public ProfilerData Data
         {
-            get { return status; }
-            set { status = value; }
+            get { return data; }
         }
 
-        public bool IsStackTrace
+        public Stack<WatchItem> WatchStack
         {
-            get { return isStackTrace; }
+            get { return watchStack; }
         }
 
-        public bool Enabled
-        {
-            get
-            {
-                return status != ProfileStatus.Disable && status != ProfileStatus.StaticPageRequest;
-            }
-        }
-
-        ProfileStatus ToProfileStatus(string name, bool isStaticPage, bool isSingleUser)
-        {
-            name = name.ToLower();
-            if (isStaticPage && name == "static")
-                return ProfileStatus.StaticPageRequest;
-            if (isSingleUser && name == "request")
-                return ProfileStatus.SingleUserRequest;
-
-            switch (name)
-            {
-                case "request":
-                    return ProfileStatus.Request;
-                case "static":
-                    return ProfileStatus.Static;
-                case "disabled":
-                    return ProfileStatus.Disable;
-                case "singleuserrequest":
-                    return ProfileStatus.SingleUserRequest;
-                case "staticpagerequest":
-                    return ProfileStatus.StaticPageRequest;
-                default:
-                    return ProfileStatus.Disable;
-            }
-        }
-
+        /// <summary>
+        /// 自请求开始来的经历的毫秒数
+        /// </summary>
         public int Elapsed
         {
             get
@@ -188,109 +108,115 @@ namespace Projects.Tool.Diagnostics
             }
         }
 
-        public ProfilerData Data
+        public bool Enabled
         {
-            get { return data; }
-        }
-
-        public ConcurrentQueue<ProfilerData> StaticCache
-        {
-            get
-            {
-                return cache;
-            }
+            get { return profilerEnabled; }
         }
 
         public void Begin()
         {
-            if (Enabled)
+            var serviceData = ProfilerService.ServiceData;
+            if (serviceData.Setting.Enabled && (serviceData.Setting.Mode == ProfilerMode.Static || serviceData.Setting.Mode == ProfilerMode.Request && serviceData.UserProfileEnabled))
             {
+                profilerEnabled = true;
+
                 watch = Stopwatch.StartNew();
                 data.RequestTime = DateTime.Now;
             }
         }
 
-        public void End()
+        public void End(HttpApplication app)
         {
-            if (Enabled && watch != null)
+            if (profilerEnabled && watch != null)
             {
-                while (profilerStack.Count > 0)
-                    profilerStack.Pop().Dispose();
+                while (watchStack.Count > 0)
+                    watchStack.Pop().Dispose();
+
                 data.Duration = (int)watch.ElapsedMilliseconds;
                 watch.Stop();
-                ProfilerData _item;
-                while (cache.Count > 10)
-                    cache.TryDequeue(out _item);
-                cache.Enqueue(data);
+
+                var request = app.Request;
+                data.Request.Url = request.Url.ToString();
+                data.Request.Method = request.HttpMethod;
+                data.Request.Header = String.Concat(request.Headers.AllKeys.Select(o => String.Format("{0}:{1}\r\n", o, request.Headers[o])));
+                if (data.Request.Method == "POST")
+                {
+                    using (StreamReader sr = new StreamReader(request.InputStream, request.ContentEncoding))
+                    {
+                        data.Request.Body = sr.ReadToEnd();
+                    }
+                }
             }
         }
 
         public void Trace(string type, string title)
         {
-            if (Enabled)
-                Trace(type, title, isStackTrace ? ProfilerUtil.FormatStackTrace(new StackTrace(true)) : "");
+            if (profilerEnabled)
+                Trace(type, title, ProfilerService.ServiceData.Setting.ShowDetail ? ProfilerUtil.FormatStackTrace(new StackTrace(true)) : "");
         }
 
         public void Trace(string type, string title, string content)
         {
-            if (Enabled && (data.Traces.Count < MaxItemCount || type == "nhibernate" || type == "mongo"))
+            if (profilerEnabled && (data.Traces.Count < MaxItemCount || type == "nhibernate" || type == "mongo"))
             {
                 TraceItem trace = new TraceItem() { Type = type, Title = watch.ElapsedMilliseconds.ToString() + " " + HttpUtility.HtmlEncode(title), Content = HttpUtility.HtmlEncode(content) };
                 data.Traces.Add(trace);
             }
         }
 
-        internal void InnerBeginProfile(string message)
+        /// <summary>
+        /// 开启一个监视块
+        /// </summary>
+        internal void InnerBeginWatch(string message)
         {
-            if (Enabled)
+            if (profilerEnabled)
             {
                 if (profilerCounter > MaxItemCount)
                     return;
-                if (status == ProfileStatus.Static && profilerCounter > StaticMaxCount)
-                    return;
+
+
                 profilerCounter++;
-                ProfilerItem profiler = new ProfilerItem(message);
-                profiler.StackTrace = isStackTrace ? ProfilerUtil.FormatStackTrace(new StackTrace(true)) : null;
-                if (profilerStack.Count > 0)
-                    profilerStack.Peek().Items.Add(profiler);
+                WatchItem profiler = new WatchItem(message);
+                profiler.StackTrace = ProfilerService.ServiceData.Setting.ShowDetail ? ProfilerUtil.FormatStackTrace(new StackTrace(true)) : null;
+                if (watchStack.Count > 0)
+                    watchStack.Peek().Items.Add(profiler);
                 else
-                    data.Profilers.Add(profiler);
+                    data.Watches.Add(profiler);
 
-                profilerStack.Push(profiler);
-
-                //static cache
-                //if (status == ProfileStatus.Static)
-                //{
-                //cache.Profilers.Add(profiler);
-                //if (staticDic.Count > 10)
-                //    staticDic.Remove();
-                //}
+                watchStack.Push(profiler);
             }
         }
 
-        internal void InnerEndProfile()
+        /// <summary>
+        /// 结束上一个监视块
+        /// </summary>
+        internal void InnerEndWatch()
         {
-            if (Enabled)
+            if (profilerEnabled)
             {
-                if (profilerStack.Count > 0)
+                if (watchStack.Count > 0)
                 {
-                    profilerStack.Pop().Dispose();
+                    watchStack.Pop().Dispose();
                 }
             }
         }
 
-        class ProfileScope : IDisposable
+        class WatchScope : IDisposable
         {
-            public ProfileScope(string message)
+            public WatchScope(string message)
             {
-                ProfilerContext.BeginProfile(message);
+                ProfilerContext.BeginWatch(message);
             }
 
             void IDisposable.Dispose()
             {
-                ProfilerContext.EndProfile();
+                ProfilerContext.EndWatch();
             }
         }
 
+        public static string GetSql()
+        {
+            return String.Join("\r\n", Current.Data.Traces.Where(o => o.Type == "nhibernate" || o.Type == "mongo").Select(o => o.Title).ToArray());
+        }
     }
 }

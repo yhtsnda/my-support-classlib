@@ -6,69 +6,27 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Net;
 using System.Web.SessionState;
+using System.Web.Routing;
+using Projects.Tool.Util;
 
 namespace Projects.Tool.Diagnostics
 {
-    public class ProfilerModule : IHttpModule, IRequiresSessionState
+    public class ProfilerModule : IWorkbenchModule
     {
-        const string ProfilerBegin = "/* --tracebeging--";
-        const string ProfilerEnd = "--traceend-- */";
-
-        public void Dispose()
+        public void Init()
         {
-
+            RouteTable.Routes.Ignore(String.Format("{0}/{{*pathInfo}}", ProfilerService.CommandService.BathPath));
+            ProfilerService.Init();
         }
 
-        public void Init(HttpApplication context)
+        public void BeginRequest(HttpApplication app)
         {
-            context.BeginRequest += new EventHandler(OnContextBeginRequest);
-            context.EndRequest += new EventHandler(OnContextEndRequest);
+            ProfilerService.RequestBegin(app);
         }
 
-        void OnContextBeginRequest(object sender, EventArgs e)
+        public void EndRequest(HttpApplication app)
         {
-            if (ProfilerContext.Current.Enabled)
-                ProfilerContext.Current.Begin();
-        }
-
-        void OnContextEndRequest(object sender, EventArgs e)
-        {
-            HttpApplication app = (HttpApplication)sender;
-            if (app.Response.StatusCode == (int)HttpStatusCode.OK)
-            {
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-                jss.MaxJsonLength = Int32.MaxValue;
-                bool isProfilerPage = HttpContext.Current.Request.Url.ToString().Contains("profiler.aspx");
-                if (ProfilerContext.Current.Enabled)
-                {
-                    ProfilerContext.Current.End();
-                    if (ProfilerContext.Current.Status == ProfileStatus.Request
-                        || ProfilerContext.Current.Status == ProfileStatus.SingleUserRequest)
-                    {
-                        string json = jss.Serialize(ProfilerContext.Current.Data);
-
-                        if (app.Response.ContentType == "application/json")
-                        {
-                            app.Response.Write("\r" + ProfilerBegin + json + ProfilerEnd);
-                        }
-                        else if (app.Response.ContentType == "text/html" && !isProfilerPage)
-                        {
-                            app.Response.Write("<script type=\"text/javascript\">if(typeof($profiler) != 'undefined'){$profiler.add(" + json + ");}</script>");
-                        }
-                    }
-                }
-                else if (ProfilerContext.Current.Status == ProfileStatus.StaticPageRequest)
-                {
-                    string writeString = "<script type=\"text/javascript\">if(typeof($profiler) != 'undefined'){";
-                    foreach (var item in ProfilerContext.Current.StaticCache.ToArray())
-                    {
-                        string cacheJson = jss.Serialize(item);
-                        writeString += "$profiler.add(" + cacheJson + ");";
-                    }
-                    writeString += "}</script>";
-                    app.Response.Write(writeString);
-                }
-            }
+            ProfilerService.RequestEnd(app);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Projects.Tool
 {
-    internal class InnerManager<TFactory> where TFactory : class
+    public class InnerManager<TFactory> where TFactory : class
     {
         TFactory factory;
 

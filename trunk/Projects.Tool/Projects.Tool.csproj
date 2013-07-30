@@ -97,37 +97,6 @@
     <Compile Include="Accumlator\AccumlatorType.cs" />
     <Compile Include="Accumlator\IAccumlator.cs" />
     <Compile Include="Attributes\ExcelCaptionAttribute.cs" />
-    <Compile Include="Cache\CacheItem.cs" />
-    <Compile Include="Cache\CacheManager.cs" />
-    <Compile Include="Cache\Caches\AbstractCache.cs" />
-    <Compile Include="Cache\Caches\AspnetCache.cs" />
-    <Compile Include="Cache\Caches\BlankCache.cs" />
-    <Compile Include="Cache\Caches\CacheUtil.cs" />
-    <Compile Include="Cache\Caches\SyncAspnetCache.cs" />
-    <Compile Include="Cache\Caches\SyncCacheHandler.cs" />
-    <Compile Include="Cache\Domain\PairKeyCacheDomain.cs" />
-    <Compile Include="Cache\Domain\SingleKeyCacheDomain.cs" />
-    <Compile Include="Cache\Domain\SingletonCacheDomain.cs" />
-    <Compile Include="Cache\Domain\TripletKeyCacheDomain.cs" />
-    <Compile Include="Extend\CacheExtend.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Extend\CacheUtil.cs" />
-    <Compile Include="Cache\Caches\HttpContextCache.cs" />
-    <Compile Include="Cache\Caches\SecondaryCache.cs" />
-    <Compile Include="Cache\Caches\StaticCache.cs" />
-    <Compile Include="Cache\Domain\AbstractCacheDomain.cs" />
-    <Compile Include="Cache\Domain\CacheDomain.cs" />
-    <Compile Include="Cache\Domain\CacheDomainOption.cs" />
-    <Compile Include="Cache\Domain\CacheDomainPrefixAttribute.cs" />
-    <Compile Include="Cache\Domain\CacheDomainUtil.cs" />
-    <Compile Include="Cache\Domain\CacheProxy.cs" />
-    <Compile Include="Cache\Domain\CacheTuple.cs" />
-    <Compile Include="Cache\Factory\DefaultCacheFactory.cs" />
-    <Compile Include="Cache\Factory\SpecifiableCacheFactory.cs" />
-    <Compile Include="Cache\ICache.cs" />
-    <Compile Include="Cache\ICacheFactory.cs" />
-    <Compile Include="Cache\ICacheSettingable.cs" />
     <Compile Include="Configuration\ConfigurationException.cs" />
     <Compile Include="Configuration\InnerManager.cs" />
     <Compile Include="Configuration\SettingNode.cs" />
@@ -178,6 +147,10 @@
     <Compile Include="Reflection\TypeAccessor.cs" />
     <Compile Include="Result\PagingResult.cs" />
     <Compile Include="Result\ResultCode.cs" />
+    <Compile Include="Settings\DefaultSettingProvider.cs" />
+    <Compile Include="Settings\ISetting.cs" />
+    <Compile Include="Settings\ISettingProvider.cs" />
+    <Compile Include="Settings\SettingProvider.cs" />
     <Compile Include="Util\CookieAuthentication.cs" />
     <Compile Include="Util\CRC16Helper.cs" />
     <Compile Include="Util\ExcelBuilder.cs" />
@@ -201,14 +174,17 @@
     <Compile Include="Util\SynchronizedDictionary.cs" />
     <Compile Include="Util\Validator.cs" />
     <Compile Include="Util\Value.cs" />
-    <Compile Include="Util\Workbench.cs" />
-    <Compile Include="Util\WorkbenchUtil.cs" />
+    <Compile Include="Util\Workbenches\IWorkbenchModule.cs" />
+    <Compile Include="Util\Workbenches\Workbench.cs" />
+    <Compile Include="Util\Workbenches\WorkbenchModule.cs" />
+    <Compile Include="Util\Workbenches\WorkbenchUtil.cs" />
     <Compile Include="Validation\Arguments.cs" />
     <Compile Include="Validation\ArgumentStrings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{223CA59E-63FE-4288-A464-DFFDFFE31F24}</ProjectGuid>
+    <ProjectGuid>{DCF74584-F64B-46ED-BB87-3EA5F46EB8BD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Projects.Tool.Diagnostics</RootNamespace>
-    <AssemblyName>Projects.Tool.Diagnostics</AssemblyName>
+    <RootNamespace>Projects.Tool.Caches</RootNamespace>
+    <AssemblyName>Projects.Tool.Caches</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,26 +42,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\HttpCommand.cs" />
-    <Compile Include="Profiler\Data\ProfilerServiceData.cs" />
-    <Compile Include="Profiler\Data\RequestData.cs" />
-    <Compile Include="Profiler\Data\RequestItem.cs" />
-    <Compile Include="Profiler\Data\TraceItem.cs" />
-    <Compile Include="Profiler\Data\WatchItem.cs" />
-    <Compile Include="Profiler\ProfilerContext.cs" />
-    <Compile Include="Profiler\Data\ProfilerData.cs" />
-    <Compile Include="Profiler\ProfilerHttpCommand.cs" />
-    <Compile Include="Profiler\ProfilerItem.cs" />
-    <Compile Include="Profiler\ProfilerModule.cs" />
-    <Compile Include="Profiler\ProfilerSerializer.cs" />
-    <Compile Include="Profiler\ProfilerService.cs" />
-    <Compile Include="Profiler\ProfilerSetting.cs" />
-    <Compile Include="Profiler\ProfilerUtil.cs" />
-    <Compile Include="Profiler\ProfileStatus.cs" />
+    <Compile Include="CacheItem.cs" />
+    <Compile Include="CacheManager.cs" />
+    <Compile Include="Caches\AbstractCache.cs" />
+    <Compile Include="Caches\AspnetCache.cs" />
+    <Compile Include="Caches\BlankCache.cs" />
+    <Compile Include="Caches\CacheUtil.cs" />
+    <Compile Include="Caches\HttpContextCache.cs" />
+    <Compile Include="Caches\SecondaryCache.cs" />
+    <Compile Include="Caches\StaticCache.cs" />
+    <Compile Include="Caches\SyncAspnetCache.cs" />
+    <Compile Include="Caches\SyncCacheHandler.cs" />
+    <Compile Include="Domain\AbstractCacheDomain.cs" />
+    <Compile Include="Domain\CacheDomain.cs" />
+    <Compile Include="Domain\CacheDomainOption.cs" />
+    <Compile Include="Domain\CacheDomainPrefixAttribute.cs" />
+    <Compile Include="Domain\CacheDomainUtil.cs" />
+    <Compile Include="Domain\CacheProxy.cs" />
+    <Compile Include="Domain\CacheTuple.cs" />
+    <Compile Include="Domain\PairKeyCacheDomain.cs" />
+    <Compile Include="Domain\SingleKeyCacheDomain.cs" />
+    <Compile Include="Domain\SingletonCacheDomain.cs" />
+    <Compile Include="Domain\TripletKeyCacheDomain.cs" />
+    <Compile Include="Extend\CacheExtend.cs" />
+    <Compile Include="Extend\CacheUtil.cs" />
+    <Compile Include="Factory\DefaultCacheFactory.cs" />
+    <Compile Include="Factory\SpecifiableCacheFactory.cs" />
+    <Compile Include="ICache.cs" />
+    <Compile Include="ICacheFactory.cs" />
+    <Compile Include="ICacheSettingable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TraceListeners\MySqlTraceListener.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Projects.Tool.Diagnostics\Projects.Tool.Diagnostics.csproj">
+      <Project>{223ca59e-63fe-4288-a464-dffdffe31f24}</Project>
+      <Name>Projects.Tool.Diagnostics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Projects.Tool\Projects.Tool.csproj">
       <Project>{188aaba2-82fd-4899-b537-4d49e80abe0c}</Project>
       <Name>Projects.Tool</Name>
