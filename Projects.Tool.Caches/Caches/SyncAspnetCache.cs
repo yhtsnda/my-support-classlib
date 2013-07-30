@@ -75,9 +75,9 @@ namespace Projects.Tool
             //  BeginSyncCache(key);
         }
 
-        protected override void RemoveInner(string key)
+        protected override void RemoveInner(Type type, string key)
         {
-            base.RemoveInner(key);
+            base.RemoveInner(type, key);
             BeginSyncCache(key);
         }
 

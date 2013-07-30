@@ -113,7 +113,7 @@ namespace Projects.Tool
 
         public void RemoveCache()
         {
-            cache.Remove(GetCacheKey());
+            cache.Remove(typeof(TEntity), GetCacheKey());
         }
 
         public void RemoveCache(Predicate<TEntity> selector)
@@ -173,13 +173,13 @@ namespace Projects.Tool
 
         public void RemoveCache(TKey key)
         {
-            cache.Remove(InnerGetCacheKey(key));
+            cache.Remove(typeof(TEntity), InnerGetCacheKey(key));
         }
 
         public void RemoveCache(IEnumerable<TKey> keys)
         {
             foreach (TKey key in keys)
-                cache.Remove(InnerGetCacheKey(key));
+                cache.Remove(typeof(TEntity), InnerGetCacheKey(key));
         }
 
         public void RemoveCache(TKey key, Predicate<TEntity> selector)
@@ -247,7 +247,7 @@ namespace Projects.Tool
 
         public void RemoveCache(TParam param, TKey key)
         {
-            cache.Remove(GetCacheKey(param, key));
+            cache.Remove(typeof(TEntity), GetCacheKey(param, key));
         }
 
         public void RemoveCache(TParam param, TKey key, Predicate<TEntity> selector)
@@ -305,7 +305,7 @@ namespace Projects.Tool
 
         public void RemoveCache(TParam1 param1, TParam2 param2, TKey key)
         {
-            cache.Remove(GetCacheKey(param1, param2, key));
+            cache.Remove(typeof(TEntity), GetCacheKey(param1, param2, key));
         }
 
         public void RemoveCache(TParam1 param1, TParam2 param2, TKey key, Predicate<TEntity> selector)

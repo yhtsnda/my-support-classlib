@@ -34,7 +34,7 @@ namespace Projects.Tool
             return new List<T>();
         }
 
-        public void Remove(string key) { }
+        public void Remove(Type type, string key) { }
 
         public bool Contains<T>(string key)
         {

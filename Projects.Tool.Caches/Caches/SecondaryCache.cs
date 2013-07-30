@@ -75,10 +75,10 @@ namespace Projects.Tool
             firstCache.Set(key, value);
         }
 
-        protected override void RemoveInner(string key)
+        protected override void RemoveInner(Type type, string key)
         {
-            firstCache.Remove(key);
-            secondCache.Remove(key);
+            firstCache.Remove(type, key);
+            secondCache.Remove(type, key);
         }
 
         protected override void TraceCache(string key, int missing)

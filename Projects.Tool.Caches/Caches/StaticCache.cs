@@ -15,7 +15,7 @@ namespace Projects.Tool
             staticDic[key] = value;
         }
 
-        protected override void RemoveInner(string key)
+        protected override void RemoveInner(Type type, string key)
         {
             staticDic.Remove(key);
         }

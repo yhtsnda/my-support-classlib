@@ -97,7 +97,7 @@ namespace Projects.Tool
         /// <param name="key">要移除三键对象对应数据键参数值。</param>
         public void RemoveCache(TParam1 param1, TParam2 param2, TKey key)
         {
-            Cache.Remove(option.GetCacheKey(param1, param2, key));
+            Cache.Remove(typeof(TEntity), option.GetCacheKey(param1, param2, key));
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Projects.Tool
                 throw new ArgumentNullException("keys");
 
             foreach (TKey key in keys)
-                Cache.Remove(option.GetCacheKey(param1, param2, key));
+                Cache.Remove(typeof(TEntity), option.GetCacheKey(param1, param2, key));
         }
 
         /// <summary>
