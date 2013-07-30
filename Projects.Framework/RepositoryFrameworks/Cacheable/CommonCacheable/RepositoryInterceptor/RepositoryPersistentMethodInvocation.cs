@@ -1,5 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using Projects.Tool;
+using Projects.Tool.Diagnostics;
 using Projects.Tool.Util;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace Projects.Framework
 
             RepositoryFramework.Raise(entity, preRaiseType, preUr);
 
-            using (MonitorImpl.Repository(invocation.Method))
+            using (MonitorContext.Repository(invocation.Method))
                 invocation.Proceed();
 
             //invoke post event

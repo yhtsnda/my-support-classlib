@@ -1,5 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using Projects.Tool;
+using Projects.Tool.Diagnostics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,7 +27,17 @@ namespace Projects.Framework
 
         public void Intercept(IInvocation invocation)
         {
-            using (var tr = ProfilerContext.Profile(invocation.TargetType.FullName + "." + invocation.Method.Name))
+            var methodName = invocation.Method.Name;
+            bool skip = methodName == "OpenSession" || methodName == "GetShardParams" || methodName == "CreateSpecification";
+            if (!skip && (methodName == "GetList" || methodName == "Get"))
+            {
+                var arguments = invocation.Method.GetParameters();
+                skip = arguments.Length != 2 || arguments[0].ParameterType != typeof(ShardParams);
+            }
+            if (!skip)
+                ProfilerContext.BeginWatch(invocation.TargetType.FullName + "." + invocation.Method.Name);
+
+            try
             {
                 var entityType = ReflectionHelper.GetEntityTypeFromRepositoryType(invocation.TargetType);
                 var metadata = RepositoryFramework.GetDefineMetadata(entityType);
@@ -41,10 +52,22 @@ namespace Projects.Framework
                         return;
                     }
                 }
-                using (MonitorImpl.Repository(invocation.Method))
+                if (skip)
+                {
                     invocation.Proceed();
+                }
+                else
+                {
+                    using (MonitorContext.Repository(invocation.Method))
+                        invocation.Proceed();
+                }
 
                 ProxyEntity(invocation);
+            }
+            finally
+            {
+                if (!skip)
+                    ProfilerContext.EndWatch();
             }
         }
 

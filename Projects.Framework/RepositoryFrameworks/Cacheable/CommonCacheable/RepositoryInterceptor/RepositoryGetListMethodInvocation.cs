@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Projects.Tool.Reflection;
+using Projects.Tool.Diagnostics;
 
 namespace Projects.Framework
 {
@@ -40,7 +41,7 @@ namespace Projects.Framework
                     var missIds = missing.Select(o => idKeys.First(ik => ik.Key == o).Id);
                     invocation.SetArgumentValue(1, missIds);
 
-                    using (MonitorImpl.Repository(invocation.Method))
+                    using (MonitorContext.Repository(invocation.Method))
                         invocation.Proceed();
 
                     var sourceItems = ((IEnumerable)invocation.ReturnValue).Cast<object>();
@@ -56,6 +57,12 @@ namespace Projects.Framework
                     {
                         if (ProfilerContext.Current.Enabled)
                             ProfilerContext.Current.Trace("platform", String.Format("missing get list for null\r\n{0}", String.Join(",", missing)));
+                    }
+                }
+                else
+                {
+                    using (MonitorContext.Repository(invocation.Method, true))
+                    {
                     }
                 }
 
@@ -74,7 +81,7 @@ namespace Projects.Framework
             }
             else
             {
-                using (MonitorImpl.Repository(invocation.Method))
+                using (MonitorContext.Repository(invocation.Method))
                     invocation.Proceed();
             }
         }
