@@ -151,12 +151,24 @@ namespace Projects.Tool
             return items;
         }
 
-        public virtual void Remove(string key)
+        public virtual IEnumerable<CacheItemResult> GetBatchResult(Type type, IEnumerable<string> keys)
         {
-            RemoveInner(key);
+            List<CacheItemResult> items = new List<CacheItemResult>();
+            foreach (string key in keys)
+            {
+                object value = Get(type, key);
+                items.Add(new CacheItemResult() { Key = key, Value = value, IsMissing = value == null });
+            }
+            TraceCache(keys, items.GetMissingKeys().Count());
+            return items;
         }
 
-        protected abstract void RemoveInner(string key);
+        public virtual void Remove(Type type, string key)
+        {
+            RemoveInner(type, key);
+        }
+
+        protected abstract void RemoveInner(Type type, string key);
 
         public virtual bool Contains<T>(string key)
         {

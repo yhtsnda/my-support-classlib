@@ -24,7 +24,7 @@ namespace Projects.Tool
                 Context.Items[key] = value;
         }
 
-        protected override void RemoveInner(string key)
+        protected override void RemoveInner(Type type, string key)
         {
             if (Enabled)
                 Context.Items.Remove(key);

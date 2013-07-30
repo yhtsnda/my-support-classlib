@@ -30,7 +30,7 @@ namespace Projects.Tool
 
         IEnumerable<T> GetBatch<T>(IEnumerable<string> keys, out IEnumerable<string> missingKeys);
 
-        void Remove(string key);
+        void Remove(Type type, string key);
 
         bool Contains<T>(string key);
     }

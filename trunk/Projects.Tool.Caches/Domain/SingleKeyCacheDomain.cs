@@ -91,7 +91,7 @@ namespace Projects.Tool
         /// <param name="key">要移除单键对象对应数据键参数值。</param>
         public void RemoveCache(TKey key)
         {
-            Cache.Remove(option.GetCacheKey(key));
+            Cache.Remove(typeof(TEntity), option.GetCacheKey(key));
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Projects.Tool
                 throw new ArgumentNullException("keys");
 
             foreach (TKey key in keys)
-                Cache.Remove(option.GetCacheKey(key));
+                Cache.Remove(typeof(TEntity), option.GetCacheKey(key));
         }
 
         /// <summary>

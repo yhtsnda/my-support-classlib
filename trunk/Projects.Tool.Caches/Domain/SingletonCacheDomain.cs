@@ -62,7 +62,7 @@ namespace Projects.Tool
         /// </summary>
         public void RemoveCache()
         {
-            Cache.Remove(option.GetCacheKey());
+            Cache.Remove(typeof(TEntity), option.GetCacheKey());
         }
 
         /// <summary>

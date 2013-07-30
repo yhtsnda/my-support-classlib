@@ -32,7 +32,7 @@ namespace Projects.Tool
             InnerCache.Insert(key, clone, null, expiredTime, Cache.NoSlidingExpiration, CacheItemPriority.Default, null);
         }
 
-        protected override void RemoveInner(string key)
+        protected override void RemoveInner(Type type, string key)
         {
             InnerCache.Remove(key);
         }
