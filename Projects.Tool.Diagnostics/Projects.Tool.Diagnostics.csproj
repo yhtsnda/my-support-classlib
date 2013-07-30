@@ -43,6 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\HttpCommand.cs" />
+    <Compile Include="Monitors\Data\MonitorServiceData.cs" />
+    <Compile Include="Monitors\MonitorContext.cs" />
+    <Compile Include="Monitors\MonitorHttpCommand.cs" />
+    <Compile Include="Monitors\MonitorModule.cs" />
+    <Compile Include="Monitors\MonitorService.cs" />
+    <Compile Include="Monitors\MonitorSetting.cs" />
+    <Compile Include="Monitors\Data\PageMonitorData.cs" />
+    <Compile Include="Monitors\RepositoryMonitor.cs" />
+    <Compile Include="Monitors\Data\RepositoryMonitorData.cs" />
     <Compile Include="Profiler\Data\ProfilerServiceData.cs" />
     <Compile Include="Profiler\Data\RequestData.cs" />
     <Compile Include="Profiler\Data\RequestItem.cs" />
