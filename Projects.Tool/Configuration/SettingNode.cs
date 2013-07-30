@@ -16,7 +16,7 @@ namespace Projects.Tool
 
         public IDictionary<string, string> Attributes { get; internal set; }
 
-        internal bool IsRoot
+        public bool IsRoot
         {
             get
             {
