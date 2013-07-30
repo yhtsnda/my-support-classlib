@@ -45,7 +45,7 @@
     <Compile Include="Commands\HttpCommand.cs" />
     <Compile Include="Monitors\Data\MonitorServiceData.cs" />
     <Compile Include="Monitors\MonitorContext.cs" />
-    <Compile Include="Monitors\MonitorHttpCommand.cs" />
+    <Compile Include="Commands\MonitorHttpCommand.cs" />
     <Compile Include="Monitors\MonitorModule.cs" />
     <Compile Include="Monitors\MonitorService.cs" />
     <Compile Include="Monitors\MonitorSetting.cs" />
@@ -59,7 +59,7 @@
     <Compile Include="Profiler\Data\WatchItem.cs" />
     <Compile Include="Profiler\ProfilerContext.cs" />
     <Compile Include="Profiler\Data\ProfilerData.cs" />
-    <Compile Include="Profiler\ProfilerHttpCommand.cs" />
+    <Compile Include="Commands\ProfilerHttpCommand.cs" />
     <Compile Include="Profiler\ProfilerItem.cs" />
     <Compile Include="Profiler\ProfilerModule.cs" />
     <Compile Include="Profiler\ProfilerSerializer.cs" />
