@@ -107,6 +107,7 @@
     <Compile Include="Extend\DirectoryExtend.cs" />
     <Compile Include="Extend\EnumerableExtend.cs" />
     <Compile Include="Extend\LinqExtend.cs" />
+    <Compile Include="Extend\PrettyTypeExtend.cs" />
     <Compile Include="Extend\StringExtend.cs" />
     <Compile Include="Http\ApiHttpClient.cs" />
     <Compile Include="Http\HttpClient.cs" />
