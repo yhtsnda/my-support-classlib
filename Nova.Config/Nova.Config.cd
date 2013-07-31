@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Nova.Config.DefaultConfigLoader">
+    <Position X="1" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DefaultConfigLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.DefaultRuleLoader">
+    <Position X="3.25" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DefaultRuleLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.DefaultSchermaLoader">
+    <Position X="5.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DefaultSchermaLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.DefaultServerLoader">
+    <Position X="8.25" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DefaultServerLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.ClusterConfig">
+    <Position X="1" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClusterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.NovaNodeConfig">
+    <Position X="3.25" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NovaNodeConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.DataNodeConfig">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataNodeConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.DataSourceConfig">
+    <Position X="7.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataSourceConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.QuarantineConfig">
+    <Position X="1" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QuarantineConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.SchemaConfig">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SchemaConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.TableConfig">
+    <Position X="5.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TableConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.UserConfig">
+    <Position X="7.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.TableRuleConfig">
+    <Position X="1" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TableRuleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.RuleConfig">
+    <Position X="3" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RuleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.AbstractConfigLoader">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAEAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AbstractConfigLoader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Nova.Config.AbstractSchemaLoader">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AbstractSchemaLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Nova.Config.IRuleAlgorithm">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRuleAlgorithm.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>
