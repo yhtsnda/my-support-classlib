@@ -91,6 +91,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Tool.Diagnostics",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects.Tool.Caches", "Projects.Tool.Caches\Projects.Tool.Caches.csproj", "{DCF74584-F64B-46ED-BB87-3EA5F46EB8BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nova.Config", "Nova.Config\Nova.Config.csproj", "{C0627E24-0993-423F-BDA7-1DA3CF8131DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -355,6 +357,14 @@ Global
 		{DCF74584-F64B-46ED-BB87-3EA5F46EB8BD}.SimpleDebug|Any CPU.Build.0 = Debug|Any CPU
 		{DCF74584-F64B-46ED-BB87-3EA5F46EB8BD}.WebAppSubfield|Any CPU.ActiveCfg = Release|Any CPU
 		{DCF74584-F64B-46ED-BB87-3EA5F46EB8BD}.WebAppSubfield|Any CPU.Build.0 = Release|Any CPU
+		{C0627E24-0993-423F-BDA7-1DA3CF8131DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0627E24-0993-423F-BDA7-1DA3CF8131DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0627E24-0993-423F-BDA7-1DA3CF8131DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0627E24-0993-423F-BDA7-1DA3CF8131DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0627E24-0993-423F-BDA7-1DA3CF8131DF}.SimpleDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0627E24-0993-423F-BDA7-1DA3CF8131DF}.SimpleDebug|Any CPU.Build.0 = Debug|Any CPU
+		{C0627E24-0993-423F-BDA7-1DA3CF8131DF}.WebAppSubfield|Any CPU.ActiveCfg = Release|Any CPU
+		{C0627E24-0993-423F-BDA7-1DA3CF8131DF}.WebAppSubfield|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -393,5 +403,6 @@ Global
 		{84A33FE4-7089-47FC-9C46-E71FDD6A3D77} = {B9225F24-0897-4B8B-A77E-4F5ED959929C}
 		{B601D2AA-30DB-485C-9329-66B08F442C69} = {5853CB10-88B5-48E1-A8FF-F8CE59A9A7A3}
 		{AC0E9F5F-3AC9-4DFD-AD1D-16F98721195F} = {EF8EC0C0-0233-4C3F-B467-0E26B8891E59}
+		{C0627E24-0993-423F-BDA7-1DA3CF8131DF} = {EF8EC0C0-0233-4C3F-B467-0E26B8891E59}
 	EndGlobalSection
 EndGlobal
