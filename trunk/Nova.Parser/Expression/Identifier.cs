@@ -46,7 +46,7 @@ namespace Nova.Parser
 
         public override void Accept(IASTVisitor visitor)
         {
-            throw new NotImplementedException();
+            base.Accept(visitor);
         }
     }
 }

@@ -12,9 +12,19 @@ namespace Nova.Parser
             return ExpressionPrecedence.Primary;
         }
 
-        protected override object EvaluationInternal<K, V>(IDictionary<K, V> parameters)
+        protected override object EvaluationInternal(IDictionary<Object, Object> parameters)
         {
             return UnEvaluatable;
+        }
+
+        public abstract void Accept(IASTVisitor visitor);
+        public virtual IExpression SetCacheEvalRst()
+        {
+            return null;
+        }
+        public virtual object Evaluation<K, V>(IDictionary<K, V> parameters)
+        {
+            return null;
         }
     }
 }
