@@ -71,6 +71,7 @@
     <Folder Include="Loader\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SampleConfigXml\Rules.xml" />
     <Content Include="SampleConfigXml\Schema.xml">
       <SubType>Designer</SubType>
     </Content>
