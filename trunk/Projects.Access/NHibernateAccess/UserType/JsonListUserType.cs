@@ -19,17 +19,6 @@ namespace Projects.Framework.NHibernateAccess
         static SqlType[] types = new SqlType[] { NHibernateUtil.String.SqlType };
 
         /// <summary>
-        /// 是否易变类型
-        /// </summary>
-        public override bool IsMutable
-        {
-            get
-            {
-                return true;
-            }
-        }
-
-        /// <summary>
         /// SqlTypes
         /// </summary>
         public override SqlType[] SqlTypes
@@ -45,6 +34,13 @@ namespace Projects.Framework.NHibernateAccess
             get { return typeof(T); }
         }
 
+        public JsonListUserType()
+        {
+            var type = typeof(T);
+            if (!type.IsValueType && type != typeof(string) && type.GetInterface(typeof(ICloneable).FullName) == null)
+                throw new PlatformException("类型 {0} 无法克隆, 请实现 ICloneable 接口。", type.FullName);
+        }
+
         /// <summary>
         /// 深拷贝
         /// </summary>
@@ -56,13 +52,7 @@ namespace Projects.Framework.NHibernateAccess
                 return null;
 
             var source = (IList<T>)value;
-            List<T> list = new List<T>(source.Count);
-            foreach (var item in source)
-            {
-                list.Add(item);
-            }
-
-            return list;
+            return source.Select(o => CloneValue(o)).ToList();
         }
 
         /// <summary>
@@ -105,7 +95,7 @@ namespace Projects.Framework.NHibernateAccess
         {
             IList lx = (IList)x;
             IList ly = (IList)y;
-            if (lx == null || lx == null)
+            if (lx == null || ly == null)
                 return base.Equals(x, y);
 
             if (lx.Count != ly.Count)
@@ -118,6 +108,14 @@ namespace Projects.Framework.NHibernateAccess
             }
 
             return true;
+        }
+
+        T CloneValue(T value)
+        {
+            var type = typeof(T);
+            if (type.IsValueType || type == typeof(String))
+                return value;
+            return (T)((ICloneable)value).Clone();
         }
     }
 }
