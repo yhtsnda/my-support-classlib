@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Nova.Parser
 {
-    public class DMLSelectUnionStatement : DMLQueryStatement
+    public abstract class Statement : IStatement
     {
+        public abstract void Accept(IASTVisitor visitor);
     }
 }

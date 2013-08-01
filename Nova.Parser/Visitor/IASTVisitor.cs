@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Nova.Parser
 {
-    public class DMLDeleteStatement : DMLStatement
+    public interface IASTVisitor
     {
+        void Visit<T>(T node) where T : IASTNode;
     }
 }

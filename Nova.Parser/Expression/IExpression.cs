@@ -13,6 +13,8 @@ namespace Nova.Parser
 
         IExpression SetCacheEvalRst();
 
-        Object Evaluation<K, V>(IDictionary<K, V> parameters);
+        Object Evaluation<K, V>(IDictionary<K, V> parameters)
+            where K : Object
+            where V : Object;
     }
 }
