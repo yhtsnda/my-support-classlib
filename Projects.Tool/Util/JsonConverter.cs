@@ -16,9 +16,13 @@ namespace Projects.Tool.Util
         {
             try
             {
-                provider = ToolSection.Instance.TryGetInstance<IJsonConverterProvider>("util/jsonProvider");
-                //if (provider == null)
-                //    throw new ConfigurationException("缺少 util/jsonProvider 配置。");
+                var type = ToolSection.Instance.TryGetValue("util/jsonProvider");
+                if (!String.IsNullOrEmpty(type))
+                {
+                    provider = ToolSection.Instance.TryGetInstance<IJsonConverterProvider>("util/jsonProvider");
+                    if (provider == null)
+                        throw new ConfigurationException(String.Format("无法加载类型 {0}.", type));
+                }
             }
             catch (Exception ex)
             {
@@ -52,30 +56,39 @@ namespace Projects.Tool.Util
 
         private class DefaultJsonConverterProvider : IJsonConverterProvider
         {
-            //private static JavaScriptSerializer _serializer = new JavaScriptSerializer();
+            private static JavaScriptSerializer _serializer = new JavaScriptSerializer();
 
             public string ToJson(object entity)
             {
-                var serializer = new DataContractJsonSerializer(entity.GetType());
-                using (var ms = new MemoryStream())
-                {
-                    serializer.WriteObject(ms, entity);
-                    return Encoding.UTF8.GetString(ms.ToArray());
-                }
+                return _serializer.Serialize(entity);
+                //var serializer = new DataContractJsonSerializer(entity.GetType());
+                //using (var ms = new MemoryStream())
+                //{
+                //    serializer.WriteObject(ms, entity);
+                //    return Encoding.UTF8.GetString(ms.ToArray());
+                //}
             }
 
             public T FromJson<T>(string json)
             {
-                return (T)FromJson(json, typeof(T));
+                if (String.IsNullOrEmpty(json))
+                    return default(T);
+
+                return _serializer.Deserialize<T>(json);
+                //return (T)FromJson(json, typeof(T));
             }
 
             public object FromJson(string json, Type type)
             {
-                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
-                {
-                    var serializer = new DataContractJsonSerializer(type);
-                    return serializer.ReadObject(ms);
-                }
+                if (String.IsNullOrEmpty(json))
+                    return Projects.Tool.Reflection.FastActivator.Create(type);
+
+                return _serializer.Deserialize(json, type);
+                //using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+                //{
+                //    var serializer = new DataContractJsonSerializer(type);
+                //    return serializer.ReadObject(ms);
+                //}
             }
         }
     }

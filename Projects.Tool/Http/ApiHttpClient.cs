@@ -132,7 +132,14 @@ namespace Projects.Tool.Http
             if (String.IsNullOrEmpty(json) || json == "null")
                 return default(T);
 
-            return JsonConverter.FromJson<T>(json);
+            try
+            {
+                return JsonConverter.FromJson<T>(json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Join("解析类型 {0} 的文本 {1} 发生异常。", typeof(T).FullName, json), ex);
+            }
         }
     }
 }
