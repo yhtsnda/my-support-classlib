@@ -1,0 +1,3 @@
+Install-Package mongocsharpdriver -Version 1.7
+Install-Package FluentNHibernate -Version 1.3.0.717
+Install-Package ServiceStack.Redis -Version 3.9.40

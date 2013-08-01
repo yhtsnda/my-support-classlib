@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Projects.Tool.Reflection
 {
+    /// <summary>
+    /// 对象深度克隆
+    /// </summary>
     public static class DeepCloneExtend
     {
         static readonly string CloneableInterface = typeof(ICloneable).FullName;
@@ -16,7 +19,7 @@ namespace Projects.Tool.Reflection
             if (instance == null)
                 return null;
 
-            return DeepClone(instance, CreateInstance(instance.GetType()));
+            return Clone(instance, new VisitedGraph());
         }
 
         public static object DeepClone(this object instance, object clone)
@@ -37,14 +40,14 @@ namespace Projects.Tool.Reflection
 
             Type instanceType = instance.GetType();
 
-            if (typeof(Type).IsAssignableFrom(instanceType))
-                return instance;
-
             if (instanceType.IsPointer || instanceType == typeof(Pointer) || instanceType.IsPrimitive || instanceType == typeof(string))
                 return instance; // Pointers, primitive types and strings are considered immutable
 
             if (instanceType.GetInterface(CloneableInterface) != null)
                 return ((ICloneable)instance).Clone();
+
+            if (typeof(Type).IsAssignableFrom(instanceType) || typeof(MemberInfo).IsAssignableFrom(instanceType) || typeof(ParameterInfo).IsAssignableFrom(instanceType))
+                return instance;
 
             if (instanceType.IsArray)
             {

@@ -68,7 +68,14 @@ namespace Projects.Tool.Http
         {
             using (var client = CreateWebClient())
             {
-                return client.DownloadString(url);
+                try
+                {
+                    return client.DownloadString(url);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(String.Format("请求地址 {0} 发生错误。", url), ex);
+                }
             }
         }
 
@@ -101,8 +108,15 @@ namespace Projects.Tool.Http
         {
             using (var client = CreateWebClient())
             {
-                var buffer = client.UploadValues(url, data);
-                return client.Encoding.GetString(buffer);
+                try
+                {
+                    var buffer = client.UploadValues(url, data);
+                    return client.Encoding.GetString(buffer);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(String.Format("请求地址 {0} 发生错误。", url), ex);
+                }
             }
         }
 
@@ -119,8 +133,15 @@ namespace Projects.Tool.Http
             var json = JsonConverter.ToJson(instance);
             using (var client = CreateWebClient())
             {
-                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-                return client.UploadString(url, json);
+                try
+                {
+                    client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                    return client.UploadString(url, json);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(String.Format("请求地址 {0} 发生错误。", url), ex);
+                }
             }
         }
 
@@ -140,8 +161,15 @@ namespace Projects.Tool.Http
         {
             using (var client = CreateWebClient())
             {
-                var buffer = client.UploadFile(url, filename);
-                return client.Encoding.GetString(buffer);
+                try
+                {
+                    var buffer = client.UploadFile(url, filename);
+                    return client.Encoding.GetString(buffer);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(String.Format("请求地址 {0} 发生错误。", url), ex);
+                }
             }
         }
 

@@ -71,6 +71,11 @@ namespace Projects.Framework
             return frameworkConfiguation.ShardConfiguration.CreateShardSessionFactory(factoryType);
         }
 
+        public static T GetSessionFactoryByFactoryType<T>() where T : IShardSessionFactory
+        {
+            return (T)frameworkConfiguation.ShardConfiguration.CreateShardSessionFactory(typeof(T));
+        }
+
         /// <summary>
         /// 注册类型的 IShardSessionFactory 实例
         /// </summary>
@@ -272,7 +277,7 @@ namespace Projects.Framework
             {
                 var cacheKey = metadata.GetCacheKey(entity);
                 ICache cache = GetCacher(metadata);
-                cache.Remove(cacheKey);
+                cache.Remove(metadata.EntityType, cacheKey);
             }
 
             // 更新依赖缓存的时间戳
