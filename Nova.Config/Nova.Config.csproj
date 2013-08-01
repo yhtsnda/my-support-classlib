@@ -48,14 +48,18 @@
     <Compile Include="DefaultRuleLoader.cs" />
     <Compile Include="DefaultSchermaLoader.cs" />
     <Compile Include="DefaultServerLoader.cs" />
+    <Compile Include="ErrorCode.cs" />
+    <Compile Include="Fields.cs" />
     <Compile Include="IConfigLoader.cs" />
     <Compile Include="IRuleAlgorithm.cs" />
     <Compile Include="ISchemaLoader.cs" />
+    <Compile Include="IsolationsType.cs" />
     <Compile Include="NovaNodeConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuarantineConfig.cs" />
     <Compile Include="RuleConfig.cs" />
     <Compile Include="SchemaConfig.cs" />
+    <Compile Include="SystemConfig.cs" />
     <Compile Include="TableConfig.cs" />
     <Compile Include="TableRuleConfig.cs" />
     <Compile Include="UserConfig.cs" />
@@ -65,6 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Loader\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SampleConfigXml\Schema.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

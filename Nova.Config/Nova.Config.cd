@@ -98,27 +98,63 @@
       <FileName>RuleConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Nova.Config.AbstractConfigLoader">
+  <Class Name="Nova.Config.AbstractConfigLoader" Collapsed="true">
     <Position X="3.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAEAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACSAAAJAAAAAAAAAAAAACACAIAAKAEAAAAAAAAYAQ=</HashCode>
       <FileName>AbstractConfigLoader.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Nova.Config.AbstractSchemaLoader">
+  <Class Name="Nova.Config.AbstractSchemaLoader" Collapsed="true">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACABAAYAAAAAAAACAAAAAAAAAAAKAAAAAAAAAAIAA=</HashCode>
       <FileName>AbstractSchemaLoader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Nova.Config.SystemConfig">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SystemConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.ErrorCode">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ErrorCode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.Fields">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Fields.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Nova.Config.IRuleAlgorithm">
-    <Position X="8.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IRuleAlgorithm.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="Nova.Config.IConfigLoader" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAEAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IConfigLoader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Nova.Config.IsolationsType">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IsolationsType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="微软雅黑" Size="9" />
 </ClassDiagram>
