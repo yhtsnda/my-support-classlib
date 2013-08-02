@@ -1,1 +1,42 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Nova.Rule>
+  <!--tableRule主要作用是用来判断SQL语句路由到哪些datanode执行，Cobar是通过在SQL中提取一个或多个字段的值，并根据这些字段的值来决定路由到哪个库执行。因此，tableRule定义两个要素：
+1)按表中的哪个字段路由？ 称此字段为路由字段
+2)有了字段值，如何路由？即路由函数-->
+  
+  <!--定义单维路由字段规则-->
+  <TableRule name="tblRule1">
+    <Rule>
+      <!--id为路由字段,id是int型字段-->
+      <Columns>
+        <Column name="id" type="int" default="null" />
+      </Columns>
+      <Algorithm><![CDATA[SingleDimensionFunction(${id})]]></Algorithm>
+    </Rule>
+  </TableRule>
+
+  <!--定义单维路由字段规则-->
+  <TableRule name="tblRule2">
+    <Rule>
+      <!--id为路由字段,id是int型字段-->
+      <Columns>
+        <Column name="val" type="string" default="null" />
+      </Columns>
+      <Algorithm><![CDATA[SingleDimensionFunction(${id})]]></Algorithm>
+    </Rule>
+  </TableRule>
+  
+  <!--定义二维路由字段规则-->
+  <TableRule name="tblRule3">
+    <Rule>
+      <!--id为路由字段,id是int型字段-->
+      <Columns>
+        <!--default属性表示无此字段时,匹配路由规则时的参数-->
+        <Column name="id" type="int" default="null" />
+        <Column name="val" type="string" default="null" />
+      </Columns>
+      <Algorithm><![CDATA[PairDimensionFunction(${id}, ${val})]]></Algorithm>
+    </Rule>
+  </TableRule>
+  
+</Nova.Rule>
