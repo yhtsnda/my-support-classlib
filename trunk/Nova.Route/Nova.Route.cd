@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Nova.Route.AbstractPartitionFunction">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AbstractPartitionFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Route.SinglePartitionFunction&lt;TKey&gt;">
+    <Position X="0.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SinglePartitionFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Route.PairPartitionFunction">
+    <Position X="3" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PairPartitionFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
