@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Nova>
+  <!--schema.xml中定义了schema逻辑层次图中的所有元素，并利用这些元素以及rule.xml中定义的规则组建分布式数据库系统-->
+  <Nova.Schema>
+    <!-- 数据源定义，数据源是一个具体的后端数据连接的表示。-->
+    <DataSource name="DSLocation">
+      <!--连接的地址，端口和schema名称-->
+      <Locations>
+        <Location>192.168.0.1:3306/db1</Location>
+        <Location>192.168.0.1:3306/db1</Location>
+      </Locations>
+      <!--连接用户名，密码-->
+      <UserName></UserName>
+      <Password></Password>
+      <!--连接的SQL模式-->
+      <SqlMode></SqlMode>
+    </DataSource>
+
+    <!--数据节点由主、备数据源，心跳，连接池等配置组成。-->
+    <DataNode name="DNTest1">
+      <MasterSourceRef></MasterSourceRef>
+      <SlaveSourceRef></SlaveSourceRef>
+      <PoolSize></PoolSize>
+      <HeartBeatSql></HeartBeatSql>
+    </DataNode>
+
+    <DataNode name="DNTest2">
+      <MasterSourceRef></MasterSourceRef>
+      <SlaveSourceRef></SlaveSourceRef>
+      <PoolSize>200</PoolSize>
+      <HeartBeatSql></HeartBeatSql>
+    </DataNode>
+
+    <DataNode name="DNTest3">
+      <MasterSourceRef></MasterSourceRef>
+      <SlaveSourceRef></SlaveSourceRef>
+      <PoolSize>200</PoolSize>
+      <HeartBeatSql></HeartBeatSql>
+    </DataNode>
+
+    <!--schema定义了Cobar展示给用户的schema，schema由dataNode以及rule.xml中定义的路由规则共同组成。-->
+    <Schema name="SCSingle" dataNode="DNTest1" type="Single" />
+    <Schema name="SCShard" dataNode="DNTest2,DNTest3" type="Shard">
+      <Table name="table1" hasRule="true" dataNode="DNTest1,DNTest2" rule="tbRule1" />
+      <Table name="table2" hasRule="true" dataNode="DNTest3" rule="tbRule2" />
+    </Schema>
+  </Nova.Schema>
+
+  <Nova.Rule>
+    <!--tableRule主要作用是用来判断SQL语句路由到哪些datanode执行，Cobar是通过在SQL中提取一个或多个字段的值，并根据这些字段的值来决定路由到哪个库执行。因此，tableRule定义两个要素：
+1)按表中的哪个字段路由？ 称此字段为路由字段
+2)有了字段值，如何路由？即路由函数-->
+
+    <!--定义单维路由字段规则-->
+    <TableRule name="tblRule1">
+      <Rule>
+        <!--id为路由字段,id是int型字段-->
+        <Columns>
+          <Column name="id" type="int" default="null" />
+        </Columns>
+        <Algorithm name="fun1" />
+      </Rule>
+    </TableRule>
+
+    <!--定义单维路由字段规则-->
+    <TableRule name="tblRule2">
+      <Rule>
+        <!--id为路由字段,id是int型字段-->
+        <Columns>
+          <Column name="val" type="string" default="null" />
+        </Columns>
+        <Algorithm name="fun2" />
+      </Rule>
+    </TableRule>
+
+    <!--定义二维路由字段规则-->
+    <TableRule name="tblRule3">
+      <Rule>
+        <!--id为路由字段,id是int型字段-->
+        <Columns>
+          <!--default属性表示无此字段时,匹配路由规则时的参数-->
+          <Column name="id" type="int" default="null" />
+          <Column name="val" type="string" default="null" />
+        </Columns>
+        <Algorithm name="fun1" />
+      </Rule>
+    </TableRule>
+
+    <Function name="fun1" type="">
+      <PartitionCount>2</PartitionCount>
+      <PartitionLength>512</PartitionLength>
+    </Function>
+
+    <Function name="fun2" type="">
+      <PartitionCount>4</PartitionCount>
+      <PartitionLength>256</PartitionLength>
+    </Function>
+
+  </Nova.Rule>
+</Nova>
+<!--http://code.alibabatech.com/wiki/pages/viewpage.action?pageId=7671478#%E4%BA%A7%E5%93%81%E6%96%87%E6%A1%A3%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89-3.2%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3-->

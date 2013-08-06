@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,40 +40,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractConfigLoader.cs" />
-    <Compile Include="AbstractSchemaLoader.cs" />
-    <Compile Include="ClusterConfig.cs" />
-    <Compile Include="DataNodeConfig.cs" />
-    <Compile Include="DataSourceConfig.cs" />
-    <Compile Include="DefaultConfigLoader.cs" />
-    <Compile Include="DefaultRuleLoader.cs" />
-    <Compile Include="DefaultSchermaLoader.cs" />
-    <Compile Include="DefaultServerLoader.cs" />
-    <Compile Include="ErrorCode.cs" />
-    <Compile Include="Fields.cs" />
-    <Compile Include="IConfigLoader.cs" />
-    <Compile Include="IRuleAlgorithm.cs" />
-    <Compile Include="ISchemaLoader.cs" />
-    <Compile Include="IsolationsType.cs" />
-    <Compile Include="NovaNodeConfig.cs" />
+    <Compile Include="Utility\ConfigNode.cs" />
+    <Compile Include="Configs\NovaRuleConfig.cs" />
+    <Compile Include="Configs\Schemas\DataNodeConfig.cs" />
+    <Compile Include="Configs\Schemas\DataSourceConfig.cs" />
+    <Compile Include="Loader\DefaultConfigLoader.cs" />
+    <Compile Include="Configs\NovaSchemaConfig.cs" />
+    <Compile Include="Utility\NovaSection.cs" />
+    <Compile Include="Utility\ErrorCode.cs" />
+    <Compile Include="Utility\Fields.cs" />
+    <Compile Include="Loader\IConfigLoader.cs" />
+    <Compile Include="Configs\Rules\IRuleAlgorithm.cs" />
+    <Compile Include="Utility\IsolationsType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuarantineConfig.cs" />
-    <Compile Include="RuleConfig.cs" />
-    <Compile Include="SchemaConfig.cs" />
-    <Compile Include="SystemConfig.cs" />
-    <Compile Include="TableConfig.cs" />
-    <Compile Include="TableRuleConfig.cs" />
-    <Compile Include="UserConfig.cs" />
+    <Compile Include="Configs\Rules\RuleConfig.cs" />
+    <Compile Include="Configs\Schemas\SchemaConfig.cs" />
+    <Compile Include="Configs\Schemas\TableConfig.cs" />
+    <Compile Include="Configs\Rules\TableRuleConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nova.Config.cd" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Loader\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SampleConfigXml\Rules.xml" />
-    <Content Include="SampleConfigXml\Schema.xml">
+    <Content Include="SampleConfigXml\NovaConfig.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>

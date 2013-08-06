@@ -1,159 +1,116 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Nova.Config.DefaultConfigLoader">
-    <Position X="1" Y="3" Width="1.75" />
+  <Class Name="Nova.Config.DefaultConfigLoader" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DefaultConfigLoader.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.DefaultRuleLoader">
-    <Position X="3.25" Y="3" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DefaultRuleLoader.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.DefaultSchermaLoader">
-    <Position X="5.5" Y="3" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DefaultSchermaLoader.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.DefaultServerLoader">
-    <Position X="8.25" Y="3" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DefaultServerLoader.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.ClusterConfig">
-    <Position X="1" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ClusterConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.NovaNodeConfig">
-    <Position X="3.25" Y="4.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>NovaNodeConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.DataNodeConfig">
-    <Position X="5.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DataNodeConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.DataSourceConfig">
-    <Position X="7.5" Y="4.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DataSourceConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.QuarantineConfig">
-    <Position X="1" Y="6.25" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>QuarantineConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.SchemaConfig">
-    <Position X="3.5" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SchemaConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.TableConfig">
-    <Position X="5.5" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TableConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.UserConfig">
-    <Position X="7.5" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>UserConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.TableRuleConfig">
-    <Position X="1" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TableRuleConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.RuleConfig">
-    <Position X="3" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>RuleConfig.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Config.AbstractConfigLoader" Collapsed="true">
-    <Position X="3.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACSAAAJAAAAAAAAAAAAACACAIAAKAEAAAAAAAAYAQ=</HashCode>
-      <FileName>AbstractConfigLoader.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Loader\DefaultConfigLoader.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Nova.Config.AbstractSchemaLoader" Collapsed="true">
-    <Position X="5.25" Y="0.5" Width="1.5" />
+  <Class Name="Nova.Config.DataNodeConfig" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACABAAYAAAAAAAACAAAAAAAAAAAKAAAAAAAAAAIAA=</HashCode>
-      <FileName>AbstractSchemaLoader.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Nova.Config.SystemConfig">
-    <Position X="5.25" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SystemConfig.cs</FileName>
+      <HashCode>QAAAQAAAAAAAgAABCIABACAAAAAoAQAAgAEAIIABAGE=</HashCode>
+      <FileName>Configs\Schemas\DataNodeConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Nova.Config.ErrorCode">
-    <Position X="9.25" Y="1.5" Width="1.5" />
+  <Class Name="Nova.Config.DataSourceConfig" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ErrorCode.cs</FileName>
+      <HashCode>AAAAAAAAAEAAAgAEAAAACAAACAAACAACAQAACAAAAAA=</HashCode>
+      <FileName>Configs\Schemas\DataSourceConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Nova.Config.Fields">
-    <Position X="9.25" Y="0.5" Width="1.5" />
+  <Class Name="Nova.Config.SchemaConfig" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Fields.cs</FileName>
+      <HashCode>ABAIAAAAAAAAEAAAABAAQAQQAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Configs\Schemas\SchemaConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="Nova.Config.IRuleAlgorithm">
-    <Position X="0.5" Y="1.25" Width="1.5" />
+  <Class Name="Nova.Config.TableConfig" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAEEAAAAAAAAAAAgCAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Configs\Schemas\TableConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.TableRuleConfig" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configs\Rules\TableRuleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.RuleConfig" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAA=</HashCode>
+      <FileName>Configs\Rules\RuleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.ErrorCode" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IRuleAlgorithm.cs</FileName>
+      <FileName>Utility\ErrorCode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.Fields" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\Fields.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.NovaSection">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAEAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Utility\NovaSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.ConfigNode">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAggAAAAAAAAAIgAAAEQAQQAAAAAAAAAQAAAAAQAAA=</HashCode>
+      <FileName>Utility\ConfigNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.NovaRuleConfig">
+    <Position X="0.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configs\NovaRuleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Config.NovaSchemaConfig">
+    <Position X="2.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAIAAEAAAAAAAAAACAAABAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Configs\NovaSchemaConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Nova.Config.IRuleAlgorithm" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configs\Rules\IRuleAlgorithm.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Nova.Config.IConfigLoader" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAEAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IConfigLoader.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Loader\IConfigLoader.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="Nova.Config.IsolationsType">
-    <Position X="7.25" Y="0.5" Width="1.5" />
+  <Enum Name="Nova.Config.IsolationsType" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IsolationsType.cs</FileName>
+      <HashCode>AACAAgAAAAAAAAAAAAAAAAAAAAAAAAAEAAABAAAAAAA=</HashCode>
+      <FileName>Utility\IsolationsType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="微软雅黑" Size="9" />

@@ -11,7 +11,7 @@
       <Columns>
         <Column name="id" type="int" default="null" />
       </Columns>
-      <Algorithm><![CDATA[SingleDimensionFunction(${id})]]></Algorithm>
+      <Algorithm name="fun1" />
     </Rule>
   </TableRule>
 
@@ -22,7 +22,7 @@
       <Columns>
         <Column name="val" type="string" default="null" />
       </Columns>
-      <Algorithm><![CDATA[SingleDimensionFunction(${id})]]></Algorithm>
+      <Algorithm name="fun2" />
     </Rule>
   </TableRule>
   
@@ -35,8 +35,18 @@
         <Column name="id" type="int" default="null" />
         <Column name="val" type="string" default="null" />
       </Columns>
-      <Algorithm><![CDATA[PairDimensionFunction(${id}, ${val})]]></Algorithm>
+      <Algorithm name="fun1" />
     </Rule>
   </TableRule>
+
+  <Function name="fun1" type="">
+    <PartitionCount>2</PartitionCount>
+    <PartitionLength>512</PartitionLength>
+  </Function>
+
+  <Function name="fun2" type="">
+    <PartitionCount>4</PartitionCount>
+    <PartitionLength>256</PartitionLength>
+  </Function>
   
 </Nova.Rule>
