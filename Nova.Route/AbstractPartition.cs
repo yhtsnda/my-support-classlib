@@ -5,9 +5,11 @@ using System.Text;
 
 namespace Nova.Route
 {
-    public abstract class AbstractPartitionFunction
+    internal abstract class AbstractPartition
     {
-        protected abstract int Partition();
+         private const int PARTITION_LENGTH = 1024;
+
+        protected abstract int Calculate();
 
         /// <summary>
         /// 检查分区参数的正确性
@@ -25,7 +27,19 @@ namespace Nova.Route
                 throw new ArgumentException("error,check your partitionCount & partitionLength definition.");
 
             int segmentLength = count.Sum();
-            
+
+            int[] ai = new int[segmentLength + 1];
+            int index = 0;
+            for (int i = 0; i < count.Length; i++)
+            {
+                for (int j = 0; j < count[i]; j++)
+                {
+                    ai[++index] = ai[index - 1] + length[i];
+                }
+            }
+            if (ai[ai.Length - 1] != PARTITION_LENGTH)
+                return false;
+            return true;
         }
     }
 }

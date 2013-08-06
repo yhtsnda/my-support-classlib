@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Nova.Route
 {
-    public class SinglePartitionFunction<TKey>: AbstractPartitionFunction
+    internal class SinglePartition<TKey>: AbstractPartition
     {
         private Func<TKey, int> partitionFun;
 
-        public SinglePartitionFunction(Func<TKey, int> partitionFun, 
+        public SinglePartition(Func<TKey, int> partitionFun, 
             int[] partitionCount, int[] partitionLength)
         {
             if (partitionFun == null)
@@ -18,7 +18,7 @@ namespace Nova.Route
             this.partitionFun = partitionFun;
         }
 
-        protected override int Partition()
+        protected override int Calculate()
         {
             throw new NotImplementedException();
         }

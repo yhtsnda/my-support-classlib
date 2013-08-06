@@ -39,10 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractPartitionFunction.cs" />
-    <Compile Include="PairPartitionFunction.cs" />
+    <Compile Include="AbstractPartition.cs" />
+    <Compile Include="PairPartition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SinglePartitionFunction.cs" />
+    <Compile Include="SinglePartition.cs" />
+    <Compile Include="StringPartitionFunction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nova.Route.cd" />

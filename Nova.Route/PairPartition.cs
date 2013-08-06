@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Nova.Route
 {
-    public class PairPartitionFunction : AbstractPartitionFunction
+    internal class PairPartition : AbstractPartition
     {
     }
 }
