@@ -5,7 +5,10 @@ using System.Text;
 
 namespace Nova.Config
 {
-    public class DefaultConfigLoader
+    internal interface IConfigLoader
     {
+        NovaSchemaConfig GetNovaSchemaConfig();
+
+        NovaRuleConfig GetNovaRuleConfig();
     }
 }
