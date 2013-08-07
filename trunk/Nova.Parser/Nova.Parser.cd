@@ -336,6 +336,111 @@
       <FileName>Util\ParseString.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Nova.Parser.MySQLParser" Collapsed="true">
+    <Position X="31" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBAQAgAAAAAAAA=</HashCode>
+      <FileName>MySQLParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLDALParser" Collapsed="true">
+    <Position X="27.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLDALParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLDMLParser" Collapsed="true">
+    <Position X="30" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLDMLParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLExprParser" Collapsed="true">
+    <Position X="32.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLExprParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLMTParser" Collapsed="true">
+    <Position X="35.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLMTParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLDeleteParser" Collapsed="true">
+    <Position X="28.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLDeleteParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLCallParser" Collapsed="true">
+    <Position X="30.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLCallParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLInsertParser" Collapsed="true">
+    <Position X="32.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLInsertParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLInsertReplaceParser" Collapsed="true">
+    <Position X="28.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLInsertReplaceParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLReplaceParser" Collapsed="true">
+    <Position X="30.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLReplaceParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLSelectParser" Collapsed="true">
+    <Position X="32.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLSelectParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLUpdateParser" Collapsed="true">
+    <Position X="28.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLUpdateParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLFunctionManager">
+    <Position X="33" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLFunctionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLKeywords" Collapsed="true">
+    <Position X="27" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAABAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>MySQLKeywords.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MySQLLexer" Collapsed="true">
+    <Position X="35" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySQLLexer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="Nova.Parser.IASTNode">
     <Position X="4" Y="11.5" Width="1.5" />
     <TypeIdentifier>
@@ -418,6 +523,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>VariableScope.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Nova.Parser.MySQLToken" Collapsed="true">
+    <Position X="29" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>L4Jt1O+t3rad7rE9L/5nDt9+8en5G97luz+Tc+/zOzY=</HashCode>
+      <FileName>MySQLToken.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Microsoft YaHei UI" Size="9" />
