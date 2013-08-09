@@ -46,7 +46,7 @@ namespace Nova.Parser
 
         public override void Accept(IASTVisitor visitor)
         {
-            base.Accept(visitor);
+            visitor.Visit<Identifier>(this);
         }
     }
 }

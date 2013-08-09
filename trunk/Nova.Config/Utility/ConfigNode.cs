@@ -16,6 +16,8 @@ namespace Nova.Config
 
         public IDictionary<string, string> Attributes { get; internal set; }
 
+        public string InnerText { get; internal set; }
+
         public bool IsRoot
         {
             get
@@ -46,6 +48,7 @@ namespace Nova.Config
             node.Parent = parent;
             node.Attributes = element.Attributes().ToDictionary(o => o.Name.LocalName, o => o.Value);
             node.Nodes = element.Elements().Select(o => ConvertFrom(o, node));
+            node.InnerText = element.HasElements ? String.Empty : element.Value;
             return node;
         }
 

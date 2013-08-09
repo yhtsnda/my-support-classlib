@@ -6,8 +6,8 @@
     <DataSource name="DSLocation">
       <!--连接的地址，端口和schema名称-->
       <Locations>
-        <Location>192.168.0.1:3306/db1</Location>
-        <Location>192.168.0.1:3306/db1</Location>
+        <Location host="192.168.0.1" port="3306" database="db1" />
+        <Location host="192.168.0.1" port="3306" database="db2" />
       </Locations>
       <!--连接用户名，密码-->
       <UserName></UserName>

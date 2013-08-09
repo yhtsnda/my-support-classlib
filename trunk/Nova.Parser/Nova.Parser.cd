@@ -3,7 +3,7 @@
   <Class Name="Nova.Parser.AbstractExpression">
     <Position X="11" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AIAAgAAAQACAQAAAAAAAEAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAgAAAQACAQAAAAAAAEAAAABIAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\AbstractExpression.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -132,7 +132,7 @@
   <Class Name="Nova.Parser.PrimaryExpression">
     <Position X="11" Y="4" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AIAAgAAAQACAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAgAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\PrimaryExpression.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -339,7 +339,7 @@
   <Class Name="Nova.Parser.MySQLParser" Collapsed="true">
     <Position X="31" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBAQAgAAAAAAAA=</HashCode>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAASAgAQAAAAAA=</HashCode>
       <FileName>MySQLParser.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -437,8 +437,36 @@
   <Class Name="Nova.Parser.MySQLLexer" Collapsed="true">
     <Position X="35" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>CAMABABAFIAAIAAlgABIKVAgggCEAAkggkACEQgBAAI=</HashCode>
       <FileName>MySQLLexer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.Wildcard">
+    <Position X="1.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Wildcard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.VariableExpression">
+    <Position X="7" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\VariableExpression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.SysVarPrimary">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAACAAAAGAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\SysVarPrimary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ParamMarker">
+    <Position X="7" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAQAAAAAAAgAAAAAAAAAAAAIAAAAAAAAgAAAA=</HashCode>
+      <FileName>ParamMarker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Nova.Parser.IASTNode">

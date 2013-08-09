@@ -18,10 +18,7 @@ namespace Nova.Parser
         }
 
         public abstract void Accept(IASTVisitor visitor);
-        public virtual IExpression SetCacheEvalRst()
-        {
-            return null;
-        }
+
         public virtual object Evaluation<K, V>(IDictionary<K, V> parameters)
         {
             return null;
