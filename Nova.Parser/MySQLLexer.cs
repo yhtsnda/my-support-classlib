@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Numerics;
 
 namespace Nova.Parser
 {
@@ -1031,5 +1032,34 @@ namespace Nova.Parser
             return t;
         }
 
+        public MySQLToken Token()
+        {
+            if (tokenCache2 != null)
+                return tokenCache2.Value;
+            if (tokenCache != null)
+                return tokenCache.Value;
+            return token;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append("MySQLLexer@")
+                .Append(GetHashCode())
+                .Append("{");
+            string sqlLeft = new String(sql, curIndex, sql.Length - curIndex);
+            builder.Append("curIndex=")
+                  .Append(curIndex)
+                  .Append(", ch=")
+                  .Append(ch)
+                  .Append(", token=")
+                  .Append(token)
+                  .Append(", sqlLeft=")
+                  .Append(sqlLeft)
+                  .Append(", sql=")
+                  .Append(sql)
+                  .Append('}');
+            return builder.ToString();
+        }
     }
 }

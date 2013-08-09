@@ -11,7 +11,7 @@ namespace Nova.Parser
 
         ExpressionPrecedence GetPrecedence();
 
-        IExpression SetCacheEvalRst();
+        IExpression SetCacheEvalRst(bool cacheEvalRst);
 
         Object Evaluation<K, V>(IDictionary<K, V> parameters)
             where K : Object

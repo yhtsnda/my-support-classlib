@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,11 +71,15 @@
     <Compile Include="MySQLUpdateParser.cs" />
     <Compile Include="NaturalJoin.cs" />
     <Compile Include="OuterJoin.cs" />
+    <Compile Include="Expression\SysVarPrimary.cs" />
+    <Compile Include="ParamMarker.cs" />
+    <Compile Include="Util\BigDecimal.cs" />
     <Compile Include="Util\CharTypes.cs" />
     <Compile Include="Util\ParseString.cs" />
     <Compile Include="StraightJoin.cs" />
     <Compile Include="SubqueryFactor.cs" />
     <Compile Include="TableRefFactor.cs" />
+    <Compile Include="Expression\VariableExpression.cs" />
     <Compile Include="Visitor\EmptySQLASTVisitor.cs" />
     <Compile Include="Expression\AbstractExpression.cs" />
     <Compile Include="Fragment\Basic\GroupByFragment.cs" />
@@ -109,6 +114,7 @@
     <Compile Include="Expression\PrimaryExpression.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statement\DML\StatementType.cs" />
+    <Compile Include="Expression\Wildcard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Recognizer\" />
