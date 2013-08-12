@@ -16,7 +16,7 @@ namespace Nova.Parser
             get { return this.unEvaluatable; }
         }
 
-        public IExpression SetCacheEvalRst(bool cacheEvalRst)
+        public virtual IExpression SetCacheEvalRst(bool cacheEvalRst)
         {
             this.cacheEvalRst = cacheEvalRst;
             return this;

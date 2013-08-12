@@ -1041,6 +1041,40 @@ namespace Nova.Parser
             return token;
         }
 
+        public decimal IntegerValue()
+        {
+            // 2147483647
+            // 9223372036854775807
+            if(sizeCache <10 || sizeCache == 10
+                && sql[offsetCache] < '2' || sql[offsetCache] == '2'
+                && sql[offsetCache+1] == '0')
+            {
+                int rst = 0;
+                int end = offsetCache + sizeCache;
+                for (int i = offsetCache; i < end; ++i)
+                {
+                    rst = (rst << 3) + (rst << 1);
+                    rst += sql[i] - '0';
+                }
+                return rst;
+            }
+            else if (sizeCache < 19 || sizeCache == 19 && sql[offsetCache] < '9')
+            {
+                long rst = 0;
+                int end = offsetCache + sizeCache;
+                for (int i = offsetCache; i < end; ++i)
+                {
+                    rst = (rst << 3) + (rst << 1);
+                    rst += sql[i] - '0';
+                }
+                return rst;
+            }
+            else
+            {
+                return new decimal(Convert.ToInt32(new String(sql, offsetCache, sizeCache)));
+            }
+        }
+
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
