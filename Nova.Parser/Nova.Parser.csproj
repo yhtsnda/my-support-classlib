@@ -40,9 +40,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expression\Function\Bit\BitCountFunc.cs" />
+    <Compile Include="Expression\Function\Cast\CastFunc.cs" />
+    <Compile Include="Expression\Function\Comparison\CoalesceFunc.cs" />
+    <Compile Include="Expression\Function\Cast\ConvertFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\AbsFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\ACosFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\ASinFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\ATan2Func.cs" />
+    <Compile Include="Expression\Function\Arithmetic\ATanFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\CeilingFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\ConvFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\CosFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\CotFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\Crc32Func.cs" />
+    <Compile Include="Expression\Function\Arithmetic\DegreesFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\ExpFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\FloorFunc.cs" />
     <Compile Include="Fragment\TableRef\AliasableTableReference.cs" />
     <Compile Include="Dual.cs" />
     <Compile Include="Expression\PlaceHolder.cs" />
+    <Compile Include="FunctionExpression.cs" />
+    <Compile Include="Expression\Function\Comparison\GreatestFunc.cs" />
     <Compile Include="IndexHint.cs" />
     <Compile Include="InnerJoin.cs" />
     <Compile Include="Expression\Literal\IntervalPrimary.cs" />
@@ -53,26 +72,43 @@
     <Compile Include="Expression\Literal\LiteralNull.cs" />
     <Compile Include="Expression\Literal\LiteralNumber.cs" />
     <Compile Include="Expression\Literal\LiteralString.cs" />
-    <Compile Include="MySQLCallParser.cs" />
+    <Compile Include="Expression\Function\Arithmetic\Log10Func.cs" />
+    <Compile Include="Expression\Function\Arithmetic\Log2Func.cs" />
+    <Compile Include="Expression\Function\Arithmetic\LogFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\OtcFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\PiFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\PowFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\RadiansFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\RandFunc.cs" />
+    <Compile Include="Expression\Function\Comparison\IntervalFunc.cs" />
+    <Compile Include="Expression\Function\Comparison\IsNullFunc.cs" />
+    <Compile Include="Expression\Function\Comparison\LeastFunc.cs" />
+    <Compile Include="Recognizer\DML\MySQLCallParser.cs" />
     <Compile Include="MySQLDALParser.cs" />
-    <Compile Include="MySQLDeleteParser.cs" />
-    <Compile Include="MySQLDMLParser.cs" />
-    <Compile Include="MySQLExprParser.cs" />
+    <Compile Include="Recognizer\DML\MySQLDeleteParser.cs" />
+    <Compile Include="Recognizer\DML\MySQLDMLParser.cs" />
+    <Compile Include="Recognizer\Expr\MySQLExprParser.cs" />
     <Compile Include="MySQLFunctionManager.cs" />
-    <Compile Include="MySQLInsertParser.cs" />
-    <Compile Include="MySQLInsertReplaceParser.cs" />
+    <Compile Include="Recognizer\DML\MySQLInsertParser.cs" />
+    <Compile Include="Recognizer\DML\MySQLInsertReplaceParser.cs" />
     <Compile Include="MySQLKeywords.cs" />
     <Compile Include="MySQLLexer.cs" />
     <Compile Include="MySQLMTParser.cs" />
-    <Compile Include="MySQLParser.cs" />
-    <Compile Include="MySQLReplaceParser.cs" />
-    <Compile Include="MySQLSelectParser.cs" />
+    <Compile Include="Recognizer\MySQLParser.cs" />
+    <Compile Include="Recognizer\DML\MySQLReplaceParser.cs" />
+    <Compile Include="Recognizer\DML\MySQLSelectParser.cs" />
     <Compile Include="MySQLToken.cs" />
-    <Compile Include="MySQLUpdateParser.cs" />
+    <Compile Include="Recognizer\DML\MySQLUpdateParser.cs" />
     <Compile Include="NaturalJoin.cs" />
     <Compile Include="OuterJoin.cs" />
     <Compile Include="Expression\SysVarPrimary.cs" />
     <Compile Include="ParamMarker.cs" />
+    <Compile Include="Expression\Function\Arithmetic\RoundFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\SignFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\SinFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\SqrtFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\TanFunc.cs" />
+    <Compile Include="Expression\Function\Arithmetic\TruncateFunc.cs" />
     <Compile Include="Util\BigDecimal.cs" />
     <Compile Include="Util\CharTypes.cs" />
     <Compile Include="Util\ParseString.cs" />
@@ -116,9 +152,7 @@
     <Compile Include="Statement\DML\StatementType.cs" />
     <Compile Include="Expression\Wildcard.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Recognizer\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Nova.Parser.cd" />
   </ItemGroup>
