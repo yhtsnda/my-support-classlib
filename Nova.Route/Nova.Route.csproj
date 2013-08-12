@@ -39,14 +39,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractPartition.cs" />
-    <Compile Include="PairPartition.cs" />
+    <Compile Include="PartitionFunction\AbstractPartition.cs" />
+    <Compile Include="PartitionFunction\FileMapPartitionFunction.cs" />
+    <Compile Include="PartitionFunction\LongPartitionFunction.cs" />
+    <Compile Include="PartitionFunction\PairPartition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SinglePartition.cs" />
-    <Compile Include="StringPartitionFunction.cs" />
+    <Compile Include="Utili\RouteRuleInitializer.cs" />
+    <Compile Include="Utili\RouteException.cs" />
+    <Compile Include="Utili\RouteResultset.cs" />
+    <Compile Include="Utili\RouteResultsetNode.cs" />
+    <Compile Include="Utili\ServerRouter.cs" />
+    <Compile Include="PartitionFunction\SinglePartition.cs" />
+    <Compile Include="PartitionFunction\StringPartitionFunction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nova.Route.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nova.Config\Nova.Config.csproj">
+      <Project>{c0627e24-0993-423f-bda7-1da3cf8131df}</Project>
+      <Name>Nova.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nova.Parser\Nova.Parser.csproj">
+      <Project>{ac0e9f5f-3ac9-4dfd-ad1d-16f98721195f}</Project>
+      <Name>Nova.Parser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nova.Utility\Nova.Utility.csproj">
+      <Project>{e47b7912-54a5-4bee-8472-e1664f95471f}</Project>
+      <Name>Nova.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
