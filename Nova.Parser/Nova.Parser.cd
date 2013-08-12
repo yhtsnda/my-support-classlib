@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Nova.Parser.AbstractExpression">
-    <Position X="47" Y="0.5" Width="2.25" />
+    <Position X="81" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AIAAgAAAQACAQAAAAAAAEAAAABIAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\AbstractExpression.cs</FileName>
@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Nova.Parser.MySQLASTVisitor" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="98" Y="1.5" Width="1.5" />
+    <Position X="159" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQEAEQAAAAAAAQAAAAAAAAAAAIAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Visitor\MySQLASTVisitor.cs</FileName>
@@ -17,7 +17,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.ExpressionConst" Collapsed="true">
-    <Position X="98" Y="0.5" Width="1.5" />
+    <Position X="159" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ExpressionConst.cs</FileName>
@@ -130,21 +130,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.PrimaryExpression">
-    <Position X="47" Y="4.25" Width="2.25" />
+    <Position X="81" Y="4.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AIAAgAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\PrimaryExpression.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.Identifier">
-    <Position X="6.75" Y="6.75" Width="1.75" />
+    <Position X="9.75" Y="6.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AIAgAAAAAAAAQABEgAAABAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Identifier.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.TableReferences" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="98" Y="3.5" Width="1.5" />
+    <Position X="164.25" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAQAAAAAAAAAAQAAEAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Fragment\TableRef\TableReferences.cs</FileName>
@@ -152,7 +152,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.GroupByFragment" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="99.75" Y="0.5" Width="1.5" />
+    <Position X="169.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Fragment\Basic\GroupByFragment.cs</FileName>
@@ -160,7 +160,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.LimitFragment" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="96.25" Y="1.5" Width="1.5" />
+    <Position X="159" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AICAAAAAAAAAAAiAgIAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
       <FileName>Fragment\Basic\LimitFragment.cs</FileName>
@@ -168,7 +168,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.OrderByFragment" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="98" Y="2.5" Width="1.5" />
+    <Position X="173" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Fragment\Basic\OrderByFragment.cs</FileName>
@@ -176,14 +176,14 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.RowExpression">
-    <Position X="4.5" Y="6.75" Width="1.5" />
+    <Position X="7.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\RowExpression.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.EmptySQLASTVisitor" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="96.25" Y="0.5" Width="1.5" />
+    <Position X="171.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Visitor\EmptySQLASTVisitor.cs</FileName>
@@ -191,14 +191,14 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.PlaceHolder">
-    <Position X="90.25" Y="6.75" Width="1.5" />
+    <Position X="154.5" Y="6.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AIAAoAAAQACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\PlaceHolder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.AliasableTableReference" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="92.75" Y="0.5" Width="1.5" />
+    <Position X="160.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AMAAAAAAAAIAQAAAAACAAAAAAAEAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Fragment\TableRef\AliasableTableReference.cs</FileName>
@@ -206,7 +206,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.Dual" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="94.5" Y="0.5" Width="1.5" />
+    <Position X="167.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Dual.cs</FileName>
@@ -214,7 +214,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.InnerJoin" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="94.5" Y="1.5" Width="1.5" />
+    <Position X="164.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAgQABAAAAAAAQAAAEAAAgAAAEAAAAAAAA=</HashCode>
       <FileName>InnerJoin.cs</FileName>
@@ -222,22 +222,22 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.IndexHint" Collapsed="true">
-    <Position X="92.75" Y="1.5" Width="1.5" />
+    <Position X="159" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IndexHint.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.NaturalJoin" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="96.25" Y="2.5" Width="1.5" />
+    <Position X="167.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAACgQAAAAAAAAAQIAAEAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>NaturalJoin.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Orientation="Left" Position="0.348" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.OuterJoin" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="99.75" Y="2.5" Width="1.5" />
+    <Position X="157.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAgQABAAAEAAAQAAAEAAAgAAAEAAAAAAAA=</HashCode>
       <FileName>OuterJoin.cs</FileName>
@@ -245,7 +245,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.StraightJoin" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="94.5" Y="3.5" Width="1.5" />
+    <Position X="173" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAgQABAAAAAAAQAAAEAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>StraightJoin.cs</FileName>
@@ -253,28 +253,28 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Nova.Parser.SubqueryFactor" Collapsed="true">
-    <Position X="96.25" Y="3.5" Width="1.5" />
+    <Position X="157.25" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubqueryFactor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.TableRefFactor" Collapsed="true">
-    <Position X="99.75" Y="3.5" Width="1.5" />
+    <Position X="166" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TableRefFactor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.Literal">
-    <Position X="20.5" Y="6.75" Width="1.5" />
+    <Position X="25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Literal\Literal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.IntervalPrimary">
-    <Position X="13.75" Y="8.75" Width="1.5" />
+    <Position X="16.75" Y="8.75" Width="1.75" />
     <NestedTypes>
       <Enum Name="Nova.Parser.IntervalPrimary.UnitType" Collapsed="true">
         <TypeIdentifier>
@@ -288,49 +288,49 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.LiteralBitField">
-    <Position X="16" Y="8.75" Width="1.5" />
+    <Position X="19.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Expression\Literal\LiteralBitField.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.LiteralBoolean">
-    <Position X="18.25" Y="8.75" Width="1.5" />
+    <Position X="21.5" Y="8.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAQAIAAAAAAAAAAAAAAAAAAAAAAAAgAAAIAAA=</HashCode>
       <FileName>Expression\Literal\LiteralBoolean.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.LiteralHexadecimal">
-    <Position X="20.5" Y="8.75" Width="1.5" />
+    <Position X="24" Y="8.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AICAAAAEQAAAAAAYAIAAAAAAAAKAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Literal\LiteralHexadecimal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.LiteralNull">
-    <Position X="22.75" Y="8.75" Width="1.5" />
+    <Position X="26.5" Y="8.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Literal\LiteralNull.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.LiteralNumber&lt;TNumber&gt;">
-    <Position X="25" Y="8.75" Width="1.5" />
+    <Position X="29" Y="8.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Literal\LiteralNumber.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.LiteralString">
-    <Position X="27.25" Y="8.75" Width="1.5" />
+    <Position X="32" Y="8.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAQAAAAAAQAAAAAAAAAAAAAAAAAEAACAABAAA=</HashCode>
       <FileName>Expression\Literal\LiteralString.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.Util.ParseString" Collapsed="true">
-    <Position X="92.75" Y="3.5" Width="1.5" />
+    <Position X="159" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Util\ParseString.cs</FileName>
@@ -344,24 +344,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLDALParser" Collapsed="true">
-    <Position X="1.25" Y="1.75" Width="1.5" />
+    <Position X="1.25" Y="1.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MySQLDALParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLDMLParser" Collapsed="true">
-    <Position X="10.25" Y="1.75" Width="1.5" />
+    <Position X="11.25" Y="1.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Recognizer\DML\MySQLDMLParser.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Nova.Parser.MySQLExprParser" Collapsed="true">
-    <Position X="19.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAECAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Recognizer\Expr\MySQLExprParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLMTParser" Collapsed="true">
@@ -372,353 +365,1158 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLDeleteParser" Collapsed="true">
-    <Position X="3.5" Y="3.25" Width="1.5" />
+    <Position X="3.75" Y="3.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Recognizer\DML\MySQLDeleteParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLCallParser" Collapsed="true">
-    <Position X="10.25" Y="3.25" Width="1.5" />
+    <Position X="11.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Recognizer\DML\MySQLCallParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLInsertParser" Collapsed="true">
-    <Position X="14.75" Y="3.25" Width="1.5" />
+    <Position X="16.5" Y="3.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Recognizer\DML\MySQLInsertParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLInsertReplaceParser" Collapsed="true">
-    <Position X="5.75" Y="3.25" Width="1.5" />
+    <Position X="6.25" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Recognizer\DML\MySQLInsertReplaceParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLReplaceParser" Collapsed="true">
-    <Position X="12.5" Y="3.25" Width="1.5" />
+    <Position X="14" Y="3.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Recognizer\DML\MySQLReplaceParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLSelectParser" Collapsed="true">
-    <Position X="17" Y="3.25" Width="1.5" />
+    <Position X="19" Y="3.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Recognizer\DML\MySQLSelectParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLUpdateParser" Collapsed="true">
-    <Position X="8" Y="3.25" Width="1.5" />
+    <Position X="9.25" Y="3.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Recognizer\DML\MySQLUpdateParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLFunctionManager" Collapsed="true">
-    <Position X="99.75" Y="1.5" Width="1.5" />
+    <Position X="160.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MySQLFunctionManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLKeywords" Collapsed="true">
-    <Position X="92.75" Y="2.5" Width="1.5" />
+    <Position X="162.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAABAAAAAAAABAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>MySQLKeywords.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.MySQLLexer" Collapsed="true">
-    <Position X="94.5" Y="2.5" Width="1.5" />
+    <Position X="164.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAMABABAFIAAIAAlgABIKVAgggCEAAkggkACEQwBAAI=</HashCode>
       <FileName>MySQLLexer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.Wildcard">
-    <Position X="6.75" Y="10.5" Width="1.5" />
+    <Position X="10" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Wildcard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.VariableExpression">
-    <Position X="9.25" Y="6.75" Width="1.5" />
+    <Position X="12.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\VariableExpression.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.SysVarPrimary" Collapsed="true">
-    <Position X="9.25" Y="8.5" Width="1.5" />
+    <Position X="12.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAACAAAAGAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\SysVarPrimary.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.ParamMarker" Collapsed="true">
-    <Position X="11.5" Y="6.75" Width="1.5" />
+    <Position X="14.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAQAAAAAAAgAAAAAAAAAAAAIAAAAAAAAgAAAA=</HashCode>
       <FileName>ParamMarker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.FunctionExpression">
-    <Position X="58.75" Y="6.75" Width="1.5" />
+    <Position X="93.75" Y="6.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAACAAAAAAAACEBAAAAAAAAIAIAAAAAAAAAA=</HashCode>
       <FileName>FunctionExpression.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.AbsFunc" Collapsed="true">
-    <Position X="29.5" Y="10.25" Width="1.5" />
+    <Position X="35.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\AbsFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.ACosFunc" Collapsed="true">
-    <Position X="31.75" Y="10.25" Width="1.5" />
+    <Position X="37.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\ACosFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.ASinFunc">
-    <Position X="34" Y="10.25" Width="1.5" />
+    <Position X="39.75" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\ASinFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.ATanFunc">
-    <Position X="36.25" Y="10.25" Width="1.5" />
+    <Position X="42.25" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\ATanFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.ATan2Func">
-    <Position X="49.75" Y="10.25" Width="1.5" />
+    <Position X="57.25" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\ATan2Func.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.CeilingFunc">
-    <Position X="47.5" Y="10.25" Width="1.5" />
+    <Position X="54.75" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\CeilingFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.ConvFunc">
-    <Position X="40.75" Y="10.25" Width="1.5" />
+    <Position X="47.25" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\ConvFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.CosFunc">
-    <Position X="45.25" Y="10.25" Width="1.5" />
+    <Position X="52.25" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\CosFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.CotFunc">
-    <Position X="52" Y="10.25" Width="1.5" />
+    <Position X="59.75" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\CotFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.Crc32Func">
-    <Position X="54.25" Y="10.25" Width="1.5" />
+    <Position X="69.25" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\Crc32Func.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.DegreesFunc">
-    <Position X="56.5" Y="10.25" Width="1.5" />
+    <Position X="87.75" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\DegreesFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.ExpFunc">
-    <Position X="58.75" Y="10.25" Width="1.5" />
+    <Position X="97" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\ExpFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.FloorFunc">
-    <Position X="38.5" Y="10.25" Width="1.5" />
+    <Position X="44.75" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\FloorFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.LogFunc">
-    <Position X="43" Y="10.25" Width="1.5" />
+    <Position X="49.75" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\LogFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.Log10Func">
-    <Position X="61" Y="10.25" Width="1.5" />
+    <Position X="110.75" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\Log10Func.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.Log2Func">
-    <Position X="63.25" Y="10.25" Width="1.5" />
+    <Position X="120" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\Log2Func.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.OtcFunc">
-    <Position X="65.5" Y="10.25" Width="1.5" />
+    <Position X="127" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\OtcFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.PiFunc">
-    <Position X="67.75" Y="10.25" Width="1.5" />
+    <Position X="129.5" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\PiFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.PowFunc">
-    <Position X="70" Y="10.25" Width="1.5" />
+    <Position X="132" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\PowFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.RadiansFunc">
-    <Position X="72.25" Y="10.25" Width="1.5" />
+    <Position X="134.5" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\RadiansFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.RandFunc">
-    <Position X="74.5" Y="10.25" Width="1.5" />
+    <Position X="137" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\RandFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.RoundFunc">
-    <Position X="76.75" Y="10.25" Width="1.5" />
+    <Position X="139.5" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\RoundFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.SignFunc">
-    <Position X="79" Y="10.25" Width="1.5" />
+    <Position X="142" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\SignFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.SinFunc">
-    <Position X="81.25" Y="10.25" Width="1.5" />
+    <Position X="144.5" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\SinFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.SqrtFunc">
-    <Position X="83.5" Y="10.25" Width="1.5" />
+    <Position X="147" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\SqrtFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.TanFunc">
-    <Position X="85.75" Y="10.25" Width="1.5" />
+    <Position X="149.5" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\TanFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.TruncateFunc">
-    <Position X="88" Y="10.25" Width="1.5" />
+    <Position X="152" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Arithmetic\TruncateFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.BitCountFunc" Collapsed="true">
-    <Position X="60.75" Y="6.75" Width="1.5" />
+    <Position X="104" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Bit\BitCountFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.CastFunc" Collapsed="true">
-    <Position X="60.75" Y="7.75" Width="1.5" />
+    <Position X="106.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAEAAAEAAAABAAACAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Cast\CastFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.ConvertFunc" Collapsed="true">
-    <Position X="60.75" Y="8.75" Width="1.5" />
+    <Position X="108.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AYAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Cast\ConvertFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.CoalesceFunc" Collapsed="true">
-    <Position X="62.5" Y="6.75" Width="1.5" />
+    <Position X="113.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Comparison\CoalesceFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.GreatestFunc" Collapsed="true">
-    <Position X="62.5" Y="7.75" Width="1.5" />
+    <Position X="115.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Comparison\GreatestFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.IntervalFunc" Collapsed="true">
-    <Position X="62.5" Y="8.75" Width="1.5" />
+    <Position X="117.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Comparison\IntervalFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.IsNullFunc" Collapsed="true">
-    <Position X="64.25" Y="6.75" Width="1.5" />
+    <Position X="122.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Comparison\IsNullFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nova.Parser.LeastFunc" Collapsed="true">
-    <Position X="64.25" Y="7.75" Width="1.5" />
+    <Position X="124.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Function\Comparison\LeastFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.AdddateFunc">
+    <Position X="83.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\AdddateFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.AddtimeFunc">
+    <Position X="85.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\AddtimeFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ConvertTzFunc">
+    <Position X="71.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\ConvertTzFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CurdateFunc">
+    <Position X="74" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\CurdateFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CurtimeFunc">
+    <Position X="62.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\CurtimeFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DateFunc">
+    <Position X="64.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\DateFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DateAddFunc">
+    <Position X="90.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\DateAddFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DateDiffFunc">
+    <Position X="92.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\DateDiffFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DateFormatFunc">
+    <Position X="81" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\DateFormatFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DateSubFunc">
+    <Position X="76.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\DateSubFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DaynameFunc">
+    <Position X="94.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\DaynameFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DayofMonthFunc">
+    <Position X="78.5" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\DayofMonthFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DayofWeekFunc">
+    <Position X="99.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\DayofWeekFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DayofYearFunc">
+    <Position X="101.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\DayofYearFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.FromUnixtimeFunc">
+    <Position X="66.75" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Datetime\FromUnixtimeFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.AesDecryptFunc" Collapsed="true">
+    <Position X="157.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\AesDecryptFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.AesEncryptFunc" Collapsed="true">
+    <Position X="159" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\AesEncryptFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CompressFunc" Collapsed="true">
+    <Position X="167.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\CompressFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DecodeFunc" Collapsed="true">
+    <Position X="160.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\DecodeFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DesDecryptFunc" Collapsed="true">
+    <Position X="164.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\DesDecryptFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DesEncryptFunc" Collapsed="true">
+    <Position X="166" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\DesEncryptFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.EncodeFunc" Collapsed="true">
+    <Position X="173" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\EncodeFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.EncryptFunc" Collapsed="true">
+    <Position X="174.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\EncryptFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.Md5Func" Collapsed="true">
+    <Position X="174.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\Md5Func.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.OldPasswordFunc" Collapsed="true">
+    <Position X="171.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\OldPasswordFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.PasswordFunc" Collapsed="true">
+    <Position X="160.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\PasswordFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.Sha1Func" Collapsed="true">
+    <Position X="159" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\Sha1Func.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.Sha2Func" Collapsed="true">
+    <Position X="160.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\Sha2Func.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.UncompressFunc" Collapsed="true">
+    <Position X="171.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\UncompressFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.UncompressedLengthFunc" Collapsed="true">
+    <Position X="169.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Encryption\UncompressedLengthFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.IfFunc" Collapsed="true">
+    <Position X="174.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\FlowCtrl\IfFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.IfNull" Collapsed="true">
+    <Position X="157.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\FlowCtrl\IfNull.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.NullIfFunc" Collapsed="true">
+    <Position X="169.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\FlowCtrl\NullIfFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.AvgFunc" Collapsed="true">
+    <Position X="166" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\AvgFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.BitAndFunc" Collapsed="true">
+    <Position X="171.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\BitAndFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.BitOrFunc" Collapsed="true">
+    <Position X="174.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\BitOrFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.BitxOrFunc" Collapsed="true">
+    <Position X="157.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\BitxOrFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CountFunc" Collapsed="true">
+    <Position X="174.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\CountFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.GroupConcatFunc" Collapsed="true">
+    <Position X="171.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\GroupConcatFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MaxFunc" Collapsed="true">
+    <Position X="173" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\MaxFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MinFunc" Collapsed="true">
+    <Position X="157.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\MinFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.StdFunc" Collapsed="true">
+    <Position X="171.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\StdFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.StddevPopFunc" Collapsed="true">
+    <Position X="167.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\StddevPopFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.StddevSampFunc" Collapsed="true">
+    <Position X="169.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\StddevSampFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.SumFunc" Collapsed="true">
+    <Position X="162.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\SumFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.VarianceFunc" Collapsed="true">
+    <Position X="164.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\VarianceFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.VarPopFunc" Collapsed="true">
+    <Position X="166" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\VarPopFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.VarSampFunc" Collapsed="true">
+    <Position X="167.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Groupby\VarSampFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.BenchmarkFunc" Collapsed="true">
+    <Position X="167.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\BenchmarkFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CharsetFunc" Collapsed="true">
+    <Position X="162.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\CharsetFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CoercibilityFunc" Collapsed="true">
+    <Position X="164.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\CoercibilityFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CollationFunc" Collapsed="true">
+    <Position X="166" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\CollationFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ConnectionIdFunc" Collapsed="true">
+    <Position X="173" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\ConnectionIdFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CurrentUserFunc" Collapsed="true">
+    <Position X="157.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\CurrentUserFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DatabaseFunc" Collapsed="true">
+    <Position X="159" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\DatabaseFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.FoundRowsFunc" Collapsed="true">
+    <Position X="166" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\FoundRowsFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.LastInsertIdFunc" Collapsed="true">
+    <Position X="173" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\LastInsertIdFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.RowCountFunc" Collapsed="true">
+    <Position X="173" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\RowCountFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.UserFunc" Collapsed="true">
+    <Position X="157.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\UserFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.VersionFunc" Collapsed="true">
+    <Position X="169.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Info\VersionFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.AnalyseFunc" Collapsed="true">
+    <Position X="162.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\AnalyseFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.DefaultFunc" Collapsed="true">
+    <Position X="162.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\DefaultFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.GetLockFunc" Collapsed="true">
+    <Position X="167.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\GetLockFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.InetAtonFunc" Collapsed="true">
+    <Position X="160.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\InetAtonFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.InetNtoaFunc" Collapsed="true">
+    <Position X="162.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\InetNtoaFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.IsFreeLockFunc" Collapsed="true">
+    <Position X="169.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\IsFreeLockFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.IsUsedLockFunc" Collapsed="true">
+    <Position X="171.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\IsUsedLockFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MasterPosWaitFunc" Collapsed="true">
+    <Position X="171.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\MasterPosWaitFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.NameConstFunc" Collapsed="true">
+    <Position X="166" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\NameConstFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ReleaseLockFunc" Collapsed="true">
+    <Position X="164.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\ReleaseLockFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.SleepFunc" Collapsed="true">
+    <Position X="162.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\SleepFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.UuidFunc" Collapsed="true">
+    <Position X="159" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\UuidFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.UuidShortFunc" Collapsed="true">
+    <Position X="160.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\UuidShortFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ValuesFunc" Collapsed="true">
+    <Position X="162.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Misc\ValuesFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.AsciiFunc" Collapsed="true">
+    <Position X="164.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\AsciiFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.BinFunc" Collapsed="true">
+    <Position X="169.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\BinFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.BitLengthFunc" Collapsed="true">
+    <Position X="173" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\BitLengthFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CharFunc" Collapsed="true">
+    <Position X="159" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\CharFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.CharLengthFunc" Collapsed="true">
+    <Position X="160.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\CharLengthFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ConcatFunc" Collapsed="true">
+    <Position X="169.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\ConcatFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ConcatWsFunc" Collapsed="true">
+    <Position X="171.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\ConcatWsFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.EltFunc" Collapsed="true">
+    <Position X="169.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\EltFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ExportSetFunc" Collapsed="true">
+    <Position X="157.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\ExportSetFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.FieldFunc" Collapsed="true">
+    <Position X="160.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\FieldFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.findInSetFunc" Collapsed="true">
+    <Position X="162.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\findInSetFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.FormatFunc" Collapsed="true">
+    <Position X="164.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\FormatFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.HexFunc" Collapsed="true">
+    <Position X="173" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\HexFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.InsertFunc" Collapsed="true">
+    <Position X="166" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\InsertFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.InstrFunc" Collapsed="true">
+    <Position X="167.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\InstrFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.LeftFunc" Collapsed="true">
+    <Position X="174.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\LeftFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.LengthFunc" Collapsed="true">
+    <Position X="157.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\LengthFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.LoadFileFunc" Collapsed="true">
+    <Position X="160.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\LoadFileFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.LocateFunc" Collapsed="true">
+    <Position X="162.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\LocateFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.LowerFunc" Collapsed="true">
+    <Position X="164.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\LowerFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.LpadFunc" Collapsed="true">
+    <Position X="166" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\LpadFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.LtrimFunc" Collapsed="true">
+    <Position X="167.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\LtrimFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.MakeSetFunc" Collapsed="true">
+    <Position X="169.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\MakeSetFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.OrdFunc" Collapsed="true">
+    <Position X="174.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\OrdFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.QuoteFunc" Collapsed="true">
+    <Position X="162.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\QuoteFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.RepeatFunc" Collapsed="true">
+    <Position X="166" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\RepeatFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ReplaceFunc" Collapsed="true">
+    <Position X="167.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\ReplaceFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ReverseFunc" Collapsed="true">
+    <Position X="169.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\ReverseFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.RightFunc" Collapsed="true">
+    <Position X="171.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\RightFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.RpadFunc" Collapsed="true">
+    <Position X="174.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\RpadFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.RtrimFunc" Collapsed="true">
+    <Position X="157.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\RtrimFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.SoundexFund" Collapsed="true">
+    <Position X="164.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\SoundexFund.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.SpaceFunc" Collapsed="true">
+    <Position X="166" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\SpaceFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.StrcmpFunc" Collapsed="true">
+    <Position X="174.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\StrcmpFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.SubstringFunc" Collapsed="true">
+    <Position X="159" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\SubstringFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.SubstringIndexFunc" Collapsed="true">
+    <Position X="160.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\SubstringIndexFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.TrimFunc" Collapsed="true">
+    <Position X="167.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\TrimFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.UnhexFunc" Collapsed="true">
+    <Position X="173" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\UnhexFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.UpperFunc" Collapsed="true">
+    <Position X="174.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\String\UpperFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ExtractValueFunc">
+    <Position X="141" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Xml\ExtractValueFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.UpdateXmlFunc">
+    <Position X="144.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Function\Xml\UpdateXmlFunc.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Nova.Parser.IASTNode">
@@ -750,7 +1548,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="Nova.Parser.IASTVisitor" Collapsed="true">
-    <Position X="92.75" Y="4.75" Width="1.5" />
+    <Position X="157.25" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Visitor\IASTVisitor.cs</FileName>
@@ -771,42 +1569,42 @@
     </TypeIdentifier>
   </Interface>
   <Enum Name="Nova.Parser.StatementType" Collapsed="true">
-    <Position X="98" Y="5.75" Width="1.5" />
+    <Position X="162.5" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAACA=</HashCode>
       <FileName>Statement\DML\StatementType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Nova.Parser.ExpressionPrecedence" Collapsed="true">
-    <Position X="92.75" Y="5.75" Width="1.5" />
+    <Position X="157.25" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAABAAAAAgEAAAkASQABAAEAAgAAABBAASAMQA=</HashCode>
       <FileName>Expression\ExpressionPrecedence.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Nova.Parser.TableReferencePrecedence" Collapsed="true">
-    <Position X="99.75" Y="5.75" Width="1.5" />
+    <Position X="164.25" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAADAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Fragment\TableRef\TableReferencePrecedence.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Nova.Parser.SortOrderType" Collapsed="true">
-    <Position X="96.25" Y="5.75" Width="1.5" />
+    <Position X="160.75" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAA=</HashCode>
       <FileName>Fragment\Basic\SortOrderType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Nova.Parser.VariableScope" Collapsed="true">
-    <Position X="92.75" Y="6.5" Width="1.5" />
+    <Position X="166" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>VariableScope.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Nova.Parser.MySQLToken" Collapsed="true">
-    <Position X="94.5" Y="5.75" Width="1.5" />
+    <Position X="159" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>L4Jt1O+t3rad7rE9L/5nDt9+8en5G97luz+Tc+/zOzY=</HashCode>
       <FileName>MySQLToken.cs</FileName>
