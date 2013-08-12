@@ -7,8 +7,8 @@ namespace Nova.Config
 {
     internal interface IConfigLoader
     {
-        NovaSchemaConfig GetNovaSchemaConfig();
+        void GetNovaSchemaConfig();
 
-        NovaRuleConfig GetNovaRuleConfig();
+        void GetNovaRuleConfig();
     }
 }

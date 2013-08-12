@@ -8,17 +8,34 @@ namespace Nova.Config
 {
     public class DefaultConfigLoader : IConfigLoader
     {
-        private List<DataSourceConfig> datasources;
-        private List<DataNodeConfig> datanodes;
-        private Dictionary<string, TableRuleConfig> tableRules;
+        public Dictionary<string, IRuleAlgorithm> Functions { get; protected set; }
+        public Dictionary<string, DataSourceConfig> Datasources { get; protected set; }
+        public Dictionary<string, DataNodeConfig> Datanodes { get; protected set; }
 
+        private static DefaultConfigLoader loader;
 
-        public NovaSchemaConfig GetNovaSchemaConfig()
+        public DefaultConfigLoader()
+        {
+            GetNovaSchemaConfig();
+            GetNovaRuleConfig();
+        }
+
+        public static DefaultConfigLoader Instance
+        {
+            get
+            {
+                if (loader == null)
+                    loader = new DefaultConfigLoader();
+                return loader;
+            }
+        }
+
+        public void GetNovaSchemaConfig()
         {
             throw new NotImplementedException();
         }
 
-        public NovaRuleConfig GetNovaRuleConfig()
+        public void GetNovaRuleConfig()
         {
             throw new NotImplementedException();
         }
@@ -38,7 +55,7 @@ namespace Nova.Config
             var index = 0;
             foreach (var item in locations)
             {
-                datasources.Add(new DataSourceConfig()
+                Datasources.Add(String.Format("{0}[{1}]", sourceName, index), new DataSourceConfig()
                 {
                     SourceName = String.Format("{0}[{1}]", sourceName, index),
                     SourceType = sourceType,
@@ -55,22 +72,22 @@ namespace Nova.Config
 
         private void GetDataNode(ConfigNode node)
         {
-            if (this.datasources == null)
+            if (this.Datasources == null)
                 throw new Exception("please load datasource first!");
 
             var name = node.Attributes["name"];
             var master = node.TryGetNode("MasterSourceRef").InnerText;
-            if (!this.datasources.Any(o => o.SourceName == master))
+            if (!this.Datasources.ContainsKey(master))
                 throw new ConfigurationException("master data source not exists!");
             var slave = node.TryGetNode("SlaveSourceRef").InnerText;
-            if (!this.datasources.Any(o => o.SourceName == slave))
+            if (!this.Datasources.ContainsKey(slave))
                 throw new ConfigurationException("slave data source not exists!");
 
             int poolSize = 200;
             Int32.TryParse(node.TryGetNode("PoolSize").InnerText, out poolSize);
             var heartbeatSql = node.TryGetNode("HeartBeatSql").InnerText;
 
-            datanodes.Add(new DataNodeConfig
+            this.Datanodes.Add(name, new DataNodeConfig
             {
                 NodeName = name,
                 MasterSource = master,
@@ -82,9 +99,29 @@ namespace Nova.Config
 
         private void GetSchema(ConfigNode node)
         {
+            if (this.Datanodes == null || this.Datanodes.Count == 0)
+                throw new Exception("please load datanode first!");
+
+            SchemaType sType = SchemaType.Single;
+            //获取Schema的type
+            if (!Enum.TryParse<SchemaType>(node.Attributes["type"], out sType))
+                throw new Exception("schema type error, mast Single or Shard");
+
+            if (sType == SchemaType.Single)
+            {
+
+            }
+            else if (sType == SchemaType.Shard)
+            {
+            }
         }
 
-        private List<TableConfig> GetTableConfigs(IEnumerable<ConfigNode> tableConfigs)
+        private void GetTableConfigs(IEnumerable<ConfigNode> tableConfigs)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void GetFunctions(IEnumerable<ConfigNode> funcConfigs)
         {
             throw new NotImplementedException();
         }
