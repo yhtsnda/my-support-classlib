@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expression\Function\Groupby\StddevFunc.cs" />
     <Compile Include="Expression\Function\String\AsciiFunc.cs" />
     <Compile Include="Expression\Function\String\BinFunc.cs" />
     <Compile Include="Expression\Function\String\BitLengthFunc.cs" />
@@ -154,7 +155,7 @@
     <Compile Include="Expression\Function\Comparison\GreatestFunc.cs" />
     <Compile Include="Expression\Function\Groupby\GroupConcatFunc.cs" />
     <Compile Include="Expression\Function\FlowCtrl\IfFunc.cs" />
-    <Compile Include="Expression\Function\FlowCtrl\IfNull.cs" />
+    <Compile Include="Expression\Function\FlowCtrl\IfNullFunc.cs" />
     <Compile Include="Expression\Function\Misc\GetLockFunc.cs" />
     <Compile Include="Expression\Function\String\HexFunc.cs" />
     <Compile Include="IndexHint.cs" />

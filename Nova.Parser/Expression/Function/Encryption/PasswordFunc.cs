@@ -5,7 +5,17 @@ using System.Text;
 
 namespace Nova.Parser
 {
-    public class PasswordFunc
+    public class PasswordFunc: FunctionExpression
     {
+        public PasswordFunc(List<IExpression> arguments)
+            : base("PASSWORD", arguments)
+        {
+
+        }
+
+        public override FunctionExpression ConstructFunction(List<IExpression> arguments)
+        {
+            return new PasswordFunc(arguments);
+        }
     }
 }
