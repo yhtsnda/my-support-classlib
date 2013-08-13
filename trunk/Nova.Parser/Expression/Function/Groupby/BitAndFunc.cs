@@ -5,7 +5,17 @@ using System.Text;
 
 namespace Nova.Parser
 {
-    public class BitAndFunc
+    public class BitAndFunc : FunctionExpression
     {
+        public BitAndFunc(List<IExpression> arguments)
+            : base("IF", arguments)
+        {
+
+        }
+
+        public override FunctionExpression ConstructFunction(List<IExpression> arguments)
+        {
+            return new BitAndFunc(arguments);
+        }
     }
 }

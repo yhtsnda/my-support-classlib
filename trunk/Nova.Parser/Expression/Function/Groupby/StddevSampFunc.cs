@@ -5,7 +5,17 @@ using System.Text;
 
 namespace Nova.Parser
 {
-    public class StddevSampFunc
+    public class StddevSampFunc : FunctionExpression
     {
+        public StddevSampFunc(List<IExpression> arguments)
+            : base("STDDEV_SAMP", arguments)
+        {
+
+        }
+
+        public override FunctionExpression ConstructFunction(List<IExpression> arguments)
+        {
+            return new StddevSampFunc(arguments);
+        }
     }
 }

@@ -5,7 +5,17 @@ using System.Text;
 
 namespace Nova.Parser
 {
-    public class DecodeFunc
+    public class DecodeFunc: FunctionExpression
     {
+        public DecodeFunc(List<IExpression> arguments)
+            : base("DECODE", arguments)
+        {
+
+        }
+
+        public override FunctionExpression ConstructFunction(List<IExpression> arguments)
+        {
+            return new DecodeFunc(arguments);
+        }
     }
 }
