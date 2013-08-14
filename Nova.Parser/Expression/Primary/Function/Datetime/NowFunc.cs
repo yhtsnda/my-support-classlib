@@ -7,15 +7,15 @@ namespace Nova.Parser
 {
     public class NowFunc : FunctionExpression
     {
-        public NowFunc(List<IExpression> arguments)
-            : base("NOW", arguments)
+        public NowFunc()
+            : base("NOW", null)
         {
 
         }
 
         public override FunctionExpression ConstructFunction(List<IExpression> arguments)
         {
-            return new NowFunc(arguments);
+            return new NowFunc();
         }
     }
 }

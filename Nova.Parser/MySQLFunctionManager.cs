@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,13 +33,25 @@ namespace Nova.Parser
             GET_FORMAT
         }
 
+        private static MySQLFunctionManager instance;
+
+        public static MySQLFunctionManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new MySQLFunctionManager(false);
+                return instance;
+            }
+        }
+
         private bool allowFuncDefChange;
         private Dictionary<string, FunctionParsingStrategy> parsingStrateg = 
             new Dictionary<string, FunctionParsingStrategy>();
-        private Dictionary<string, FunctionExpression> functionPrototype =
-            new Dictionary<string, FunctionExpression>();
+        private ConcurrentDictionary<string, FunctionExpression> functionPrototype =
+            new ConcurrentDictionary<string, FunctionExpression>();
 
-        public MySQLFunctionManager(bool allowFuncDefChange)
+        protected MySQLFunctionManager(bool allowFuncDefChange)
         {
             this.allowFuncDefChange = allowFuncDefChange;
             parsingStrateg.Add("CAST", FunctionParsingStrategy.CAST);
@@ -60,204 +73,250 @@ namespace Nova.Parser
             parsingStrateg.Add("TIMESTAMPDIFF", FunctionParsingStrategy.TIMESTAMPDIFF);
             parsingStrateg.Add("GET_FORMAT", FunctionParsingStrategy.GET_FORMAT);
 
-            functionPrototype.Add("ABS", new Abs(null));
-            functionPrototype.Add("ACOS", new Acos(null));
-            functionPrototype.Add("ADDDATE", new Adddate(null));
-            functionPrototype.Add("ADDTIME", new Addtime(null));
-            functionPrototype.Add("AES_DECRYPT", new AesDecrypt(null));
-            functionPrototype.Add("AES_ENCRYPT", new AesEncrypt(null));
-            functionPrototype.Add("ANALYSE", new Analyse(null));
-            functionPrototype.Add("ASCII", new Ascii(null));
-            functionPrototype.Add("ASIN", new Asin(null));
-            functionPrototype.Add("ATAN2", new Atan2(null));
-            functionPrototype.Add("ATAN", new Atan(null));
-            functionPrototype.Add("BENCHMARK", new Benchmark(null));
-            functionPrototype.Add("BIN", new Bin(null));
-            functionPrototype.Add("BIT_AND", new BitAnd(null));
-            functionPrototype.Add("BIT_COUNT", new BitCount(null));
-            functionPrototype.Add("BIT_LENGTH", new BitLength(null));
-            functionPrototype.Add("BIT_OR", new BitOr(null));
-            functionPrototype.Add("BIT_XOR", new BitXor(null));
-            functionPrototype.Add("CEIL", new Ceiling(null));
-            functionPrototype.Add("CEILING", new Ceiling(null));
-            functionPrototype.Add("CHAR_LENGTH", new CharLength(null));
-            functionPrototype.Add("CHARACTER_LENGTH", new CharLength(null));
-            functionPrototype.Add("CHARSET", new Charset(null));
-            functionPrototype.Add("COALESCE", new Coalesce(null));
-            functionPrototype.Add("COERCIBILITY", new Coercibility(null));
-            functionPrototype.Add("COLLATION", new Collation(null));
-            functionPrototype.Add("COMPRESS", new Compress(null));
-            functionPrototype.Add("CONCAT_WS", new ConcatWs(null));
-            functionPrototype.Add("CONCAT", new Concat(null));
-            functionPrototype.Add("CONNECTION_ID", new ConnectionId(null));
-            functionPrototype.Add("CONV", new Conv(null));
-            functionPrototype.Add("CONVERT_TZ", new ConvertTz(null));
-            functionPrototype.Add("COS", new Cos(null));
-            functionPrototype.Add("COT", new Cot(null));
-            functionPrototype.Add("CRC32", new Crc32(null));
-            functionPrototype.Add("CURDATE", new Curdate());
-            functionPrototype.Add("CURRENT_DATE", new Curdate());
-            functionPrototype.Add("CURRENT_TIME", new Curtime());
-            functionPrototype.Add("CURTIME", new Curtime());
-            functionPrototype.Add("CURRENT_TIMESTAMP", new Now());
-            functionPrototype.Add("CURRENT_USER", new CurrentUser());
-            functionPrototype.Add("CURTIME", new Curtime());
-            functionPrototype.Add("DATABASE", new Database(null));
-            functionPrototype.Add("DATE_ADD", new DateAdd(null));
-            functionPrototype.Add("DATE_FORMAT", new DateFormat(null));
-            functionPrototype.Add("DATE_SUB", new DateSub(null));
-            functionPrototype.Add("DATE", new Date(null));
-            functionPrototype.Add("DATEDIFF", new Datediff(null));
-            functionPrototype.Add("DAY", new Dayofmonth(null));
-            functionPrototype.Add("DAYOFMONTH", new Dayofmonth(null));
-            functionPrototype.Add("DAYNAME", new Dayname(null));
-            functionPrototype.Add("DAYOFWEEK", new Dayofweek(null));
-            functionPrototype.Add("DAYOFYEAR", new Dayofyear(null));
-            functionPrototype.Add("DECODE", new Decode(null));
-            functionPrototype.Add("DEFAULT", new Default(null));
-            functionPrototype.Add("DEGREES", new Degrees(null));
-            functionPrototype.Add("DES_DECRYPT", new DesDecrypt(null));
-            functionPrototype.Add("DES_ENCRYPT", new DesEncrypt(null));
-            functionPrototype.Add("ELT", new Elt(null));
-            functionPrototype.Add("ENCODE", new Encode(null));
-            functionPrototype.Add("ENCRYPT", new Encrypt(null));
-            functionPrototype.Add("EXP", new Exp(null));
-            functionPrototype.Add("EXPORT_SET", new ExportSet(null));
-            //        functionPrototype.Add("EXTRACT", new Extract(null));
-            functionPrototype.Add("EXTRACTVALUE", new Extractvalue(null));
-            functionPrototype.Add("FIELD", new Field(null));
-            functionPrototype.Add("FIND_IN_SET", new FindInSet(null));
-            functionPrototype.Add("FLOOR", new Floor(null));
-            functionPrototype.Add("FORMAT", new Format(null));
-            functionPrototype.Add("FOUND_ROWS", new FoundRows(null));
-            functionPrototype.Add("FROM_DAYS", new FromDays(null));
-            functionPrototype.Add("FROM_UNIXTIME", new FromUnixtime(null));
-            //        functionPrototype.Add("GET_FORMAT", new GetFormat(null));
-            functionPrototype.Add("GET_LOCK", new GetLock(null));
-            functionPrototype.Add("GREATEST", new Greatest(null));
-            functionPrototype.Add("HEX", new Hex(null));
-            functionPrototype.Add("HOUR", new Hour(null));
-            functionPrototype.Add("IF", new If(null));
-            functionPrototype.Add("IFNULL", new Ifnull(null));
-            functionPrototype.Add("INET_ATON", new InetAton(null));
-            functionPrototype.Add("INET_NTOA", new InetNtoa(null));
-            functionPrototype.Add("INSERT", new Insert(null));
-            functionPrototype.Add("INSTR", new Instr(null));
-            functionPrototype.Add("INTERVAL", new Interval(null));
-            functionPrototype.Add("IS_FREE_LOCK", new IsFreeLock(null));
-            functionPrototype.Add("IS_USED_LOCK", new IsUsedLock(null));
-            functionPrototype.Add("ISNULL", new Isnull(null));
-            functionPrototype.Add("LAST_DAY", new LastDay(null));
-            functionPrototype.Add("LAST_INSERT_ID", new LastInsertId(null));
-            functionPrototype.Add("LCASE", new Lower(null));
-            functionPrototype.Add("LEAST", new Least(null));
-            functionPrototype.Add("LEFT", new Left(null));
-            functionPrototype.Add("LENGTH", new Length(null));
-            functionPrototype.Add("LN", new Log(null)); //Ln(X) equals Log(X)
-            functionPrototype.Add("LOAD_FILE", new LoadFile(null));
-            functionPrototype.Add("LOCALTIME", new Now());
-            functionPrototype.Add("LOCALTIMESTAMP", new Now());
-            functionPrototype.Add("LOCATE", new Locate(null));
-            functionPrototype.Add("LOG10", new Log10(null));
-            functionPrototype.Add("LOG2", new Log2(null));
-            functionPrototype.Add("LOG", new Log(null));
-            functionPrototype.Add("LOWER", new Lower(null));
-            functionPrototype.Add("LPAD", new Lpad(null));
-            functionPrototype.Add("LTRIM", new Ltrim(null));
-            functionPrototype.Add("MAKE_SET", new MakeSet(null));
-            functionPrototype.Add("MAKEDATE", new Makedate(null));
-            functionPrototype.Add("MAKETIME", new Maketime(null));
-            functionPrototype.Add("MASTER_POS_WAIT", new MasterPosWait(null));
-            functionPrototype.Add("MD5", new Md5(null));
-            functionPrototype.Add("MICROSECOND", new Microsecond(null));
-            functionPrototype.Add("MID", new Substring(null));
-            functionPrototype.Add("MINUTE", new Minute(null));
-            functionPrototype.Add("MONTH", new Month(null));
-            functionPrototype.Add("MONTHNAME", new Monthname(null));
-            functionPrototype.Add("NAME_CONST", new NameConst(null));
-            functionPrototype.Add("NOW", new Now());
-            functionPrototype.Add("NULLIF", new Nullif(null));
-            functionPrototype.Add("OCT", new Oct(null));
-            functionPrototype.Add("OCTET_LENGTH", new Length(null));
-            functionPrototype.Add("OLD_PASSWORD", new OldPassword(null));
-            functionPrototype.Add("ORD", new Ord(null));
-            functionPrototype.Add("PASSWORD", new Password(null));
-            functionPrototype.Add("PERIOD_ADD", new PeriodAdd(null));
-            functionPrototype.Add("PERIOD_DIFF", new PeriodDiff(null));
-            functionPrototype.Add("PI", new Pi(null));
-            functionPrototype.Add("POW", new Pow(null));
-            functionPrototype.Add("POWER", new Pow(null));
-            functionPrototype.Add("QUARTER", new Quarter(null));
-            functionPrototype.Add("QUOTE", new Quote(null));
-            functionPrototype.Add("RADIANS", new Radians(null));
-            functionPrototype.Add("RAND", new Rand(null));
-            functionPrototype.Add("RELEASE_LOCK", new ReleaseLock(null));
-            functionPrototype.Add("REPEAT", new Repeat(null));
-            functionPrototype.Add("REPLACE", new Replace(null));
-            functionPrototype.Add("REVERSE", new Reverse(null));
-            functionPrototype.Add("RIGHT", new Right(null));
-            functionPrototype.Add("ROUND", new Round(null));
-            functionPrototype.Add("ROW_COUNT", new RowCount(null));
-            functionPrototype.Add("RPAD", new Rpad(null));
-            functionPrototype.Add("RTRIM", new Rtrim(null));
-            functionPrototype.Add("SCHEMA", new Database(null));
-            functionPrototype.Add("SEC_TO_TIME", new SecToTime(null));
-            functionPrototype.Add("SECOND", new Second(null));
-            functionPrototype.Add("SESSION_USER", new User(null));
-            functionPrototype.Add("SHA1", new Sha1(null));
-            functionPrototype.Add("SHA", new Sha1(null));
-            functionPrototype.Add("SHA2", new Sha2(null));
-            functionPrototype.Add("SIGN", new SignFunc(null));
-            functionPrototype.Add("SIN", new Sin(null));
-            functionPrototype.Add("SLEEP", new Sleep(null));
-            functionPrototype.Add("SOUNDEX", new Soundex(null));
-            functionPrototype.Add("SPACE", new Space(null));
-            functionPrototype.Add("SQRT", new Sqrt(null));
-            functionPrototype.Add("STD", new Std(null));
-            functionPrototype.Add("STDDEV_POP", new StddevPop(null));
-            functionPrototype.Add("STDDEV_SAMP", new StddevSamp(null));
-            functionPrototype.Add("STDDEV", new Stddev(null));
-            functionPrototype.Add("STR_TO_DATE", new StrToDate(null));
-            functionPrototype.Add("STRCMP", new Strcmp(null));
-            functionPrototype.Add("SUBDATE", new Subdate(null));
-            functionPrototype.Add("SUBSTRING_INDEX", new SubstringIndex(null));
-            functionPrototype.Add("SUBTIME", new Subtime(null));
-            functionPrototype.Add("SYSDATE", new Sysdate(null));
-            functionPrototype.Add("SYSTEM_USER", new User(null));
-            functionPrototype.Add("TAN", new Tan(null));
-            functionPrototype.Add("TIME_FORMAT", new TimeFormat(null));
-            functionPrototype.Add("TIME_TO_SEC", new TimeToSec(null));
-            functionPrototype.Add("TIME", new Time(null));
-            functionPrototype.Add("TIMEDIFF", new Timediff(null));
-            functionPrototype.Add("TIMESTAMP", new Timestamp(null));
-            //        functionPrototype.Add("TIMESTAMPADD", new Timestampadd(null));
-            //        functionPrototype.Add("TIMESTAMPDIFF", new Timestampdiff(null));
-            functionPrototype.Add("TO_DAYS", new ToDays(null));
-            functionPrototype.Add("TO_SECONDS", new ToSeconds(null));
-            functionPrototype.Add("TRUNCATE", new Truncate(null));
-            functionPrototype.Add("UCASE", new Upper(null));
-            functionPrototype.Add("UNCOMPRESS", new Uncompress(null));
-            functionPrototype.Add("UNCOMPRESSED_LENGTH", new UncompressedLength(null));
-            functionPrototype.Add("UNHEX", new Unhex(null));
-            functionPrototype.Add("UNIX_TIMESTAMP", new UnixTimestamp(null));
-            functionPrototype.Add("UPDATEXML", new Updatexml(null));
-            functionPrototype.Add("UPPER", new Upper(null));
-            functionPrototype.Add("USER", new User(null));
-            functionPrototype.Add("UTC_DATE", new UtcDate(null));
-            functionPrototype.Add("UTC_TIME", new UtcTime(null));
-            functionPrototype.Add("UTC_TIMESTAMP", new UtcTimestamp(null));
-            functionPrototype.Add("UUID_SHORT", new UuidShort(null));
-            functionPrototype.Add("UUID", new Uuid(null));
-            functionPrototype.Add("VALUES", new Values(null));
-            functionPrototype.Add("VAR_POP", new VarPop(null));
-            functionPrototype.Add("VAR_SAMP", new VarSamp(null));
-            functionPrototype.Add("VARIANCE", new Variance(null));
-            functionPrototype.Add("VERSION", new Version(null));
-            functionPrototype.Add("WEEK", new Week(null));
-            functionPrototype.Add("WEEKDAY", new Weekday(null));
-            functionPrototype.Add("WEEKOFYEAR", new Weekofyear(null));
-            functionPrototype.Add("YEAR", new Year(null));
-            functionPrototype.Add("YEARWEEK", new Yearweek(null));
+            functionPrototype.TryAdd("ABS", new AbsFunc(null));
+            functionPrototype.TryAdd("ACOS", new ACosFunc(null));
+            functionPrototype.TryAdd("ADDDATE", new AdddateFunc(null));
+            functionPrototype.TryAdd("ADDTIME", new AddtimeFunc(null));
+            functionPrototype.TryAdd("AES_DECRYPT", new AesDecryptFunc(null));
+            functionPrototype.TryAdd("AES_ENCRYPT", new AesEncryptFunc(null));
+            functionPrototype.TryAdd("ANALYSE", new AnalyseFunc(null));
+            functionPrototype.TryAdd("ASCII", new AsciiFunc(null));
+            functionPrototype.TryAdd("ASIN", new ASinFunc(null));
+            functionPrototype.TryAdd("ATAN2", new ATan2Func(null));
+            functionPrototype.TryAdd("ATAN", new ATanFunc(null));
+            functionPrototype.TryAdd("BENCHMARK", new BenchmarkFunc(null));
+            functionPrototype.TryAdd("BIN", new BinFunc(null));
+            functionPrototype.TryAdd("BIT_AND", new BitAndFunc(null));
+            functionPrototype.TryAdd("BIT_COUNT", new BitCountFunc(null));
+            functionPrototype.TryAdd("BIT_LENGTH", new BitLengthFunc(null));
+            functionPrototype.TryAdd("BIT_OR", new BitOrFunc(null));
+            functionPrototype.TryAdd("BIT_XOR", new BitxOrFunc(null));
+            functionPrototype.TryAdd("CEIL", new CeilingFunc(null));
+            functionPrototype.TryAdd("CEILING", new CeilingFunc(null));
+            functionPrototype.TryAdd("CHAR_LENGTH", new CharLengthFunc(null));
+            functionPrototype.TryAdd("CHARACTER_LENGTH", new CharLengthFunc(null));
+            functionPrototype.TryAdd("CHARSET", new CharsetFunc(null));
+            functionPrototype.TryAdd("COALESCE", new CoalesceFunc(null));
+            functionPrototype.TryAdd("COERCIBILITY", new CoercibilityFunc(null));
+            functionPrototype.TryAdd("COLLATION", new CollationFunc(null));
+            functionPrototype.TryAdd("COMPRESS", new CompressFunc(null));
+            functionPrototype.TryAdd("CONCAT_WS", new ConcatWsFunc(null));
+            functionPrototype.TryAdd("CONCAT", new ConcatFunc(null));
+            functionPrototype.TryAdd("CONNECTION_ID", new ConnectionIdFunc(null));
+            functionPrototype.TryAdd("CONV", new ConvFunc(null));
+            functionPrototype.TryAdd("CONVERT_TZ", new ConvertTzFunc(null));
+            functionPrototype.TryAdd("COS", new CosFunc(null));
+            functionPrototype.TryAdd("COT", new CotFunc(null));
+            functionPrototype.TryAdd("CRC32", new Crc32Func(null));
+            functionPrototype.TryAdd("CURDATE", new CurdateFunc());
+            functionPrototype.TryAdd("CURRENT_DATE", new CurdateFunc());
+            functionPrototype.TryAdd("CURRENT_TIME", new CurtimeFunc());
+            functionPrototype.TryAdd("CURTIME", new CurtimeFunc());
+            functionPrototype.TryAdd("CURRENT_TIMESTAMP", new NowFunc());
+            functionPrototype.TryAdd("CURRENT_USER", new CurrentUserFunc());
+            functionPrototype.TryAdd("CURTIME", new CurtimeFunc());
+            functionPrototype.TryAdd("DATABASE", new DatabaseFunc(null));
+            functionPrototype.TryAdd("DATE_ADD", new DateAddFunc(null));
+            functionPrototype.TryAdd("DATE_FORMAT", new DateFormatFunc(null));
+            functionPrototype.TryAdd("DATE_SUB", new DateSubFunc(null));
+            functionPrototype.TryAdd("DATE", new DateFunc(null));
+            functionPrototype.TryAdd("DATEDIFF", new DateDiffFunc(null));
+            functionPrototype.TryAdd("DAY", new DayofMonthFunc(null));
+            functionPrototype.TryAdd("DAYOFMONTH", new DayofMonthFunc(null));
+            functionPrototype.TryAdd("DAYNAME", new DaynameFunc(null));
+            functionPrototype.TryAdd("DAYOFWEEK", new DayofWeekFunc(null));
+            functionPrototype.TryAdd("DAYOFYEAR", new DayofYearFunc(null));
+            functionPrototype.TryAdd("DECODE", new DecodeFunc(null));
+            functionPrototype.TryAdd("DEFAULT", new DefaultFunc(null));
+            functionPrototype.TryAdd("DEGREES", new DegreesFunc(null));
+            functionPrototype.TryAdd("DES_DECRYPT", new DesDecryptFunc(null));
+            functionPrototype.TryAdd("DES_ENCRYPT", new DesEncryptFunc(null));
+            functionPrototype.TryAdd("ELT", new EltFunc(null));
+            functionPrototype.TryAdd("ENCODE", new EncodeFunc(null));
+            functionPrototype.TryAdd("ENCRYPT", new EncryptFunc(null));
+            functionPrototype.TryAdd("EXP", new ExpFunc(null));
+            functionPrototype.TryAdd("EXPORT_SET", new ExportSetFunc(null));
+            //        functionPrototype.TryAdd("EXTRACT", new ExtractFunc(null));
+            functionPrototype.TryAdd("EXTRACTVALUE", new ExtractValueFunc(null));
+            functionPrototype.TryAdd("FIELD", new FieldFunc(null));
+            functionPrototype.TryAdd("FIND_IN_SET", new FindInSetFunc(null));
+            functionPrototype.TryAdd("FLOOR", new FloorFunc(null));
+            functionPrototype.TryAdd("FORMAT", new FormatFunc(null));
+            functionPrototype.TryAdd("FOUND_ROWS", new FoundRowsFunc(null));
+            functionPrototype.TryAdd("FROM_DAYS", new FromDaysFunc(null));
+            functionPrototype.TryAdd("FROM_UNIXTIME", new FromUnixtimeFunc(null));
+            //        functionPrototype.TryAdd("GET_FORMAT", new GetFormatFunc(null));
+            functionPrototype.TryAdd("GET_LOCK", new GetLockFunc(null));
+            functionPrototype.TryAdd("GREATEST", new GreatestFunc(null));
+            functionPrototype.TryAdd("HEX", new HexFunc(null));
+            functionPrototype.TryAdd("HOUR", new HourFunc(null));
+            functionPrototype.TryAdd("IF", new IfFunc(null));
+            functionPrototype.TryAdd("IFNULL", new IfNullFunc(null));
+            functionPrototype.TryAdd("INET_ATON", new InetAtonFunc(null));
+            functionPrototype.TryAdd("INET_NTOA", new InetNtoaFunc(null));
+            functionPrototype.TryAdd("INSERT", new InsertFunc(null));
+            functionPrototype.TryAdd("INSTR", new InstrFunc(null));
+            functionPrototype.TryAdd("INTERVAL", new IntervalFunc(null));
+            functionPrototype.TryAdd("IS_FREE_LOCK", new IsFreeLockFunc(null));
+            functionPrototype.TryAdd("IS_USED_LOCK", new IsUsedLockFunc(null));
+            functionPrototype.TryAdd("ISNULL", new IsNullFunc(null));
+            functionPrototype.TryAdd("LAST_DAY", new LastDayFunc(null));
+            functionPrototype.TryAdd("LAST_INSERT_ID", new LastInsertIdFunc(null));
+            functionPrototype.TryAdd("LCASE", new LowerFunc(null));
+            functionPrototype.TryAdd("LEAST", new LeastFunc(null));
+            functionPrototype.TryAdd("LEFT", new LeftFunc(null));
+            functionPrototype.TryAdd("LENGTH", new LengthFunc(null));
+            functionPrototype.TryAdd("LN", new LogFunc(null)); //Ln(X) equals Log(X)
+            functionPrototype.TryAdd("LOAD_FILE", new LoadFileFunc(null));
+            functionPrototype.TryAdd("LOCALTIME", new NowFunc());
+            functionPrototype.TryAdd("LOCALTIMESTAMP", new NowFunc());
+            functionPrototype.TryAdd("LOCATE", new LocateFunc(null));
+            functionPrototype.TryAdd("LOG10", new Log10Func(null));
+            functionPrototype.TryAdd("LOG2", new Log2Func(null));
+            functionPrototype.TryAdd("LOG", new LogFunc(null));
+            functionPrototype.TryAdd("LOWER", new LowerFunc(null));
+            functionPrototype.TryAdd("LPAD", new LpadFunc(null));
+            functionPrototype.TryAdd("LTRIM", new LtrimFunc(null));
+            functionPrototype.TryAdd("MAKE_SET", new MakeSetFunc(null));
+            functionPrototype.TryAdd("MAKEDATE", new MakedateFunc(null));
+            functionPrototype.TryAdd("MAKETIME", new MaketimeFunc(null));
+            functionPrototype.TryAdd("MASTER_POS_WAIT", new MasterPosWaitFunc(null));
+            functionPrototype.TryAdd("MD5", new Md5Func(null));
+            functionPrototype.TryAdd("MICROSECOND", new MicrosecondFunc(null));
+            functionPrototype.TryAdd("MID", new SubstringFunc(null));
+            functionPrototype.TryAdd("MINUTE", new MinuteFunc(null));
+            functionPrototype.TryAdd("MONTH", new MonthFunc(null));
+            functionPrototype.TryAdd("MONTHNAME", new MonthnameFunc(null));
+            functionPrototype.TryAdd("NAME_CONST", new NameConstFunc(null));
+            functionPrototype.TryAdd("NOW", new NowFunc());
+            functionPrototype.TryAdd("NULLIF", new NullIfFunc(null));
+            functionPrototype.TryAdd("OCT", new OctFunc(null));
+            functionPrototype.TryAdd("OCTET_LENGTH", new LengthFunc(null));
+            functionPrototype.TryAdd("OLD_PASSWORD", new OldPasswordFunc(null));
+            functionPrototype.TryAdd("ORD", new OrdFunc(null));
+            functionPrototype.TryAdd("PASSWORD", new PasswordFunc(null));
+            functionPrototype.TryAdd("PERIOD_ADD", new PeriodAddFunc(null));
+            functionPrototype.TryAdd("PERIOD_DIFF", new PeriodDiffFunc(null));
+            functionPrototype.TryAdd("PI", new PiFunc(null));
+            functionPrototype.TryAdd("POW", new PowFunc(null));
+            functionPrototype.TryAdd("POWER", new PowFunc(null));
+            functionPrototype.TryAdd("QUARTER", new QuarterFunc(null));
+            functionPrototype.TryAdd("QUOTE", new QuoteFunc(null));
+            functionPrototype.TryAdd("RADIANS", new RadiansFunc(null));
+            functionPrototype.TryAdd("RAND", new RandFunc(null));
+            functionPrototype.TryAdd("RELEASE_LOCK", new ReleaseLockFunc(null));
+            functionPrototype.TryAdd("REPEAT", new RepeatFunc(null));
+            functionPrototype.TryAdd("REPLACE", new ReplaceFunc(null));
+            functionPrototype.TryAdd("REVERSE", new ReverseFunc(null));
+            functionPrototype.TryAdd("RIGHT", new RightFunc(null));
+            functionPrototype.TryAdd("ROUND", new RoundFunc(null));
+            functionPrototype.TryAdd("ROW_COUNT", new RowCountFunc(null));
+            functionPrototype.TryAdd("RPAD", new RpadFunc(null));
+            functionPrototype.TryAdd("RTRIM", new RtrimFunc(null));
+            functionPrototype.TryAdd("SCHEMA", new DatabaseFunc(null));
+            functionPrototype.TryAdd("SEC_TO_TIME", new SecToTimeFunc(null));
+            functionPrototype.TryAdd("SECOND", new SecondFunc(null));
+            functionPrototype.TryAdd("SESSION_USER", new UserFunc(null));
+            functionPrototype.TryAdd("SHA1", new Sha1Func(null));
+            functionPrototype.TryAdd("SHA", new Sha1Func(null));
+            functionPrototype.TryAdd("SHA2", new Sha2Func(null));
+            functionPrototype.TryAdd("SIGN", new SignFunc(null));
+            functionPrototype.TryAdd("SIN", new SinFunc(null));
+            functionPrototype.TryAdd("SLEEP", new SleepFunc(null));
+            functionPrototype.TryAdd("SOUNDEX", new SoundexFund(null));
+            functionPrototype.TryAdd("SPACE", new SpaceFunc(null));
+            functionPrototype.TryAdd("SQRT", new SqrtFunc(null));
+            functionPrototype.TryAdd("STD", new StdFunc(null));
+            functionPrototype.TryAdd("STDDEV_POP", new StddevPopFunc(null));
+            functionPrototype.TryAdd("STDDEV_SAMP", new StddevSampFunc(null));
+            functionPrototype.TryAdd("STDDEV", new StddevFunc(null));
+            functionPrototype.TryAdd("STR_TO_DATE", new StrToDateFunc(null));
+            functionPrototype.TryAdd("STRCMP", new StrcmpFunc(null));
+            functionPrototype.TryAdd("SUBDATE", new SubdateFunc(null));
+            functionPrototype.TryAdd("SUBSTRING_INDEX", new SubstringIndexFunc(null));
+            functionPrototype.TryAdd("SUBTIME", new SubtimeFunc(null));
+            functionPrototype.TryAdd("SYSDATE", new SysdateFunc(null));
+            functionPrototype.TryAdd("SYSTEM_USER", new UserFunc(null));
+            functionPrototype.TryAdd("TAN", new TanFunc(null));
+            functionPrototype.TryAdd("TIME_FORMAT", new TimeFormatFunc(null));
+            functionPrototype.TryAdd("TIME_TO_SEC", new TimeToSecFunc(null));
+            functionPrototype.TryAdd("TIME", new TimeFunc(null));
+            functionPrototype.TryAdd("TIMEDIFF", new TimediffFunc(null));
+            functionPrototype.TryAdd("TIMESTAMP", new TimestampFunc(null));
+            //        functionPrototype.TryAdd("TIMESTAMPADD", new TimestampaddFunc(null));
+            //        functionPrototype.TryAdd("TIMESTAMPDIFF", new TimestampdiffFunc(null));
+            functionPrototype.TryAdd("TO_DAYS", new ToDaysFunc(null));
+            functionPrototype.TryAdd("TO_SECONDS", new ToSecondsFunc(null));
+            functionPrototype.TryAdd("TRUNCATE", new TruncateFunc(null));
+            functionPrototype.TryAdd("UCASE", new UpperFunc(null));
+            functionPrototype.TryAdd("UNCOMPRESS", new UncompressFunc(null));
+            functionPrototype.TryAdd("UNCOMPRESSED_LENGTH", new UncompressedLengthFunc(null));
+            functionPrototype.TryAdd("UNHEX", new UnhexFunc(null));
+            functionPrototype.TryAdd("UNIX_TIMESTAMP", new UnixTimestampFunc(null));
+            functionPrototype.TryAdd("UPDATEXML", new UpdateXmlFunc(null));
+            functionPrototype.TryAdd("UPPER", new UpperFunc(null));
+            functionPrototype.TryAdd("USER", new UserFunc(null));
+            functionPrototype.TryAdd("UTC_DATE", new UtcDateFunc(null));
+            functionPrototype.TryAdd("UTC_TIME", new UtcTimeFunc(null));
+            functionPrototype.TryAdd("UTC_TIMESTAMP", new UtcTimestampFunc(null));
+            functionPrototype.TryAdd("UUID_SHORT", new UuidShortFunc(null));
+            functionPrototype.TryAdd("UUID", new UuidFunc(null));
+            functionPrototype.TryAdd("VALUES", new ValuesFunc(null));
+            functionPrototype.TryAdd("VAR_POP", new VarPopFunc(null));
+            functionPrototype.TryAdd("VAR_SAMP", new VarSampFunc(null));
+            functionPrototype.TryAdd("VARIANCE", new VarianceFunc(null));
+            functionPrototype.TryAdd("VERSION", new VersionFunc(null));
+            functionPrototype.TryAdd("WEEK", new WeekFunc(null));
+            functionPrototype.TryAdd("WEEKDAY", new WeekdayFunc(null));
+            functionPrototype.TryAdd("WEEKOFYEAR", new WeekofyearFunc(null));
+            functionPrototype.TryAdd("YEAR", new YearFunc(null));
+            functionPrototype.TryAdd("YEARWEEK", new YearweekFunc(null));
+        }
+
+        public void AddExtendFunction(Dictionary<string, FunctionExpression> extFuncs)
+        {
+            if (extFuncs == null || extFuncs.Count == 0)
+                return;
+            if (!allowFuncDefChange)
+                throw new NotImplementedException("function define is not allowed to be changed");
+
+            foreach (var item in extFuncs)
+            {
+                string funcName = item.Key;
+                if (String.IsNullOrEmpty(funcName))
+                    continue;
+                string funcNameup = funcName.ToUpper();
+                if (functionPrototype.ContainsKey(funcNameup))
+                    throw new ArgumentException("ext-function '" + funcName + "' is MySQL's predefined function!");
+                FunctionExpression func = item.Value;
+                if(func == null)
+                    throw new ArgumentException("ext-function '" + funcName + "' is not define!");
+                functionPrototype.TryAdd(funcNameup, func);
+            }
+        }
+
+        public FunctionExpression CreateFunctionExpression(string funcNameUpcase, List<IExpression> arguments)
+        {
+            FunctionExpression prototype;
+            if (functionPrototype.TryGetValue(funcNameUpcase, out prototype))
+            {
+                FunctionExpression func = prototype.ConstructFunction(arguments);
+                func.init();
+                return func;
+            }
+            return null;
+        }
+
+        public FunctionParsingStrategy GetParsingStrategy(string funcNameUpcase)
+        {
+            FunctionParsingStrategy s = parsingStrateg[funcNameUpcase];
+            if (s == null)
+            {
+                if (functionPrototype.ContainsKey(funcNameUpcase))
+                    return FunctionParsingStrategy._ORDINARY;
+                return FunctionParsingStrategy._DEFAULT;
+            }
+            return s;
         }
     }
 }

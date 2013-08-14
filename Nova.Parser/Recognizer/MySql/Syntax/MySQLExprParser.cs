@@ -10,8 +10,9 @@ namespace Nova.Parser
         private string charset;
         private MySQLFunctionManager functionManager;
 
-        public MySQLExprParser(MySQLLexer lexer)
+        public MySQLExprParser(MySQLLexer lexer) : this(lexer,MySQLFunctionManager.
         {
+
         }
 
         public MySQLExprParser(MySQLLexer lexer, string charset) : this(lexer,MySQLFunctionManager.

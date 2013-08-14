@@ -26,6 +26,10 @@ namespace Nova.Parser
         public int ParamIndex { get { return paramIndex; } }
         public string StringValueUppercase { get { return stringValueUppercase; } }
         public string StringValue { get { return stringValue; } }
+        public int CurrentIndex { get { return curIndex; } }
+        public char[] SQL { get { return sql; } }
+        public int OffsetCache { get { return offsetCache; } }
+        public int SizeCache { get { return sizeCache; } }
 
         public MySQLLexer(char[] sql)
         {
@@ -1025,10 +1029,11 @@ namespace Nova.Parser
                 throw new ArgumentException("eof for sql is already reached, cannot get new token");
 
             MySQLToken t;
-            do{
+            do
+            {
                 SkipSeparator();
                 t = NextTokenInternal();
-            }while(inCStyleComment && inCStyleCommentIgnore || MySQLToken.PUNC_C_STYLE_COMMENT_END ==t)
+            } while (inCStyleComment && inCStyleCommentIgnore || MySQLToken.PUNC_C_STYLE_COMMENT_END == t);
             return t;
         }
 
