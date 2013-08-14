@@ -5,16 +5,16 @@ using System.Text;
 
 namespace Nova.Parser
 {
-    public class OtcFunc : FunctionExpression
+    public class OctFunc : FunctionExpression
     {
-        public OtcFunc(List<IExpression> arguments)
-            : base("OTC", arguments)
+        public OctFunc(List<IExpression> arguments)
+            : base("OCT", arguments)
         {
         }
 
         public override FunctionExpression ConstructFunction(List<IExpression> arguments)
         {
-            return new OtcFunc(arguments);
+            return new OctFunc(arguments);
         }
     }
 }

@@ -7,15 +7,15 @@ namespace Nova.Parser
 {
     public class CurdateFunc : FunctionExpression
     {
-        public CurdateFunc(List<IExpression> arguments)
-            : base("CURDATE", arguments)
+        public CurdateFunc()
+            : base("CURDATE", null)
         {
 
         }
 
         public override FunctionExpression ConstructFunction(List<IExpression> arguments)
         {
-            return new CurdateFunc(arguments);
+            return new CurdateFunc();
         }
     }
 }

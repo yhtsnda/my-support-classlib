@@ -7,15 +7,15 @@ namespace Nova.Parser
 {
     public class CurrentUserFunc : FunctionExpression
     {
-        public CurrentUserFunc(List<IExpression> args)
-            : base("CURRENT_USER", args)
+        public CurrentUserFunc()
+            : base("CURRENT_USER", null)
         {
 
         }
 
         public override FunctionExpression ConstructFunction(List<IExpression> arguments)
         {
-            return new CurrentUserFunc(arguments);
+            return new CurrentUserFunc();
         }
     }
 }

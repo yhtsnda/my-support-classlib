@@ -42,7 +42,7 @@ namespace Nova.Parser
             visitor.Visit<SelectStatement>(this);
         }
 
-        public sealed static class SelectOption
+        public sealed class SelectOption
         {
             public SelectDuplicationStrategy resultDup = SelectDuplicationStrategy.All;
             public bool highPriority = false;
