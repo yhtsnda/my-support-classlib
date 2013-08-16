@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expression\BinaryOperatorExpression.cs" />
     <Compile Include="Expression\Primary\CaseWenOperatorExpression.cs" />
     <Compile Include="Expression\Primary\DefaultValue.cs" />
     <Compile Include="Expression\Primary\ExistsPrimary.cs" />
@@ -152,7 +153,7 @@
     <Compile Include="Expression\Primary\Function\String\FormatFunc.cs" />
     <Compile Include="Expression\Primary\Function\Xml\ExtractValueFunc.cs" />
     <Compile Include="Fragment\TableRef\AliasableTableReference.cs" />
-    <Compile Include="Dual.cs" />
+    <Compile Include="Util\Dual.cs" />
     <Compile Include="Expression\Primary\PlaceHolder.cs" />
     <Compile Include="Expression\Primary\Function\FunctionExpression.cs" />
     <Compile Include="Expression\Primary\Function\Comparison\GreatestFunc.cs" />
@@ -161,10 +162,10 @@
     <Compile Include="Expression\Primary\Function\FlowCtrl\IfNullFunc.cs" />
     <Compile Include="Expression\Primary\Function\Misc\GetLockFunc.cs" />
     <Compile Include="Expression\Primary\Function\String\HexFunc.cs" />
-    <Compile Include="IndexHint.cs" />
+    <Compile Include="Util\IndexHint.cs" />
     <Compile Include="Expression\Primary\Function\Misc\InetAtonFunc.cs" />
     <Compile Include="Expression\Primary\Function\Misc\InetNtoaFunc.cs" />
-    <Compile Include="InnerJoin.cs" />
+    <Compile Include="Fragment\TableRef\InnerJoin.cs" />
     <Compile Include="Expression\Primary\Literal\IntervalPrimary.cs" />
     <Compile Include="Expression\Primary\Literal\Literal.cs" />
     <Compile Include="Expression\Primary\Literal\LiteralBitField.cs" />
@@ -208,24 +209,31 @@
     <Compile Include="Expression\Primary\Function\String\OrdFunc.cs" />
     <Compile Include="Expression\Primary\Function\String\QuoteFunc.cs" />
     <Compile Include="Expression\Primary\MatchExpression.cs" />
+    <Compile Include="Expression\Logical\LogicalAndExpression.cs" />
+    <Compile Include="Expression\Logical\LogicalNotExpression.cs" />
+    <Compile Include="Expression\Logical\LogicalOrExpression.cs" />
+    <Compile Include="Expression\Logical\LogicalXORExpression.cs" />
+    <Compile Include="Expression\Logical\NegativeValueExpression.cs" />
+    <Compile Include="Expression\PolyadicOperatorExpression.cs" />
+    <Compile Include="Expression\IReplacableExpression.cs" />
     <Compile Include="Recognizer\MySql\Syntax\MySQLCallParser.cs" />
-    <Compile Include="MySQLDALParser.cs" />
+    <Compile Include="Recognizer\MySql\Syntax\MySQLDALParser.cs" />
     <Compile Include="Recognizer\MySql\Syntax\MySQLDeleteParser.cs" />
     <Compile Include="Recognizer\MySql\Syntax\MySQLDMLParser.cs" />
     <Compile Include="Recognizer\MySql\Syntax\MySQLExprParser.cs" />
-    <Compile Include="MySQLFunctionManager.cs" />
+    <Compile Include="Recognizer\MySql\MySQLFunctionManager.cs" />
     <Compile Include="Recognizer\MySql\Syntax\MySQLInsertParser.cs" />
     <Compile Include="Recognizer\MySql\Syntax\MySQLInsertReplaceParser.cs" />
     <Compile Include="Recognizer\MySql\Lexer\MySQLKeywords.cs" />
     <Compile Include="Recognizer\MySql\Lexer\MySQLLexer.cs" />
-    <Compile Include="MySQLMTParser.cs" />
+    <Compile Include="Recognizer\MySql\Syntax\MySQLMTParser.cs" />
     <Compile Include="Recognizer\MySql\MySQLParser.cs" />
     <Compile Include="Recognizer\MySql\Syntax\MySQLReplaceParser.cs" />
     <Compile Include="Recognizer\MySql\Syntax\MySQLSelectParser.cs" />
     <Compile Include="Recognizer\MySql\MySQLToken.cs" />
     <Compile Include="Recognizer\MySql\Syntax\MySQLUpdateParser.cs" />
-    <Compile Include="NaturalJoin.cs" />
-    <Compile Include="OuterJoin.cs" />
+    <Compile Include="Fragment\TableRef\NaturalJoin.cs" />
+    <Compile Include="Fragment\TableRef\OuterJoin.cs" />
     <Compile Include="Expression\Primary\SysVarPrimary.cs" />
     <Compile Include="Expression\Primary\ParamMarker.cs" />
     <Compile Include="Expression\Primary\Function\Arithmetic\RoundFunc.cs" />
@@ -263,12 +271,15 @@
     <Compile Include="Expression\Primary\Function\Xml\UpdateXmlFunc.cs" />
     <Compile Include="Expression\Primary\UserDefVarPrimary.cs" />
     <Compile Include="Recognizer\SQLParserDelegate.cs" />
+    <Compile Include="Expression\UnaryOperatorExpression.cs" />
+    <Compile Include="Expression\TernaryOperatorExpression.cs" />
     <Compile Include="Util\BigDecimal.cs" />
     <Compile Include="Util\CharTypes.cs" />
+    <Compile Include="Util\ExprEvalUtils.cs" />
     <Compile Include="Util\ParseString.cs" />
-    <Compile Include="StraightJoin.cs" />
-    <Compile Include="SubqueryFactor.cs" />
-    <Compile Include="TableRefFactor.cs" />
+    <Compile Include="Fragment\TableRef\StraightJoin.cs" />
+    <Compile Include="Fragment\TableRef\SubqueryFactor.cs" />
+    <Compile Include="Fragment\TableRef\TableRefFactor.cs" />
     <Compile Include="Expression\Primary\VariableExpression.cs" />
     <Compile Include="Expression\Primary\Function\Groupby\VarianceFunc.cs" />
     <Compile Include="Expression\Primary\Function\Groupby\VarPopFunc.cs" />
@@ -279,13 +290,13 @@
     <Compile Include="Expression\Primary\Function\Misc\ValuesFunc.cs" />
     <Compile Include="Visitor\EmptySQLASTVisitor.cs" />
     <Compile Include="Expression\AbstractExpression.cs" />
-    <Compile Include="Fragment\Basic\GroupByFragment.cs" />
+    <Compile Include="Fragment\GroupByFragment.cs" />
     <Compile Include="Fragment\TableRef\ITableReference.cs" />
-    <Compile Include="Fragment\Basic\LimitFragment.cs" />
-    <Compile Include="Fragment\Basic\OrderByFragment.cs" />
+    <Compile Include="Fragment\LimitFragment.cs" />
+    <Compile Include="Fragment\OrderByFragment.cs" />
     <Compile Include="Expression\Primary\RowExpression.cs" />
-    <Compile Include="Fragment\Basic\SortOrderFragment.cs" />
-    <Compile Include="Fragment\Basic\SortOrderType.cs" />
+    <Compile Include="Fragment\SortOrderFragment.cs" />
+    <Compile Include="Fragment\SortOrderType.cs" />
     <Compile Include="Statement\DML\DeleteStatement.cs" />
     <Compile Include="Statement\DML\InsertReplaceStatement.cs" />
     <Compile Include="Statement\DML\InsertStatement.cs" />
@@ -295,12 +306,12 @@
     <Compile Include="Statement\DML\SelectUnionStatement.cs" />
     <Compile Include="Statement\DML\Statement.cs" />
     <Compile Include="Statement\DML\UpdateStatement.cs" />
-    <Compile Include="ExpressionConst.cs" />
+    <Compile Include="Util\ExpressionConst.cs" />
     <Compile Include="Expression\ExpressionPrecedence.cs" />
     <Compile Include="AST\IASTNode.cs" />
     <Compile Include="Fragment\TableRef\TableReferencePrecedence.cs" />
     <Compile Include="Fragment\TableRef\TableReferences.cs" />
-    <Compile Include="VariableScope.cs" />
+    <Compile Include="Util\VariableScope.cs" />
     <Compile Include="Visitor\IASTVisitor.cs" />
     <Compile Include="Expression\Primary\Identifier.cs" />
     <Compile Include="Expression\IExpression.cs" />
@@ -313,7 +324,9 @@
     <Compile Include="Statement\DML\StatementType.cs" />
     <Compile Include="Expression\Primary\Wildcard.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Expression\Arithmeic\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Nova.Parser.cd" />
   </ItemGroup>
