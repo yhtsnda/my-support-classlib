@@ -10,12 +10,14 @@ namespace Nova.Parser
         private string charset;
         private MySQLFunctionManager functionManager;
 
-        public MySQLExprParser(MySQLLexer lexer) : this(lexer,MySQLFunctionManager.
+        public MySQLExprParser(MySQLLexer lexer)
+            : this(lexer, MySQLFunctionManager.Instance, true, DEFAULT_CHARSET)
         {
 
         }
 
-        public MySQLExprParser(MySQLLexer lexer, string charset) : this(lexer,MySQLFunctionManager.
+        public MySQLExprParser(MySQLLexer lexer, string charset)
+            : this(lexer, MySQLFunctionManager.Instance, true, charset)
         {
 
         }
@@ -29,5 +31,32 @@ namespace Nova.Parser
         }
 
         public MySQLSelectParser SelectParser { get; set; }
+
+        public IExpression Expression()
+        {
+            MySQLToken token = lexer.Token();
+            if (token == null)
+                token = lexer.NextToken();
+            if (token == MySQLToken.EOF)
+                throw new ArgumentException("unexpected EOF");
+            
+            IExpression left =
+        }
+
+        private IExpression LogicalOrExpression()
+        {
+        }
+
+        private IExpression LogicalAndExpression()
+        {
+        }
+
+        private IExpression LogicalNotExpression()
+        {
+        }
+
+        private IExpression LogicalXOrExpression()
+        {
+        }
     }
 }
