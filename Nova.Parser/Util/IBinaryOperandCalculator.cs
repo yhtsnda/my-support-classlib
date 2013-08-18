@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Nova.Parser
 {
-    public interface IUnaryOperandCalculator
+    public interface IBinaryOperandCalculator
     {
         TNumber Calculate<TNumber>(TNumber number1, TNumber number2);
     }

@@ -9,12 +9,12 @@ namespace Nova.Parser
     {
         public override string GetOperator()
         {
-            throw new NotImplementedException();
+            return "+";
         }
 
         public override void Accept(IASTVisitor visitor)
         {
-            throw new NotImplementedException();
+            visitor.Visit<ArithmeticAddExpression>(this);
         }
     }
 }
