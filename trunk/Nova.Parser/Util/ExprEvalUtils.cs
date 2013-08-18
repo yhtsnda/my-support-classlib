@@ -7,10 +7,10 @@ namespace Nova.Parser
 {
     public class ExprEvalUtils
     {
-        private const int CLASS_MAP_DOUBLE = 1;
-        private const int CLASS_MAP_FLOAT = 2;
-        private const int CLASS_MAP_BIG_ING = 3;
-        private const int CLASS_MAP_BIG_DECIMAL = 4;
-        private const int CLASS_MAP_LONG = 5;
+        public void ConvertToSaveLevel(object obj1, object obj2)
+        {
+            Type type1 = typeof(obj1);
+            Type type2 = typeof(obj2);
+        }
     }
 }
