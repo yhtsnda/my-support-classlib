@@ -14,7 +14,7 @@ namespace Nova.Parser
         {
         }
 
-        public abstract TNumber Calculate<TNumber>(TNumber number1, TNumber number2)
+        public abstract TNumber Calculate<TNumber>(TNumber number1, TNumber number2);
 
         protected override object EvaluationInternal(IDictionary<object, object> parameters)
         {
@@ -25,7 +25,7 @@ namespace Nova.Parser
                 return null;
             if (left == UnEvaluatable || right == UnEvaluatable)
                 return UnEvaluatable;
-
+            return null;
         }
 
         
