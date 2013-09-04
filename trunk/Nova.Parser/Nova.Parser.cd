@@ -1660,19 +1660,20 @@
       <FileName>Expression\Arithmeic\ArithmeticDivideExpression.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Nova.Parser.ArithmeticBinaryOperatorExpression">
-    <Position X="209.5" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Expression\Arithmeic\ArithmeticBinaryOperatorExpression.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Nova.Parser.ArithmeticAddExpression">
     <Position X="209.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Expression\Arithmeic\ArithmeticAddExpression.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="Nova.Parser.ArithmeticBinaryOperatorExpression">
+    <Position X="209" Y="5.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Expression\Arithmeic\ArithmeticBinaryOperatorExpression.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="Nova.Parser.IASTNode">
     <Position X="4" Y="4.5" Width="1.5" />

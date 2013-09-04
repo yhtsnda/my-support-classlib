@@ -40,6 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expression\Arithmeic\ArithmeticAddExpression.cs" />
+    <Compile Include="Expression\Arithmeic\ArithmeticBinaryOperatorExpression.cs" />
+    <Compile Include="Expression\Arithmeic\ArithmeticDivideExpression.cs" />
+    <Compile Include="Expression\Arithmeic\ArithmeticIntegerDivideExpression.cs" />
+    <Compile Include="Expression\Arithmeic\ArithmeticModExpression.cs" />
+    <Compile Include="Expression\Arithmeic\ArithmeticMultiplyExpression.cs" />
+    <Compile Include="Expression\Arithmeic\ArithmeticSubtractExpression.cs" />
     <Compile Include="Expression\BinaryOperatorExpression.cs" />
     <Compile Include="Expression\Primary\CaseWenOperatorExpression.cs" />
     <Compile Include="Expression\Primary\DefaultValue.cs" />
@@ -153,6 +160,9 @@
     <Compile Include="Expression\Primary\Function\String\FormatFunc.cs" />
     <Compile Include="Expression\Primary\Function\Xml\ExtractValueFunc.cs" />
     <Compile Include="Fragment\TableRef\AliasableTableReference.cs" />
+    <Compile Include="Util\IBinaryOperandCalculator.cs" />
+    <Compile Include="Util\IUnaryOperandCalculator.cs" />
+    <Compile Include="Expression\Arithmeic\MinusExpression.cs" />
     <Compile Include="Util\Dual.cs" />
     <Compile Include="Expression\Primary\PlaceHolder.cs" />
     <Compile Include="Expression\Primary\Function\FunctionExpression.cs" />
@@ -324,9 +334,7 @@
     <Compile Include="Statement\DML\StatementType.cs" />
     <Compile Include="Expression\Primary\Wildcard.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Expression\Arithmeic\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Nova.Parser.cd" />
   </ItemGroup>

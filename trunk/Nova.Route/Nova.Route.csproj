@@ -44,13 +44,14 @@
     <Compile Include="PartitionFunction\LongPartitionFunction.cs" />
     <Compile Include="PartitionFunction\PairPartition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utili\RouteRuleInitializer.cs" />
-    <Compile Include="Utili\RouteException.cs" />
-    <Compile Include="Utili\RouteResultset.cs" />
-    <Compile Include="Utili\RouteResultsetNode.cs" />
-    <Compile Include="Utili\ServerRouter.cs" />
+    <Compile Include="RouteRuleInitializer.cs" />
+    <Compile Include="RouteException.cs" />
+    <Compile Include="RouteResultset.cs" />
+    <Compile Include="RouteResultsetNode.cs" />
+    <Compile Include="ServerRouter.cs" />
     <Compile Include="PartitionFunction\SinglePartition.cs" />
     <Compile Include="PartitionFunction\StringPartitionFunction.cs" />
+    <Compile Include="Utili\PartitionUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nova.Route.cd" />
