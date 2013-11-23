@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78FC7BA4-BCF2-4E90-A185-DEC2FD16B2A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Avalon.Utility</RootNamespace>
+    <AssemblyName>Avalon.Utility</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\ConfigurationException.cs" />
+    <Compile Include="Configuration\InnerManager.cs" />
+    <Compile Include="Configuration\SettingNode.cs" />
+    <Compile Include="Configuration\ToolSection.cs" />
+    <Compile Include="Configuration\ToolSettingUtil.cs" />
+    <Compile Include="Extend\ArrayExtend.cs" />
+    <Compile Include="Extend\AvalonException.cs" />
+    <Compile Include="Extend\CollectionExtend.cs" />
+    <Compile Include="Extend\DateTimeExtend.cs" />
+    <Compile Include="Extend\DirectoryExtend.cs" />
+    <Compile Include="Extend\EnumerableExtend.cs" />
+    <Compile Include="Extend\LinqExtend.cs" />
+    <Compile Include="Extend\StringExtend.cs" />
+    <Compile Include="Lock\ILock.cs" />
+    <Compile Include="Lock\ILockFactory.cs" />
+    <Compile Include="Lock\LockManager.cs" />
+    <Compile Include="Lock\NullLockFactory.cs" />
+    <Compile Include="Log\ConsoleLog.cs" />
+    <Compile Include="Log\DefaultLogFactory.cs" />
+    <Compile Include="Log\ILog.cs" />
+    <Compile Include="Log\ILogFactory.cs" />
+    <Compile Include="Log\LogManager.cs" />
+    <Compile Include="Log\NullLoggerFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\DeepCloneExtend.cs" />
+    <Compile Include="Reflection\DelegateAccessor.cs" />
+    <Compile Include="Reflection\FastActivator.cs" />
+    <Compile Include="Reflection\TypeAccessor.cs" />
+    <Compile Include="Result\ApiResultCode.cs" />
+    <Compile Include="Result\InvokeResult.cs" />
+    <Compile Include="Result\IValidator.cs" />
+    <Compile Include="Result\PagingResult.cs" />
+    <Compile Include="Result\ValidationResult.cs" />
+    <Compile Include="Result\ValidatorException.cs" />
+    <Compile Include="Result\VoidValue.cs" />
+    <Compile Include="Settings\DefaultSettingProvider.cs" />
+    <Compile Include="Settings\ISetting.cs" />
+    <Compile Include="Settings\ISettingProvider.cs" />
+    <Compile Include="Settings\SettingProvider.cs" />
+    <Compile Include="ShardParams.cs" />
+    <Compile Include="Util\AcquireLock.cs" />
+    <Compile Include="Util\Base58Encoding.cs" />
+    <Compile Include="Util\CookieAuthentication.cs" />
+    <Compile Include="Util\FileHelper.cs" />
+    <Compile Include="Util\HttpContextExtend.cs" />
+    <Compile Include="Util\ImageHelper.cs" />
+    <Compile Include="Util\InterfaceValidator.cs" />
+    <Compile Include="Util\IpAddress.cs" />
+    <Compile Include="Util\JsonConverter.cs" />
+    <Compile Include="Util\MySqlTraceListener.cs" />
+    <Compile Include="Util\NetworkTime.cs" />
+    <Compile Include="Result\OpenApiResult.cs" />
+    <Compile Include="Util\ProtoInt.cs" />
+    <Compile Include="Util\RegexPattern.cs" />
+    <Compile Include="Util\RegistrationHelper.cs" />
+    <Compile Include="Util\RoutePathAttribute.cs" />
+    <Compile Include="Util\StringUtil.cs" />
+    <Compile Include="Util\TreeLookup.cs" />
+    <Compile Include="Util\UriPath.cs" />
+    <Compile Include="Extend\ValidatorExtend.cs" />
+    <Compile Include="Extend\ObjectValueExtend.cs" />
+    <Compile Include="Util\ZipUtil.cs" />
+    <Compile Include="Validation\Arguments.cs" />
+    <Compile Include="Validation\ArgumentStrings.cs" />
+    <Compile Include="Workbenches\IWorkbenchModule.cs" />
+    <Compile Include="Workbenches\Workbench.cs" />
+    <Compile Include="Workbenches\WorkbenchModule.cs" />
+    <Compile Include="Workbenches\WorkbenchUtil.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

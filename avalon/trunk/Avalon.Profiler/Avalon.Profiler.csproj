@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{615883DD-8819-41AD-A4EF-42757BEEDDD2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Avalon.Profiler</RootNamespace>
+    <AssemblyName>Avalon.Profiler</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accumlator\Accumlator.cs" />
+    <Compile Include="Accumlator\AccumlatorDataInt32.cs" />
+    <Compile Include="Accumlator\AccumlatorDataInt64.cs" />
+    <Compile Include="Accumlator\AccumlatorType.cs" />
+    <Compile Include="Accumlator\RegionAccumlator.cs" />
+    <Compile Include="Command\CommandService.cs" />
+    <Compile Include="Profiler\Datas\ProfilerData.cs" />
+    <Compile Include="Profiler\Datas\ProfilerServiceData.cs" />
+    <Compile Include="Profiler\Datas\RequestData.cs" />
+    <Compile Include="Profiler\Datas\RequestItem.cs" />
+    <Compile Include="Profiler\Datas\TraceItem.cs" />
+    <Compile Include="Profiler\Datas\WatchItem.cs" />
+    <Compile Include="Profiler\IProfilerSerializer.cs" />
+    <Compile Include="Profiler\ProfilerContext.cs" />
+    <Compile Include="Command\ProfilerCommandService.cs" />
+    <Compile Include="Profiler\ProfilerMode.cs" />
+    <Compile Include="Profiler\ProfilerModule.cs" />
+    <Compile Include="Profiler\ProfilerService.cs" />
+    <Compile Include="Profiler\ProfilerSetting.cs" />
+    <Compile Include="Profiler\ProfilerUtil.cs" />
+    <Compile Include="Profiler\ProfileStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stat\StatGroup.cs" />
+    <Compile Include="Command\StatCommandService.cs" />
+    <Compile Include="Stat\StatService.cs" />
+    <Compile Include="Stat\StatServiceData.cs" />
+    <Compile Include="Stat\StatSetting.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Avalon.Utility\Avalon.Utility.csproj">
+      <Project>{78fc7ba4-bcf2-4e90-a185-dec2fd16b2a7}</Project>
+      <Name>Avalon.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
