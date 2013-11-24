@@ -30,7 +30,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\NHibernateCombine.1.0.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\NHibernateCombine.1.0.0\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoCombine.1.0.0\lib\net40\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\MongoCombine.1.0.0\lib\net40\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernateCombine.1.0.0\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,8 +55,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Mongo\Linq\MongoExpressionTreeVistor.cs" />
+    <Compile Include="Mongo\Linq\MongoNodeTypeProvider.cs" />
+    <Compile Include="Mongo\Linq\MongoQueryExecutor.cs" />
+    <Compile Include="Mongo\Linq\MongoQueryModelVistor.cs" />
+    <Compile Include="Mongo\Linq\MongoQueryParser.cs" />
+    <Compile Include="Mongo\Linq\MonogQueryable.cs" />
+    <Compile Include="Mongo\Linq\QueryData.cs" />
+    <Compile Include="Mongo\MongoManager.cs" />
+    <Compile Include="Mongo\MongoMap.cs" />
+    <Compile Include="Mongo\MongoRepositoryExtend.cs" />
+    <Compile Include="Mongo\MongoServerDetector.cs" />
+    <Compile Include="Mongo\MongoSession.cs" />
+    <Compile Include="Mongo\MongoShardSession.cs" />
+    <Compile Include="Mongo\MongoShardSessionFactory.cs" />
+    <Compile Include="Mongo\MongoSpecification.cs" />
+    <Compile Include="Mongo\MongoSpecificationProvider.cs" />
+    <Compile Include="Mongo\SettingProviders\MongoSettingProvider.cs" />
+    <Compile Include="NHibernate\Events\RaiseEventListener.cs" />
+    <Compile Include="NHibernate\NHibernateDatabaseServerDetector.cs" />
+    <Compile Include="NHibernate\NHibernateMappingExtend.cs" />
+    <Compile Include="NHibernate\NHibernateOriginalObjectProvider.cs" />
+    <Compile Include="NHibernate\NHibernateRepositoryExtend.cs" />
+    <Compile Include="NHibernate\NHibernateShardSession.cs" />
+    <Compile Include="NHibernate\NHibernateShardSessionFactory.cs" />
+    <Compile Include="NHibernate\NHibernateSpecification.cs" />
+    <Compile Include="NHibernate\NHibernateSpecificationProvider.cs" />
+    <Compile Include="NHibernate\ProfilterLoggerFactory.cs" />
+    <Compile Include="NHibernate\Projections\ArithmeticOperatorProjection.cs" />
+    <Compile Include="NHibernate\Projections\OperatorProjection.cs" />
+    <Compile Include="NHibernate\QueryOverProjectionBuilderExtend.cs" />
+    <Compile Include="NHibernate\Querys\LinqToSqls\JoinExpressionVisitor.cs" />
+    <Compile Include="NHibernate\Querys\LinqToSqls\LinqToSqlVisitor.cs" />
+    <Compile Include="NHibernate\Querys\LinqToSqls\QueryEntityManager.cs" />
+    <Compile Include="NHibernate\Querys\LinqToSqls\SqlBuilder.cs" />
+    <Compile Include="NHibernate\Querys\LinqToSqls\SqlMode.cs" />
+    <Compile Include="NHibernate\Querys\NHibernateQuerySourceProvider.cs" />
+    <Compile Include="NHibernate\Querys\NHibernateQuerySpecification.cs" />
+    <Compile Include="NHibernate\Querys\NHibernateQuerySpecificationProvider.cs" />
+    <Compile Include="NHibernate\SessionExtend.cs" />
+    <Compile Include="NHibernate\SessionManager.cs" />
+    <Compile Include="NHibernate\ShardInterceptor.cs" />
+    <Compile Include="NHibernate\StatisticsImplWapper.cs" />
+    <Compile Include="NHibernate\UserType\AbstractUserType.cs" />
+    <Compile Include="NHibernate\UserType\JsonClobListUserType.cs" />
+    <Compile Include="NHibernate\UserType\JsonClobUserType.cs" />
+    <Compile Include="NHibernate\UserType\JsonListUserType.cs" />
+    <Compile Include="NHibernate\UserType\JsonUserType.cs" />
+    <Compile Include="NHibernate\UserType\ScoreUserType.cs" />
+    <Compile Include="NHibernate\UserType\SplitUserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Avalon.Framework\Avalon.Framework.csproj">
+      <Project>{2d80cd45-97fe-41aa-b95e-250490e76dae}</Project>
+      <Name>Avalon.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Profiler\Avalon.Profiler.csproj">
+      <Project>{615883dd-8819-41ad-a4ef-42757beeddd2}</Project>
+      <Name>Avalon.Profiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Repository\Avalon.Repository.csproj">
+      <Project>{5e917d8e-f096-4e78-a836-830557586cd7}</Project>
+      <Name>Avalon.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Utility\Avalon.Utility.csproj">
+      <Project>{78fc7ba4-bcf2-4e90-a185-dec2fd16b2a7}</Project>
+      <Name>Avalon.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Redis\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

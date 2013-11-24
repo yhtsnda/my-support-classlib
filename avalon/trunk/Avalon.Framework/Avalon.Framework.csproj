@@ -39,8 +39,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Bootstrap\Bootstrapper.cs" />
+    <Compile Include="Bootstrap\IBootstrapperTask.cs" />
+    <Compile Include="Commands\CommandBus.cs" />
+    <Compile Include="Commands\DefaultCommandBus.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandBus.cs" />
+    <Compile Include="Commands\ICommandExecutor.cs" />
+    <Compile Include="Containers\Container.cs" />
+    <Compile Include="Containers\DefaultDependency.cs" />
+    <Compile Include="Containers\DependencyResolver.cs" />
+    <Compile Include="Containers\IDependencyContainer.cs" />
+    <Compile Include="Containers\IDependencyRegister.cs" />
+    <Compile Include="Containers\IDependencyResolver.cs" />
+    <Compile Include="Interceptor\IRepositoryFrameworkInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IFetchable.cs" />
+    <Compile Include="Repository\ILifecycle.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\ISpecification.cs" />
+    <Compile Include="Repository\ISpecificationProvider.cs" />
+    <Compile Include="Repository\IValidatable.cs" />
+    <Compile Include="Repository\QueryOrder.cs" />
+    <Compile Include="Service\IService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Avalon.Utility\Avalon.Utility.csproj">
+      <Project>{78fc7ba4-bcf2-4e90-a185-dec2fd16b2a7}</Project>
+      <Name>Avalon.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cacheable\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

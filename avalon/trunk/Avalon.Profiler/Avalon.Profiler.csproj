@@ -48,6 +48,15 @@
     <Compile Include="Accumlator\AccumlatorType.cs" />
     <Compile Include="Accumlator\RegionAccumlator.cs" />
     <Compile Include="Command\CommandService.cs" />
+    <Compile Include="Monitor\Datas\MonitorServiceData.cs" />
+    <Compile Include="Monitor\Datas\PageMonitorData.cs" />
+    <Compile Include="Monitor\Datas\RepositoryMonitorData.cs" />
+    <Compile Include="Monitor\MonitorContext.cs" />
+    <Compile Include="Command\MonitorCommandService.cs" />
+    <Compile Include="Monitor\MonitorModule.cs" />
+    <Compile Include="Monitor\MonitorService.cs" />
+    <Compile Include="Monitor\MonitorSetting.cs" />
+    <Compile Include="Monitor\RepositoryMonitor.cs" />
     <Compile Include="Profiler\Datas\ProfilerData.cs" />
     <Compile Include="Profiler\Datas\ProfilerServiceData.cs" />
     <Compile Include="Profiler\Datas\RequestData.cs" />

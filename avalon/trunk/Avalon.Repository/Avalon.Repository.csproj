@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,8 +48,203 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Configuration\CommandConfiguation.cs" />
+    <Compile Include="Configuration\FrameworkConfiguation.cs" />
+    <Compile Include="Configuration\InterceptorConfiguation.cs" />
+    <Compile Include="Configuration\MetadataConfiguration.cs" />
+    <Compile Include="Configuration\RepositoryConfiguation.cs" />
+    <Compile Include="Configuration\ServiceConfiguation.cs" />
+    <Compile Include="Configuration\ShardConfiguration.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\CacheKeyUtil.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\ConstantExpressionVisitor.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\DefaultCacheKeyGenerator.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\Evaluator.cs" />
+    <Compile Include="Cacheable\CacheData\CacheKeyGenerator\SimpleGenerator.cs" />
+    <Compile Include="Cacheable\CacheData\ICacheKeyGenerator.cs" />
+    <Compile Include="Cacheable\CacheData\ICacheKeySupport.cs" />
+    <Compile Include="Cacheable\CacheData\IQueryTimestamp.cs" />
+    <Compile Include="Cacheable\CacheData\ListCacheData.cs" />
+    <Compile Include="Cacheable\CacheData\PagingCacheData.cs" />
+    <Compile Include="Cacheable\CacheData\QueryCacheData.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\IRepositoryMethodInvocation.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\RepositoryGetListMethodInvocation.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\RepositoryGetMethodInvocation.cs" />
+    <Compile Include="Cacheable\CommonCacheable\RepositoryInterceptor\RepositoryPersistentMethodInvocation.cs" />
+    <Compile Include="Cacheable\QueryCacheable\IEntityDefineSupport.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\AbstractCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\CacheableRepositoryInterceptor.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\CommonCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\DefaultRepositoryCacheable.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\EntityFindAllCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\EntityFindOneCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\EntityPagingCacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\Internals\ICacheableRepositoryProvider.cs" />
+    <Compile Include="Cacheable\QueryCacheable\IRepositoryCacheable.cs" />
+    <Compile Include="Cacheable\QueryCacheable\RepositoryExtend.cs" />
+    <Compile Include="Defines\CacheRegion.cs" />
+    <Compile Include="Defines\CascadeImpl.cs" />
+    <Compile Include="Defines\CascadeType.cs" />
+    <Compile Include="Defines\ClassDefine.cs" />
+    <Compile Include="Defines\ClassJoinCacheDefine.cs" />
+    <Compile Include="Defines\ClassJoinDefine.cs" />
+    <Compile Include="Defines\ClassJoinManyCascadeDefine.cs" />
+    <Compile Include="Defines\ClassJoinManyDefine.cs" />
+    <Compile Include="Defines\ClassJoinOneCascadeDefine.cs" />
+    <Compile Include="Defines\ClassJoinOneDefine.cs" />
+    <Compile Include="Defines\ClassJoinType.cs" />
+    <Compile Include="Defines\HasManyByForeignKeyDefine.cs" />
+    <Compile Include="Defines\HasOneByForeignKeyDefine.cs" />
+    <Compile Include="Defines\Internals\JoinCascadeProcessors\CascadeJoinManyProcessor.cs" />
+    <Compile Include="Defines\Internals\JoinCascadeProcessors\CascadeJoinOneProcessor.cs" />
+    <Compile Include="Defines\Internals\JoinCascadeProcessors\IClassJoinCascadeProcessor.cs" />
+    <Compile Include="Defines\Internals\JoinDataProcessors\HasManyByForeignKeyClassJoinProcessor.cs" />
+    <Compile Include="Defines\Internals\JoinDataProcessors\HasManyClassJoinProcessor.cs" />
+    <Compile Include="Defines\Internals\JoinDataProcessors\HasOneByForeignKeyClassJoinProcessor.cs" />
+    <Compile Include="Defines\Internals\JoinDataProcessors\HasOneClassJoinProcessor.cs" />
+    <Compile Include="Defines\Internals\JoinDataProcessors\IClassJoinDataProcesser.cs" />
+    <Compile Include="Defines\Internals\Metadatas\ClassCacheRegionDefineMetadata.cs" />
+    <Compile Include="Defines\Internals\Metadatas\ClassDefineMetadata.cs" />
+    <Compile Include="Defines\Internals\Metadatas\ClassJoinCacheDefineMetadata.cs" />
+    <Compile Include="Defines\Internals\Metadatas\ClassJoinCacheDependDefineMetadata.cs" />
+    <Compile Include="Defines\Internals\Metadatas\ClassJoinCascadeDefineMetadata.cs" />
+    <Compile Include="Defines\Internals\Metadatas\ClassJoinDefineMetadata.cs" />
+    <Compile Include="Defines\Internals\Metadatas\ICacheMetadataProvider.cs" />
+    <Compile Include="DependCacheDomain\CacheDependDefine.cs" />
+    <Compile Include="DependCacheDomain\DependCacheDomain.cs" />
+    <Compile Include="DependCacheDomain\PairKeyDependCacheDomain.cs" />
+    <Compile Include="DependCacheDomain\SingleKeyDependCacheDomain.cs" />
+    <Compile Include="DependCacheDomain\SingletonDependCacheDomain.cs" />
+    <Compile Include="DependCacheDomain\TripletKeyDependCacheDomain.cs" />
+    <Compile Include="Interceptors\AbstractRepositoryFrameworkInterceptor.cs" />
+    <Compile Include="Interceptors\DefaultRepositoryFrameworkInterceptor.cs" />
+    <Compile Include="Framework\LazyloadSupportException.cs" />
+    <Compile Include="Framework\PersistentMethodAttribute.cs" />
+    <Compile Include="Proxys\EntityProxyInterceptor.cs" />
+    <Compile Include="Proxys\IProxy.cs" />
+    <Compile Include="Proxys\ProxyCollection.cs" />
+    <Compile Include="Proxys\ProxyProvider.cs" />
+    <Compile Include="Framework\RepositoryFramework.cs" />
+    <Compile Include="Framework\SpecificationExtend.cs" />
+    <Compile Include="Framework\TransactionScope.cs" />
+    <Compile Include="Framework\UniqueRaise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AbstractConnectionManager.cs" />
+    <Compile Include="Querys\AbstractExpressionVisitor.cs" />
+    <Compile Include="Querys\Defines\JoinType.cs" />
+    <Compile Include="Querys\Defines\PropertyMapping.cs" />
+    <Compile Include="Querys\Defines\QueryDefineException.cs" />
+    <Compile Include="Querys\Defines\QueryEntityMetadata.cs" />
+    <Compile Include="Querys\Defines\QueryMetadataProvider.cs" />
+    <Compile Include="Querys\Defines\QueryView.cs" />
+    <Compile Include="Querys\Defines\QueryViewDefine.cs" />
+    <Compile Include="Querys\Defines\QueryViewEntityDefine.cs" />
+    <Compile Include="Querys\Defines\QueryViewJoinMetadata.cs" />
+    <Compile Include="Querys\Defines\QueryViewMetadata.cs" />
+    <Compile Include="Querys\IQuerySourceProvider.cs" />
+    <Compile Include="Querys\IQuerySpecification.cs" />
+    <Compile Include="Querys\IQuerySpecificationProvider.cs" />
+    <Compile Include="Querys\ODatas\LinqToODataStrings\LinqToODataStringVisitor.cs" />
+    <Compile Include="Querys\ODatas\LinqToODataStrings\ODataStringBuilder.cs" />
+    <Compile Include="Querys\ODatas\ODataExpressionVisitor.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\BinaryExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\ConstantExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\ExpressionDebugView.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\ExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\ExpressionNodeType.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\ExpressionNodeVisitor.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\FilterExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\FunctionExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\InExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\InlineCountExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\AvalonQuery.g3.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\AvalonQuery.g3.lexer.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\AvalonQuery.g3.parser.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\AvalonQueryLexer.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\AvalonQueryParser.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\NotExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\OrderbyExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\OrderbyItemExpresionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\PropertyExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\QueryParseException.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\QueryTreeAdaptor.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\SelectExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\SkipExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\TopExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\ValueExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataProcessor.cs" />
+    <Compile Include="Querys\ODatas\ODataQuery.cs" />
+    <Compile Include="Querys\ODatas\ODataQueryValidator.cs" />
+    <Compile Include="Querys\QuerySpecificationExtend.cs" />
+    <Compile Include="Shards\AbstractRepository.cs" />
+    <Compile Include="Shards\IShardedRepository.cs" />
+    <Compile Include="Shards\IShardSession.cs" />
+    <Compile Include="Shards\IShardSessionFactory.cs" />
+    <Compile Include="Shards\IShardStrategy.cs" />
+    <Compile Include="Shards\PartitionId.cs" />
+    <Compile Include="Shards\ShardConfiguationExtend.cs" />
+    <Compile Include="Shards\ShardedRepository.cs" />
+    <Compile Include="Shards\ShardId.cs" />
+    <Compile Include="Shards\ShardRepositoryExtends.cs" />
+    <Compile Include="Shards\Strategies\AbstractShardStrategy.cs" />
+    <Compile Include="Shards\Strategies\ModShardStrategy.cs" />
+    <Compile Include="Shards\Strategies\MonthShardStrategy.cs" />
+    <Compile Include="Shards\Strategies\NoShardStrategy.cs" />
+    <Compile Include="Shards\Strategies\WeekShardStrategy.cs" />
+    <Compile Include="Specification\AbstractSpecification.cs" />
+    <Compile Include="Specification\Linqs\LinqDatabase.cs" />
+    <Compile Include="Specification\Linqs\LinqShardSession.cs" />
+    <Compile Include="Specification\Linqs\LinqShardSessionFactory.cs" />
+    <Compile Include="Specification\Linqs\LinqSpecification.cs" />
+    <Compile Include="Specification\Linqs\LinqSpecificationProvider.cs" />
+    <Compile Include="Specification\Orderable.cs" />
+    <Compile Include="Specification\QueryOrderExpression.cs" />
+    <Compile Include="Specification\SpecificationExtensions.cs" />
+    <Compile Include="Specification\SpecificationFactory.cs" />
+    <Compile Include="Util\EntityUtil.cs" />
+    <Compile Include="Util\IOriginalObjectProvider.cs" />
+    <Compile Include="Util\ReflectionHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Avalon.Cache\Avalon.Cache.csproj">
+      <Project>{5c1bd726-ca74-4201-aedb-b1350ab9972c}</Project>
+      <Name>Avalon.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Framework\Avalon.Framework.csproj">
+      <Project>{2d80cd45-97fe-41aa-b95e-250490e76dae}</Project>
+      <Name>Avalon.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Profiler\Avalon.Profiler.csproj">
+      <Project>{615883dd-8819-41ad-a4ef-42757beeddd2}</Project>
+      <Name>Avalon.Profiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Utility\Avalon.Utility.csproj">
+      <Project>{78fc7ba4-bcf2-4e90-a185-dec2fd16b2a7}</Project>
+      <Name>Avalon.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Avalon.Repository.nuspec" />
+    <None Include="Design\sd_create_update_delete.sequencediagram" />
+    <None Include="Design\sd_get_getlist.sequencediagram" />
+    <None Include="Design\sd_proxy.sequencediagram" />
+    <None Include="Design\sd_query.sequencediagram" />
+    <None Include="packages.config" />
+    <None Include="Querys\ODatas\ODataParsers\AvalonQuery.g3" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Design\sd_create_update_delete.sequencediagram.layout">
+      <DependentUpon>sd_create_update_delete.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\sd_get_getlist.sequencediagram.layout">
+      <DependentUpon>sd_get_getlist.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\sd_proxy.sequencediagram.layout">
+      <DependentUpon>sd_proxy.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\sd_query.sequencediagram.layout">
+      <DependentUpon>sd_query.sequencediagram</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

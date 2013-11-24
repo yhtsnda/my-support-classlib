@@ -52,6 +52,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Util\AbstractServerDetector.cs" />
     <Compile Include="Configuration\ConfigurationException.cs" />
     <Compile Include="Configuration\InnerManager.cs" />
     <Compile Include="Configuration\SettingNode.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Extend\DirectoryExtend.cs" />
     <Compile Include="Extend\EnumerableExtend.cs" />
     <Compile Include="Extend\LinqExtend.cs" />
+    <Compile Include="Extend\PrettyTypeExtend.cs" />
     <Compile Include="Extend\StringExtend.cs" />
     <Compile Include="Lock\ILock.cs" />
     <Compile Include="Lock\ILockFactory.cs" />

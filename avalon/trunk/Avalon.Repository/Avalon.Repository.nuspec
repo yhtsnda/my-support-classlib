@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Avalon.Repository</id>
+    <version>$version$</version>
+    <title>Nd.Platform</title>
+    <authors>Jorson</authors>
+    <projectUrl>http://code.google.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Avalon的仓储库
+    </description>
+    <copyright>Copyright ©  2013</copyright>
+    <dependencies>
+      <dependency id="Castle.Core" version="[3.2.0]" />
+      <dependency id="Antlr" version="[3.4.1.9004]" />
+    </dependencies>
+    <references>
+      <reference file="Avalon.Repository.dll" />
+    </references>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\Avalon.Repository.*" target="lib\net40"/>
+  </files>
+</package>

@@ -5,7 +5,10 @@ using System.Text;
 
 namespace Avalon.Framework
 {
-    public class Class1
+    internal interface ICacheMetadataProvider
     {
+        ClassDefineMetadata GetCacheMetadata();
     }
+
 }
+
