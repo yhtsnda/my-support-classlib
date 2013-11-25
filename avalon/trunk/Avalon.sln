@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalon.Profiler", "Avalon.P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalon.HttpClient", "Avalon.HttpClient\Avalon.HttpClient.csproj", "{D58262F4-C36D-4F22-86C0-FD7460980C27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalon.Purview", "Avalon.Purview\Avalon.Purview.csproj", "{9AAE3590-23AE-468B-920E-0FD2AE41D4DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalon.UCenter", "Avalon.UCenter\Avalon.UCenter.csproj", "{49466C35-9C3A-4FCF-86A0-EC9064A70800}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{D58262F4-C36D-4F22-86C0-FD7460980C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D58262F4-C36D-4F22-86C0-FD7460980C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D58262F4-C36D-4F22-86C0-FD7460980C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AAE3590-23AE-468B-920E-0FD2AE41D4DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AAE3590-23AE-468B-920E-0FD2AE41D4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AAE3590-23AE-468B-920E-0FD2AE41D4DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AAE3590-23AE-468B-920E-0FD2AE41D4DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49466C35-9C3A-4FCF-86A0-EC9064A70800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49466C35-9C3A-4FCF-86A0-EC9064A70800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49466C35-9C3A-4FCF-86A0-EC9064A70800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49466C35-9C3A-4FCF-86A0-EC9064A70800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
