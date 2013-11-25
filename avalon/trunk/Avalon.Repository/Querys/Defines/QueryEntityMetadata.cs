@@ -9,7 +9,7 @@ namespace Avalon.Framework.Querys
     /// <summary>
     /// 对象与视图的映射元数据
     /// </summary>
-    public class QueryEntityMetadata
+    internal class QueryEntityMetadata
     {
         public QueryEntityMetadata(Type entityType)
         {

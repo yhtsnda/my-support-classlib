@@ -11,7 +11,7 @@ namespace Avalon.Framework.Querys
     /// <summary>
     /// 查询视图的元数据
     /// </summary>
-    public class QueryViewMetadata
+    internal class QueryViewMetadata
     {
         HashSet<MemberInfo> aliasMembers;
 
@@ -31,7 +31,7 @@ namespace Avalon.Framework.Querys
 
         public Expression AliasExpression { get; set; }
 
-        public List<QueryViewJoinMetadata> Joins { get; set; }
+        internal List<QueryViewJoinMetadata> Joins { get; set; }
 
         public Type ViewType { get; set; }
 

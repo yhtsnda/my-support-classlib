@@ -37,10 +37,10 @@
       <HintPath>..\packages\NHibernateCombine.1.0.0\lib\net40\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>..\packages\MongoCombine.1.0.0\lib\net40\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\packages\mongocsharpdriver.1.7\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>..\packages\MongoCombine.1.0.0\lib\net40\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\packages\mongocsharpdriver.1.7\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernateCombine.1.0.0\lib\net40\NHibernate.dll</HintPath>
@@ -50,7 +50,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
