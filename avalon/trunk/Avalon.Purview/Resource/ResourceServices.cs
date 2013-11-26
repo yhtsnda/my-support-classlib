@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Avalon.Purview
+namespace Avalon.Purviews
 {
-    class Program
+    public static class ResourceServices
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
