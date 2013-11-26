@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Avalon.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -107,6 +108,22 @@ namespace Avalon.Framework.Querys
             return expression;
         }
 
+        Type GetType(Expression exp)
+        {
+            if (exp.NodeType == ExpressionType.Constant)
+                return ((ConstantExpression)exp).Type;
+            if (exp.NodeType == ExpressionType.MemberAccess)
+                return ((MemberExpression)exp).Type;
+            return null;
+        }
+
+        object ChangeType(object value, Type type)
+        {
+            if (type.IsEnum)
+                return Enum.Parse(type, value.ToString());
+            return Convert.ChangeType(value, type);
+        }
+
         Expression VisitBinary(BinaryExpressionNode exp)
         {
             var leftExp = Visit(exp.Left);
@@ -114,6 +131,17 @@ namespace Avalon.Framework.Querys
                 return leftExp;
 
             var rightExp = Visit(exp.Right);
+
+            var leftType = GetType(leftExp);
+            var rightType = GetType(rightExp);
+            if (leftType != rightType)
+            {
+                if (leftExp.NodeType == ExpressionType.Constant)
+                    leftExp = Expression.Constant(ChangeType(((ConstantExpression)leftExp).Value, rightType));
+                else if (rightExp.NodeType == ExpressionType.Constant)
+                    rightExp = Expression.Constant(ChangeType(((ConstantExpression)rightExp).Value, leftType));
+            }
+
             switch (exp.NodeType)
             {
                 case ExpressionNodeType.And:
@@ -157,7 +185,8 @@ namespace Avalon.Framework.Querys
 
         Expression VisitProperty(PropertyExpressionNode exp)
         {
-            return Expression.Property(filterParam, exp.PropertyName);
+            var propertyName = GetPropertyName(filterParam.Type, exp.PropertyName);
+            return Expression.Property(filterParam, propertyName);
         }
 
         Expression VisitFunction(FunctionExpressionNode exp)
@@ -181,9 +210,19 @@ namespace Avalon.Framework.Querys
             return Expression.Call(null, isLikeMethod, Visit(exp.Arguments[0]), Visit(exp.Arguments[1]), Expression.Constant(mode));
         }
 
+        string GetPropertyName(Type type, string propertyName)
+        {
+            var properties = type.GetProperties();
+            var property = properties.FirstOrDefault(o => o.Name.ToLower() == propertyName.ToLower());
+            if (property == null)
+                throw new AvalonException("类型 {0} 不存在命名为 {1} 的属性", type.FullName, propertyName);
+            return property.Name;
+        }
+
         Expression VisitIn(InExpressionNode exp)
         {
-            var property = queryType.GetProperty(exp.PropertyName);
+            var propertyName = GetPropertyName(queryType, exp.PropertyName);
+            var property = queryType.GetProperty(propertyName);
             var method = (exp.Mode == InMode.In ? isInMethod : isNotInMethod).MakeGenericMethod(property.PropertyType);
             var array = Array.CreateInstance(property.PropertyType, exp.Constants.Length);
             exp.Constants.For((o, i) => array.SetValue(o.Value, i));

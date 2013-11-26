@@ -1,10 +1,12 @@
 ﻿using Antlr.Runtime;
 using Antlr.Runtime.Tree;
+using Avalon.Utility;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace Avalon.Framework.Querys
 {
@@ -12,6 +14,7 @@ namespace Avalon.Framework.Querys
     {
         public ODataQueryData(CommonTree root)
         {
+            Arguments.NotNull(root, "root");
             if (root.Type == 0)
             {
                 var children = root.Children;
@@ -114,6 +117,7 @@ namespace Avalon.Framework.Querys
 
         public static ODataQueryData Parse(string queryString)
         {
+            queryString = ProcessQueryString(queryString);
             var input = new ANTLRReaderStream(new StringReader(queryString));
             var lexer = new AvalonQueryLexer(input);
             var tokStream = new CommonTokenStream(lexer);
@@ -125,6 +129,18 @@ namespace Avalon.Framework.Querys
 
             var query = new ODataQueryData(tree);
             return query;
+        }
+
+        static string ProcessQueryString(string queryString)
+        {
+            List<string> odataQuerys = new List<string>();
+            var kvs = HttpUtility.ParseQueryString(queryString);
+            foreach (string key in kvs.Keys)
+            {
+                if (key == "$filter" || key == "$top" || key == "$skip" || key == "$orderby" || key == "$inlinecount" || key == "$metadata")
+                    odataQuerys.Add(key + "=" + kvs[key]);
+            }
+            return string.Join("&", odataQuerys);
         }
     }
 }

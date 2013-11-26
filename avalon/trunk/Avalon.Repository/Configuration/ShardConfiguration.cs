@@ -22,19 +22,33 @@ namespace Avalon.Framework.Configurations
         {
             this.section = section;
         }
+        /// <summary>
+        /// 默认的分区策略类型
+        /// </summary>
+        public Type DefaultStrategyType { get; set; }
+        /// <summary>
+        /// 默认的分区标识
+        /// </summary>
+        public ShardId DefaultShardId { get; set; }
+        /// <summary>
+        /// 默认的会话工厂
+        /// </summary>
+        public Type DefaultShardSessionFactoryType { get; set; }
 
         public void Load()
         {
             var shardNode = section.TryGetNode("shard");
             if (shardNode != null)
             {
-                var dst = shardNode.TryGetValue("defaultStrategy");
-                if (!String.IsNullOrEmpty(dst))
-                    defaultStrategyType = Type.GetType(dst);
+                this.TrySetSetting(shardNode, "defaultStrategy", 
+                    o => o.DefaultStrategyType, v => GetType(v));
+                this.TrySetSetting(shardNode, "defaultShard", 
+                    o => o.DefaultShardId, v => new ShardId(v));
+                this.TrySetSetting(shardNode, "defaultSessionFactory", 
+                    o => o.DefaultShardSessionFactoryType, v => GetType(v));
 
-                defaultAttr.Add("shard", shardNode.TryGetValue("defaultShard"));
-
-                defaultSessionFactory = CreateShardSessionFactory(shardNode, "defaultSessionFactory");
+                if (DefaultShardId != null)
+                    defaultAttr.Add("shard", DefaultShardId.Id);
 
                 foreach (var item in shardNode.TryGetNodes("entities/entity"))
                 {
@@ -42,24 +56,26 @@ namespace Avalon.Framework.Configurations
                     if (entityType == null)
                         throw new ArgumentNullException("entityType");
 
+                    //注册分区策略
                     var stategyString = item.TryGetValue("strategy");
-                    Type strategyType = null;
+                    Type strategyType = DefaultStrategyType;
                     if (!String.IsNullOrEmpty(stategyString))
                         strategyType = Type.GetType(stategyString);
-                    if (strategyType == null)
-                        strategyType = defaultStrategyType;
 
                     if (strategyType == null)
                         throw new AvalonException("类型 {0} 没有定义分区策略", entityType.FullName);
 
                     RegisterShardStragety(entityType, strategyType, item.Attributes);
 
+                    //注册工厂
+                    var factoryType = DefaultShardSessionFactoryType;
                     var factoryString = item.TryGetValue("sessionFactory");
                     if (!String.IsNullOrEmpty(factoryString))
-                    {
-                        Type factoryType = Type.GetType(factoryString);
-                        RegisterShardSessionFactory(entityType, factoryType);
-                    }
+                        factoryType = GetType(factoryString);
+                    if (factoryType == null)
+                        throw new AvalonException("类型 {0} 没有定义数据会话工厂或没有定义默认的数据会话工厂", entityType.FullName);
+
+                    RegisterShardSessionFactory(entityType, factoryType);
                 }
             }
         }
@@ -157,12 +173,21 @@ namespace Avalon.Framework.Configurations
                 if (entityType != null)
                     factory = sessionFactories.TryGetValue(entityType);
             }
-            factory = factory ?? defaultSessionFactory;
+            if (factory == null)
+                factory = CreateShardSessionFactory(DefaultShardSessionFactoryType);
 
             if (valid && factory == null)
                 throw new AvalonException("无法获取类型 " + entityType.FullName + " 的 IShardSessionFactory 对象。");
 
             return factory;
+        }
+
+        Type GetType(string typeName)
+        {
+            var type = Type.GetType(typeName);
+            if (type == null)
+                throw new AvalonException("无法获取值为 {0} 的类型", typeName);
+            return type;
         }
 
         IShardStrategy CreateShardStrategy(SettingNode node, string path)
@@ -176,19 +201,6 @@ namespace Avalon.Framework.Configurations
                 ((AbstractShardStrategy)strategy).Init(node.Attributes);
 
             return strategy;
-        }
-
-        IShardSessionFactory CreateShardSessionFactory(SettingNode node, string path)
-        {
-            var factoryTypeString = node.TryGetValue(path);
-            if (String.IsNullOrEmpty(factoryTypeString))
-                return null;
-
-            Type factoryType = Type.GetType(factoryTypeString);
-            if (factoryType == null)
-                throw new ArgumentException("无法构造类型为 " + factoryTypeString + " 的对象");
-
-            return CreateShardSessionFactory(factoryType);
         }
 
         internal IShardSessionFactory CreateShardSessionFactory(Type factoryType)

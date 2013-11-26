@@ -135,15 +135,6 @@ namespace Avalon.Framework.Configurations
             shardConfig.RegisterShardSessionFactory(entityType, shardSessionFactoryType);
         }
 
-        ///// <summary>
-        ///// 注册元数据定义
-        ///// </summary>
-        ///// <param name="assembly"></param>
-        //public void RegisterDefineMetadata(Assembly assembly)
-        //{
-        //    metadataConfig.RegisterDefineMetadata(assembly);
-        //}
-
         /// <summary>
         /// 获取指定类型的的仓储拦截器
         /// </summary>
