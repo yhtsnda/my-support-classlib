@@ -259,6 +259,8 @@ namespace Avalon.NHibernateAccess
             {
                 if (v is DateTime)
                     sql.Where.AppendFormat("'{0:yyyy-MM-dd HH:mm:ss}'", v);
+                else if (v.GetType().IsEnum)
+                    sql.Where.Append((int)v);
                 else if (v.GetType().IsValueType)
                     sql.Where.Append(v);
                 else if (v is string)
