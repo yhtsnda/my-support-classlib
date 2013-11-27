@@ -7,8 +7,12 @@ using Avalon.Framework.Querys;
 
 namespace Avalon.NHibernateAccess
 {
+    /// <summary>
+    /// ODATA 解析执行过程的数据存储及处理
+    /// </summary>
     public class QueryEntityManager
     {
+        // 查询相关的实体及别名
         Dictionary<Type, string> entities = new Dictionary<Type, string>();
         QueryEntityMetadata queryMetadata;
         QueryEntityMetadata resultMetadata;
@@ -94,7 +98,32 @@ namespace Avalon.NHibernateAccess
 
         internal IList<QueryViewJoinMetadata> GetJoins()
         {
-            return metadata.Joins.Join(entities.Keys, o => o.JoinEntityType, o => o, (j, t) => j).Union(metadata.Joins.Where(o => o.JoinType == JoinType.InnerJoin)).ToList();
+            var joinDic = metadata.Joins.ToDictionary(o => o.JoinEntityType);
+
+            var joinHash = new HashSet<Type>();
+            ScanJoinTypes(entities.Keys, joinDic, joinHash);
+            ScanJoinTypes(metadata.Joins.Where(o => o.JoinType == JoinType.InnerJoin).Select(o => o.JoinEntityType), joinDic, joinHash);
+
+            List<QueryViewJoinMetadata> joins = new List<QueryViewJoinMetadata>();
+            foreach (var join in metadata.Joins)
+            {
+                if (joinHash.Contains(join.JoinEntityType))
+                    joins.Add(join);
+            }
+            return joins;
+        }
+
+        void ScanJoinTypes(IEnumerable<Type> joinTypes, Dictionary<Type, QueryViewJoinMetadata> joinDic, HashSet<Type> joinHash)
+        {
+            foreach (var joinType in joinTypes)
+            {
+                if (!joinHash.Contains(joinType) && joinType != metadata.EntityType)
+                {
+                    joinHash.Add(joinType);
+                    var join = joinDic.TryGetValue(joinType);
+                    ScanJoinTypes(join.ConditionEntityTypes, joinDic, joinHash);
+                }
+            }
         }
 
         string RegisterAlias(Type entityType)

@@ -17,14 +17,32 @@ namespace Avalon.Framework.Querys
             AliasExpression = aliasExp;
             ConditionExpression = conditionExp;
             JoinType = joinType;
+            ConditionEntityTypes = new HashSet<Type>();
         }
 
+        /// <summary>
+        /// 关联的实体类型
+        /// </summary>
         public Type JoinEntityType { get; set; }
 
+        /// <summary>
+        /// 关联的实体的别名表达式
+        /// </summary>
         public Expression AliasExpression { get; set; }
 
+        /// <summary>
+        /// 条件表达式
+        /// </summary>
         public Expression ConditionExpression { get; set; }
 
+        /// <summary>
+        /// 关联的类型
+        /// </summary>
         public JoinType JoinType { get; set; }
+
+        /// <summary>
+        /// 条件表达式中使用到的实体类型
+        /// </summary>
+        public HashSet<Type> ConditionEntityTypes { get; set; }
     }
 }

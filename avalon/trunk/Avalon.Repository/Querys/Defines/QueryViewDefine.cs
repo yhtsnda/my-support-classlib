@@ -16,24 +16,31 @@ namespace Avalon.Framework.Querys
 
         public QueryViewDefine Join<TJoin>(Expression<Func<TJoin>> aliasExp, Expression<Func<bool>> conditionExp, JoinType joinType = JoinType.OneToOneInnerJoin)
         {
-            Metadata.Joins.Add(new QueryViewJoinMetadata(typeof(TJoin), aliasExp, conditionExp, joinType));
-            ValidCondition(conditionExp);
+            var joinMetadata = new QueryViewJoinMetadata(typeof(TJoin), aliasExp, conditionExp, joinType);
+            Metadata.Joins.Add(joinMetadata);
+            ValidCondition(joinMetadata, conditionExp);
             return this;
         }
 
-        void ValidCondition(Expression exp)
+        void ValidCondition(QueryViewJoinMetadata joinMetadata, Expression exp)
         {
-            var visitor = new JoinExpressionValidVisitor();
-            visitor.Process(exp, Metadata);
+            var visitor = new JoinExpressionValidVisitor(Metadata, joinMetadata);
+            visitor.Process(exp);
         }
 
         class JoinExpressionValidVisitor : ExpressionVisitor
         {
             QueryViewMetadata viewMetadata;
+            QueryViewJoinMetadata joinMetadata;
 
-            public void Process(Expression exp, QueryViewMetadata viewMetadata)
+            public JoinExpressionValidVisitor(QueryViewMetadata viewMetadata, QueryViewJoinMetadata joinMetadata)
             {
                 this.viewMetadata = viewMetadata;
+                this.joinMetadata = joinMetadata;
+            }
+
+            public void Process(Expression exp)
+            {
                 Visit(exp);
             }
 
@@ -41,6 +48,7 @@ namespace Avalon.Framework.Querys
             {
                 Type entityType;
                 viewMetadata.ValidAlias(node, out entityType);
+                joinMetadata.ConditionEntityTypes.Add(entityType);
                 return node;
             }
         }

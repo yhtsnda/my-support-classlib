@@ -11,14 +11,7 @@ namespace Avalon.Purviews
     {
         private IModelRepository modelRepository;
         private IAccessRepository accessRepository;
-
-        private static CacheDomain<ModelLookup, string> modelCache = new CacheDomain<ModelLookup, string>(
-            o => o.InstanceKey,
-            GetModelLookupInner,
-            null,
-            cacheName: "menu",
-            cacheKeyFormat: "menu:{0}",
-            secondesToLive: 600);
+        private CacheDomain<ModelLookup, string> modelCache;
 
         public ModelServices(IModelRepository modelRepository, IAccessRepository accessRepository)
         {
@@ -37,7 +30,7 @@ namespace Avalon.Purviews
         /// <summary>
         /// 获取指定的模块
         /// </summary>
-        public static Model GetModel(string instanceKey, int key)
+        public Model GetModel(string instanceKey, int key)
         {
             var lookup = modelCache.GetItem(instanceKey);
             return lookup.GetOrDefault(o => o.ModelDictionary.TryGetValue(key));
@@ -49,7 +42,7 @@ namespace Avalon.Purviews
         /// <param name="instanchKey"></param>
         /// <param name="actionKey"></param>
         /// <returns></returns>
-        public static Model GetModelByAction(string instanceKey, string actionKey)
+        public Model GetModelByAction(string instanceKey, string actionKey)
         {
             var lookup = modelCache.GetItem(instanceKey);
             return lookup.ModelDictionary.Values.Where(o => o.ActionKey == actionKey).FirstOrDefault();
@@ -61,10 +54,11 @@ namespace Avalon.Purviews
         /// <param name="instanceKey"></param>
         /// <param name="parentKey"></param>
         /// <returns></returns>
-        public  static IList<Model> GetModelListByParentKey(string instanceKey, int parentKey)
+        public IList<Model> GetModelListByParentKey(string instanceKey, int parentKey)
         {
-            var result = modelRepository.FindAll(new Model { InstanceKey = instanceKey, ParentKey = parentKey });
-            return result;
+            var spec = modelRepository.CreateSpecification()
+                .Where(o=> o.InstanceKey == instanceKey && o.ParentKey == parentKey);
+            return modelRepository.FindAll(spec);
         }
 
         /// <summary>
@@ -73,7 +67,7 @@ namespace Avalon.Purviews
         /// <param name="instanceKey"></param>
         /// <param name="ids"></param>
         /// <returns></returns>
-        public static IList<Model> GetModelList(string instanceKey, IEnumerable<int> ids)
+        public IList<Model> GetModelList(string instanceKey, IEnumerable<int> ids)
         {
             var lookup = modelCache.GetItem(instanceKey);
             return ids.Select(key => lookup.GetOrDefault(o => o.ModelDictionary.TryGetValue(key)))
@@ -85,7 +79,7 @@ namespace Avalon.Purviews
         /// </summary>
         /// <param name="instanceKey"></param>
         /// <returns></returns>
-        public static Model GetModelRoot(string instanceKey)
+        public Model GetModelRoot(string instanceKey)
         {
             var lookup = modelCache.GetItem(instanceKey);
             return lookup.GetOrDefault(o => o.Root);
@@ -97,7 +91,7 @@ namespace Avalon.Purviews
         /// <param name="userId"></param>
         /// <param name="instanceKey"></param>
         /// <returns></returns>
-        public static Model GetModelListForUser(int userId, string instanceKey)
+        public Model GetModelListForUser(int userId, string instanceKey)
         {
             //获取用户的信息
             Access access = accessRepository.FindOne(new Access { UserId = userId, InstanceKey = instanceKey });
@@ -118,7 +112,7 @@ namespace Avalon.Purviews
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public static IList<Model> GetModelListFromL1(Model model)
+        public IList<Model> GetModelListFromL1(Model model)
         {
             IList<Model> models = new List<Model>();
             if (model.ParentKey == -1)
@@ -142,7 +136,7 @@ namespace Avalon.Purviews
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public static ResultKey SaveModel(Model model)
+        public ResultKey SaveModel(Model model)
         {
             //创建一个新的模块
             if (model.Key == 0)
@@ -184,7 +178,7 @@ namespace Avalon.Purviews
         /// 删除一个模块
         /// </summary>
         /// <param name="model"></param>
-        public static ResultKey DeleteModel(Model model)
+        public ResultKey DeleteModel(Model model)
         {
             model = GetModel(model.InstanceKey, model.Key);
             if (model == null)
@@ -202,7 +196,7 @@ namespace Avalon.Purviews
         /// 循环删除所有模块
         /// </summary>
         /// <param name="model"></param>
-        private static void RecursiveDeleteModel(Model model)
+        private void RecursiveDeleteModel(Model model)
         {
             foreach (var child in model.Childs)
             {
@@ -218,7 +212,7 @@ namespace Avalon.Purviews
         /// </summary>
         /// <param name="instanceKey"></param>
         /// <returns></returns>
-        private static IList<Model> GetModelList(string instanceKey)
+        private IList<Model> GetModelList(string instanceKey)
         {
             return modelRepository.FindAll(new Model{InstanceKey = instanceKey});
         }
@@ -229,7 +223,7 @@ namespace Avalon.Purviews
         /// <param name="instanceKey"></param>
         /// <param name="models"></param>
         /// <returns></returns>
-        private static ModelLookup CreateModelTree(string instanceKey, IList<Model> models)
+        private ModelLookup CreateModelTree(string instanceKey, IList<Model> models)
         {
             if(models.Count == 0)
                 return null;
@@ -294,7 +288,7 @@ namespace Avalon.Purviews
         /// 获取指定域下的菜单树
         /// </summary>
         /// <param name="instanceKey"></param>
-        private static ModelLookup GetModelLookupInner(string instanceKey)
+        private ModelLookup GetModelLookupInner(string instanceKey)
         {
             var model = GetModelList(instanceKey);
             return CreateModelTree(instanceKey, model);
@@ -306,7 +300,7 @@ namespace Avalon.Purviews
         /// <param name="root"></param>
         /// <param name="uselessModels"></param>
         /// <returns></returns>
-        private static int GetUselessModel(Model root, IList<Model> uselessModels)
+        private int GetUselessModel(Model root, IList<Model> uselessModels)
         {
             int flag = 0;
             foreach (var model in root.Childs)
@@ -332,7 +326,7 @@ namespace Avalon.Purviews
         /// <param name="root"></param>
         /// <param name="usedModels"></param>
         /// <returns></returns>
-        private static int GetUsedModel(Model root, IList<Model> usedModels)
+        private int GetUsedModel(Model root, IList<Model> usedModels)
         {
             int flag = 0;
             foreach (var model in root.Childs)
@@ -359,7 +353,7 @@ namespace Avalon.Purviews
         /// <param name="userModel"></param>
         /// <param name="userId"></param>
         /// <param name="instanceKey"></param>
-        private static void ProcessUserModel(Model systemModel, Model userModel, int userId, string instanceKey)
+        private void ProcessUserModel(Model systemModel, Model userModel, int userId, string instanceKey)
         {
             foreach (var child in systemModel.Childs)
             {

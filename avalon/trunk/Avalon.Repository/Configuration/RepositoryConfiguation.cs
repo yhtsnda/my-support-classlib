@@ -37,7 +37,7 @@ namespace Avalon.Framework.Configurations
         {
             var baseType = typeof(IRepository);
             if (type.GetInterface(baseType.FullName) == null)
-                throw new PlatformException("给定的类型 {0} 必须实现 {1} 接口", type.FullName, baseType.FullName);
+                throw new AvalonException("给定的类型 {0} 必须实现 {1} 接口", type.FullName, baseType.FullName);
 
             //验证方法virtual
             EntityUtil.CheckVirtualType(type);
