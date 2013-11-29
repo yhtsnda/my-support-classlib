@@ -56,7 +56,6 @@
     <Compile Include="Entity\IClientAuthorizationRepository.cs" />
     <Compile Include="Entity\IUserProxyRepository.cs" />
     <Compile Include="Entity\Message\Authorizes\AuthorizeCodeRequest.cs" />
-    <Compile Include="Entity\Message\Authorizes\AuthorizePassport91Request.cs" />
     <Compile Include="Entity\Message\Authorizes\AuthorizeRequestBase.cs" />
     <Compile Include="Entity\Message\Authorizes\AuthorizeThirdTokenRequest.cs" />
     <Compile Include="Entity\Message\Authorizes\AuthorizeUserCenterRequest.cs" />
@@ -65,7 +64,6 @@
     <Compile Include="Entity\Message\Tokens\TokenAuthorizationCodeRequest.cs" />
     <Compile Include="Entity\Message\Tokens\TokenClientCredentialsRequest.cs" />
     <Compile Include="Entity\Message\Tokens\TokenLoginRequest.cs" />
-    <Compile Include="Entity\Message\Tokens\TokenPasswordPassport91Request.cs" />
     <Compile Include="Entity\Message\Tokens\TokenPasswordThirdTokenRequest.cs" />
     <Compile Include="Entity\Message\Tokens\TokenPasswordUserCenterRequest.cs" />
     <Compile Include="Entity\Message\Tokens\TokenRefreshRequest.cs" />

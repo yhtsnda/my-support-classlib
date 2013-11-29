@@ -33,9 +33,6 @@ namespace Avalon.OAuth
             AuthorizeRequestBase authorizationRequest = null;
             switch (accountType)
             {
-                case AccountType.Passport91:
-                    authorizationRequest = new AuthorizePassport91Request();
-                    break;
                 case AccountType.ThirdToken:
                     authorizationRequest = new AuthorizeThirdTokenRequest();
                     break;
@@ -71,9 +68,6 @@ namespace Avalon.OAuth
                         throw new OAuthException(AccessTokenRequestErrorCodes.InvalidRequest, "wrong account_type value", 400);
                     switch (accountType)
                     {
-                        case AccountType.Passport91:
-                            tokenRequest = new TokenPasswordPassport91Request();
-                            break;
                         case AccountType.UserCenter:
                             tokenRequest = new TokenPasswordUserCenterRequest();
                             break;

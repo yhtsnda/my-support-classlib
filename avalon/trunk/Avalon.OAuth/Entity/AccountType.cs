@@ -7,7 +7,6 @@ namespace Avalon.OAuth
 {
     public enum AccountType
     {
-        Passport91,
         UserCenter,
         ThirdToken
     }
@@ -16,16 +15,13 @@ namespace Avalon.OAuth
     {
         public static bool TryParse(string value, out AccountType accountType)
         {
-            accountType = AccountType.Passport91;
+            accountType = AccountType.UserCenter;
             if (String.IsNullOrEmpty(value))
                 return false;
 
             value = value.ToLower();
             switch (value)
             {
-                case "passport91":
-                    accountType = AccountType.Passport91;
-                    return true;
                 case "user_center":
                     accountType = AccountType.UserCenter;
                     return true;
@@ -40,8 +36,6 @@ namespace Avalon.OAuth
         {
             switch (accountType)
             {
-                case AccountType.Passport91:
-                    return "passport91";
                 case AccountType.UserCenter:
                     return "user_center";
                 case AccountType.ThirdToken:
