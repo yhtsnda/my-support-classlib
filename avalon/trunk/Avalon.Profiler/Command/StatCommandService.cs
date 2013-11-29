@@ -8,7 +8,7 @@ using Avalon.Utility;
 
 namespace Avalon.Profiler
 {
-    public class StatHttpCommandService : CommandService, IWorkbenchModule
+    public class StatCommandService : CommandService, IWorkbenchModule
     {
         public StatServiceData Data
         {

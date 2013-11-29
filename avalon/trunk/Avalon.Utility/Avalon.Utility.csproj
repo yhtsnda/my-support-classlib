@@ -106,6 +106,7 @@
     <Compile Include="Util\MySqlTraceListener.cs" />
     <Compile Include="Util\NetworkTime.cs" />
     <Compile Include="Result\OpenApiResult.cs" />
+    <Compile Include="Util\OptionalAttribute.cs" />
     <Compile Include="Util\ProtoInt.cs" />
     <Compile Include="Util\RegexPattern.cs" />
     <Compile Include="Util\RegistrationHelper.cs" />

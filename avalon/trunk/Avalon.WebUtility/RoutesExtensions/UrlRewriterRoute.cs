@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Routing;
 
-namespace Avalon.OAuth
+namespace Avalon.WebUtility.RoutesExtensions
 {
-    public class Class1
-    {
-    }
+    
 }

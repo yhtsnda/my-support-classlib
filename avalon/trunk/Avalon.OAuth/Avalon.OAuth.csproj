@@ -32,6 +32,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,8 +42,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CacheConsts.cs" />
+    <Compile Include="Entity\AccessGrant.cs" />
+    <Compile Include="Entity\AccountType.cs" />
+    <Compile Include="Entity\AuthorizationCode.cs" />
+    <Compile Include="Entity\ClientAuthorization.cs" />
+    <Compile Include="Entity\ClientAuthorizationFilter.cs" />
+    <Compile Include="Entity\ClientAuthorizeStatus.cs" />
+    <Compile Include="Entity\ErrorCodes.cs" />
+    <Compile Include="Entity\GrantType.cs" />
+    <Compile Include="Entity\IAccessGrantRepository.cs" />
+    <Compile Include="Entity\IAuthorizationCodeRepository.cs" />
+    <Compile Include="Entity\IClientAuthorizationRepository.cs" />
+    <Compile Include="Entity\IUserProxyRepository.cs" />
+    <Compile Include="Entity\Message\Authorizes\AuthorizeCodeRequest.cs" />
+    <Compile Include="Entity\Message\Authorizes\AuthorizePassport91Request.cs" />
+    <Compile Include="Entity\Message\Authorizes\AuthorizeRequestBase.cs" />
+    <Compile Include="Entity\Message\Authorizes\AuthorizeThirdTokenRequest.cs" />
+    <Compile Include="Entity\Message\Authorizes\AuthorizeUserCenterRequest.cs" />
+    <Compile Include="Entity\Message\MessageUtil.cs" />
+    <Compile Include="Entity\Message\Protocal.cs" />
+    <Compile Include="Entity\Message\Tokens\TokenAuthorizationCodeRequest.cs" />
+    <Compile Include="Entity\Message\Tokens\TokenClientCredentialsRequest.cs" />
+    <Compile Include="Entity\Message\Tokens\TokenLoginRequest.cs" />
+    <Compile Include="Entity\Message\Tokens\TokenPasswordPassport91Request.cs" />
+    <Compile Include="Entity\Message\Tokens\TokenPasswordThirdTokenRequest.cs" />
+    <Compile Include="Entity\Message\Tokens\TokenPasswordUserCenterRequest.cs" />
+    <Compile Include="Entity\Message\Tokens\TokenRefreshRequest.cs" />
+    <Compile Include="Entity\Message\Tokens\TokenRequestBase.cs" />
+    <Compile Include="Entity\Message\Tokens\TokenUserRequest.cs" />
+    <Compile Include="Entity\ResponseType.cs" />
+    <Compile Include="Entity\UserProxy.cs" />
+    <Compile Include="Entity\VerifyCodeType.cs" />
+    <Compile Include="Mvc\AbstractOAuthAttribute.cs" />
+    <Compile Include="Mvc\HttpRequestHeaders.cs" />
+    <Compile Include="Mvc\OAuthUnauthorizedResult.cs" />
+    <Compile Include="OAuthAuthorization.cs" />
+    <Compile Include="OAuthException.cs" />
+    <Compile Include="OAuthService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Design\code_local.sequencediagram" />
+    <None Include="Design\code_redirect.sequencediagram" />
+    <None Include="Design\combine.sequencediagram" />
+    <None Include="Design\token.sequencediagram" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Design\code_local.sequencediagram.layout">
+      <DependentUpon>code_local.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\code_redirect.sequencediagram.layout">
+      <DependentUpon>code_redirect.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\combine.sequencediagram.layout">
+      <DependentUpon>combine.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\token.sequencediagram.layout">
+      <DependentUpon>token.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Avalon.Cache\Avalon.Cache.csproj">
+      <Project>{5c1bd726-ca74-4201-aedb-b1350ab9972c}</Project>
+      <Name>Avalon.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Framework\Avalon.Framework.csproj">
+      <Project>{2d80cd45-97fe-41aa-b95e-250490e76dae}</Project>
+      <Name>Avalon.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Repository\Avalon.Repository.csproj">
+      <Project>{5e917d8e-f096-4e78-a836-830557586cd7}</Project>
+      <Name>Avalon.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Utility\Avalon.Utility.csproj">
+      <Project>{78fc7ba4-bcf2-4e90-a185-dec2fd16b2a7}</Project>
+      <Name>Avalon.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

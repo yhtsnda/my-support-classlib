@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B5F6ACFE-D8B7-4324-B071-ADE963FEEA4B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Avalon.WebUtility</RootNamespace>
+    <AssemblyName>Avalon.WebUtility</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionExtensions\BrowserCacheActionResult.cs" />
+    <Compile Include="ActionExtensions\BrowserCacheImageResult.cs" />
+    <Compile Include="ActionExtensions\CustomJsonResult.cs" />
+    <Compile Include="ActionExtensions\ExcelResult.cs" />
+    <Compile Include="ActionExtensions\ImageResult.cs" />
+    <Compile Include="ActionExtensions\JsonpResult.cs" />
+    <Compile Include="ActionExtensions\NotModifiedFilterAttribute.cs" />
+    <Compile Include="ActionExtensions\XmlResult.cs" />
+    <Compile Include="Api\ActionResults\AjaxApiDataResult.cs" />
+    <Compile Include="Api\ActionResults\JsonpResultImpl.cs" />
+    <Compile Include="Api\ActionResults\OpenApiDataResult.cs" />
+    <Compile Include="Api\ActionResults\PlatformHttpLoginRedirectResult.cs" />
+    <Compile Include="Api\ActionResults\PlatformHttpUnauthorizedException.cs" />
+    <Compile Include="Api\ActionResults\PlatformHttpUnauthorizedResult.cs" />
+    <Compile Include="Api\AjaxApiAttribute.cs" />
+    <Compile Include="Api\AllowAnonymousAttribute.cs" />
+    <Compile Include="Api\ApiAttribute.cs" />
+    <Compile Include="Api\ApiControllerActionInvoker.cs" />
+    <Compile Include="Api\ApiControllerFactory.cs" />
+    <Compile Include="Api\MutilApiImpl.cs" />
+    <Compile Include="Api\ODataQueryAttribute.cs" />
+    <Compile Include="Api\OpenApiAttribute.cs" />
+    <Compile Include="Api\PlatformAuthorizeAttribute.cs" />
+    <Compile Include="ControllerExtensions\InvokeActionResultExtend.cs" />
+    <Compile Include="FilterExtensions\CompressAttribute.cs" />
+    <Compile Include="FilterExtensions\CustomActionNameAttribute.cs" />
+    <Compile Include="FormAjaxOptions.cs" />
+    <Compile Include="HtmlHelperExtension.cs" />
+    <Compile Include="Knockout\KnockoutBind.cs" />
+    <Compile Include="Knockout\KnockoutBindExtend.cs" />
+    <Compile Include="MetroExtend.cs" />
+    <Compile Include="Modules\BaseHttpModule.cs" />
+    <Compile Include="Modules\HandlerErrorModule.cs" />
+    <Compile Include="MvcHelper.cs" />
+    <Compile Include="MvcHttpModuleInitializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\GlobalConfig.cs" />
+    <Compile Include="Resources\IResourceCollector.cs" />
+    <Compile Include="Resources\Resource.cs" />
+    <Compile Include="Resources\ResourceCollector.cs" />
+    <Compile Include="Resources\ResourceType.cs" />
+    <Compile Include="RoutesExtensions\AreaRegistrationContextExtension.cs" />
+    <Compile Include="RoutesExtensions\CustomRoute.cs" />
+    <Compile Include="RoutesExtensions\DomainRoutes\DomainData.cs" />
+    <Compile Include="RoutesExtensions\DomainRoutes\DomainRoute.cs" />
+    <Compile Include="RoutesExtensions\DomainRoutes\LinkExtensions.cs" />
+    <Compile Include="RoutesExtensions\RouteDataExtension.cs" />
+    <Compile Include="RoutesExtensions\RouteParser.cs" />
+    <Compile Include="RoutesExtensions\UrlRewriterRoute.cs" />
+    <Compile Include="ViewEngineExtensions\CustomViewEngine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Avalon.Profiler\Avalon.Profiler.csproj">
+      <Project>{615883dd-8819-41ad-a4ef-42757beeddd2}</Project>
+      <Name>Avalon.Profiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Utility\Avalon.Utility.csproj">
+      <Project>{78fc7ba4-bcf2-4e90-a185-dec2fd16b2a7}</Project>
+      <Name>Avalon.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -47,6 +47,7 @@
     <Compile Include="Accumlator\AccumlatorDataInt64.cs" />
     <Compile Include="Accumlator\AccumlatorType.cs" />
     <Compile Include="Accumlator\RegionAccumlator.cs" />
+    <Compile Include="Command\CmdCommandService.cs" />
     <Compile Include="Command\CommandService.cs" />
     <Compile Include="Monitor\Datas\MonitorServiceData.cs" />
     <Compile Include="Monitor\Datas\PageMonitorData.cs" />
