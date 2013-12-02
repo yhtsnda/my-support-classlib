@@ -166,7 +166,7 @@ namespace Avalon.NHibernateAccess
                     if (af)
                         andAlsoCounter++;
                     Visit(node.Arguments[0]);
-                    if (af)
+                    if (sql.Where.Length > 0)
                         sql.Where.Append(" AND ");
                     StateScope(ParseStatus.Condition, () => Visit(node.Arguments[1]));
                     andAlsoCounter--;

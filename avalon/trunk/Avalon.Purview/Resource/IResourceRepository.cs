@@ -7,7 +7,7 @@ using Avalon.Framework;
 
 namespace Avalon.Purviews
 {
-    public interface IResourceRepository : INoShardRepository<Access>
+    public interface IResourceRepository : INoShardRepository<Resource>
     {
     }
 }

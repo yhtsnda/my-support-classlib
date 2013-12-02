@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-using Projects.Tool.Util;
 using Avalon.Utility;
 
 namespace Avalon.Purviews

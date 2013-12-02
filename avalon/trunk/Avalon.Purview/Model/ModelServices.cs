@@ -9,14 +9,19 @@ namespace Avalon.Purviews
 {
     public class ModelServices : IService
     {
-        private IModelRepository modelRepository;
-        private IAccessRepository accessRepository;
-        private CacheDomain<ModelLookup, string> modelCache;
+        IModelRepository modelRepository;
+        AccessServices accessService;
+        ModelServices modelService;
+        ActionServices actionService;
+        CacheDomain<ModelLookup, string> modelCache;
 
-        public ModelServices(IModelRepository modelRepository, IAccessRepository accessRepository)
+        public ModelServices(IModelRepository modelRepository, AccessServices accessService,
+            ModelServices modelService, ActionServices actionService)
         {
             this.modelRepository = modelRepository;
-            this.accessRepository = accessRepository;
+            this.accessService = accessService;
+            this.modelService = modelService;
+            this.actionService = actionService;
 
             modelCache = CacheDomain.CreateSingleKey<ModelLookup, string>(
                         o => o.InstanceKey,
@@ -94,11 +99,11 @@ namespace Avalon.Purviews
         public Model GetModelListForUser(int userId, string instanceKey)
         {
             //获取用户的信息
-            Access access = accessRepository.FindOne(new Access { UserId = userId, InstanceKey = instanceKey });
+            Access access = accessService.GetUser(userId, instanceKey);
             if (access == null)
                 return null;
 
-            Model root = ModelServices.GetModelRoot(instanceKey);
+            Model root = modelService.GetModelRoot(instanceKey);
             if (root == null)
                 return root;
 
@@ -136,41 +141,25 @@ namespace Avalon.Purviews
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public ResultKey SaveModel(Model model)
+        public void SaveModel(Model model)
         {
             //创建一个新的模块
             if (model.Key == 0)
             {
                 if (!String.IsNullOrEmpty(model.ActionKey))
                 {
-                    bool actionExists = ActionServices.CheckAction(model.InstanceKey, model.ActionKey);
+                    bool actionExists = actionService.CheckAction(model.InstanceKey, model.ActionKey);
                     if (actionExists)
-                    {
-                        var result = modelRepository.Create(model).Result;
-                        if (result == ResultKey.OK)
-                            modelCache.RemoveCache(model.InstanceKey);
-                        return result;
-                    }
-                    else
-                    {
-                        return ResultKey.Failure;
-                    }
+                        modelRepository.Create(model);
                 }
                 else
-                {
-                    var result = modelRepository.Create(model).Result;
-                    if (result == ResultKey.OK)
-                        modelCache.RemoveCache(model.InstanceKey);
-                    return result;
-                }
+                    modelRepository.Create(model);
             }
             //更新一个模块信息
             else
             {
-                var result = modelRepository.Update(model);
-                if (result == ResultKey.OK)
-                    modelCache.RemoveCache(model.InstanceKey);
-                return result;
+                modelRepository.Update(model);
+                modelCache.RemoveCache(model.InstanceKey);
             }
         }
 
@@ -178,18 +167,14 @@ namespace Avalon.Purviews
         /// 删除一个模块
         /// </summary>
         /// <param name="model"></param>
-        public ResultKey DeleteModel(Model model)
+        public void DeleteModel(Model model)
         {
             model = GetModel(model.InstanceKey, model.Key);
             if (model == null)
-            {
-                return ResultKey.Failure;
-            }
+                throw new AvalonException("模块为空");
 
             RecursiveDeleteModel(model);
             modelCache.RemoveCache(model.InstanceKey);
-
-            return ResultKey.OK;
         }
 
         /// <summary>
@@ -214,7 +199,9 @@ namespace Avalon.Purviews
         /// <returns></returns>
         private IList<Model> GetModelList(string instanceKey)
         {
-            return modelRepository.FindAll(new Model{InstanceKey = instanceKey});
+            var spec = modelRepository.CreateSpecification()
+                .Where(o => o.InstanceKey == instanceKey);
+            return modelRepository.FindAll(spec);
         }
 
         /// <summary>
@@ -358,7 +345,7 @@ namespace Avalon.Purviews
             foreach (var child in systemModel.Childs)
             {
                 if (String.IsNullOrWhiteSpace(child.ActionKey) || 
-                    AccessServices.CheckAction(userId, instanceKey, child.ActionKey))
+                    accessService.CheckAction(userId, instanceKey, child.ActionKey))
                 {
                     var childUserModel = child.Clone();
                     ProcessUserModel(child, childUserModel, userId, instanceKey);
