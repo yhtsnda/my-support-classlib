@@ -35,8 +35,19 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,7 +55,99 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginResultCode.cs" />
+    <Compile Include="Logins\BaseLogin.cs" />
+    <Compile Include="Logins\Passport91Login.cs" />
+    <Compile Include="Logins\ThirdLogin.cs" />
+    <Compile Include="Logins\UserLogin.cs" />
+    <Compile Include="Logs\ActiveLog.cs" />
+    <Compile Include="Logs\ActiveLogService.cs" />
+    <Compile Include="Logs\IActiveLogRepository.cs" />
+    <Compile Include="Logs\ILastLoginLogRepository.cs" />
+    <Compile Include="Logs\ILoginLogRepository.cs" />
+    <Compile Include="Logs\IRegisterLogRepository.cs" />
+    <Compile Include="Logs\IUpgradeLogRepository.cs" />
+    <Compile Include="Logs\LastLoginLog.cs" />
+    <Compile Include="Logs\LoginLog.cs" />
+    <Compile Include="Logs\LogService.cs" />
+    <Compile Include="Logs\RegisterLog.cs" />
+    <Compile Include="Logs\UpgradeLog.cs" />
+    <Compile Include="Mappings\IMappingRepository.cs" />
+    <Compile Include="Mappings\Mapping.cs" />
+    <Compile Include="Mappings\MappingService.cs" />
+    <Compile Include="Mappings\MappingSource.cs" />
+    <Compile Include="ModifyPasswordResultCode.cs" />
+    <Compile Include="Password91s\Internals\AbstractPassport91RestData.cs" />
+    <Compile Include="Password91s\Internals\AbstractPassport91XmlData.cs" />
+    <Compile Include="Password91s\Internals\Passport91LoginValidData.cs" />
+    <Compile Include="Password91s\Internals\Passport91ModifyPasswordData.cs" />
+    <Compile Include="Password91s\Internals\Passport91RegisterData.cs" />
+    <Compile Include="Password91s\Internals\Passport91ServiceClient.cs" />
+    <Compile Include="Password91s\Internals\Passport91UserNameValidData.cs" />
+    <Compile Include="Password91s\Passport91LoginCode.cs" />
+    <Compile Include="Password91s\Passport91LoginData.cs" />
+    <Compile Include="Password91s\Passport91Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterResultCode.cs" />
+    <Compile Include="ResultWrapper.cs" />
+    <Compile Include="ThirdParty\AccessTokenData.cs" />
+    <Compile Include="ThirdParty\OAuthClient.cs" />
+    <Compile Include="ThirdParty\OAuthClientSetting.cs" />
+    <Compile Include="ThirdParty\TencentOAuthClient.cs" />
+    <Compile Include="ThirdParty\ThirdPartyImpl.cs" />
+    <Compile Include="ThirdParty\WeiboOAuthClient.cs" />
+    <Compile Include="UpgradeStatus.cs" />
+    <Compile Include="UserCenterConfig.cs" />
+    <Compile Include="UserRegister.cs" />
+    <Compile Include="UserService.cs" />
+    <Compile Include="Users\UserExtend.cs" />
+    <Compile Include="Users\UserInner.cs" />
+    <Compile Include="Users\UserInnerRepository.cs" />
+    <Compile Include="Users\UserInnerService.cs" />
+    <Compile Include="Users\UserValid.cs" />
+    <Compile Include="UserUtil.cs" />
+    <Compile Include="VerifyCodes\IVerifyCodeRepository.cs" />
+    <Compile Include="VerifyCodes\VerifyCode.cs" />
+    <Compile Include="VerifyCodes\VerifyCodeService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Password91s\Internals\docs\[100041]检查 Cookie 的合法性.doc" />
+    <None Include="Password91s\Internals\docs\[100213]修改密码.doc" />
+    <None Include="Password91s\Internals\docs\单点登录接入安全中心.doc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Password91s\Internals\docs\方法.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Avalon.Cache\Avalon.Cache.csproj">
+      <Project>{5c1bd726-ca74-4201-aedb-b1350ab9972c}</Project>
+      <Name>Avalon.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Framework\Avalon.Framework.csproj">
+      <Project>{2d80cd45-97fe-41aa-b95e-250490e76dae}</Project>
+      <Name>Avalon.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.HttpClient\Avalon.HttpClient.csproj">
+      <Project>{d58262f4-c36d-4f22-86c0-fd7460980c27}</Project>
+      <Name>Avalon.HttpClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.OAuth\Avalon.OAuth.csproj">
+      <Project>{146dbd8b-0114-43c8-856c-55c59a29e34a}</Project>
+      <Name>Avalon.OAuth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Profiler\Avalon.Profiler.csproj">
+      <Project>{615883dd-8819-41ad-a4ef-42757beeddd2}</Project>
+      <Name>Avalon.Profiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Repository\Avalon.Repository.csproj">
+      <Project>{5e917d8e-f096-4e78-a836-830557586cd7}</Project>
+      <Name>Avalon.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalon.Utility\Avalon.Utility.csproj">
+      <Project>{78fc7ba4-bcf2-4e90-a185-dec2fd16b2a7}</Project>
+      <Name>Avalon.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

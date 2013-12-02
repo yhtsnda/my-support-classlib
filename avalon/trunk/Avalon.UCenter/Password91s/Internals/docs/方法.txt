@@ -1,0 +1,33 @@
+RegitserUserNameCheck
+4.5.	账号校验-专供手机使用 （RegisterUserNameCheck_ForMobileSpace）
+/// <param name="username">账号</param>
+/// <param name="checkcode">接口校验码,标准MD5(username + "分配的密钥")</param>
+/// <returns>-9:系统异常请联系管理员 -3:传入参数不完整 15:校验码错误,16:非法访问IP  50000:长度不合法 50001:格式不合法 50002:账号已经被使用 50003:账号可用 </returns>
+
+
+RegisterUserInfo_Cop_591UP_WithRegType (regplat=70 是不发邮件的，111是发邮件的)
+/// <summary>
+        /// 注册方法[ 591UP ]
+        /// </summary>
+        /// <param name="userName">帐号 -- 要求使用邮箱</param>
+        /// <param name="password">密码 -- 可逆加密</param>
+        /// <param name="nickName">昵称 -- 可逆加密</param>
+        /// <param name="mobile">手机号码 -- 非业务号码</param>
+        /// <param name="ipAddress">IP地址</param>
+        /// <param name="regType">注册平台类型：0 表示平台为 70；1 表示平台为 111；</param>
+        /// <param name="checkCode">接口校验码,标准MD5( username + password + nickname + mobile + ipaddress + "分配的密
+钥")</param>
+        /// <param name="return_userid">返回的用户编号。</param>
+        /// <returns>
+        /// -9:系统异常请联系管理员 -3:传入参数不完整 15,16:checkcode错误
+        /// 10000 , 10001:注册失败 10002:注册成功
+        /// 50000:帐号长度不合法 50001:帐号格式不合法 50002:帐号已经被使用
+        /// 50004:昵称长度不合法 50005:昵称已经被使用
+        /// 50011:密码长度不合法 50013:密码格式不合法
+        /// 50017,50018 手机号码不合法
+        /// 50007 , 50009:身份证不合法
+        /// </returns>
+        [WebMethod(Description = "注册[591UP]")]
+        [SoapHeader("UserToken")]
+        public Int32 
+RegisterUserInfo_Cop_591UP_WithRegType(String userName, String password, String nickName, String mobile, String ipAddress, Int32 regType, String checkCode, out UInt32 return_userid)

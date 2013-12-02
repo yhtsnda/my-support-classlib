@@ -62,7 +62,6 @@
     <Compile Include="Cacheable\CacheData\CacheKeyGenerator\SimpleGenerator.cs" />
     <Compile Include="Cacheable\CacheData\ICacheKeyGenerator.cs" />
     <Compile Include="Cacheable\CacheData\ICacheKeySupport.cs" />
-    <Compile Include="Cacheable\CacheData\IQueryTimestamp.cs" />
     <Compile Include="Cacheable\CacheData\ListCacheData.cs" />
     <Compile Include="Cacheable\CacheData\PagingCacheData.cs" />
     <Compile Include="Cacheable\CacheData\QueryCacheData.cs" />

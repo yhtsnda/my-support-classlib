@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Avalon.NHibernateAccess
+namespace Avalon.MongoAccess
 {
     public static class MongoRepositoryExtend
     {
