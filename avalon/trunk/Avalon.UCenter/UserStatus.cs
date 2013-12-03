@@ -6,17 +6,21 @@ using System.Text;
 namespace Avalon.UCenter
 {
     /// <summary>
-    /// 状态
+    /// 用户状态
     /// </summary>
-    public enum UpgradeStatus
+    public enum UserStatus
     {
         /// <summary>
-        /// 初始
+        /// 正常
         /// </summary>
-        NoSet = 0,
+        Normal = 0,
         /// <summary>
-        /// 已升级
+        /// 不可用
         /// </summary>
-        Upgraded = 4
+        Disabled = 1,
+        /// <summary>
+        /// 被删除
+        /// </summary>
+        Deleted = 2
     }
 }

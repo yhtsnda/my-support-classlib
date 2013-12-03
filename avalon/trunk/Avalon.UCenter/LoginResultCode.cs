@@ -11,7 +11,9 @@ namespace Avalon.UCenter
 
         EmptyUserName = 400001,
         EmptyPassword = 400002,
+        EmptyAppCode = 400003,
 
+        InvalidAppCode = 400004,
         BindingNotFound = 400031,
 
         //升级相关
@@ -34,6 +36,10 @@ namespace Avalon.UCenter
                     return "用户名不能为空";
                 case LoginResultCode.EmptyPassword:
                     return "密码不能为空";
+                case LoginResultCode.EmptyAppCode:
+                    return "应用平台码为空";
+                case LoginResultCode.InvalidAppCode:
+                    return "无效的平台码";
                 case LoginResultCode.BindingNotFound:
                     return "未进行绑定";
                 case LoginResultCode.NeedToUpgrade:

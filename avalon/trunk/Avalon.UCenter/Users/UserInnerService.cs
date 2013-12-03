@@ -13,70 +13,105 @@ namespace Avalon.UCenter
         Regex regMobile = new Regex(@"^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$", RegexOptions.Compiled);
         IUserInnerRepository userInnerRepository;
         LogService logService;
+        PlatformService platService;
 
-        public UserInnerService(IUserInnerRepository userInnerRepository, LogService logService)
+        public UserInnerService(IUserInnerRepository userInnerRepository, 
+            LogService logService,
+            PlatformService platService)
         {
             this.userInnerRepository = userInnerRepository;
             this.logService = logService;
+            this.platService = platService;
         }
-
-        public UserInner GetUserInner(long userId)
-        {
-            return userInnerRepository.Get(userId);
-        }
-
-        public IList<UserInner> GetUserInnerList(IEnumerable<long> userIds)
-        {
-            return userInnerRepository.GetList(userIds);
-        }
-
-        public UserInner GetUserInner(string userName)
-        {
-            var spec = userInnerRepository.CreateSpecification().Where(o => o.UserName == userName);
-            return userInnerRepository.FindOne(spec);
-        }
-
-        public UserInner GetUserInnerByNickName(string nickName)
-        {
-            var spec = userInnerRepository.CreateSpecification().Where(o => o.NickName == nickName);
-            return userInnerRepository.FindOne(spec);
-        }
-
-        public bool ContainsUserName(string userName)
-        {
-            return GetUserInner(userName) != null;
-        }
-
-        public bool ContainsNickName(string nickName)
-        {
-            return GetUserInnerByNickName(nickName) != null;
-        }
-
+        /// <summary>
+        /// 创建用户
+        /// </summary>
         public void CreateUserInner(UserInner userInner)
         {
             userInnerRepository.Create(userInner);
         }
-
+        /// <summary>
+        /// 更新用户
+        /// </summary>
         public void UpdateUserInner(UserInner userInner)
         {
             userInnerRepository.Update(userInner);
         }
-
-        public ResultWrapper<LoginResultCode, UserInner> TryLogin(string userName, string password, long platcode = 0)
+        /// <summary>
+        /// 根据用户ID获取用户信息
+        /// </summary>
+        public UserInner GetUserInner(int userId)
+        {
+            return userInnerRepository.Get(userId);
+        }
+        /// <summary>
+        /// 根据用户名获取用户信息
+        /// </summary>
+        public UserInner GetUserInnerByName(string userName)
+        {
+            var spec = userInnerRepository.CreateSpecification().Where(o => o.UserName == userName);
+            return userInnerRepository.FindOne(spec);
+        }
+        /// <summary>
+        /// 根据用户手机号码获取用户信息(可以是复数的)
+        /// </summary>
+        public IList<UserInner> GetUserInnerListByMobile(string mobile)
+        {
+            var spec = userInnerRepository.CreateSpecification().Where(o => o.Mobile == mobile);
+            return userInnerRepository.FindAll(spec);
+        }
+        /// <summary>
+        /// 根据用户的身份证号码获取用户信息
+        /// </summary>
+        public UserInner GetUserInnerByIdCard(string idCard)
+        {
+            var spec = userInnerRepository.CreateSpecification().Where(o => o.IdCard == idCard);
+            return userInnerRepository.FindOne(spec);
+        }
+        /// <summary>
+        /// 获取多个用户信息
+        /// </summary>
+        public IList<UserInner> GetUserInnerList(IEnumerable<long> userIds)
+        {
+            return userInnerRepository.GetList(userIds);
+        }
+        public bool ContainsUserName(string userName)
+        {
+            return GetUserInnerByName(userName) != null;
+        }
+        /// <summary>
+        /// 尝试进行登录
+        /// </summary>
+        /// <param name="voucher">登录凭证</param>
+        /// <param name="password">密码(加密后)</param>
+        /// <param name="appCode">应用编码</param>
+        public ResultWrapper<LoginResultCode, UserInner> TryLogin(string voucher, string password, string appCode)
         {
             //基本参数校验
-            if (String.IsNullOrEmpty(userName))
+            if (String.IsNullOrEmpty(voucher))
                 return CreateResult(LoginResultCode.EmptyUserName);
-
-            if (string.IsNullOrEmpty(userName))
+            if (string.IsNullOrEmpty(password))
                 return CreateResult(LoginResultCode.EmptyPassword);
+            if (String.IsNullOrEmpty(appCode))
+                return CreateResult(LoginResultCode.EmptyAppCode);
+            //获取平台应用
+            var plat = platService.GetPlatform(appCode);
+            if (plat == null || plat.Status == PlatformStatus.NotAvailable)
+                return CreateResult(LoginResultCode.InvalidAppCode);
 
-            if (platcode.ToString().IndexOf("3001") >= 0)
-                return CreateResult(LoginResultCode.NeedToUpgrade);
+            UserInner userInner = null;
+            //优先判断用户名
+            if (plat.UsedVoucher.Any(o => o == LoginVouchers.UserName))
+                userInner = GetUserInnerByName(voucher);
+            //再判断手机号码
+            if (userInner == null)
+            {
 
+            }
+            
 
             //校验用户是否存在
-            var userInner = GetUserInner(userName);
+           
             if (userInner == null)
                 return CreateResult(LoginResultCode.UserNotFound);
 

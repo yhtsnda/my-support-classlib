@@ -57,7 +57,6 @@
   <ItemGroup>
     <Compile Include="LoginResultCode.cs" />
     <Compile Include="Logins\BaseLogin.cs" />
-    <Compile Include="Logins\Passport91Login.cs" />
     <Compile Include="Logins\ThirdLogin.cs" />
     <Compile Include="Logins\UserLogin.cs" />
     <Compile Include="Logs\ActiveLog.cs" />
@@ -77,16 +76,10 @@
     <Compile Include="Mappings\MappingService.cs" />
     <Compile Include="Mappings\MappingSource.cs" />
     <Compile Include="ModifyPasswordResultCode.cs" />
-    <Compile Include="Password91s\Internals\AbstractPassport91RestData.cs" />
-    <Compile Include="Password91s\Internals\AbstractPassport91XmlData.cs" />
-    <Compile Include="Password91s\Internals\Passport91LoginValidData.cs" />
-    <Compile Include="Password91s\Internals\Passport91ModifyPasswordData.cs" />
-    <Compile Include="Password91s\Internals\Passport91RegisterData.cs" />
-    <Compile Include="Password91s\Internals\Passport91ServiceClient.cs" />
-    <Compile Include="Password91s\Internals\Passport91UserNameValidData.cs" />
-    <Compile Include="Password91s\Passport91LoginCode.cs" />
-    <Compile Include="Password91s\Passport91LoginData.cs" />
-    <Compile Include="Password91s\Passport91Service.cs" />
+    <Compile Include="Platforms\IPlatformRepository.cs" />
+    <Compile Include="Platforms\Platform.cs" />
+    <Compile Include="Platforms\PlatformService.cs" />
+    <Compile Include="PlatType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterResultCode.cs" />
     <Compile Include="ResultWrapper.cs" />
@@ -96,13 +89,12 @@
     <Compile Include="ThirdParty\TencentOAuthClient.cs" />
     <Compile Include="ThirdParty\ThirdPartyImpl.cs" />
     <Compile Include="ThirdParty\WeiboOAuthClient.cs" />
-    <Compile Include="UpgradeStatus.cs" />
+    <Compile Include="UserStatus.cs" />
     <Compile Include="UserCenterConfig.cs" />
     <Compile Include="UserRegister.cs" />
     <Compile Include="UserService.cs" />
-    <Compile Include="Users\UserExtend.cs" />
     <Compile Include="Users\UserInner.cs" />
-    <Compile Include="Users\UserInnerRepository.cs" />
+    <Compile Include="Users\IUserInnerRepository.cs" />
     <Compile Include="Users\UserInnerService.cs" />
     <Compile Include="Users\UserValid.cs" />
     <Compile Include="UserUtil.cs" />
@@ -112,12 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Password91s\Internals\docs\[100041]检查 Cookie 的合法性.doc" />
-    <None Include="Password91s\Internals\docs\[100213]修改密码.doc" />
-    <None Include="Password91s\Internals\docs\单点登录接入安全中心.doc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Password91s\Internals\docs\方法.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Avalon.Cache\Avalon.Cache.csproj">

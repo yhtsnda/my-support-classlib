@@ -1,6 +1,5 @@
 ﻿using Avalon.Framework;
 using Avalon.Utility;
-using Avalon.Utility;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,43 +11,22 @@ namespace Avalon.UCenter
     public class UserService : IService
     {
         UserInnerService userInnerService;
-        Passport91Service passport91Service;
         VerifyCodeService verifyCodeService;
         MappingService mappingService;
         ThirdPartyService thirdPartService;
 
-        public UserService(UserInnerService userInnerService, Passport91Service passport91Service, MappingService mappingService, VerifyCodeService verifyCodeService, ThirdPartyService thirdPartService)
+        public UserService(UserInnerService userInnerService, 
+            MappingService mappingService, 
+            VerifyCodeService verifyCodeService, 
+            ThirdPartyService thirdPartService)
         {
             this.userInnerService = userInnerService;
-            this.passport91Service = passport91Service;
             this.verifyCodeService = verifyCodeService;
             this.mappingService = mappingService;
             this.thirdPartService = thirdPartService;
         }
 
         #region login
-
-        /// <summary>
-        /// 使用91登录返回数据进行登录
-        /// </summary>
-        public ResultWrapper<LoginResultCode, UserInner> TryLogin(Passport91Login login)
-        {
-            var result = passport91Service.ValidLogin(login.ToData());
-            var cCode = result.Code.ToLoginResultCode();
-
-            if (cCode == LoginResultCode.Success)
-            {
-                //来源91的用户, autoReg为true
-                var userInner = mappingService.EnsureUserMapping(login.Passport91Id, login.UserName, login.UserName, login.Password, UserValid.IsEmail(login.UserName) ? login.UserName : "", login.PlatCode, login.IpAddress, login.Browser, true, null, login.ExtendField);
-                //登录成功
-                userInnerService.OnLoginSuccess(userInner.UserId, login.PlatCode, login.IpAddress, login.Browser, login.ExtendField);
-
-                return CreateLoginResult(userInner);
-            }
-
-            return CreateLoginResult(cCode, cCode == LoginResultCode.ApiException ? result.ToString() : cCode.ToMessage());
-        }
-
         /// <summary>
         /// 使用用户中心进行登录（不会连接到91校验）
         /// </summary>
