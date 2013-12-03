@@ -3,6 +3,7 @@ using Antlr.Runtime.Tree;
 using Avalon.Utility;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace Avalon.Framework.Querys
                 SelectNode = children.OfType<SelectExpressionNode>().FirstOrDefault();
                 OrderbyNode = children.OfType<OrderbyExpressionNode>().FirstOrDefault();
                 InlineCountNode = children.OfType<InlineCountExpressionNode>().FirstOrDefault();
+                CountNode = children.OfType<CountExpressionNode>().FirstOrDefault();
             }
             else
             {
@@ -39,6 +41,8 @@ namespace Avalon.Framework.Querys
                     OrderbyNode = (OrderbyExpressionNode)root;
                 else if (root is InlineCountExpressionNode)
                     InlineCountNode = (InlineCountExpressionNode)root;
+                else if (root is CountExpressionNode)
+                    CountNode = (CountExpressionNode)root;
             }
             if (TopNode != null && TopNode.Value < 0)
                 throw new ArgumentException("$top 值不能小于 0");
@@ -58,6 +62,8 @@ namespace Avalon.Framework.Querys
         public OrderbyExpressionNode OrderbyNode { get; set; }
 
         public InlineCountExpressionNode InlineCountNode { get; set; }
+
+        public CountExpressionNode CountNode { get; set; }
 
         public int? Skip
         {
@@ -82,6 +88,11 @@ namespace Avalon.Framework.Querys
         public bool InlineCount
         {
             get { return InlineCountNode != null && InlineCountNode.InlinCountType == "allpages"; }
+        }
+
+        public bool Count
+        {
+            get { return CountNode != null && CountNode.Value; }
         }
 
         public IList<ExpressionNode> DescendantExpressions()
@@ -112,12 +123,19 @@ namespace Avalon.Framework.Querys
                 exps.Add(SkipNode);
                 exps.AddRange(SkipNode.DescendantExpressions());
             }
+            if (CountNode != null)
+            {
+                exps.Add(CountNode);
+                exps.AddRange(CountNode.DescendantExpressions());
+            }
             return exps;
         }
 
-        public static ODataQueryData Parse(string queryString)
+        public static ODataQueryData Parse(NameValueCollection datas)
         {
-            queryString = ProcessQueryString(queryString);
+            Arguments.NotNull(datas, "datas");
+            var queryString = GetODataQueryString(datas);
+
             var input = new ANTLRReaderStream(new StringReader(queryString));
             var lexer = new AvalonQueryLexer(input);
             var tokStream = new CommonTokenStream(lexer);
@@ -131,16 +149,15 @@ namespace Avalon.Framework.Querys
             return query;
         }
 
-        static string ProcessQueryString(string queryString)
+        static string GetODataQueryString(NameValueCollection datas)
         {
             List<string> odataQuerys = new List<string>();
-            var kvs = HttpUtility.ParseQueryString(queryString);
-            foreach (string key in kvs.Keys)
+            foreach (string key in datas)
             {
-                if (key == "$filter" || key == "$top" || key == "$skip" || key == "$orderby" || key == "$inlinecount" || key == "$metadata")
-                    odataQuerys.Add(key + "=" + kvs[key]);
+                if (key.StartsWith("$"))
+                    odataQuerys.Add(key + "=" + datas[key]);
             }
-            return string.Join("&", odataQuerys);
+            return String.Join("&", odataQuerys);
         }
     }
 }

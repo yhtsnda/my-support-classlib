@@ -27,7 +27,7 @@ namespace Avalon.Framework.Querys
             extendMethods.Add(typeof(SpecificationExtend).GetMethod("IsNotNull"), MethodType.IsNotNull);
         }
 
-        internal MethodType Parse(MethodInfo method)
+        protected MethodType Parse(MethodInfo method)
         {
             if (method.IsGenericMethod)
                 method = method.GetGenericMethodDefinition();
@@ -39,13 +39,13 @@ namespace Avalon.Framework.Querys
             return MethodType.Unknown;
         }
 
-        internal void CheckCondition()
+        protected void CheckCondition()
         {
             if (status != ParseStatus.Condition)
                 throw new QueryParseException("上下文 {0} 不支持此语法", status);
         }
 
-        internal void StateScope(ParseStatus status, Action action)
+        protected void StateScope(ParseStatus status, Action action)
         {
             if (this.status != ParseStatus.None)
                 throw new QueryParseException("当前状态为 {0} 无法切换到状态 {1}", this.status, status);
@@ -89,8 +89,7 @@ namespace Avalon.Framework.Querys
         IsNotNull
     }
 
-
-    internal enum ParseStatus
+    public  enum ParseStatus
     {
         Condition = 1,
         OrderBy = 2,

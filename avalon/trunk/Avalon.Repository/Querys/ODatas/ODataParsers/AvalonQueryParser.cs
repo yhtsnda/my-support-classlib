@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.0.2 Querys\\NdQuery.g3 2013-10-08 10:23:05
+// $ANTLR 3.5.0.2 AvalonQuery.g3 2013-12-03 12:00:02
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -121,7 +121,7 @@ namespace Avalon.Framework.Querys
         }
 
         public override string[] TokenNames { get { return AvalonQueryParser.tokenNames; } }
-        public override string GrammarFileName { get { return "Querys\\NdQuery.g3"; } }
+        public override string GrammarFileName { get { return "AvalonQuery.g3"; } }
 
 
         partial void OnCreated();
@@ -132,7 +132,7 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_prog();
         partial void LeaveRule_prog();
         // $ANTLR start "prog"
-        // Querys\\NdQuery.g3:18:1: public prog : ( param ( '&' ! param )* )* ;
+        // AvalonQuery.g3:19:1: public prog : ( param ( '&' ! param )* )* ;
         [GrammarRule("prog")]
         public AstParserRuleReturnScope<CommonTree, CommonToken> prog()
         {
@@ -152,17 +152,17 @@ namespace Avalon.Framework.Querys
             try
             {
                 DebugEnterRule(GrammarFileName, "prog");
-                DebugLocation(18, 25);
+                DebugLocation(19, 25);
                 try
                 {
-                    // Querys\\NdQuery.g3:19:2: ( ( param ( '&' ! param )* )* )
+                    // AvalonQuery.g3:20:2: ( ( param ( '&' ! param )* )* )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:19:4: ( param ( '&' ! param )* )*
+                    // AvalonQuery.g3:20:4: ( param ( '&' ! param )* )*
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(19, 4);
-                        // Querys\\NdQuery.g3:19:4: ( param ( '&' ! param )* )*
+                        DebugLocation(20, 4);
+                        // AvalonQuery.g3:20:4: ( param ( '&' ! param )* )*
                         try
                         {
                             DebugEnterSubRule(2);
@@ -174,7 +174,7 @@ namespace Avalon.Framework.Querys
                                     DebugEnterDecision(2, false);
                                     int LA2_1 = input.LA(1);
 
-                                    if ((LA2_1 == FILTER || LA2_1 == INLINECOUNT || (LA2_1 >= ORDERBY && LA2_1 <= SELECT) || LA2_1 == SKIP || LA2_1 == TOP))
+                                    if ((LA2_1 == COUNT || LA2_1 == FILTER || LA2_1 == INLINECOUNT || (LA2_1 >= ORDERBY && LA2_1 <= SELECT) || LA2_1 == SKIP || LA2_1 == TOP))
                                     {
                                         alt2 = 1;
                                     }
@@ -186,16 +186,16 @@ namespace Avalon.Framework.Querys
                                 {
                                     case 1:
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:19:5: param ( '&' ! param )*
+                                        // AvalonQuery.g3:20:5: param ( '&' ! param )*
                                         {
-                                            DebugLocation(19, 5);
-                                            PushFollow(Follow._param_in_prog73);
+                                            DebugLocation(20, 5);
+                                            PushFollow(Follow._param_in_prog74);
                                             param1 = param();
                                             PopFollow();
 
                                             adaptor.AddChild(root_0, param1.Tree);
-                                            DebugLocation(19, 11);
-                                            // Querys\\NdQuery.g3:19:11: ( '&' ! param )*
+                                            DebugLocation(20, 11);
+                                            // AvalonQuery.g3:20:11: ( '&' ! param )*
                                             try
                                             {
                                                 DebugEnterSubRule(1);
@@ -219,12 +219,12 @@ namespace Avalon.Framework.Querys
                                                     {
                                                         case 1:
                                                             DebugEnterAlt(1);
-                                                            // Querys\\NdQuery.g3:19:12: '&' ! param
+                                                            // AvalonQuery.g3:20:12: '&' ! param
                                                             {
-                                                                DebugLocation(19, 15);
-                                                                char_literal2 = (CommonToken)Match(input, 51, Follow._51_in_prog76);
-                                                                DebugLocation(19, 17);
-                                                                PushFollow(Follow._param_in_prog79);
+                                                                DebugLocation(20, 15);
+                                                                char_literal2 = (CommonToken)Match(input, 51, Follow._51_in_prog77);
+                                                                DebugLocation(20, 17);
+                                                                PushFollow(Follow._param_in_prog80);
                                                                 param3 = param();
                                                                 PopFollow();
 
@@ -281,7 +281,7 @@ namespace Avalon.Framework.Querys
                     LeaveRule("prog", 1);
                     LeaveRule_prog();
                 }
-                DebugLocation(19, 25);
+                DebugLocation(20, 25);
             }
             finally { DebugExitRule(GrammarFileName, "prog"); }
             return retval;
@@ -292,7 +292,7 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_param();
         partial void LeaveRule_param();
         // $ANTLR start "param"
-        // Querys\\NdQuery.g3:21:1: param : ( orderby | top | skip | filter | select | inlinecount ) ;
+        // AvalonQuery.g3:22:1: param : ( orderby | top | skip | filter | select | inlinecount | count ) ;
         [GrammarRule("param")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> param()
         {
@@ -310,22 +310,23 @@ namespace Avalon.Framework.Querys
             AstParserRuleReturnScope<CommonTree, CommonToken> filter7 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
             AstParserRuleReturnScope<CommonTree, CommonToken> select8 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
             AstParserRuleReturnScope<CommonTree, CommonToken> inlinecount9 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> count10 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
             try
             {
                 DebugEnterRule(GrammarFileName, "param");
-                DebugLocation(21, 62);
+                DebugLocation(22, 70);
                 try
                 {
-                    // Querys\\NdQuery.g3:21:7: ( ( orderby | top | skip | filter | select | inlinecount ) )
+                    // AvalonQuery.g3:22:7: ( ( orderby | top | skip | filter | select | inlinecount | count ) )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:21:9: ( orderby | top | skip | filter | select | inlinecount )
+                    // AvalonQuery.g3:22:9: ( orderby | top | skip | filter | select | inlinecount | count )
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(21, 9);
-                        // Querys\\NdQuery.g3:21:9: ( orderby | top | skip | filter | select | inlinecount )
-                        int alt3 = 6;
+                        DebugLocation(22, 9);
+                        // AvalonQuery.g3:22:9: ( orderby | top | skip | filter | select | inlinecount | count )
+                        int alt3 = 7;
                         try
                         {
                             DebugEnterSubRule(3);
@@ -364,6 +365,11 @@ namespace Avalon.Framework.Querys
                                             alt3 = 6;
                                         }
                                         break;
+                                    case COUNT:
+                                        {
+                                            alt3 = 7;
+                                        }
+                                        break;
                                     default:
                                         {
                                             NoViableAltException nvae = new NoViableAltException("", 3, 0, input, 1);
@@ -378,10 +384,10 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:21:10: orderby
+                                    // AvalonQuery.g3:22:10: orderby
                                     {
-                                        DebugLocation(21, 10);
-                                        PushFollow(Follow._orderby_in_param92);
+                                        DebugLocation(22, 10);
+                                        PushFollow(Follow._orderby_in_param93);
                                         orderby4 = orderby();
                                         PopFollow();
 
@@ -391,10 +397,10 @@ namespace Avalon.Framework.Querys
                                     break;
                                 case 2:
                                     DebugEnterAlt(2);
-                                    // Querys\\NdQuery.g3:21:20: top
+                                    // AvalonQuery.g3:22:20: top
                                     {
-                                        DebugLocation(21, 20);
-                                        PushFollow(Follow._top_in_param96);
+                                        DebugLocation(22, 20);
+                                        PushFollow(Follow._top_in_param97);
                                         top5 = top();
                                         PopFollow();
 
@@ -404,10 +410,10 @@ namespace Avalon.Framework.Querys
                                     break;
                                 case 3:
                                     DebugEnterAlt(3);
-                                    // Querys\\NdQuery.g3:21:26: skip
+                                    // AvalonQuery.g3:22:26: skip
                                     {
-                                        DebugLocation(21, 26);
-                                        PushFollow(Follow._skip_in_param100);
+                                        DebugLocation(22, 26);
+                                        PushFollow(Follow._skip_in_param101);
                                         skip6 = skip();
                                         PopFollow();
 
@@ -417,10 +423,10 @@ namespace Avalon.Framework.Querys
                                     break;
                                 case 4:
                                     DebugEnterAlt(4);
-                                    // Querys\\NdQuery.g3:21:33: filter
+                                    // AvalonQuery.g3:22:33: filter
                                     {
-                                        DebugLocation(21, 33);
-                                        PushFollow(Follow._filter_in_param104);
+                                        DebugLocation(22, 33);
+                                        PushFollow(Follow._filter_in_param105);
                                         filter7 = filter();
                                         PopFollow();
 
@@ -430,10 +436,10 @@ namespace Avalon.Framework.Querys
                                     break;
                                 case 5:
                                     DebugEnterAlt(5);
-                                    // Querys\\NdQuery.g3:21:42: select
+                                    // AvalonQuery.g3:22:42: select
                                     {
-                                        DebugLocation(21, 42);
-                                        PushFollow(Follow._select_in_param108);
+                                        DebugLocation(22, 42);
+                                        PushFollow(Follow._select_in_param109);
                                         select8 = select();
                                         PopFollow();
 
@@ -443,14 +449,27 @@ namespace Avalon.Framework.Querys
                                     break;
                                 case 6:
                                     DebugEnterAlt(6);
-                                    // Querys\\NdQuery.g3:21:51: inlinecount
+                                    // AvalonQuery.g3:22:51: inlinecount
                                     {
-                                        DebugLocation(21, 51);
-                                        PushFollow(Follow._inlinecount_in_param112);
+                                        DebugLocation(22, 51);
+                                        PushFollow(Follow._inlinecount_in_param113);
                                         inlinecount9 = inlinecount();
                                         PopFollow();
 
                                         adaptor.AddChild(root_0, inlinecount9.Tree);
+
+                                    }
+                                    break;
+                                case 7:
+                                    DebugEnterAlt(7);
+                                    // AvalonQuery.g3:22:65: count
+                                    {
+                                        DebugLocation(22, 65);
+                                        PushFollow(Follow._count_in_param117);
+                                        count10 = count();
+                                        PopFollow();
+
+                                        adaptor.AddChild(root_0, count10.Tree);
 
                                     }
                                     break;
@@ -481,7 +500,7 @@ namespace Avalon.Framework.Querys
                     LeaveRule("param", 2);
                     LeaveRule_param();
                 }
-                DebugLocation(21, 62);
+                DebugLocation(22, 70);
             }
             finally { DebugExitRule(GrammarFileName, "param"); }
             return retval;
@@ -492,7 +511,7 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_skip();
         partial void LeaveRule_skip();
         // $ANTLR start "skip"
-        // Querys\\NdQuery.g3:23:1: skip : SKIP ^ ( INT )+ ;
+        // AvalonQuery.g3:24:1: skip : SKIP ^ ( INT )+ ;
         [GrammarRule("skip")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> skip()
         {
@@ -504,29 +523,29 @@ namespace Avalon.Framework.Querys
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken SKIP10 = default(CommonToken);
-            CommonToken INT11 = default(CommonToken);
+            CommonToken SKIP11 = default(CommonToken);
+            CommonToken INT12 = default(CommonToken);
 
-            CommonTree SKIP10_tree = default(CommonTree);
-            CommonTree INT11_tree = default(CommonTree);
+            CommonTree SKIP11_tree = default(CommonTree);
+            CommonTree INT12_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "skip");
-                DebugLocation(23, 13);
+                DebugLocation(24, 13);
                 try
                 {
-                    // Querys\\NdQuery.g3:24:2: ( SKIP ^ ( INT )+ )
+                    // AvalonQuery.g3:25:2: ( SKIP ^ ( INT )+ )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:24:4: SKIP ^ ( INT )+
+                    // AvalonQuery.g3:25:4: SKIP ^ ( INT )+
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(24, 8);
-                        SKIP10 = (CommonToken)Match(input, SKIP, Follow._SKIP_in_skip123);
-                        SKIP10_tree = (CommonTree)adaptor.Create(SKIP10);
-                        root_0 = (CommonTree)adaptor.BecomeRoot(SKIP10_tree, root_0);
-                        DebugLocation(24, 10);
-                        // Querys\\NdQuery.g3:24:10: ( INT )+
+                        DebugLocation(25, 8);
+                        SKIP11 = (CommonToken)Match(input, SKIP, Follow._SKIP_in_skip128);
+                        SKIP11_tree = (CommonTree)adaptor.Create(SKIP11);
+                        root_0 = (CommonTree)adaptor.BecomeRoot(SKIP11_tree, root_0);
+                        DebugLocation(25, 10);
+                        // AvalonQuery.g3:25:10: ( INT )+
                         int cnt4 = 0;
                         try
                         {
@@ -551,12 +570,12 @@ namespace Avalon.Framework.Querys
                                 {
                                     case 1:
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:24:10: INT
+                                        // AvalonQuery.g3:25:10: INT
                                         {
-                                            DebugLocation(24, 10);
-                                            INT11 = (CommonToken)Match(input, INT, Follow._INT_in_skip126);
-                                            INT11_tree = (CommonTree)adaptor.Create(INT11);
-                                            adaptor.AddChild(root_0, INT11_tree);
+                                            DebugLocation(25, 10);
+                                            INT12 = (CommonToken)Match(input, INT, Follow._INT_in_skip131);
+                                            INT12_tree = (CommonTree)adaptor.Create(INT12);
+                                            adaptor.AddChild(root_0, INT12_tree);
 
                                         }
                                         break;
@@ -599,7 +618,7 @@ namespace Avalon.Framework.Querys
                     LeaveRule("skip", 3);
                     LeaveRule_skip();
                 }
-                DebugLocation(24, 13);
+                DebugLocation(25, 13);
             }
             finally { DebugExitRule(GrammarFileName, "skip"); }
             return retval;
@@ -610,7 +629,7 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_top();
         partial void LeaveRule_top();
         // $ANTLR start "top"
-        // Querys\\NdQuery.g3:26:1: top : TOP ^ ( INT )+ ;
+        // AvalonQuery.g3:27:1: top : TOP ^ ( INT )+ ;
         [GrammarRule("top")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> top()
         {
@@ -622,29 +641,29 @@ namespace Avalon.Framework.Querys
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken TOP12 = default(CommonToken);
-            CommonToken INT13 = default(CommonToken);
+            CommonToken TOP13 = default(CommonToken);
+            CommonToken INT14 = default(CommonToken);
 
-            CommonTree TOP12_tree = default(CommonTree);
-            CommonTree INT13_tree = default(CommonTree);
+            CommonTree TOP13_tree = default(CommonTree);
+            CommonTree INT14_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "top");
-                DebugLocation(26, 12);
+                DebugLocation(27, 12);
                 try
                 {
-                    // Querys\\NdQuery.g3:27:2: ( TOP ^ ( INT )+ )
+                    // AvalonQuery.g3:28:2: ( TOP ^ ( INT )+ )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:27:4: TOP ^ ( INT )+
+                    // AvalonQuery.g3:28:4: TOP ^ ( INT )+
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(27, 7);
-                        TOP12 = (CommonToken)Match(input, TOP, Follow._TOP_in_top137);
-                        TOP12_tree = (CommonTree)adaptor.Create(TOP12);
-                        root_0 = (CommonTree)adaptor.BecomeRoot(TOP12_tree, root_0);
-                        DebugLocation(27, 9);
-                        // Querys\\NdQuery.g3:27:9: ( INT )+
+                        DebugLocation(28, 7);
+                        TOP13 = (CommonToken)Match(input, TOP, Follow._TOP_in_top142);
+                        TOP13_tree = (CommonTree)adaptor.Create(TOP13);
+                        root_0 = (CommonTree)adaptor.BecomeRoot(TOP13_tree, root_0);
+                        DebugLocation(28, 9);
+                        // AvalonQuery.g3:28:9: ( INT )+
                         int cnt5 = 0;
                         try
                         {
@@ -669,12 +688,12 @@ namespace Avalon.Framework.Querys
                                 {
                                     case 1:
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:27:9: INT
+                                        // AvalonQuery.g3:28:9: INT
                                         {
-                                            DebugLocation(27, 9);
-                                            INT13 = (CommonToken)Match(input, INT, Follow._INT_in_top140);
-                                            INT13_tree = (CommonTree)adaptor.Create(INT13);
-                                            adaptor.AddChild(root_0, INT13_tree);
+                                            DebugLocation(28, 9);
+                                            INT14 = (CommonToken)Match(input, INT, Follow._INT_in_top145);
+                                            INT14_tree = (CommonTree)adaptor.Create(INT14);
+                                            adaptor.AddChild(root_0, INT14_tree);
 
                                         }
                                         break;
@@ -717,7 +736,7 @@ namespace Avalon.Framework.Querys
                     LeaveRule("top", 4);
                     LeaveRule_top();
                 }
-                DebugLocation(27, 12);
+                DebugLocation(28, 12);
             }
             finally { DebugExitRule(GrammarFileName, "top"); }
             return retval;
@@ -728,7 +747,7 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_filter();
         partial void LeaveRule_filter();
         // $ANTLR start "filter"
-        // Querys\\NdQuery.g3:29:1: filter : FILTER ^ filterexpression[false] ;
+        // AvalonQuery.g3:30:1: filter : FILTER ^ filterexpression[false] ;
         [GrammarRule("filter")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> filter()
         {
@@ -740,32 +759,32 @@ namespace Avalon.Framework.Querys
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken FILTER14 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> filterexpression15 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken FILTER15 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> filterexpression16 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
-            CommonTree FILTER14_tree = default(CommonTree);
+            CommonTree FILTER15_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "filter");
-                DebugLocation(29, 34);
+                DebugLocation(30, 34);
                 try
                 {
-                    // Querys\\NdQuery.g3:30:2: ( FILTER ^ filterexpression[false] )
+                    // AvalonQuery.g3:31:2: ( FILTER ^ filterexpression[false] )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:30:4: FILTER ^ filterexpression[false]
+                    // AvalonQuery.g3:31:4: FILTER ^ filterexpression[false]
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(30, 10);
-                        FILTER14 = (CommonToken)Match(input, FILTER, Follow._FILTER_in_filter151);
-                        FILTER14_tree = (CommonTree)adaptor.Create(FILTER14);
-                        root_0 = (CommonTree)adaptor.BecomeRoot(FILTER14_tree, root_0);
-                        DebugLocation(30, 12);
-                        PushFollow(Follow._filterexpression_in_filter154);
-                        filterexpression15 = filterexpression(false);
+                        DebugLocation(31, 10);
+                        FILTER15 = (CommonToken)Match(input, FILTER, Follow._FILTER_in_filter156);
+                        FILTER15_tree = (CommonTree)adaptor.Create(FILTER15);
+                        root_0 = (CommonTree)adaptor.BecomeRoot(FILTER15_tree, root_0);
+                        DebugLocation(31, 12);
+                        PushFollow(Follow._filterexpression_in_filter159);
+                        filterexpression16 = filterexpression(false);
                         PopFollow();
 
-                        adaptor.AddChild(root_0, filterexpression15.Tree);
+                        adaptor.AddChild(root_0, filterexpression16.Tree);
 
                     }
 
@@ -788,7 +807,7 @@ namespace Avalon.Framework.Querys
                     LeaveRule("filter", 5);
                     LeaveRule_filter();
                 }
-                DebugLocation(30, 34);
+                DebugLocation(31, 34);
             }
             finally { DebugExitRule(GrammarFileName, "filter"); }
             return retval;
@@ -799,7 +818,7 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_select();
         partial void LeaveRule_select();
         // $ANTLR start "select"
-        // Querys\\NdQuery.g3:32:1: select : SELECT ^ propertyname ( ( SPACE )? ',' ( SPACE )? propertyname )* ;
+        // AvalonQuery.g3:33:1: select : SELECT ^ propertyname ( ( SPACE )? ',' ( SPACE )? propertyname )* ;
         [GrammarRule("select")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> select()
         {
@@ -811,41 +830,41 @@ namespace Avalon.Framework.Querys
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken SELECT16 = default(CommonToken);
-            CommonToken SPACE18 = default(CommonToken);
-            CommonToken char_literal19 = default(CommonToken);
-            CommonToken SPACE20 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname17 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname21 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken SELECT17 = default(CommonToken);
+            CommonToken SPACE19 = default(CommonToken);
+            CommonToken char_literal20 = default(CommonToken);
+            CommonToken SPACE21 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname18 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname22 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
-            CommonTree SELECT16_tree = default(CommonTree);
-            CommonTree SPACE18_tree = default(CommonTree);
-            CommonTree char_literal19_tree = default(CommonTree);
-            CommonTree SPACE20_tree = default(CommonTree);
+            CommonTree SELECT17_tree = default(CommonTree);
+            CommonTree SPACE19_tree = default(CommonTree);
+            CommonTree char_literal20_tree = default(CommonTree);
+            CommonTree SPACE21_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "select");
-                DebugLocation(32, 57);
+                DebugLocation(33, 57);
                 try
                 {
-                    // Querys\\NdQuery.g3:33:2: ( SELECT ^ propertyname ( ( SPACE )? ',' ( SPACE )? propertyname )* )
+                    // AvalonQuery.g3:34:2: ( SELECT ^ propertyname ( ( SPACE )? ',' ( SPACE )? propertyname )* )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:33:4: SELECT ^ propertyname ( ( SPACE )? ',' ( SPACE )? propertyname )*
+                    // AvalonQuery.g3:34:4: SELECT ^ propertyname ( ( SPACE )? ',' ( SPACE )? propertyname )*
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(33, 10);
-                        SELECT16 = (CommonToken)Match(input, SELECT, Follow._SELECT_in_select165);
-                        SELECT16_tree = (CommonTree)adaptor.Create(SELECT16);
-                        root_0 = (CommonTree)adaptor.BecomeRoot(SELECT16_tree, root_0);
-                        DebugLocation(33, 12);
-                        PushFollow(Follow._propertyname_in_select168);
-                        propertyname17 = propertyname();
+                        DebugLocation(34, 10);
+                        SELECT17 = (CommonToken)Match(input, SELECT, Follow._SELECT_in_select170);
+                        SELECT17_tree = (CommonTree)adaptor.Create(SELECT17);
+                        root_0 = (CommonTree)adaptor.BecomeRoot(SELECT17_tree, root_0);
+                        DebugLocation(34, 12);
+                        PushFollow(Follow._propertyname_in_select173);
+                        propertyname18 = propertyname();
                         PopFollow();
 
-                        adaptor.AddChild(root_0, propertyname17.Tree);
-                        DebugLocation(33, 25);
-                        // Querys\\NdQuery.g3:33:25: ( ( SPACE )? ',' ( SPACE )? propertyname )*
+                        adaptor.AddChild(root_0, propertyname18.Tree);
+                        DebugLocation(34, 25);
+                        // AvalonQuery.g3:34:25: ( ( SPACE )? ',' ( SPACE )? propertyname )*
                         try
                         {
                             DebugEnterSubRule(8);
@@ -869,10 +888,10 @@ namespace Avalon.Framework.Querys
                                 {
                                     case 1:
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:33:26: ( SPACE )? ',' ( SPACE )? propertyname
+                                        // AvalonQuery.g3:34:26: ( SPACE )? ',' ( SPACE )? propertyname
                                         {
-                                            DebugLocation(33, 26);
-                                            // Querys\\NdQuery.g3:33:26: ( SPACE )?
+                                            DebugLocation(34, 26);
+                                            // AvalonQuery.g3:34:26: ( SPACE )?
                                             int alt6 = 2;
                                             try
                                             {
@@ -892,12 +911,12 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:33:26: SPACE
+                                                        // AvalonQuery.g3:34:26: SPACE
                                                         {
-                                                            DebugLocation(33, 26);
-                                                            SPACE18 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_select171);
-                                                            SPACE18_tree = (CommonTree)adaptor.Create(SPACE18);
-                                                            adaptor.AddChild(root_0, SPACE18_tree);
+                                                            DebugLocation(34, 26);
+                                                            SPACE19 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_select176);
+                                                            SPACE19_tree = (CommonTree)adaptor.Create(SPACE19);
+                                                            adaptor.AddChild(root_0, SPACE19_tree);
 
                                                         }
                                                         break;
@@ -906,12 +925,12 @@ namespace Avalon.Framework.Querys
                                             }
                                             finally { DebugExitSubRule(6); }
 
-                                            DebugLocation(33, 33);
-                                            char_literal19 = (CommonToken)Match(input, 54, Follow._54_in_select174);
-                                            char_literal19_tree = (CommonTree)adaptor.Create(char_literal19);
-                                            adaptor.AddChild(root_0, char_literal19_tree);
-                                            DebugLocation(33, 37);
-                                            // Querys\\NdQuery.g3:33:37: ( SPACE )?
+                                            DebugLocation(34, 33);
+                                            char_literal20 = (CommonToken)Match(input, 54, Follow._54_in_select179);
+                                            char_literal20_tree = (CommonTree)adaptor.Create(char_literal20);
+                                            adaptor.AddChild(root_0, char_literal20_tree);
+                                            DebugLocation(34, 37);
+                                            // AvalonQuery.g3:34:37: ( SPACE )?
                                             int alt7 = 2;
                                             try
                                             {
@@ -931,12 +950,12 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:33:37: SPACE
+                                                        // AvalonQuery.g3:34:37: SPACE
                                                         {
-                                                            DebugLocation(33, 37);
-                                                            SPACE20 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_select176);
-                                                            SPACE20_tree = (CommonTree)adaptor.Create(SPACE20);
-                                                            adaptor.AddChild(root_0, SPACE20_tree);
+                                                            DebugLocation(34, 37);
+                                                            SPACE21 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_select181);
+                                                            SPACE21_tree = (CommonTree)adaptor.Create(SPACE21);
+                                                            adaptor.AddChild(root_0, SPACE21_tree);
 
                                                         }
                                                         break;
@@ -945,12 +964,12 @@ namespace Avalon.Framework.Querys
                                             }
                                             finally { DebugExitSubRule(7); }
 
-                                            DebugLocation(33, 44);
-                                            PushFollow(Follow._propertyname_in_select179);
-                                            propertyname21 = propertyname();
+                                            DebugLocation(34, 44);
+                                            PushFollow(Follow._propertyname_in_select184);
+                                            propertyname22 = propertyname();
                                             PopFollow();
 
-                                            adaptor.AddChild(root_0, propertyname21.Tree);
+                                            adaptor.AddChild(root_0, propertyname22.Tree);
 
                                         }
                                         break;
@@ -988,7 +1007,7 @@ namespace Avalon.Framework.Querys
                     LeaveRule("select", 6);
                     LeaveRule_select();
                 }
-                DebugLocation(33, 57);
+                DebugLocation(34, 57);
             }
             finally { DebugExitRule(GrammarFileName, "select"); }
             return retval;
@@ -999,7 +1018,7 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_inlinecount();
         partial void LeaveRule_inlinecount();
         // $ANTLR start "inlinecount"
-        // Querys\\NdQuery.g3:36:1: inlinecount : ( INLINECOUNT ^ ALLPAGES | INLINECOUNT NONE ->);
+        // AvalonQuery.g3:37:1: inlinecount : ( INLINECOUNT ^ ALLPAGES | INLINECOUNT NONE ->);
         [GrammarRule("inlinecount")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> inlinecount()
         {
@@ -1011,24 +1030,24 @@ namespace Avalon.Framework.Querys
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken INLINECOUNT22 = default(CommonToken);
-            CommonToken ALLPAGES23 = default(CommonToken);
-            CommonToken INLINECOUNT24 = default(CommonToken);
-            CommonToken NONE25 = default(CommonToken);
+            CommonToken INLINECOUNT23 = default(CommonToken);
+            CommonToken ALLPAGES24 = default(CommonToken);
+            CommonToken INLINECOUNT25 = default(CommonToken);
+            CommonToken NONE26 = default(CommonToken);
 
-            CommonTree INLINECOUNT22_tree = default(CommonTree);
-            CommonTree ALLPAGES23_tree = default(CommonTree);
-            CommonTree INLINECOUNT24_tree = default(CommonTree);
-            CommonTree NONE25_tree = default(CommonTree);
+            CommonTree INLINECOUNT23_tree = default(CommonTree);
+            CommonTree ALLPAGES24_tree = default(CommonTree);
+            CommonTree INLINECOUNT25_tree = default(CommonTree);
+            CommonTree NONE26_tree = default(CommonTree);
             RewriteRuleITokenStream stream_INLINECOUNT = new RewriteRuleITokenStream(adaptor, "token INLINECOUNT");
             RewriteRuleITokenStream stream_NONE = new RewriteRuleITokenStream(adaptor, "token NONE");
             try
             {
                 DebugEnterRule(GrammarFileName, "inlinecount");
-                DebugLocation(36, 22);
+                DebugLocation(37, 22);
                 try
                 {
-                    // Querys\\NdQuery.g3:37:2: ( INLINECOUNT ^ ALLPAGES | INLINECOUNT NONE ->)
+                    // AvalonQuery.g3:38:2: ( INLINECOUNT ^ ALLPAGES | INLINECOUNT NONE ->)
                     int alt9 = 2;
                     try
                     {
@@ -1066,32 +1085,32 @@ namespace Avalon.Framework.Querys
                     {
                         case 1:
                             DebugEnterAlt(1);
-                            // Querys\\NdQuery.g3:37:4: INLINECOUNT ^ ALLPAGES
+                            // AvalonQuery.g3:38:4: INLINECOUNT ^ ALLPAGES
                             {
                                 root_0 = (CommonTree)adaptor.Nil();
 
-                                DebugLocation(37, 15);
-                                INLINECOUNT22 = (CommonToken)Match(input, INLINECOUNT, Follow._INLINECOUNT_in_inlinecount195);
-                                INLINECOUNT22_tree = (CommonTree)adaptor.Create(INLINECOUNT22);
-                                root_0 = (CommonTree)adaptor.BecomeRoot(INLINECOUNT22_tree, root_0);
-                                DebugLocation(37, 17);
-                                ALLPAGES23 = (CommonToken)Match(input, ALLPAGES, Follow._ALLPAGES_in_inlinecount198);
-                                ALLPAGES23_tree = (CommonTree)adaptor.Create(ALLPAGES23);
-                                adaptor.AddChild(root_0, ALLPAGES23_tree);
+                                DebugLocation(38, 15);
+                                INLINECOUNT23 = (CommonToken)Match(input, INLINECOUNT, Follow._INLINECOUNT_in_inlinecount200);
+                                INLINECOUNT23_tree = (CommonTree)adaptor.Create(INLINECOUNT23);
+                                root_0 = (CommonTree)adaptor.BecomeRoot(INLINECOUNT23_tree, root_0);
+                                DebugLocation(38, 17);
+                                ALLPAGES24 = (CommonToken)Match(input, ALLPAGES, Follow._ALLPAGES_in_inlinecount203);
+                                ALLPAGES24_tree = (CommonTree)adaptor.Create(ALLPAGES24);
+                                adaptor.AddChild(root_0, ALLPAGES24_tree);
 
                             }
                             break;
                         case 2:
                             DebugEnterAlt(2);
-                            // Querys\\NdQuery.g3:38:4: INLINECOUNT NONE
+                            // AvalonQuery.g3:39:4: INLINECOUNT NONE
                             {
-                                DebugLocation(38, 4);
-                                INLINECOUNT24 = (CommonToken)Match(input, INLINECOUNT, Follow._INLINECOUNT_in_inlinecount203);
-                                stream_INLINECOUNT.Add(INLINECOUNT24);
+                                DebugLocation(39, 4);
+                                INLINECOUNT25 = (CommonToken)Match(input, INLINECOUNT, Follow._INLINECOUNT_in_inlinecount208);
+                                stream_INLINECOUNT.Add(INLINECOUNT25);
 
-                                DebugLocation(38, 16);
-                                NONE25 = (CommonToken)Match(input, NONE, Follow._NONE_in_inlinecount205);
-                                stream_NONE.Add(NONE25);
+                                DebugLocation(39, 16);
+                                NONE26 = (CommonToken)Match(input, NONE, Follow._NONE_in_inlinecount210);
+                                stream_NONE.Add(NONE26);
 
 
 
@@ -1107,9 +1126,9 @@ namespace Avalon.Framework.Querys
                                     RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval != null ? retval.Tree : null);
 
                                     root_0 = (CommonTree)adaptor.Nil();
-                                    // 38:21: ->
+                                    // 39:21: ->
                                     {
-                                        DebugLocation(38, 23);
+                                        DebugLocation(39, 23);
                                         root_0 = null;
                                     }
 
@@ -1139,7 +1158,7 @@ namespace Avalon.Framework.Querys
                     LeaveRule("inlinecount", 7);
                     LeaveRule_inlinecount();
                 }
-                DebugLocation(38, 22);
+                DebugLocation(39, 22);
             }
             finally { DebugExitRule(GrammarFileName, "inlinecount"); }
             return retval;
@@ -1147,50 +1166,120 @@ namespace Avalon.Framework.Querys
         }
         // $ANTLR end "inlinecount"
 
-        partial void EnterRule_filterexpression();
-        partial void LeaveRule_filterexpression();
-        // $ANTLR start "filterexpression"
-        // Querys\\NdQuery.g3:40:1: filterexpression[bool subquery] : orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )* ;
-        [GrammarRule("filterexpression")]
-        private AstParserRuleReturnScope<CommonTree, CommonToken> filterexpression(bool subquery)
+        partial void EnterRule_count();
+        partial void LeaveRule_count();
+        // $ANTLR start "count"
+        // AvalonQuery.g3:40:1: count : COUNT ^ BOOL ;
+        [GrammarRule("count")]
+        private AstParserRuleReturnScope<CommonTree, CommonToken> count()
         {
-            EnterRule_filterexpression();
-            EnterRule("filterexpression", 8);
-            TraceIn("filterexpression", 8);
+            EnterRule_count();
+            EnterRule("count", 8);
+            TraceIn("count", 8);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken SPACE27 = default(CommonToken);
-            CommonToken OR28 = default(CommonToken);
-            CommonToken SPACE29 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> orexpression26 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> orexpression30 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken COUNT27 = default(CommonToken);
+            CommonToken BOOL28 = default(CommonToken);
 
-            CommonTree SPACE27_tree = default(CommonTree);
-            CommonTree OR28_tree = default(CommonTree);
-            CommonTree SPACE29_tree = default(CommonTree);
+            CommonTree COUNT27_tree = default(CommonTree);
+            CommonTree BOOL28_tree = default(CommonTree);
             try
             {
-                DebugEnterRule(GrammarFileName, "filterexpression");
-                DebugLocation(40, 69);
+                DebugEnterRule(GrammarFileName, "count");
+                DebugLocation(40, 14);
                 try
                 {
-                    // Querys\\NdQuery.g3:41:2: ( orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )* )
+                    // AvalonQuery.g3:41:2: ( COUNT ^ BOOL )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:41:4: orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )*
+                    // AvalonQuery.g3:41:4: COUNT ^ BOOL
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(41, 4);
-                        PushFollow(Follow._orexpression_in_filterexpression217);
-                        orexpression26 = orexpression(subquery);
+                        DebugLocation(41, 9);
+                        COUNT27 = (CommonToken)Match(input, COUNT, Follow._COUNT_in_count220);
+                        COUNT27_tree = (CommonTree)adaptor.Create(COUNT27);
+                        root_0 = (CommonTree)adaptor.BecomeRoot(COUNT27_tree, root_0);
+                        DebugLocation(41, 11);
+                        BOOL28 = (CommonToken)Match(input, BOOL, Follow._BOOL_in_count223);
+                        BOOL28_tree = (CommonTree)adaptor.Create(BOOL28);
+                        adaptor.AddChild(root_0, BOOL28_tree);
+
+                    }
+
+                    retval.Stop = (CommonToken)input.LT(-1);
+
+                    retval.Tree = (CommonTree)adaptor.RulePostProcessing(root_0);
+                    adaptor.SetTokenBoundaries(retval.Tree, retval.Start, retval.Stop);
+
+                }
+                catch (RecognitionException re)
+                {
+                    ReportError(re);
+                    Recover(input, re);
+                    retval.Tree = (CommonTree)adaptor.ErrorNode(input, retval.Start, input.LT(-1), re);
+
+                }
+                finally
+                {
+                    TraceOut("count", 8);
+                    LeaveRule("count", 8);
+                    LeaveRule_count();
+                }
+                DebugLocation(41, 14);
+            }
+            finally { DebugExitRule(GrammarFileName, "count"); }
+            return retval;
+
+        }
+        // $ANTLR end "count"
+
+        partial void EnterRule_filterexpression();
+        partial void LeaveRule_filterexpression();
+        // $ANTLR start "filterexpression"
+        // AvalonQuery.g3:42:1: filterexpression[bool subquery] : orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )* ;
+        [GrammarRule("filterexpression")]
+        private AstParserRuleReturnScope<CommonTree, CommonToken> filterexpression(bool subquery)
+        {
+            EnterRule_filterexpression();
+            EnterRule("filterexpression", 9);
+            TraceIn("filterexpression", 9);
+            AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
+            retval.Start = (CommonToken)input.LT(1);
+
+            CommonTree root_0 = default(CommonTree);
+
+            CommonToken SPACE30 = default(CommonToken);
+            CommonToken OR31 = default(CommonToken);
+            CommonToken SPACE32 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> orexpression29 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> orexpression33 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+
+            CommonTree SPACE30_tree = default(CommonTree);
+            CommonTree OR31_tree = default(CommonTree);
+            CommonTree SPACE32_tree = default(CommonTree);
+            try
+            {
+                DebugEnterRule(GrammarFileName, "filterexpression");
+                DebugLocation(42, 69);
+                try
+                {
+                    // AvalonQuery.g3:43:2: ( orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )* )
+                    DebugEnterAlt(1);
+                    // AvalonQuery.g3:43:4: orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )*
+                    {
+                        root_0 = (CommonTree)adaptor.Nil();
+
+                        DebugLocation(43, 4);
+                        PushFollow(Follow._orexpression_in_filterexpression232);
+                        orexpression29 = orexpression(subquery);
                         PopFollow();
 
-                        adaptor.AddChild(root_0, orexpression26.Tree);
-                        DebugLocation(41, 27);
-                        // Querys\\NdQuery.g3:41:27: ( SPACE ! OR ^ SPACE ! orexpression[subquery] )*
+                        adaptor.AddChild(root_0, orexpression29.Tree);
+                        DebugLocation(43, 27);
+                        // AvalonQuery.g3:43:27: ( SPACE ! OR ^ SPACE ! orexpression[subquery] )*
                         try
                         {
                             DebugEnterSubRule(10);
@@ -1214,22 +1303,22 @@ namespace Avalon.Framework.Querys
                                 {
                                     case 1:
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:41:28: SPACE ! OR ^ SPACE ! orexpression[subquery]
+                                        // AvalonQuery.g3:43:28: SPACE ! OR ^ SPACE ! orexpression[subquery]
                                         {
-                                            DebugLocation(41, 33);
-                                            SPACE27 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_filterexpression221);
-                                            DebugLocation(41, 37);
-                                            OR28 = (CommonToken)Match(input, OR, Follow._OR_in_filterexpression224);
-                                            OR28_tree = (CommonTree)adaptor.Create(OR28);
-                                            root_0 = (CommonTree)adaptor.BecomeRoot(OR28_tree, root_0);
-                                            DebugLocation(41, 44);
-                                            SPACE29 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_filterexpression227);
-                                            DebugLocation(41, 46);
-                                            PushFollow(Follow._orexpression_in_filterexpression230);
-                                            orexpression30 = orexpression(subquery);
+                                            DebugLocation(43, 33);
+                                            SPACE30 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_filterexpression236);
+                                            DebugLocation(43, 37);
+                                            OR31 = (CommonToken)Match(input, OR, Follow._OR_in_filterexpression239);
+                                            OR31_tree = (CommonTree)adaptor.Create(OR31);
+                                            root_0 = (CommonTree)adaptor.BecomeRoot(OR31_tree, root_0);
+                                            DebugLocation(43, 44);
+                                            SPACE32 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_filterexpression242);
+                                            DebugLocation(43, 46);
+                                            PushFollow(Follow._orexpression_in_filterexpression245);
+                                            orexpression33 = orexpression(subquery);
                                             PopFollow();
 
-                                            adaptor.AddChild(root_0, orexpression30.Tree);
+                                            adaptor.AddChild(root_0, orexpression33.Tree);
 
                                         }
                                         break;
@@ -1263,11 +1352,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("filterexpression", 8);
-                    LeaveRule("filterexpression", 8);
+                    TraceOut("filterexpression", 9);
+                    LeaveRule("filterexpression", 9);
                     LeaveRule_filterexpression();
                 }
-                DebugLocation(41, 69);
+                DebugLocation(43, 69);
             }
             finally { DebugExitRule(GrammarFileName, "filterexpression"); }
             return retval;
@@ -1278,47 +1367,47 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_orexpression();
         partial void LeaveRule_orexpression();
         // $ANTLR start "orexpression"
-        // Querys\\NdQuery.g3:43:1: orexpression[bool subquery] : andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )* ;
+        // AvalonQuery.g3:45:1: orexpression[bool subquery] : andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )* ;
         [GrammarRule("orexpression")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> orexpression(bool subquery)
         {
             EnterRule_orexpression();
-            EnterRule("orexpression", 9);
-            TraceIn("orexpression", 9);
+            EnterRule("orexpression", 10);
+            TraceIn("orexpression", 10);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken SPACE32 = default(CommonToken);
-            CommonToken AND33 = default(CommonToken);
-            CommonToken SPACE34 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> andexpression31 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> andexpression35 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken SPACE35 = default(CommonToken);
+            CommonToken AND36 = default(CommonToken);
+            CommonToken SPACE37 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> andexpression34 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> andexpression38 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
-            CommonTree SPACE32_tree = default(CommonTree);
-            CommonTree AND33_tree = default(CommonTree);
-            CommonTree SPACE34_tree = default(CommonTree);
+            CommonTree SPACE35_tree = default(CommonTree);
+            CommonTree AND36_tree = default(CommonTree);
+            CommonTree SPACE37_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "orexpression");
-                DebugLocation(43, 72);
+                DebugLocation(45, 72);
                 try
                 {
-                    // Querys\\NdQuery.g3:44:2: ( andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )* )
+                    // AvalonQuery.g3:46:2: ( andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )* )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:44:4: andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )*
+                    // AvalonQuery.g3:46:4: andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )*
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(44, 4);
-                        PushFollow(Follow._andexpression_in_orexpression244);
-                        andexpression31 = andexpression(subquery);
+                        DebugLocation(46, 4);
+                        PushFollow(Follow._andexpression_in_orexpression259);
+                        andexpression34 = andexpression(subquery);
                         PopFollow();
 
-                        adaptor.AddChild(root_0, andexpression31.Tree);
-                        DebugLocation(44, 28);
-                        // Querys\\NdQuery.g3:44:28: ( SPACE ! AND ^ SPACE ! andexpression[subquery] )*
+                        adaptor.AddChild(root_0, andexpression34.Tree);
+                        DebugLocation(46, 28);
+                        // AvalonQuery.g3:46:28: ( SPACE ! AND ^ SPACE ! andexpression[subquery] )*
                         try
                         {
                             DebugEnterSubRule(11);
@@ -1349,22 +1438,22 @@ namespace Avalon.Framework.Querys
                                 {
                                     case 1:
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:44:29: SPACE ! AND ^ SPACE ! andexpression[subquery]
+                                        // AvalonQuery.g3:46:29: SPACE ! AND ^ SPACE ! andexpression[subquery]
                                         {
-                                            DebugLocation(44, 34);
-                                            SPACE32 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orexpression248);
-                                            DebugLocation(44, 39);
-                                            AND33 = (CommonToken)Match(input, AND, Follow._AND_in_orexpression251);
-                                            AND33_tree = (CommonTree)adaptor.Create(AND33);
-                                            root_0 = (CommonTree)adaptor.BecomeRoot(AND33_tree, root_0);
-                                            DebugLocation(44, 46);
-                                            SPACE34 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orexpression254);
-                                            DebugLocation(44, 48);
-                                            PushFollow(Follow._andexpression_in_orexpression257);
-                                            andexpression35 = andexpression(subquery);
+                                            DebugLocation(46, 34);
+                                            SPACE35 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orexpression263);
+                                            DebugLocation(46, 39);
+                                            AND36 = (CommonToken)Match(input, AND, Follow._AND_in_orexpression266);
+                                            AND36_tree = (CommonTree)adaptor.Create(AND36);
+                                            root_0 = (CommonTree)adaptor.BecomeRoot(AND36_tree, root_0);
+                                            DebugLocation(46, 46);
+                                            SPACE37 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orexpression269);
+                                            DebugLocation(46, 48);
+                                            PushFollow(Follow._andexpression_in_orexpression272);
+                                            andexpression38 = andexpression(subquery);
                                             PopFollow();
 
-                                            adaptor.AddChild(root_0, andexpression35.Tree);
+                                            adaptor.AddChild(root_0, andexpression38.Tree);
 
                                         }
                                         break;
@@ -1398,11 +1487,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("orexpression", 9);
-                    LeaveRule("orexpression", 9);
+                    TraceOut("orexpression", 10);
+                    LeaveRule("orexpression", 10);
                     LeaveRule_orexpression();
                 }
-                DebugLocation(44, 72);
+                DebugLocation(46, 72);
             }
             finally { DebugExitRule(GrammarFileName, "orexpression"); }
             return retval;
@@ -1413,42 +1502,42 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_andexpression();
         partial void LeaveRule_andexpression();
         // $ANTLR start "andexpression"
-        // Querys\\NdQuery.g3:46:1: andexpression[bool subquery] : ( NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) | ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) );
+        // AvalonQuery.g3:48:1: andexpression[bool subquery] : ( NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) | ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) );
         [GrammarRule("andexpression")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> andexpression(bool subquery)
         {
             EnterRule_andexpression();
-            EnterRule("andexpression", 10);
-            TraceIn("andexpression", 10);
+            EnterRule("andexpression", 11);
+            TraceIn("andexpression", 11);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken NOT36 = default(CommonToken);
-            CommonToken SPACE37 = default(CommonToken);
-            CommonToken char_literal38 = default(CommonToken);
-            CommonToken char_literal40 = default(CommonToken);
-            CommonToken char_literal42 = default(CommonToken);
-            CommonToken char_literal44 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> filterexpression39 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> booleanexpression41 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> filterexpression43 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> booleanexpression45 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken NOT39 = default(CommonToken);
+            CommonToken SPACE40 = default(CommonToken);
+            CommonToken char_literal41 = default(CommonToken);
+            CommonToken char_literal43 = default(CommonToken);
+            CommonToken char_literal45 = default(CommonToken);
+            CommonToken char_literal47 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> filterexpression42 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> booleanexpression44 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> filterexpression46 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> booleanexpression48 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
-            CommonTree NOT36_tree = default(CommonTree);
-            CommonTree SPACE37_tree = default(CommonTree);
-            CommonTree char_literal38_tree = default(CommonTree);
-            CommonTree char_literal40_tree = default(CommonTree);
-            CommonTree char_literal42_tree = default(CommonTree);
-            CommonTree char_literal44_tree = default(CommonTree);
+            CommonTree NOT39_tree = default(CommonTree);
+            CommonTree SPACE40_tree = default(CommonTree);
+            CommonTree char_literal41_tree = default(CommonTree);
+            CommonTree char_literal43_tree = default(CommonTree);
+            CommonTree char_literal45_tree = default(CommonTree);
+            CommonTree char_literal47_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "andexpression");
-                DebugLocation(46, 69);
+                DebugLocation(48, 69);
                 try
                 {
-                    // Querys\\NdQuery.g3:47:2: ( NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) | ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) )
+                    // AvalonQuery.g3:49:2: ( NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) | ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) )
                     int alt14 = 2;
                     try
                     {
@@ -1475,20 +1564,20 @@ namespace Avalon.Framework.Querys
                     {
                         case 1:
                             DebugEnterAlt(1);
-                            // Querys\\NdQuery.g3:47:4: NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
+                            // AvalonQuery.g3:49:4: NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
                             {
                                 root_0 = (CommonTree)adaptor.Nil();
 
-                                DebugLocation(47, 7);
-                                NOT36 = (CommonToken)Match(input, NOT, Follow._NOT_in_andexpression271);
-                                NOT36_tree = (CommonTree)adaptor.Create(NOT36);
-                                root_0 = (CommonTree)adaptor.BecomeRoot(NOT36_tree, root_0);
-                                DebugLocation(47, 9);
-                                SPACE37 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_andexpression274);
-                                SPACE37_tree = (CommonTree)adaptor.Create(SPACE37);
-                                adaptor.AddChild(root_0, SPACE37_tree);
-                                DebugLocation(47, 15);
-                                // Querys\\NdQuery.g3:47:15: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
+                                DebugLocation(49, 7);
+                                NOT39 = (CommonToken)Match(input, NOT, Follow._NOT_in_andexpression286);
+                                NOT39_tree = (CommonTree)adaptor.Create(NOT39);
+                                root_0 = (CommonTree)adaptor.BecomeRoot(NOT39_tree, root_0);
+                                DebugLocation(49, 9);
+                                SPACE40 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_andexpression289);
+                                SPACE40_tree = (CommonTree)adaptor.Create(SPACE40);
+                                adaptor.AddChild(root_0, SPACE40_tree);
+                                DebugLocation(49, 15);
+                                // AvalonQuery.g3:49:15: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
                                 int alt12 = 2;
                                 try
                                 {
@@ -1518,35 +1607,35 @@ namespace Avalon.Framework.Querys
                                     {
                                         case 1:
                                             DebugEnterAlt(1);
-                                            // Querys\\NdQuery.g3:47:16: '(' filterexpression[subquery] ')'
+                                            // AvalonQuery.g3:49:16: '(' filterexpression[subquery] ')'
                                             {
-                                                DebugLocation(47, 16);
-                                                char_literal38 = (CommonToken)Match(input, 52, Follow._52_in_andexpression277);
-                                                char_literal38_tree = (CommonTree)adaptor.Create(char_literal38);
-                                                adaptor.AddChild(root_0, char_literal38_tree);
-                                                DebugLocation(47, 20);
-                                                PushFollow(Follow._filterexpression_in_andexpression279);
-                                                filterexpression39 = filterexpression(subquery);
+                                                DebugLocation(49, 16);
+                                                char_literal41 = (CommonToken)Match(input, 52, Follow._52_in_andexpression292);
+                                                char_literal41_tree = (CommonTree)adaptor.Create(char_literal41);
+                                                adaptor.AddChild(root_0, char_literal41_tree);
+                                                DebugLocation(49, 20);
+                                                PushFollow(Follow._filterexpression_in_andexpression294);
+                                                filterexpression42 = filterexpression(subquery);
                                                 PopFollow();
 
-                                                adaptor.AddChild(root_0, filterexpression39.Tree);
-                                                DebugLocation(47, 47);
-                                                char_literal40 = (CommonToken)Match(input, 53, Follow._53_in_andexpression282);
-                                                char_literal40_tree = (CommonTree)adaptor.Create(char_literal40);
-                                                adaptor.AddChild(root_0, char_literal40_tree);
+                                                adaptor.AddChild(root_0, filterexpression42.Tree);
+                                                DebugLocation(49, 47);
+                                                char_literal43 = (CommonToken)Match(input, 53, Follow._53_in_andexpression297);
+                                                char_literal43_tree = (CommonTree)adaptor.Create(char_literal43);
+                                                adaptor.AddChild(root_0, char_literal43_tree);
 
                                             }
                                             break;
                                         case 2:
                                             DebugEnterAlt(2);
-                                            // Querys\\NdQuery.g3:47:53: booleanexpression[subquery]
+                                            // AvalonQuery.g3:49:53: booleanexpression[subquery]
                                             {
-                                                DebugLocation(47, 53);
-                                                PushFollow(Follow._booleanexpression_in_andexpression286);
-                                                booleanexpression41 = booleanexpression(subquery);
+                                                DebugLocation(49, 53);
+                                                PushFollow(Follow._booleanexpression_in_andexpression301);
+                                                booleanexpression44 = booleanexpression(subquery);
                                                 PopFollow();
 
-                                                adaptor.AddChild(root_0, booleanexpression41.Tree);
+                                                adaptor.AddChild(root_0, booleanexpression44.Tree);
 
                                             }
                                             break;
@@ -1560,12 +1649,12 @@ namespace Avalon.Framework.Querys
                             break;
                         case 2:
                             DebugEnterAlt(2);
-                            // Querys\\NdQuery.g3:48:4: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
+                            // AvalonQuery.g3:50:4: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
                             {
                                 root_0 = (CommonTree)adaptor.Nil();
 
-                                DebugLocation(48, 4);
-                                // Querys\\NdQuery.g3:48:4: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
+                                DebugLocation(50, 4);
+                                // AvalonQuery.g3:50:4: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
                                 int alt13 = 2;
                                 try
                                 {
@@ -1595,35 +1684,35 @@ namespace Avalon.Framework.Querys
                                     {
                                         case 1:
                                             DebugEnterAlt(1);
-                                            // Querys\\NdQuery.g3:48:5: '(' filterexpression[subquery] ')'
+                                            // AvalonQuery.g3:50:5: '(' filterexpression[subquery] ')'
                                             {
-                                                DebugLocation(48, 5);
-                                                char_literal42 = (CommonToken)Match(input, 52, Follow._52_in_andexpression294);
-                                                char_literal42_tree = (CommonTree)adaptor.Create(char_literal42);
-                                                adaptor.AddChild(root_0, char_literal42_tree);
-                                                DebugLocation(48, 9);
-                                                PushFollow(Follow._filterexpression_in_andexpression296);
-                                                filterexpression43 = filterexpression(subquery);
+                                                DebugLocation(50, 5);
+                                                char_literal45 = (CommonToken)Match(input, 52, Follow._52_in_andexpression309);
+                                                char_literal45_tree = (CommonTree)adaptor.Create(char_literal45);
+                                                adaptor.AddChild(root_0, char_literal45_tree);
+                                                DebugLocation(50, 9);
+                                                PushFollow(Follow._filterexpression_in_andexpression311);
+                                                filterexpression46 = filterexpression(subquery);
                                                 PopFollow();
 
-                                                adaptor.AddChild(root_0, filterexpression43.Tree);
-                                                DebugLocation(48, 36);
-                                                char_literal44 = (CommonToken)Match(input, 53, Follow._53_in_andexpression299);
-                                                char_literal44_tree = (CommonTree)adaptor.Create(char_literal44);
-                                                adaptor.AddChild(root_0, char_literal44_tree);
+                                                adaptor.AddChild(root_0, filterexpression46.Tree);
+                                                DebugLocation(50, 36);
+                                                char_literal47 = (CommonToken)Match(input, 53, Follow._53_in_andexpression314);
+                                                char_literal47_tree = (CommonTree)adaptor.Create(char_literal47);
+                                                adaptor.AddChild(root_0, char_literal47_tree);
 
                                             }
                                             break;
                                         case 2:
                                             DebugEnterAlt(2);
-                                            // Querys\\NdQuery.g3:48:42: booleanexpression[subquery]
+                                            // AvalonQuery.g3:50:42: booleanexpression[subquery]
                                             {
-                                                DebugLocation(48, 42);
-                                                PushFollow(Follow._booleanexpression_in_andexpression303);
-                                                booleanexpression45 = booleanexpression(subquery);
+                                                DebugLocation(50, 42);
+                                                PushFollow(Follow._booleanexpression_in_andexpression318);
+                                                booleanexpression48 = booleanexpression(subquery);
                                                 PopFollow();
 
-                                                adaptor.AddChild(root_0, booleanexpression45.Tree);
+                                                adaptor.AddChild(root_0, booleanexpression48.Tree);
 
                                             }
                                             break;
@@ -1652,11 +1741,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("andexpression", 10);
-                    LeaveRule("andexpression", 10);
+                    TraceOut("andexpression", 11);
+                    LeaveRule("andexpression", 11);
                     LeaveRule_andexpression();
                 }
-                DebugLocation(48, 69);
+                DebugLocation(50, 69);
             }
             finally { DebugExitRule(GrammarFileName, "andexpression"); }
             return retval;
@@ -1667,27 +1756,27 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_booleanexpression();
         partial void LeaveRule_booleanexpression();
         // $ANTLR start "booleanexpression"
-        // Querys\\NdQuery.g3:50:1: booleanexpression[bool subquery] : atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) ) ;
+        // AvalonQuery.g3:52:1: booleanexpression[bool subquery] : atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) ) ;
         [GrammarRule("booleanexpression")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> booleanexpression(bool subquery)
         {
             EnterRule_booleanexpression();
-            EnterRule("booleanexpression", 11);
-            TraceIn("booleanexpression", 11);
+            EnterRule("booleanexpression", 12);
+            TraceIn("booleanexpression", 12);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
             CommonToken op = default(CommonToken);
-            CommonToken SPACE46 = default(CommonToken);
-            CommonToken SPACE47 = default(CommonToken);
+            CommonToken SPACE49 = default(CommonToken);
+            CommonToken SPACE50 = default(CommonToken);
             AstParserRuleReturnScope<CommonTree, CommonToken> atom1 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
             AstParserRuleReturnScope<CommonTree, CommonToken> atom2 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
             CommonTree op_tree = default(CommonTree);
-            CommonTree SPACE46_tree = default(CommonTree);
-            CommonTree SPACE47_tree = default(CommonTree);
+            CommonTree SPACE49_tree = default(CommonTree);
+            CommonTree SPACE50_tree = default(CommonTree);
             RewriteRuleITokenStream stream_SPACE = new RewriteRuleITokenStream(adaptor, "token SPACE");
             RewriteRuleITokenStream stream_EQUALS = new RewriteRuleITokenStream(adaptor, "token EQUALS");
             RewriteRuleITokenStream stream_NOTEQUALS = new RewriteRuleITokenStream(adaptor, "token NOTEQUALS");
@@ -1699,21 +1788,21 @@ namespace Avalon.Framework.Querys
             try
             {
                 DebugEnterRule(GrammarFileName, "booleanexpression");
-                DebugLocation(50, 3);
+                DebugLocation(52, 3);
                 try
                 {
-                    // Querys\\NdQuery.g3:51:2: (atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) ) )
+                    // AvalonQuery.g3:53:2: (atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) ) )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:51:4: atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) )
+                    // AvalonQuery.g3:53:4: atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) )
                     {
-                        DebugLocation(51, 9);
-                        PushFollow(Follow._atom_in_booleanexpression319);
+                        DebugLocation(53, 9);
+                        PushFollow(Follow._atom_in_booleanexpression334);
                         atom1 = atom(subquery);
                         PopFollow();
 
                         stream_atom.Add(atom1.Tree);
-                        DebugLocation(51, 25);
-                        // Querys\\NdQuery.g3:51:25: ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) )
+                        DebugLocation(53, 25);
+                        // AvalonQuery.g3:53:25: ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) )
                         int alt16 = 2;
                         try
                         {
@@ -1742,7 +1831,7 @@ namespace Avalon.Framework.Querys
                                         throw nvae;
                                     }
                                 }
-                                else if ((LA16_1 == EOF || LA16_1 == FILTER || LA16_1 == INLINECOUNT || (LA16_1 >= ORDERBY && LA16_1 <= SELECT) || LA16_1 == SKIP || LA16_1 == TOP || LA16_1 == 51 || LA16_1 == 53))
+                                else if ((LA16_1 == EOF || LA16_1 == COUNT || LA16_1 == FILTER || LA16_1 == INLINECOUNT || (LA16_1 >= ORDERBY && LA16_1 <= SELECT) || LA16_1 == SKIP || LA16_1 == TOP || LA16_1 == 51 || LA16_1 == 53))
                                 {
                                     alt16 = 2;
                                 }
@@ -1758,14 +1847,14 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:52:4: SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery]
+                                    // AvalonQuery.g3:54:4: SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery]
                                     {
-                                        DebugLocation(52, 4);
-                                        SPACE46 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_booleanexpression327);
-                                        stream_SPACE.Add(SPACE46);
+                                        DebugLocation(54, 4);
+                                        SPACE49 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_booleanexpression342);
+                                        stream_SPACE.Add(SPACE49);
 
-                                        DebugLocation(52, 10);
-                                        // Querys\\NdQuery.g3:52:10: (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL )
+                                        DebugLocation(54, 10);
+                                        // AvalonQuery.g3:54:10: (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL )
                                         int alt15 = 6;
                                         try
                                         {
@@ -1819,10 +1908,10 @@ namespace Avalon.Framework.Querys
                                             {
                                                 case 1:
                                                     DebugEnterAlt(1);
-                                                    // Querys\\NdQuery.g3:52:11: op= EQUALS
+                                                    // AvalonQuery.g3:54:11: op= EQUALS
                                                     {
-                                                        DebugLocation(52, 13);
-                                                        op = (CommonToken)Match(input, EQUALS, Follow._EQUALS_in_booleanexpression332);
+                                                        DebugLocation(54, 13);
+                                                        op = (CommonToken)Match(input, EQUALS, Follow._EQUALS_in_booleanexpression347);
                                                         stream_EQUALS.Add(op);
 
 
@@ -1830,10 +1919,10 @@ namespace Avalon.Framework.Querys
                                                     break;
                                                 case 2:
                                                     DebugEnterAlt(2);
-                                                    // Querys\\NdQuery.g3:52:23: op= NOTEQUALS
+                                                    // AvalonQuery.g3:54:23: op= NOTEQUALS
                                                     {
-                                                        DebugLocation(52, 25);
-                                                        op = (CommonToken)Match(input, NOTEQUALS, Follow._NOTEQUALS_in_booleanexpression338);
+                                                        DebugLocation(54, 25);
+                                                        op = (CommonToken)Match(input, NOTEQUALS, Follow._NOTEQUALS_in_booleanexpression353);
                                                         stream_NOTEQUALS.Add(op);
 
 
@@ -1841,10 +1930,10 @@ namespace Avalon.Framework.Querys
                                                     break;
                                                 case 3:
                                                     DebugEnterAlt(3);
-                                                    // Querys\\NdQuery.g3:52:38: op= GREATERTHAN
+                                                    // AvalonQuery.g3:54:38: op= GREATERTHAN
                                                     {
-                                                        DebugLocation(52, 40);
-                                                        op = (CommonToken)Match(input, GREATERTHAN, Follow._GREATERTHAN_in_booleanexpression344);
+                                                        DebugLocation(54, 40);
+                                                        op = (CommonToken)Match(input, GREATERTHAN, Follow._GREATERTHAN_in_booleanexpression359);
                                                         stream_GREATERTHAN.Add(op);
 
 
@@ -1852,10 +1941,10 @@ namespace Avalon.Framework.Querys
                                                     break;
                                                 case 4:
                                                     DebugEnterAlt(4);
-                                                    // Querys\\NdQuery.g3:52:55: op= GREATERTHANOREQUAL
+                                                    // AvalonQuery.g3:54:55: op= GREATERTHANOREQUAL
                                                     {
-                                                        DebugLocation(52, 57);
-                                                        op = (CommonToken)Match(input, GREATERTHANOREQUAL, Follow._GREATERTHANOREQUAL_in_booleanexpression350);
+                                                        DebugLocation(54, 57);
+                                                        op = (CommonToken)Match(input, GREATERTHANOREQUAL, Follow._GREATERTHANOREQUAL_in_booleanexpression365);
                                                         stream_GREATERTHANOREQUAL.Add(op);
 
 
@@ -1863,10 +1952,10 @@ namespace Avalon.Framework.Querys
                                                     break;
                                                 case 5:
                                                     DebugEnterAlt(5);
-                                                    // Querys\\NdQuery.g3:52:79: op= LESSTHAN
+                                                    // AvalonQuery.g3:54:79: op= LESSTHAN
                                                     {
-                                                        DebugLocation(52, 81);
-                                                        op = (CommonToken)Match(input, LESSTHAN, Follow._LESSTHAN_in_booleanexpression356);
+                                                        DebugLocation(54, 81);
+                                                        op = (CommonToken)Match(input, LESSTHAN, Follow._LESSTHAN_in_booleanexpression371);
                                                         stream_LESSTHAN.Add(op);
 
 
@@ -1874,10 +1963,10 @@ namespace Avalon.Framework.Querys
                                                     break;
                                                 case 6:
                                                     DebugEnterAlt(6);
-                                                    // Querys\\NdQuery.g3:52:93: op= LESSTHANOREQUAL
+                                                    // AvalonQuery.g3:54:93: op= LESSTHANOREQUAL
                                                     {
-                                                        DebugLocation(52, 95);
-                                                        op = (CommonToken)Match(input, LESSTHANOREQUAL, Follow._LESSTHANOREQUAL_in_booleanexpression362);
+                                                        DebugLocation(54, 95);
+                                                        op = (CommonToken)Match(input, LESSTHANOREQUAL, Follow._LESSTHANOREQUAL_in_booleanexpression377);
                                                         stream_LESSTHANOREQUAL.Add(op);
 
 
@@ -1888,12 +1977,12 @@ namespace Avalon.Framework.Querys
                                         }
                                         finally { DebugExitSubRule(15); }
 
-                                        DebugLocation(52, 113);
-                                        SPACE47 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_booleanexpression365);
-                                        stream_SPACE.Add(SPACE47);
+                                        DebugLocation(54, 113);
+                                        SPACE50 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_booleanexpression380);
+                                        stream_SPACE.Add(SPACE50);
 
-                                        DebugLocation(52, 124);
-                                        PushFollow(Follow._atom_in_booleanexpression369);
+                                        DebugLocation(54, 124);
+                                        PushFollow(Follow._atom_in_booleanexpression384);
                                         atom2 = atom(subquery);
                                         PopFollow();
 
@@ -1915,18 +2004,18 @@ namespace Avalon.Framework.Querys
                                             RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval != null ? retval.Tree : null);
 
                                             root_0 = (CommonTree)adaptor.Nil();
-                                            // 53:4: -> ^( $op $atom1 $atom2)
+                                            // 55:4: -> ^( $op $atom1 $atom2)
                                             {
-                                                DebugLocation(53, 7);
-                                                // Querys\\NdQuery.g3:53:7: ^( $op $atom1 $atom2)
+                                                DebugLocation(55, 7);
+                                                // AvalonQuery.g3:55:7: ^( $op $atom1 $atom2)
                                                 {
                                                     CommonTree root_1 = (CommonTree)adaptor.Nil();
-                                                    DebugLocation(53, 10);
+                                                    DebugLocation(55, 10);
                                                     root_1 = (CommonTree)adaptor.BecomeRoot(stream_op.NextNode(), root_1);
 
-                                                    DebugLocation(53, 14);
+                                                    DebugLocation(55, 14);
                                                     adaptor.AddChild(root_1, stream_atom1.NextTree());
-                                                    DebugLocation(53, 21);
+                                                    DebugLocation(55, 21);
                                                     adaptor.AddChild(root_1, stream_atom2.NextTree());
 
                                                     adaptor.AddChild(root_0, root_1);
@@ -1941,7 +2030,7 @@ namespace Avalon.Framework.Querys
                                     break;
                                 case 2:
                                     DebugEnterAlt(2);
-                                    // Querys\\NdQuery.g3:54:5: 
+                                    // AvalonQuery.g3:56:5: 
                                     {
 
                                         {
@@ -1957,18 +2046,18 @@ namespace Avalon.Framework.Querys
                                             RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval != null ? retval.Tree : null);
 
                                             root_0 = (CommonTree)adaptor.Nil();
-                                            // 54:5: -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] )
+                                            // 56:5: -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] )
                                             {
-                                                DebugLocation(54, 8);
-                                                // Querys\\NdQuery.g3:54:8: ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] )
+                                                DebugLocation(56, 8);
+                                                // AvalonQuery.g3:56:8: ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] )
                                                 {
                                                     CommonTree root_1 = (CommonTree)adaptor.Nil();
-                                                    DebugLocation(54, 10);
+                                                    DebugLocation(56, 10);
                                                     root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(EQUALS, "eq"), root_1);
 
-                                                    DebugLocation(54, 24);
+                                                    DebugLocation(56, 24);
                                                     adaptor.AddChild(root_1, stream_atom1.NextTree());
-                                                    DebugLocation(54, 30);
+                                                    DebugLocation(56, 30);
                                                     adaptor.AddChild(root_1, (CommonTree)adaptor.Create(BOOL, "true"));
 
                                                     adaptor.AddChild(root_0, root_1);
@@ -2004,11 +2093,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("booleanexpression", 11);
-                    LeaveRule("booleanexpression", 11);
+                    TraceOut("booleanexpression", 12);
+                    LeaveRule("booleanexpression", 12);
                     LeaveRule_booleanexpression();
                 }
-                DebugLocation(55, 3);
+                DebugLocation(57, 3);
             }
             finally { DebugExitRule(GrammarFileName, "booleanexpression"); }
             return retval;
@@ -2019,30 +2108,30 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_atom();
         partial void LeaveRule_atom();
         // $ANTLR start "atom"
-        // Querys\\NdQuery.g3:57:1: atom[bool subquery] : ( inexpression | functioncall | constant | propertyname );
+        // AvalonQuery.g3:59:1: atom[bool subquery] : ( inexpression | functioncall | constant | propertyname );
         [GrammarRule("atom")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> atom(bool subquery)
         {
             EnterRule_atom();
-            EnterRule("atom", 12);
-            TraceIn("atom", 12);
+            EnterRule("atom", 13);
+            TraceIn("atom", 13);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            AstParserRuleReturnScope<CommonTree, CommonToken> inexpression48 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> functioncall49 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> constant50 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname51 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> inexpression51 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> functioncall52 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> constant53 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname54 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
             try
             {
                 DebugEnterRule(GrammarFileName, "atom");
-                DebugLocation(57, 15);
+                DebugLocation(59, 15);
                 try
                 {
-                    // Querys\\NdQuery.g3:58:2: ( inexpression | functioncall | constant | propertyname )
+                    // AvalonQuery.g3:60:2: ( inexpression | functioncall | constant | propertyname )
                     int alt17 = 4;
                     try
                     {
@@ -2072,7 +2161,7 @@ namespace Avalon.Framework.Querys
                                             throw nvae;
                                         }
                                     }
-                                    else if ((LA17_2 == EOF || LA17_2 == FILTER || LA17_2 == INLINECOUNT || (LA17_2 >= ORDERBY && LA17_2 <= SELECT) || LA17_2 == SKIP || LA17_2 == TOP || LA17_2 == 51 || (LA17_2 >= 53 && LA17_2 <= 54)))
+                                    else if ((LA17_2 == EOF || LA17_2 == COUNT || LA17_2 == FILTER || LA17_2 == INLINECOUNT || (LA17_2 >= ORDERBY && LA17_2 <= SELECT) || LA17_2 == SKIP || LA17_2 == TOP || LA17_2 == 51 || (LA17_2 >= 53 && LA17_2 <= 54)))
                                     {
                                         alt17 = 4;
                                     }
@@ -2119,61 +2208,61 @@ namespace Avalon.Framework.Querys
                     {
                         case 1:
                             DebugEnterAlt(1);
-                            // Querys\\NdQuery.g3:58:4: inexpression
+                            // AvalonQuery.g3:60:4: inexpression
                             {
                                 root_0 = (CommonTree)adaptor.Nil();
 
-                                DebugLocation(58, 4);
-                                PushFollow(Follow._inexpression_in_atom419);
-                                inexpression48 = inexpression();
+                                DebugLocation(60, 4);
+                                PushFollow(Follow._inexpression_in_atom434);
+                                inexpression51 = inexpression();
                                 PopFollow();
 
-                                adaptor.AddChild(root_0, inexpression48.Tree);
+                                adaptor.AddChild(root_0, inexpression51.Tree);
 
                             }
                             break;
                         case 2:
                             DebugEnterAlt(2);
-                            // Querys\\NdQuery.g3:59:4: functioncall
+                            // AvalonQuery.g3:61:4: functioncall
                             {
                                 root_0 = (CommonTree)adaptor.Nil();
 
-                                DebugLocation(59, 4);
-                                PushFollow(Follow._functioncall_in_atom424);
-                                functioncall49 = functioncall();
+                                DebugLocation(61, 4);
+                                PushFollow(Follow._functioncall_in_atom439);
+                                functioncall52 = functioncall();
                                 PopFollow();
 
-                                adaptor.AddChild(root_0, functioncall49.Tree);
+                                adaptor.AddChild(root_0, functioncall52.Tree);
 
                             }
                             break;
                         case 3:
                             DebugEnterAlt(3);
-                            // Querys\\NdQuery.g3:60:4: constant
+                            // AvalonQuery.g3:62:4: constant
                             {
                                 root_0 = (CommonTree)adaptor.Nil();
 
-                                DebugLocation(60, 4);
-                                PushFollow(Follow._constant_in_atom429);
-                                constant50 = constant();
+                                DebugLocation(62, 4);
+                                PushFollow(Follow._constant_in_atom444);
+                                constant53 = constant();
                                 PopFollow();
 
-                                adaptor.AddChild(root_0, constant50.Tree);
+                                adaptor.AddChild(root_0, constant53.Tree);
 
                             }
                             break;
                         case 4:
                             DebugEnterAlt(4);
-                            // Querys\\NdQuery.g3:61:4: propertyname
+                            // AvalonQuery.g3:63:4: propertyname
                             {
                                 root_0 = (CommonTree)adaptor.Nil();
 
-                                DebugLocation(61, 4);
-                                PushFollow(Follow._propertyname_in_atom434);
-                                propertyname51 = propertyname();
+                                DebugLocation(63, 4);
+                                PushFollow(Follow._propertyname_in_atom449);
+                                propertyname54 = propertyname();
                                 PopFollow();
 
-                                adaptor.AddChild(root_0, propertyname51.Tree);
+                                adaptor.AddChild(root_0, propertyname54.Tree);
 
                             }
                             break;
@@ -2194,11 +2283,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("atom", 12);
-                    LeaveRule("atom", 12);
+                    TraceOut("atom", 13);
+                    LeaveRule("atom", 13);
                     LeaveRule_atom();
                 }
-                DebugLocation(61, 15);
+                DebugLocation(63, 15);
             }
             finally { DebugExitRule(GrammarFileName, "atom"); }
             return retval;
@@ -2209,72 +2298,72 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_inexpression();
         partial void LeaveRule_inexpression();
         // $ANTLR start "inexpression"
-        // Querys\\NdQuery.g3:63:1: inexpression : propertyname SPACE ( IN | NOTIN ) ^ ( SPACE )? '(' ( SPACE )? ( constant )? ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')' ;
+        // AvalonQuery.g3:65:1: inexpression : propertyname SPACE ( IN | NOTIN ) ^ ( SPACE )? '(' ( SPACE )? ( constant )? ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')' ;
         [GrammarRule("inexpression")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> inexpression()
         {
             EnterRule_inexpression();
-            EnterRule("inexpression", 13);
-            TraceIn("inexpression", 13);
+            EnterRule("inexpression", 14);
+            TraceIn("inexpression", 14);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken SPACE53 = default(CommonToken);
-            CommonToken set54 = default(CommonToken);
-            CommonToken SPACE55 = default(CommonToken);
-            CommonToken char_literal56 = default(CommonToken);
-            CommonToken SPACE57 = default(CommonToken);
-            CommonToken SPACE59 = default(CommonToken);
-            CommonToken char_literal60 = default(CommonToken);
-            CommonToken SPACE61 = default(CommonToken);
-            CommonToken SPACE63 = default(CommonToken);
-            CommonToken char_literal64 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname52 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> constant58 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> constant62 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken SPACE56 = default(CommonToken);
+            CommonToken set57 = default(CommonToken);
+            CommonToken SPACE58 = default(CommonToken);
+            CommonToken char_literal59 = default(CommonToken);
+            CommonToken SPACE60 = default(CommonToken);
+            CommonToken SPACE62 = default(CommonToken);
+            CommonToken char_literal63 = default(CommonToken);
+            CommonToken SPACE64 = default(CommonToken);
+            CommonToken SPACE66 = default(CommonToken);
+            CommonToken char_literal67 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname55 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> constant61 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> constant65 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
-            CommonTree SPACE53_tree = default(CommonTree);
-            CommonTree set54_tree = default(CommonTree);
-            CommonTree SPACE55_tree = default(CommonTree);
-            CommonTree char_literal56_tree = default(CommonTree);
-            CommonTree SPACE57_tree = default(CommonTree);
-            CommonTree SPACE59_tree = default(CommonTree);
-            CommonTree char_literal60_tree = default(CommonTree);
-            CommonTree SPACE61_tree = default(CommonTree);
-            CommonTree SPACE63_tree = default(CommonTree);
-            CommonTree char_literal64_tree = default(CommonTree);
+            CommonTree SPACE56_tree = default(CommonTree);
+            CommonTree set57_tree = default(CommonTree);
+            CommonTree SPACE58_tree = default(CommonTree);
+            CommonTree char_literal59_tree = default(CommonTree);
+            CommonTree SPACE60_tree = default(CommonTree);
+            CommonTree SPACE62_tree = default(CommonTree);
+            CommonTree char_literal63_tree = default(CommonTree);
+            CommonTree SPACE64_tree = default(CommonTree);
+            CommonTree SPACE66_tree = default(CommonTree);
+            CommonTree char_literal67_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "inexpression");
-                DebugLocation(63, 101);
+                DebugLocation(65, 101);
                 try
                 {
-                    // Querys\\NdQuery.g3:64:2: ( propertyname SPACE ( IN | NOTIN ) ^ ( SPACE )? '(' ( SPACE )? ( constant )? ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')' )
+                    // AvalonQuery.g3:66:2: ( propertyname SPACE ( IN | NOTIN ) ^ ( SPACE )? '(' ( SPACE )? ( constant )? ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')' )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:64:4: propertyname SPACE ( IN | NOTIN ) ^ ( SPACE )? '(' ( SPACE )? ( constant )? ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')'
+                    // AvalonQuery.g3:66:4: propertyname SPACE ( IN | NOTIN ) ^ ( SPACE )? '(' ( SPACE )? ( constant )? ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')'
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(64, 4);
-                        PushFollow(Follow._propertyname_in_inexpression444);
-                        propertyname52 = propertyname();
+                        DebugLocation(66, 4);
+                        PushFollow(Follow._propertyname_in_inexpression459);
+                        propertyname55 = propertyname();
                         PopFollow();
 
-                        adaptor.AddChild(root_0, propertyname52.Tree);
-                        DebugLocation(64, 17);
-                        SPACE53 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression446);
-                        SPACE53_tree = (CommonTree)adaptor.Create(SPACE53);
-                        adaptor.AddChild(root_0, SPACE53_tree);
-                        DebugLocation(64, 33);
+                        adaptor.AddChild(root_0, propertyname55.Tree);
+                        DebugLocation(66, 17);
+                        SPACE56 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression461);
+                        SPACE56_tree = (CommonTree)adaptor.Create(SPACE56);
+                        adaptor.AddChild(root_0, SPACE56_tree);
+                        DebugLocation(66, 33);
 
-                        set54 = (CommonToken)input.LT(1);
-                        set54 = (CommonToken)input.LT(1);
+                        set57 = (CommonToken)input.LT(1);
+                        set57 = (CommonToken)input.LT(1);
                         if (input.LA(1) == IN || input.LA(1) == NOTIN)
                         {
                             input.Consume();
-                            root_0 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(set54), root_0);
+                            root_0 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(set57), root_0);
                             state.errorRecovery = false;
                         }
                         else
@@ -2284,8 +2373,8 @@ namespace Avalon.Framework.Querys
                             throw mse;
                         }
 
-                        DebugLocation(64, 35);
-                        // Querys\\NdQuery.g3:64:35: ( SPACE )?
+                        DebugLocation(66, 35);
+                        // AvalonQuery.g3:66:35: ( SPACE )?
                         int alt18 = 2;
                         try
                         {
@@ -2305,12 +2394,12 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:64:35: SPACE
+                                    // AvalonQuery.g3:66:35: SPACE
                                     {
-                                        DebugLocation(64, 35);
-                                        SPACE55 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression455);
-                                        SPACE55_tree = (CommonTree)adaptor.Create(SPACE55);
-                                        adaptor.AddChild(root_0, SPACE55_tree);
+                                        DebugLocation(66, 35);
+                                        SPACE58 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression470);
+                                        SPACE58_tree = (CommonTree)adaptor.Create(SPACE58);
+                                        adaptor.AddChild(root_0, SPACE58_tree);
 
                                     }
                                     break;
@@ -2319,12 +2408,12 @@ namespace Avalon.Framework.Querys
                         }
                         finally { DebugExitSubRule(18); }
 
-                        DebugLocation(64, 41);
-                        char_literal56 = (CommonToken)Match(input, 52, Follow._52_in_inexpression457);
-                        char_literal56_tree = (CommonTree)adaptor.Create(char_literal56);
-                        adaptor.AddChild(root_0, char_literal56_tree);
-                        DebugLocation(64, 45);
-                        // Querys\\NdQuery.g3:64:45: ( SPACE )?
+                        DebugLocation(66, 41);
+                        char_literal59 = (CommonToken)Match(input, 52, Follow._52_in_inexpression472);
+                        char_literal59_tree = (CommonTree)adaptor.Create(char_literal59);
+                        adaptor.AddChild(root_0, char_literal59_tree);
+                        DebugLocation(66, 45);
+                        // AvalonQuery.g3:66:45: ( SPACE )?
                         int alt19 = 2;
                         try
                         {
@@ -2344,12 +2433,12 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:64:45: SPACE
+                                    // AvalonQuery.g3:66:45: SPACE
                                     {
-                                        DebugLocation(64, 45);
-                                        SPACE57 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression459);
-                                        SPACE57_tree = (CommonTree)adaptor.Create(SPACE57);
-                                        adaptor.AddChild(root_0, SPACE57_tree);
+                                        DebugLocation(66, 45);
+                                        SPACE60 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression474);
+                                        SPACE60_tree = (CommonTree)adaptor.Create(SPACE60);
+                                        adaptor.AddChild(root_0, SPACE60_tree);
 
                                     }
                                     break;
@@ -2358,8 +2447,8 @@ namespace Avalon.Framework.Querys
                         }
                         finally { DebugExitSubRule(19); }
 
-                        DebugLocation(64, 52);
-                        // Querys\\NdQuery.g3:64:52: ( constant )?
+                        DebugLocation(66, 52);
+                        // AvalonQuery.g3:66:52: ( constant )?
                         int alt20 = 2;
                         try
                         {
@@ -2379,14 +2468,14 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:64:52: constant
+                                    // AvalonQuery.g3:66:52: constant
                                     {
-                                        DebugLocation(64, 52);
-                                        PushFollow(Follow._constant_in_inexpression462);
-                                        constant58 = constant();
+                                        DebugLocation(66, 52);
+                                        PushFollow(Follow._constant_in_inexpression477);
+                                        constant61 = constant();
                                         PopFollow();
 
-                                        adaptor.AddChild(root_0, constant58.Tree);
+                                        adaptor.AddChild(root_0, constant61.Tree);
 
                                     }
                                     break;
@@ -2395,8 +2484,8 @@ namespace Avalon.Framework.Querys
                         }
                         finally { DebugExitSubRule(20); }
 
-                        DebugLocation(64, 62);
-                        // Querys\\NdQuery.g3:64:62: ( ( SPACE )? ',' ( SPACE )? constant )*
+                        DebugLocation(66, 62);
+                        // AvalonQuery.g3:66:62: ( ( SPACE )? ',' ( SPACE )? constant )*
                         try
                         {
                             DebugEnterSubRule(23);
@@ -2431,10 +2520,10 @@ namespace Avalon.Framework.Querys
                                 {
                                     case 1:
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:64:63: ( SPACE )? ',' ( SPACE )? constant
+                                        // AvalonQuery.g3:66:63: ( SPACE )? ',' ( SPACE )? constant
                                         {
-                                            DebugLocation(64, 63);
-                                            // Querys\\NdQuery.g3:64:63: ( SPACE )?
+                                            DebugLocation(66, 63);
+                                            // AvalonQuery.g3:66:63: ( SPACE )?
                                             int alt21 = 2;
                                             try
                                             {
@@ -2454,12 +2543,12 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:64:63: SPACE
+                                                        // AvalonQuery.g3:66:63: SPACE
                                                         {
-                                                            DebugLocation(64, 63);
-                                                            SPACE59 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression466);
-                                                            SPACE59_tree = (CommonTree)adaptor.Create(SPACE59);
-                                                            adaptor.AddChild(root_0, SPACE59_tree);
+                                                            DebugLocation(66, 63);
+                                                            SPACE62 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression481);
+                                                            SPACE62_tree = (CommonTree)adaptor.Create(SPACE62);
+                                                            adaptor.AddChild(root_0, SPACE62_tree);
 
                                                         }
                                                         break;
@@ -2468,12 +2557,12 @@ namespace Avalon.Framework.Querys
                                             }
                                             finally { DebugExitSubRule(21); }
 
-                                            DebugLocation(64, 70);
-                                            char_literal60 = (CommonToken)Match(input, 54, Follow._54_in_inexpression469);
-                                            char_literal60_tree = (CommonTree)adaptor.Create(char_literal60);
-                                            adaptor.AddChild(root_0, char_literal60_tree);
-                                            DebugLocation(64, 74);
-                                            // Querys\\NdQuery.g3:64:74: ( SPACE )?
+                                            DebugLocation(66, 70);
+                                            char_literal63 = (CommonToken)Match(input, 54, Follow._54_in_inexpression484);
+                                            char_literal63_tree = (CommonTree)adaptor.Create(char_literal63);
+                                            adaptor.AddChild(root_0, char_literal63_tree);
+                                            DebugLocation(66, 74);
+                                            // AvalonQuery.g3:66:74: ( SPACE )?
                                             int alt22 = 2;
                                             try
                                             {
@@ -2493,12 +2582,12 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:64:74: SPACE
+                                                        // AvalonQuery.g3:66:74: SPACE
                                                         {
-                                                            DebugLocation(64, 74);
-                                                            SPACE61 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression471);
-                                                            SPACE61_tree = (CommonTree)adaptor.Create(SPACE61);
-                                                            adaptor.AddChild(root_0, SPACE61_tree);
+                                                            DebugLocation(66, 74);
+                                                            SPACE64 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression486);
+                                                            SPACE64_tree = (CommonTree)adaptor.Create(SPACE64);
+                                                            adaptor.AddChild(root_0, SPACE64_tree);
 
                                                         }
                                                         break;
@@ -2507,12 +2596,12 @@ namespace Avalon.Framework.Querys
                                             }
                                             finally { DebugExitSubRule(22); }
 
-                                            DebugLocation(64, 81);
-                                            PushFollow(Follow._constant_in_inexpression474);
-                                            constant62 = constant();
+                                            DebugLocation(66, 81);
+                                            PushFollow(Follow._constant_in_inexpression489);
+                                            constant65 = constant();
                                             PopFollow();
 
-                                            adaptor.AddChild(root_0, constant62.Tree);
+                                            adaptor.AddChild(root_0, constant65.Tree);
 
                                         }
                                         break;
@@ -2528,8 +2617,8 @@ namespace Avalon.Framework.Querys
                         }
                         finally { DebugExitSubRule(23); }
 
-                        DebugLocation(64, 92);
-                        // Querys\\NdQuery.g3:64:92: ( SPACE )?
+                        DebugLocation(66, 92);
+                        // AvalonQuery.g3:66:92: ( SPACE )?
                         int alt24 = 2;
                         try
                         {
@@ -2549,12 +2638,12 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:64:92: SPACE
+                                    // AvalonQuery.g3:66:92: SPACE
                                     {
-                                        DebugLocation(64, 92);
-                                        SPACE63 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression478);
-                                        SPACE63_tree = (CommonTree)adaptor.Create(SPACE63);
-                                        adaptor.AddChild(root_0, SPACE63_tree);
+                                        DebugLocation(66, 92);
+                                        SPACE66 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_inexpression493);
+                                        SPACE66_tree = (CommonTree)adaptor.Create(SPACE66);
+                                        adaptor.AddChild(root_0, SPACE66_tree);
 
                                     }
                                     break;
@@ -2563,10 +2652,10 @@ namespace Avalon.Framework.Querys
                         }
                         finally { DebugExitSubRule(24); }
 
-                        DebugLocation(64, 99);
-                        char_literal64 = (CommonToken)Match(input, 53, Follow._53_in_inexpression481);
-                        char_literal64_tree = (CommonTree)adaptor.Create(char_literal64);
-                        adaptor.AddChild(root_0, char_literal64_tree);
+                        DebugLocation(66, 99);
+                        char_literal67 = (CommonToken)Match(input, 53, Follow._53_in_inexpression496);
+                        char_literal67_tree = (CommonTree)adaptor.Create(char_literal67);
+                        adaptor.AddChild(root_0, char_literal67_tree);
 
                     }
 
@@ -2585,11 +2674,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("inexpression", 13);
-                    LeaveRule("inexpression", 13);
+                    TraceOut("inexpression", 14);
+                    LeaveRule("inexpression", 14);
                     LeaveRule_inexpression();
                 }
-                DebugLocation(64, 101);
+                DebugLocation(66, 101);
             }
             finally { DebugExitRule(GrammarFileName, "inexpression"); }
             return retval;
@@ -2600,58 +2689,58 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_functioncall();
         partial void LeaveRule_functioncall();
         // $ANTLR start "functioncall"
-        // Querys\\NdQuery.g3:66:1: functioncall : function ^ ( SPACE )? '(' ( SPACE )? atom[false] ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')' ;
+        // AvalonQuery.g3:68:1: functioncall : function ^ ( SPACE )? '(' ( SPACE )? atom[false] ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')' ;
         [GrammarRule("functioncall")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> functioncall()
         {
             EnterRule_functioncall();
-            EnterRule("functioncall", 14);
-            TraceIn("functioncall", 14);
+            EnterRule("functioncall", 15);
+            TraceIn("functioncall", 15);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken SPACE66 = default(CommonToken);
-            CommonToken char_literal67 = default(CommonToken);
-            CommonToken SPACE68 = default(CommonToken);
-            CommonToken SPACE70 = default(CommonToken);
-            CommonToken char_literal71 = default(CommonToken);
-            CommonToken SPACE72 = default(CommonToken);
-            CommonToken SPACE74 = default(CommonToken);
-            CommonToken char_literal75 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> function65 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> atom69 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> constant73 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken SPACE69 = default(CommonToken);
+            CommonToken char_literal70 = default(CommonToken);
+            CommonToken SPACE71 = default(CommonToken);
+            CommonToken SPACE73 = default(CommonToken);
+            CommonToken char_literal74 = default(CommonToken);
+            CommonToken SPACE75 = default(CommonToken);
+            CommonToken SPACE77 = default(CommonToken);
+            CommonToken char_literal78 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> function68 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> atom72 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> constant76 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
-            CommonTree SPACE66_tree = default(CommonTree);
-            CommonTree char_literal67_tree = default(CommonTree);
-            CommonTree SPACE68_tree = default(CommonTree);
-            CommonTree SPACE70_tree = default(CommonTree);
-            CommonTree char_literal71_tree = default(CommonTree);
-            CommonTree SPACE72_tree = default(CommonTree);
-            CommonTree SPACE74_tree = default(CommonTree);
-            CommonTree char_literal75_tree = default(CommonTree);
+            CommonTree SPACE69_tree = default(CommonTree);
+            CommonTree char_literal70_tree = default(CommonTree);
+            CommonTree SPACE71_tree = default(CommonTree);
+            CommonTree SPACE73_tree = default(CommonTree);
+            CommonTree char_literal74_tree = default(CommonTree);
+            CommonTree SPACE75_tree = default(CommonTree);
+            CommonTree SPACE77_tree = default(CommonTree);
+            CommonTree char_literal78_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "functioncall");
-                DebugLocation(66, 82);
+                DebugLocation(68, 82);
                 try
                 {
-                    // Querys\\NdQuery.g3:67:2: ( function ^ ( SPACE )? '(' ( SPACE )? atom[false] ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')' )
+                    // AvalonQuery.g3:69:2: ( function ^ ( SPACE )? '(' ( SPACE )? atom[false] ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')' )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:67:4: function ^ ( SPACE )? '(' ( SPACE )? atom[false] ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')'
+                    // AvalonQuery.g3:69:4: function ^ ( SPACE )? '(' ( SPACE )? atom[false] ( ( SPACE )? ',' ( SPACE )? constant )* ( SPACE )? ')'
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(67, 12);
-                        PushFollow(Follow._function_in_functioncall492);
-                        function65 = function();
+                        DebugLocation(69, 12);
+                        PushFollow(Follow._function_in_functioncall507);
+                        function68 = function();
                         PopFollow();
 
-                        root_0 = (CommonTree)adaptor.BecomeRoot(function65.Tree, root_0);
-                        DebugLocation(67, 14);
-                        // Querys\\NdQuery.g3:67:14: ( SPACE )?
+                        root_0 = (CommonTree)adaptor.BecomeRoot(function68.Tree, root_0);
+                        DebugLocation(69, 14);
+                        // AvalonQuery.g3:69:14: ( SPACE )?
                         int alt25 = 2;
                         try
                         {
@@ -2671,12 +2760,12 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:67:14: SPACE
+                                    // AvalonQuery.g3:69:14: SPACE
                                     {
-                                        DebugLocation(67, 14);
-                                        SPACE66 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall495);
-                                        SPACE66_tree = (CommonTree)adaptor.Create(SPACE66);
-                                        adaptor.AddChild(root_0, SPACE66_tree);
+                                        DebugLocation(69, 14);
+                                        SPACE69 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall510);
+                                        SPACE69_tree = (CommonTree)adaptor.Create(SPACE69);
+                                        adaptor.AddChild(root_0, SPACE69_tree);
 
                                     }
                                     break;
@@ -2685,12 +2774,12 @@ namespace Avalon.Framework.Querys
                         }
                         finally { DebugExitSubRule(25); }
 
-                        DebugLocation(67, 21);
-                        char_literal67 = (CommonToken)Match(input, 52, Follow._52_in_functioncall498);
-                        char_literal67_tree = (CommonTree)adaptor.Create(char_literal67);
-                        adaptor.AddChild(root_0, char_literal67_tree);
-                        DebugLocation(67, 24);
-                        // Querys\\NdQuery.g3:67:24: ( SPACE )?
+                        DebugLocation(69, 21);
+                        char_literal70 = (CommonToken)Match(input, 52, Follow._52_in_functioncall513);
+                        char_literal70_tree = (CommonTree)adaptor.Create(char_literal70);
+                        adaptor.AddChild(root_0, char_literal70_tree);
+                        DebugLocation(69, 24);
+                        // AvalonQuery.g3:69:24: ( SPACE )?
                         int alt26 = 2;
                         try
                         {
@@ -2710,12 +2799,12 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:67:24: SPACE
+                                    // AvalonQuery.g3:69:24: SPACE
                                     {
-                                        DebugLocation(67, 24);
-                                        SPACE68 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall499);
-                                        SPACE68_tree = (CommonTree)adaptor.Create(SPACE68);
-                                        adaptor.AddChild(root_0, SPACE68_tree);
+                                        DebugLocation(69, 24);
+                                        SPACE71 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall514);
+                                        SPACE71_tree = (CommonTree)adaptor.Create(SPACE71);
+                                        adaptor.AddChild(root_0, SPACE71_tree);
 
                                     }
                                     break;
@@ -2724,14 +2813,14 @@ namespace Avalon.Framework.Querys
                         }
                         finally { DebugExitSubRule(26); }
 
-                        DebugLocation(67, 31);
-                        PushFollow(Follow._atom_in_functioncall502);
-                        atom69 = atom(false);
+                        DebugLocation(69, 31);
+                        PushFollow(Follow._atom_in_functioncall517);
+                        atom72 = atom(false);
                         PopFollow();
 
-                        adaptor.AddChild(root_0, atom69.Tree);
-                        DebugLocation(67, 43);
-                        // Querys\\NdQuery.g3:67:43: ( ( SPACE )? ',' ( SPACE )? constant )*
+                        adaptor.AddChild(root_0, atom72.Tree);
+                        DebugLocation(69, 43);
+                        // AvalonQuery.g3:69:43: ( ( SPACE )? ',' ( SPACE )? constant )*
                         try
                         {
                             DebugEnterSubRule(29);
@@ -2766,10 +2855,10 @@ namespace Avalon.Framework.Querys
                                 {
                                     case 1:
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:67:44: ( SPACE )? ',' ( SPACE )? constant
+                                        // AvalonQuery.g3:69:44: ( SPACE )? ',' ( SPACE )? constant
                                         {
-                                            DebugLocation(67, 44);
-                                            // Querys\\NdQuery.g3:67:44: ( SPACE )?
+                                            DebugLocation(69, 44);
+                                            // AvalonQuery.g3:69:44: ( SPACE )?
                                             int alt27 = 2;
                                             try
                                             {
@@ -2789,12 +2878,12 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:67:44: SPACE
+                                                        // AvalonQuery.g3:69:44: SPACE
                                                         {
-                                                            DebugLocation(67, 44);
-                                                            SPACE70 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall506);
-                                                            SPACE70_tree = (CommonTree)adaptor.Create(SPACE70);
-                                                            adaptor.AddChild(root_0, SPACE70_tree);
+                                                            DebugLocation(69, 44);
+                                                            SPACE73 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall521);
+                                                            SPACE73_tree = (CommonTree)adaptor.Create(SPACE73);
+                                                            adaptor.AddChild(root_0, SPACE73_tree);
 
                                                         }
                                                         break;
@@ -2803,12 +2892,12 @@ namespace Avalon.Framework.Querys
                                             }
                                             finally { DebugExitSubRule(27); }
 
-                                            DebugLocation(67, 51);
-                                            char_literal71 = (CommonToken)Match(input, 54, Follow._54_in_functioncall509);
-                                            char_literal71_tree = (CommonTree)adaptor.Create(char_literal71);
-                                            adaptor.AddChild(root_0, char_literal71_tree);
-                                            DebugLocation(67, 55);
-                                            // Querys\\NdQuery.g3:67:55: ( SPACE )?
+                                            DebugLocation(69, 51);
+                                            char_literal74 = (CommonToken)Match(input, 54, Follow._54_in_functioncall524);
+                                            char_literal74_tree = (CommonTree)adaptor.Create(char_literal74);
+                                            adaptor.AddChild(root_0, char_literal74_tree);
+                                            DebugLocation(69, 55);
+                                            // AvalonQuery.g3:69:55: ( SPACE )?
                                             int alt28 = 2;
                                             try
                                             {
@@ -2828,12 +2917,12 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:67:55: SPACE
+                                                        // AvalonQuery.g3:69:55: SPACE
                                                         {
-                                                            DebugLocation(67, 55);
-                                                            SPACE72 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall511);
-                                                            SPACE72_tree = (CommonTree)adaptor.Create(SPACE72);
-                                                            adaptor.AddChild(root_0, SPACE72_tree);
+                                                            DebugLocation(69, 55);
+                                                            SPACE75 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall526);
+                                                            SPACE75_tree = (CommonTree)adaptor.Create(SPACE75);
+                                                            adaptor.AddChild(root_0, SPACE75_tree);
 
                                                         }
                                                         break;
@@ -2842,12 +2931,12 @@ namespace Avalon.Framework.Querys
                                             }
                                             finally { DebugExitSubRule(28); }
 
-                                            DebugLocation(67, 62);
-                                            PushFollow(Follow._constant_in_functioncall514);
-                                            constant73 = constant();
+                                            DebugLocation(69, 62);
+                                            PushFollow(Follow._constant_in_functioncall529);
+                                            constant76 = constant();
                                             PopFollow();
 
-                                            adaptor.AddChild(root_0, constant73.Tree);
+                                            adaptor.AddChild(root_0, constant76.Tree);
 
                                         }
                                         break;
@@ -2863,8 +2952,8 @@ namespace Avalon.Framework.Querys
                         }
                         finally { DebugExitSubRule(29); }
 
-                        DebugLocation(67, 73);
-                        // Querys\\NdQuery.g3:67:73: ( SPACE )?
+                        DebugLocation(69, 73);
+                        // AvalonQuery.g3:69:73: ( SPACE )?
                         int alt30 = 2;
                         try
                         {
@@ -2884,12 +2973,12 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:67:73: SPACE
+                                    // AvalonQuery.g3:69:73: SPACE
                                     {
-                                        DebugLocation(67, 73);
-                                        SPACE74 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall518);
-                                        SPACE74_tree = (CommonTree)adaptor.Create(SPACE74);
-                                        adaptor.AddChild(root_0, SPACE74_tree);
+                                        DebugLocation(69, 73);
+                                        SPACE77 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_functioncall533);
+                                        SPACE77_tree = (CommonTree)adaptor.Create(SPACE77);
+                                        adaptor.AddChild(root_0, SPACE77_tree);
 
                                     }
                                     break;
@@ -2898,10 +2987,10 @@ namespace Avalon.Framework.Querys
                         }
                         finally { DebugExitSubRule(30); }
 
-                        DebugLocation(67, 80);
-                        char_literal75 = (CommonToken)Match(input, 53, Follow._53_in_functioncall521);
-                        char_literal75_tree = (CommonTree)adaptor.Create(char_literal75);
-                        adaptor.AddChild(root_0, char_literal75_tree);
+                        DebugLocation(69, 80);
+                        char_literal78 = (CommonToken)Match(input, 53, Follow._53_in_functioncall536);
+                        char_literal78_tree = (CommonTree)adaptor.Create(char_literal78);
+                        adaptor.AddChild(root_0, char_literal78_tree);
 
                     }
 
@@ -2920,11 +3009,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("functioncall", 14);
-                    LeaveRule("functioncall", 14);
+                    TraceOut("functioncall", 15);
+                    LeaveRule("functioncall", 15);
                     LeaveRule_functioncall();
                 }
-                DebugLocation(67, 82);
+                DebugLocation(69, 82);
             }
             finally { DebugExitRule(GrammarFileName, "functioncall"); }
             return retval;
@@ -2935,40 +3024,40 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_function();
         partial void LeaveRule_function();
         // $ANTLR start "function"
-        // Querys\\NdQuery.g3:69:1: function : ( STARTSWITH | ENDSWITH | SUBSTRINGOF );
+        // AvalonQuery.g3:71:1: function : ( STARTSWITH | ENDSWITH | SUBSTRINGOF );
         [GrammarRule("function")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> function()
         {
             EnterRule_function();
-            EnterRule("function", 15);
-            TraceIn("function", 15);
+            EnterRule("function", 16);
+            TraceIn("function", 16);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken set76 = default(CommonToken);
+            CommonToken set79 = default(CommonToken);
 
-            CommonTree set76_tree = default(CommonTree);
+            CommonTree set79_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "function");
-                DebugLocation(69, 38);
+                DebugLocation(71, 38);
                 try
                 {
-                    // Querys\\NdQuery.g3:70:2: ( STARTSWITH | ENDSWITH | SUBSTRINGOF )
+                    // AvalonQuery.g3:72:2: ( STARTSWITH | ENDSWITH | SUBSTRINGOF )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:
+                    // AvalonQuery.g3:
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(70, 2);
+                        DebugLocation(72, 2);
 
-                        set76 = (CommonToken)input.LT(1);
+                        set79 = (CommonToken)input.LT(1);
                         if (input.LA(1) == ENDSWITH || input.LA(1) == STARTSWITH || input.LA(1) == SUBSTRINGOF)
                         {
                             input.Consume();
-                            adaptor.AddChild(root_0, (CommonTree)adaptor.Create(set76));
+                            adaptor.AddChild(root_0, (CommonTree)adaptor.Create(set79));
                             state.errorRecovery = false;
                         }
                         else
@@ -2996,11 +3085,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("function", 15);
-                    LeaveRule("function", 15);
+                    TraceOut("function", 16);
+                    LeaveRule("function", 16);
                     LeaveRule_function();
                 }
-                DebugLocation(70, 38);
+                DebugLocation(72, 38);
             }
             finally { DebugExitRule(GrammarFileName, "function"); }
             return retval;
@@ -3011,44 +3100,44 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_orderby();
         partial void LeaveRule_orderby();
         // $ANTLR start "orderby"
-        // Querys\\NdQuery.g3:72:1: orderby : ORDERBY ^ orderbylist ;
+        // AvalonQuery.g3:74:1: orderby : ORDERBY ^ orderbylist ;
         [GrammarRule("orderby")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> orderby()
         {
             EnterRule_orderby();
-            EnterRule("orderby", 16);
-            TraceIn("orderby", 16);
+            EnterRule("orderby", 17);
+            TraceIn("orderby", 17);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken ORDERBY77 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> orderbylist78 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken ORDERBY80 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> orderbylist81 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
-            CommonTree ORDERBY77_tree = default(CommonTree);
+            CommonTree ORDERBY80_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "orderby");
-                DebugLocation(72, 23);
+                DebugLocation(74, 23);
                 try
                 {
-                    // Querys\\NdQuery.g3:73:2: ( ORDERBY ^ orderbylist )
+                    // AvalonQuery.g3:75:2: ( ORDERBY ^ orderbylist )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:73:4: ORDERBY ^ orderbylist
+                    // AvalonQuery.g3:75:4: ORDERBY ^ orderbylist
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(73, 11);
-                        ORDERBY77 = (CommonToken)Match(input, ORDERBY, Follow._ORDERBY_in_orderby550);
-                        ORDERBY77_tree = (CommonTree)adaptor.Create(ORDERBY77);
-                        root_0 = (CommonTree)adaptor.BecomeRoot(ORDERBY77_tree, root_0);
-                        DebugLocation(73, 13);
-                        PushFollow(Follow._orderbylist_in_orderby553);
-                        orderbylist78 = orderbylist();
+                        DebugLocation(75, 11);
+                        ORDERBY80 = (CommonToken)Match(input, ORDERBY, Follow._ORDERBY_in_orderby565);
+                        ORDERBY80_tree = (CommonTree)adaptor.Create(ORDERBY80);
+                        root_0 = (CommonTree)adaptor.BecomeRoot(ORDERBY80_tree, root_0);
+                        DebugLocation(75, 13);
+                        PushFollow(Follow._orderbylist_in_orderby568);
+                        orderbylist81 = orderbylist();
                         PopFollow();
 
-                        adaptor.AddChild(root_0, orderbylist78.Tree);
+                        adaptor.AddChild(root_0, orderbylist81.Tree);
 
                     }
 
@@ -3067,11 +3156,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("orderby", 16);
-                    LeaveRule("orderby", 16);
+                    TraceOut("orderby", 17);
+                    LeaveRule("orderby", 17);
                     LeaveRule_orderby();
                 }
-                DebugLocation(73, 23);
+                DebugLocation(75, 23);
             }
             finally { DebugExitRule(GrammarFileName, "orderby"); }
             return retval;
@@ -3082,47 +3171,47 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_orderbylist();
         partial void LeaveRule_orderbylist();
         // $ANTLR start "orderbylist"
-        // Querys\\NdQuery.g3:75:1: orderbylist : orderpropertyname ( ( SPACE )? ',' ! ( SPACE )? orderpropertyname )* ;
+        // AvalonQuery.g3:77:1: orderbylist : orderpropertyname ( ( SPACE )? ',' ! ( SPACE )? orderpropertyname )* ;
         [GrammarRule("orderbylist")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> orderbylist()
         {
             EnterRule_orderbylist();
-            EnterRule("orderbylist", 17);
-            TraceIn("orderbylist", 17);
+            EnterRule("orderbylist", 18);
+            TraceIn("orderbylist", 18);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken SPACE80 = default(CommonToken);
-            CommonToken char_literal81 = default(CommonToken);
-            CommonToken SPACE82 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> orderpropertyname79 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
-            AstParserRuleReturnScope<CommonTree, CommonToken> orderpropertyname83 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken SPACE83 = default(CommonToken);
+            CommonToken char_literal84 = default(CommonToken);
+            CommonToken SPACE85 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> orderpropertyname82 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            AstParserRuleReturnScope<CommonTree, CommonToken> orderpropertyname86 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
-            CommonTree SPACE80_tree = default(CommonTree);
-            CommonTree char_literal81_tree = default(CommonTree);
-            CommonTree SPACE82_tree = default(CommonTree);
+            CommonTree SPACE83_tree = default(CommonTree);
+            CommonTree char_literal84_tree = default(CommonTree);
+            CommonTree SPACE85_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "orderbylist");
-                DebugLocation(75, 61);
+                DebugLocation(77, 61);
                 try
                 {
-                    // Querys\\NdQuery.g3:76:2: ( orderpropertyname ( ( SPACE )? ',' ! ( SPACE )? orderpropertyname )* )
+                    // AvalonQuery.g3:78:2: ( orderpropertyname ( ( SPACE )? ',' ! ( SPACE )? orderpropertyname )* )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:76:4: orderpropertyname ( ( SPACE )? ',' ! ( SPACE )? orderpropertyname )*
+                    // AvalonQuery.g3:78:4: orderpropertyname ( ( SPACE )? ',' ! ( SPACE )? orderpropertyname )*
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(76, 4);
-                        PushFollow(Follow._orderpropertyname_in_orderbylist563);
-                        orderpropertyname79 = orderpropertyname();
+                        DebugLocation(78, 4);
+                        PushFollow(Follow._orderpropertyname_in_orderbylist578);
+                        orderpropertyname82 = orderpropertyname();
                         PopFollow();
 
-                        adaptor.AddChild(root_0, orderpropertyname79.Tree);
-                        DebugLocation(76, 22);
-                        // Querys\\NdQuery.g3:76:22: ( ( SPACE )? ',' ! ( SPACE )? orderpropertyname )*
+                        adaptor.AddChild(root_0, orderpropertyname82.Tree);
+                        DebugLocation(78, 22);
+                        // AvalonQuery.g3:78:22: ( ( SPACE )? ',' ! ( SPACE )? orderpropertyname )*
                         try
                         {
                             DebugEnterSubRule(33);
@@ -3146,10 +3235,10 @@ namespace Avalon.Framework.Querys
                                 {
                                     case 1:
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:76:23: ( SPACE )? ',' ! ( SPACE )? orderpropertyname
+                                        // AvalonQuery.g3:78:23: ( SPACE )? ',' ! ( SPACE )? orderpropertyname
                                         {
-                                            DebugLocation(76, 23);
-                                            // Querys\\NdQuery.g3:76:23: ( SPACE )?
+                                            DebugLocation(78, 23);
+                                            // AvalonQuery.g3:78:23: ( SPACE )?
                                             int alt31 = 2;
                                             try
                                             {
@@ -3169,12 +3258,12 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:76:23: SPACE
+                                                        // AvalonQuery.g3:78:23: SPACE
                                                         {
-                                                            DebugLocation(76, 23);
-                                                            SPACE80 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orderbylist566);
-                                                            SPACE80_tree = (CommonTree)adaptor.Create(SPACE80);
-                                                            adaptor.AddChild(root_0, SPACE80_tree);
+                                                            DebugLocation(78, 23);
+                                                            SPACE83 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orderbylist581);
+                                                            SPACE83_tree = (CommonTree)adaptor.Create(SPACE83);
+                                                            adaptor.AddChild(root_0, SPACE83_tree);
 
                                                         }
                                                         break;
@@ -3183,10 +3272,10 @@ namespace Avalon.Framework.Querys
                                             }
                                             finally { DebugExitSubRule(31); }
 
-                                            DebugLocation(76, 33);
-                                            char_literal81 = (CommonToken)Match(input, 54, Follow._54_in_orderbylist569);
-                                            DebugLocation(76, 36);
-                                            // Querys\\NdQuery.g3:76:36: ( SPACE )?
+                                            DebugLocation(78, 33);
+                                            char_literal84 = (CommonToken)Match(input, 54, Follow._54_in_orderbylist584);
+                                            DebugLocation(78, 36);
+                                            // AvalonQuery.g3:78:36: ( SPACE )?
                                             int alt32 = 2;
                                             try
                                             {
@@ -3206,12 +3295,12 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:76:36: SPACE
+                                                        // AvalonQuery.g3:78:36: SPACE
                                                         {
-                                                            DebugLocation(76, 36);
-                                                            SPACE82 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orderbylist573);
-                                                            SPACE82_tree = (CommonTree)adaptor.Create(SPACE82);
-                                                            adaptor.AddChild(root_0, SPACE82_tree);
+                                                            DebugLocation(78, 36);
+                                                            SPACE85 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orderbylist588);
+                                                            SPACE85_tree = (CommonTree)adaptor.Create(SPACE85);
+                                                            adaptor.AddChild(root_0, SPACE85_tree);
 
                                                         }
                                                         break;
@@ -3220,12 +3309,12 @@ namespace Avalon.Framework.Querys
                                             }
                                             finally { DebugExitSubRule(32); }
 
-                                            DebugLocation(76, 43);
-                                            PushFollow(Follow._orderpropertyname_in_orderbylist576);
-                                            orderpropertyname83 = orderpropertyname();
+                                            DebugLocation(78, 43);
+                                            PushFollow(Follow._orderpropertyname_in_orderbylist591);
+                                            orderpropertyname86 = orderpropertyname();
                                             PopFollow();
 
-                                            adaptor.AddChild(root_0, orderpropertyname83.Tree);
+                                            adaptor.AddChild(root_0, orderpropertyname86.Tree);
 
                                         }
                                         break;
@@ -3259,11 +3348,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("orderbylist", 17);
-                    LeaveRule("orderbylist", 17);
+                    TraceOut("orderbylist", 18);
+                    LeaveRule("orderbylist", 18);
                     LeaveRule_orderbylist();
                 }
-                DebugLocation(76, 61);
+                DebugLocation(78, 61);
             }
             finally { DebugExitRule(GrammarFileName, "orderbylist"); }
             return retval;
@@ -3274,24 +3363,24 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_orderpropertyname();
         partial void LeaveRule_orderpropertyname();
         // $ANTLR start "orderpropertyname"
-        // Querys\\NdQuery.g3:78:1: orderpropertyname : propertyname ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) ) ;
+        // AvalonQuery.g3:80:1: orderpropertyname : propertyname ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) ) ;
         [GrammarRule("orderpropertyname")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> orderpropertyname()
         {
             EnterRule_orderpropertyname();
-            EnterRule("orderpropertyname", 18);
-            TraceIn("orderpropertyname", 18);
+            EnterRule("orderpropertyname", 19);
+            TraceIn("orderpropertyname", 19);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
             CommonToken op = default(CommonToken);
-            CommonToken SPACE85 = default(CommonToken);
-            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname84 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
+            CommonToken SPACE88 = default(CommonToken);
+            AstParserRuleReturnScope<CommonTree, CommonToken> propertyname87 = default(AstParserRuleReturnScope<CommonTree, CommonToken>);
 
             CommonTree op_tree = default(CommonTree);
-            CommonTree SPACE85_tree = default(CommonTree);
+            CommonTree SPACE88_tree = default(CommonTree);
             RewriteRuleITokenStream stream_SPACE = new RewriteRuleITokenStream(adaptor, "token SPACE");
             RewriteRuleITokenStream stream_ASC = new RewriteRuleITokenStream(adaptor, "token ASC");
             RewriteRuleITokenStream stream_DESC = new RewriteRuleITokenStream(adaptor, "token DESC");
@@ -3299,21 +3388,21 @@ namespace Avalon.Framework.Querys
             try
             {
                 DebugEnterRule(GrammarFileName, "orderpropertyname");
-                DebugLocation(78, 3);
+                DebugLocation(80, 3);
                 try
                 {
-                    // Querys\\NdQuery.g3:79:2: ( propertyname ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) ) )
+                    // AvalonQuery.g3:81:2: ( propertyname ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) ) )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:79:4: propertyname ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) )
+                    // AvalonQuery.g3:81:4: propertyname ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) )
                     {
-                        DebugLocation(79, 4);
-                        PushFollow(Follow._propertyname_in_orderpropertyname587);
-                        propertyname84 = propertyname();
+                        DebugLocation(81, 4);
+                        PushFollow(Follow._propertyname_in_orderpropertyname602);
+                        propertyname87 = propertyname();
                         PopFollow();
 
-                        stream_propertyname.Add(propertyname84.Tree);
-                        DebugLocation(79, 17);
-                        // Querys\\NdQuery.g3:79:17: ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) )
+                        stream_propertyname.Add(propertyname87.Tree);
+                        DebugLocation(81, 17);
+                        // AvalonQuery.g3:81:17: ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) )
                         int alt35 = 2;
                         try
                         {
@@ -3342,7 +3431,7 @@ namespace Avalon.Framework.Querys
                                         throw nvae;
                                     }
                                 }
-                                else if ((LA35_1 == EOF || LA35_1 == FILTER || LA35_1 == INLINECOUNT || (LA35_1 >= ORDERBY && LA35_1 <= SELECT) || LA35_1 == SKIP || LA35_1 == TOP || LA35_1 == 51 || LA35_1 == 54))
+                                else if ((LA35_1 == EOF || LA35_1 == COUNT || LA35_1 == FILTER || LA35_1 == INLINECOUNT || (LA35_1 >= ORDERBY && LA35_1 <= SELECT) || LA35_1 == SKIP || LA35_1 == TOP || LA35_1 == 51 || LA35_1 == 54))
                                 {
                                     alt35 = 1;
                                 }
@@ -3358,7 +3447,7 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:80:4: 
+                                    // AvalonQuery.g3:82:4: 
                                     {
 
                                         {
@@ -3373,16 +3462,16 @@ namespace Avalon.Framework.Querys
                                             RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval != null ? retval.Tree : null);
 
                                             root_0 = (CommonTree)adaptor.Nil();
-                                            // 80:4: -> ^( ASC[\"asc\"] propertyname )
+                                            // 82:4: -> ^( ASC[\"asc\"] propertyname )
                                             {
-                                                DebugLocation(80, 7);
-                                                // Querys\\NdQuery.g3:80:7: ^( ASC[\"asc\"] propertyname )
+                                                DebugLocation(82, 7);
+                                                // AvalonQuery.g3:82:7: ^( ASC[\"asc\"] propertyname )
                                                 {
                                                     CommonTree root_1 = (CommonTree)adaptor.Nil();
-                                                    DebugLocation(80, 9);
+                                                    DebugLocation(82, 9);
                                                     root_1 = (CommonTree)adaptor.BecomeRoot((CommonTree)adaptor.Create(ASC, "asc"), root_1);
 
-                                                    DebugLocation(80, 20);
+                                                    DebugLocation(82, 20);
                                                     adaptor.AddChild(root_1, stream_propertyname.NextTree());
 
                                                     adaptor.AddChild(root_0, root_1);
@@ -3397,19 +3486,19 @@ namespace Avalon.Framework.Querys
                                     break;
                                 case 2:
                                     DebugEnterAlt(2);
-                                    // Querys\\NdQuery.g3:81:6: ( SPACE (op= ASC |op= DESC ) )
+                                    // AvalonQuery.g3:83:6: ( SPACE (op= ASC |op= DESC ) )
                                     {
-                                        DebugLocation(81, 6);
-                                        // Querys\\NdQuery.g3:81:6: ( SPACE (op= ASC |op= DESC ) )
+                                        DebugLocation(83, 6);
+                                        // AvalonQuery.g3:83:6: ( SPACE (op= ASC |op= DESC ) )
                                         DebugEnterAlt(1);
-                                        // Querys\\NdQuery.g3:81:7: SPACE (op= ASC |op= DESC )
+                                        // AvalonQuery.g3:83:7: SPACE (op= ASC |op= DESC )
                                         {
-                                            DebugLocation(81, 7);
-                                            SPACE85 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orderpropertyname609);
-                                            stream_SPACE.Add(SPACE85);
+                                            DebugLocation(83, 7);
+                                            SPACE88 = (CommonToken)Match(input, SPACE, Follow._SPACE_in_orderpropertyname624);
+                                            stream_SPACE.Add(SPACE88);
 
-                                            DebugLocation(81, 13);
-                                            // Querys\\NdQuery.g3:81:13: (op= ASC |op= DESC )
+                                            DebugLocation(83, 13);
+                                            // AvalonQuery.g3:83:13: (op= ASC |op= DESC )
                                             int alt34 = 2;
                                             try
                                             {
@@ -3439,10 +3528,10 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:81:14: op= ASC
+                                                        // AvalonQuery.g3:83:14: op= ASC
                                                         {
-                                                            DebugLocation(81, 16);
-                                                            op = (CommonToken)Match(input, ASC, Follow._ASC_in_orderpropertyname614);
+                                                            DebugLocation(83, 16);
+                                                            op = (CommonToken)Match(input, ASC, Follow._ASC_in_orderpropertyname629);
                                                             stream_ASC.Add(op);
 
 
@@ -3450,10 +3539,10 @@ namespace Avalon.Framework.Querys
                                                         break;
                                                     case 2:
                                                         DebugEnterAlt(2);
-                                                        // Querys\\NdQuery.g3:81:23: op= DESC
+                                                        // AvalonQuery.g3:83:23: op= DESC
                                                         {
-                                                            DebugLocation(81, 25);
-                                                            op = (CommonToken)Match(input, DESC, Follow._DESC_in_orderpropertyname620);
+                                                            DebugLocation(83, 25);
+                                                            op = (CommonToken)Match(input, DESC, Follow._DESC_in_orderpropertyname635);
                                                             stream_DESC.Add(op);
 
 
@@ -3482,16 +3571,16 @@ namespace Avalon.Framework.Querys
                                             RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval != null ? retval.Tree : null);
 
                                             root_0 = (CommonTree)adaptor.Nil();
-                                            // 81:33: -> ^( $op propertyname )
+                                            // 83:33: -> ^( $op propertyname )
                                             {
-                                                DebugLocation(81, 36);
-                                                // Querys\\NdQuery.g3:81:36: ^( $op propertyname )
+                                                DebugLocation(83, 36);
+                                                // AvalonQuery.g3:83:36: ^( $op propertyname )
                                                 {
                                                     CommonTree root_1 = (CommonTree)adaptor.Nil();
-                                                    DebugLocation(81, 39);
+                                                    DebugLocation(83, 39);
                                                     root_1 = (CommonTree)adaptor.BecomeRoot(stream_op.NextNode(), root_1);
 
-                                                    DebugLocation(81, 42);
+                                                    DebugLocation(83, 42);
                                                     adaptor.AddChild(root_1, stream_propertyname.NextTree());
 
                                                     adaptor.AddChild(root_0, root_1);
@@ -3527,11 +3616,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("orderpropertyname", 18);
-                    LeaveRule("orderpropertyname", 18);
+                    TraceOut("orderpropertyname", 19);
+                    LeaveRule("orderpropertyname", 19);
                     LeaveRule_orderpropertyname();
                 }
-                DebugLocation(82, 3);
+                DebugLocation(84, 3);
             }
             finally { DebugExitRule(GrammarFileName, "orderpropertyname"); }
             return retval;
@@ -3542,53 +3631,53 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_constant();
         partial void LeaveRule_constant();
         // $ANTLR start "constant"
-        // Querys\\NdQuery.g3:84:1: constant : ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^| NULL ^) ;
+        // AvalonQuery.g3:86:1: constant : ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^| NULL ^) ;
         [GrammarRule("constant")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> constant()
         {
             EnterRule_constant();
-            EnterRule("constant", 19);
-            TraceIn("constant", 19);
+            EnterRule("constant", 20);
+            TraceIn("constant", 20);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken INT86 = default(CommonToken);
-            CommonToken BOOL87 = default(CommonToken);
-            CommonToken STRING88 = default(CommonToken);
-            CommonToken DATETIME89 = default(CommonToken);
-            CommonToken LONG90 = default(CommonToken);
-            CommonToken SINGLE91 = default(CommonToken);
-            CommonToken DOUBLE92 = default(CommonToken);
-            CommonToken GUID93 = default(CommonToken);
-            CommonToken BYTE94 = default(CommonToken);
-            CommonToken NULL95 = default(CommonToken);
+            CommonToken INT89 = default(CommonToken);
+            CommonToken BOOL90 = default(CommonToken);
+            CommonToken STRING91 = default(CommonToken);
+            CommonToken DATETIME92 = default(CommonToken);
+            CommonToken LONG93 = default(CommonToken);
+            CommonToken SINGLE94 = default(CommonToken);
+            CommonToken DOUBLE95 = default(CommonToken);
+            CommonToken GUID96 = default(CommonToken);
+            CommonToken BYTE97 = default(CommonToken);
+            CommonToken NULL98 = default(CommonToken);
 
-            CommonTree INT86_tree = default(CommonTree);
-            CommonTree BOOL87_tree = default(CommonTree);
-            CommonTree STRING88_tree = default(CommonTree);
-            CommonTree DATETIME89_tree = default(CommonTree);
-            CommonTree LONG90_tree = default(CommonTree);
-            CommonTree SINGLE91_tree = default(CommonTree);
-            CommonTree DOUBLE92_tree = default(CommonTree);
-            CommonTree GUID93_tree = default(CommonTree);
-            CommonTree BYTE94_tree = default(CommonTree);
-            CommonTree NULL95_tree = default(CommonTree);
+            CommonTree INT89_tree = default(CommonTree);
+            CommonTree BOOL90_tree = default(CommonTree);
+            CommonTree STRING91_tree = default(CommonTree);
+            CommonTree DATETIME92_tree = default(CommonTree);
+            CommonTree LONG93_tree = default(CommonTree);
+            CommonTree SINGLE94_tree = default(CommonTree);
+            CommonTree DOUBLE95_tree = default(CommonTree);
+            CommonTree GUID96_tree = default(CommonTree);
+            CommonTree BYTE97_tree = default(CommonTree);
+            CommonTree NULL98_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "constant");
-                DebugLocation(84, 98);
+                DebugLocation(86, 98);
                 try
                 {
-                    // Querys\\NdQuery.g3:84:9: ( ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^| NULL ^) )
+                    // AvalonQuery.g3:86:9: ( ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^| NULL ^) )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:84:11: ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^| NULL ^)
+                    // AvalonQuery.g3:86:11: ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^| NULL ^)
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(84, 11);
-                        // Querys\\NdQuery.g3:84:11: ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^| NULL ^)
+                        DebugLocation(86, 11);
+                        // AvalonQuery.g3:86:11: ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^| NULL ^)
                         int alt36 = 10;
                         try
                         {
@@ -3662,111 +3751,111 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:84:12: INT ^
+                                    // AvalonQuery.g3:86:12: INT ^
                                     {
-                                        DebugLocation(84, 15);
-                                        INT86 = (CommonToken)Match(input, INT, Follow._INT_in_constant644);
-                                        INT86_tree = (CommonTree)adaptor.Create(INT86);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(INT86_tree, root_0);
+                                        DebugLocation(86, 15);
+                                        INT89 = (CommonToken)Match(input, INT, Follow._INT_in_constant659);
+                                        INT89_tree = (CommonTree)adaptor.Create(INT89);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(INT89_tree, root_0);
 
                                     }
                                     break;
                                 case 2:
                                     DebugEnterAlt(2);
-                                    // Querys\\NdQuery.g3:84:19: BOOL ^
+                                    // AvalonQuery.g3:86:19: BOOL ^
                                     {
-                                        DebugLocation(84, 23);
-                                        BOOL87 = (CommonToken)Match(input, BOOL, Follow._BOOL_in_constant649);
-                                        BOOL87_tree = (CommonTree)adaptor.Create(BOOL87);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(BOOL87_tree, root_0);
+                                        DebugLocation(86, 23);
+                                        BOOL90 = (CommonToken)Match(input, BOOL, Follow._BOOL_in_constant664);
+                                        BOOL90_tree = (CommonTree)adaptor.Create(BOOL90);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(BOOL90_tree, root_0);
 
                                     }
                                     break;
                                 case 3:
                                     DebugEnterAlt(3);
-                                    // Querys\\NdQuery.g3:84:27: STRING ^
+                                    // AvalonQuery.g3:86:27: STRING ^
                                     {
-                                        DebugLocation(84, 33);
-                                        STRING88 = (CommonToken)Match(input, STRING, Follow._STRING_in_constant654);
-                                        STRING88_tree = (CommonTree)adaptor.Create(STRING88);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(STRING88_tree, root_0);
+                                        DebugLocation(86, 33);
+                                        STRING91 = (CommonToken)Match(input, STRING, Follow._STRING_in_constant669);
+                                        STRING91_tree = (CommonTree)adaptor.Create(STRING91);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(STRING91_tree, root_0);
 
                                     }
                                     break;
                                 case 4:
                                     DebugEnterAlt(4);
-                                    // Querys\\NdQuery.g3:84:37: DATETIME ^
+                                    // AvalonQuery.g3:86:37: DATETIME ^
                                     {
-                                        DebugLocation(84, 45);
-                                        DATETIME89 = (CommonToken)Match(input, DATETIME, Follow._DATETIME_in_constant659);
-                                        DATETIME89_tree = (CommonTree)adaptor.Create(DATETIME89);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(DATETIME89_tree, root_0);
+                                        DebugLocation(86, 45);
+                                        DATETIME92 = (CommonToken)Match(input, DATETIME, Follow._DATETIME_in_constant674);
+                                        DATETIME92_tree = (CommonTree)adaptor.Create(DATETIME92);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(DATETIME92_tree, root_0);
 
                                     }
                                     break;
                                 case 5:
                                     DebugEnterAlt(5);
-                                    // Querys\\NdQuery.g3:84:49: LONG ^
+                                    // AvalonQuery.g3:86:49: LONG ^
                                     {
-                                        DebugLocation(84, 53);
-                                        LONG90 = (CommonToken)Match(input, LONG, Follow._LONG_in_constant664);
-                                        LONG90_tree = (CommonTree)adaptor.Create(LONG90);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(LONG90_tree, root_0);
+                                        DebugLocation(86, 53);
+                                        LONG93 = (CommonToken)Match(input, LONG, Follow._LONG_in_constant679);
+                                        LONG93_tree = (CommonTree)adaptor.Create(LONG93);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(LONG93_tree, root_0);
 
                                     }
                                     break;
                                 case 6:
                                     DebugEnterAlt(6);
-                                    // Querys\\NdQuery.g3:84:57: SINGLE ^
+                                    // AvalonQuery.g3:86:57: SINGLE ^
                                     {
-                                        DebugLocation(84, 63);
-                                        SINGLE91 = (CommonToken)Match(input, SINGLE, Follow._SINGLE_in_constant669);
-                                        SINGLE91_tree = (CommonTree)adaptor.Create(SINGLE91);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(SINGLE91_tree, root_0);
+                                        DebugLocation(86, 63);
+                                        SINGLE94 = (CommonToken)Match(input, SINGLE, Follow._SINGLE_in_constant684);
+                                        SINGLE94_tree = (CommonTree)adaptor.Create(SINGLE94);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(SINGLE94_tree, root_0);
 
                                     }
                                     break;
                                 case 7:
                                     DebugEnterAlt(7);
-                                    // Querys\\NdQuery.g3:84:67: DOUBLE ^
+                                    // AvalonQuery.g3:86:67: DOUBLE ^
                                     {
-                                        DebugLocation(84, 73);
-                                        DOUBLE92 = (CommonToken)Match(input, DOUBLE, Follow._DOUBLE_in_constant674);
-                                        DOUBLE92_tree = (CommonTree)adaptor.Create(DOUBLE92);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(DOUBLE92_tree, root_0);
+                                        DebugLocation(86, 73);
+                                        DOUBLE95 = (CommonToken)Match(input, DOUBLE, Follow._DOUBLE_in_constant689);
+                                        DOUBLE95_tree = (CommonTree)adaptor.Create(DOUBLE95);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(DOUBLE95_tree, root_0);
 
                                     }
                                     break;
                                 case 8:
                                     DebugEnterAlt(8);
-                                    // Querys\\NdQuery.g3:84:77: GUID ^
+                                    // AvalonQuery.g3:86:77: GUID ^
                                     {
-                                        DebugLocation(84, 81);
-                                        GUID93 = (CommonToken)Match(input, GUID, Follow._GUID_in_constant679);
-                                        GUID93_tree = (CommonTree)adaptor.Create(GUID93);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(GUID93_tree, root_0);
+                                        DebugLocation(86, 81);
+                                        GUID96 = (CommonToken)Match(input, GUID, Follow._GUID_in_constant694);
+                                        GUID96_tree = (CommonTree)adaptor.Create(GUID96);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(GUID96_tree, root_0);
 
                                     }
                                     break;
                                 case 9:
                                     DebugEnterAlt(9);
-                                    // Querys\\NdQuery.g3:84:85: BYTE ^
+                                    // AvalonQuery.g3:86:85: BYTE ^
                                     {
-                                        DebugLocation(84, 89);
-                                        BYTE94 = (CommonToken)Match(input, BYTE, Follow._BYTE_in_constant684);
-                                        BYTE94_tree = (CommonTree)adaptor.Create(BYTE94);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(BYTE94_tree, root_0);
+                                        DebugLocation(86, 89);
+                                        BYTE97 = (CommonToken)Match(input, BYTE, Follow._BYTE_in_constant699);
+                                        BYTE97_tree = (CommonTree)adaptor.Create(BYTE97);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(BYTE97_tree, root_0);
 
                                     }
                                     break;
                                 case 10:
                                     DebugEnterAlt(10);
-                                    // Querys\\NdQuery.g3:84:93: NULL ^
+                                    // AvalonQuery.g3:86:93: NULL ^
                                     {
-                                        DebugLocation(84, 97);
-                                        NULL95 = (CommonToken)Match(input, NULL, Follow._NULL_in_constant689);
-                                        NULL95_tree = (CommonTree)adaptor.Create(NULL95);
-                                        root_0 = (CommonTree)adaptor.BecomeRoot(NULL95_tree, root_0);
+                                        DebugLocation(86, 97);
+                                        NULL98 = (CommonToken)Match(input, NULL, Follow._NULL_in_constant704);
+                                        NULL98_tree = (CommonTree)adaptor.Create(NULL98);
+                                        root_0 = (CommonTree)adaptor.BecomeRoot(NULL98_tree, root_0);
 
                                     }
                                     break;
@@ -3793,11 +3882,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("constant", 19);
-                    LeaveRule("constant", 19);
+                    TraceOut("constant", 20);
+                    LeaveRule("constant", 20);
                     LeaveRule_constant();
                 }
-                DebugLocation(84, 98);
+                DebugLocation(86, 98);
             }
             finally { DebugExitRule(GrammarFileName, "constant"); }
             return retval;
@@ -3808,37 +3897,37 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_propertyname();
         partial void LeaveRule_propertyname();
         // $ANTLR start "propertyname"
-        // Querys\\NdQuery.g3:86:1: propertyname : IDENTIFIER ;
+        // AvalonQuery.g3:88:1: propertyname : IDENTIFIER ;
         [GrammarRule("propertyname")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> propertyname()
         {
             EnterRule_propertyname();
-            EnterRule("propertyname", 20);
-            TraceIn("propertyname", 20);
+            EnterRule("propertyname", 21);
+            TraceIn("propertyname", 21);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken IDENTIFIER96 = default(CommonToken);
+            CommonToken IDENTIFIER99 = default(CommonToken);
 
-            CommonTree IDENTIFIER96_tree = default(CommonTree);
+            CommonTree IDENTIFIER99_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "propertyname");
-                DebugLocation(86, 13);
+                DebugLocation(88, 13);
                 try
                 {
-                    // Querys\\NdQuery.g3:87:2: ( IDENTIFIER )
+                    // AvalonQuery.g3:89:2: ( IDENTIFIER )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:87:4: IDENTIFIER
+                    // AvalonQuery.g3:89:4: IDENTIFIER
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(87, 4);
-                        IDENTIFIER96 = (CommonToken)Match(input, IDENTIFIER, Follow._IDENTIFIER_in_propertyname701);
-                        IDENTIFIER96_tree = (CommonTree)adaptor.Create(IDENTIFIER96);
-                        adaptor.AddChild(root_0, IDENTIFIER96_tree);
+                        DebugLocation(89, 4);
+                        IDENTIFIER99 = (CommonToken)Match(input, IDENTIFIER, Follow._IDENTIFIER_in_propertyname716);
+                        IDENTIFIER99_tree = (CommonTree)adaptor.Create(IDENTIFIER99);
+                        adaptor.AddChild(root_0, IDENTIFIER99_tree);
 
                     }
 
@@ -3857,11 +3946,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("propertyname", 20);
-                    LeaveRule("propertyname", 20);
+                    TraceOut("propertyname", 21);
+                    LeaveRule("propertyname", 21);
                     LeaveRule_propertyname();
                 }
-                DebugLocation(87, 13);
+                DebugLocation(89, 13);
             }
             finally { DebugExitRule(GrammarFileName, "propertyname"); }
             return retval;
@@ -3872,40 +3961,40 @@ namespace Avalon.Framework.Querys
         partial void EnterRule_filteroperator();
         partial void LeaveRule_filteroperator();
         // $ANTLR start "filteroperator"
-        // Querys\\NdQuery.g3:89:1: filteroperator : ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL );
+        // AvalonQuery.g3:91:1: filteroperator : ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL );
         [GrammarRule("filteroperator")]
         private AstParserRuleReturnScope<CommonTree, CommonToken> filteroperator()
         {
             EnterRule_filteroperator();
-            EnterRule("filteroperator", 21);
-            TraceIn("filteroperator", 21);
+            EnterRule("filteroperator", 22);
+            TraceIn("filteroperator", 22);
             AstParserRuleReturnScope<CommonTree, CommonToken> retval = new AstParserRuleReturnScope<CommonTree, CommonToken>();
             retval.Start = (CommonToken)input.LT(1);
 
             CommonTree root_0 = default(CommonTree);
 
-            CommonToken set97 = default(CommonToken);
+            CommonToken set100 = default(CommonToken);
 
-            CommonTree set97_tree = default(CommonTree);
+            CommonTree set100_tree = default(CommonTree);
             try
             {
                 DebugEnterRule(GrammarFileName, "filteroperator");
-                DebugLocation(89, 85);
+                DebugLocation(91, 85);
                 try
                 {
-                    // Querys\\NdQuery.g3:90:2: ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL )
+                    // AvalonQuery.g3:92:2: ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL )
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:
+                    // AvalonQuery.g3:
                     {
                         root_0 = (CommonTree)adaptor.Nil();
 
-                        DebugLocation(90, 2);
+                        DebugLocation(92, 2);
 
-                        set97 = (CommonToken)input.LT(1);
+                        set100 = (CommonToken)input.LT(1);
                         if (input.LA(1) == EQUALS || (input.LA(1) >= GREATERTHAN && input.LA(1) <= GREATERTHANOREQUAL) || (input.LA(1) >= LESSTHAN && input.LA(1) <= LESSTHANOREQUAL) || input.LA(1) == NOTEQUALS)
                         {
                             input.Consume();
-                            adaptor.AddChild(root_0, (CommonTree)adaptor.Create(set97));
+                            adaptor.AddChild(root_0, (CommonTree)adaptor.Create(set100));
                             state.errorRecovery = false;
                         }
                         else
@@ -3933,11 +4022,11 @@ namespace Avalon.Framework.Querys
                 }
                 finally
                 {
-                    TraceOut("filteroperator", 21);
-                    LeaveRule("filteroperator", 21);
+                    TraceOut("filteroperator", 22);
+                    LeaveRule("filteroperator", 22);
                     LeaveRule_filteroperator();
                 }
-                DebugLocation(90, 85);
+                DebugLocation(92, 85);
             }
             finally { DebugExitRule(GrammarFileName, "filteroperator"); }
             return retval;
@@ -3950,111 +4039,114 @@ namespace Avalon.Framework.Querys
         #region Follow sets
         private static class Follow
         {
-            public static readonly BitSet _param_in_prog73 = new BitSet(new ulong[] { 0xA0B0002020002UL });
-            public static readonly BitSet _51_in_prog76 = new BitSet(new ulong[] { 0x20B0002020000UL });
-            public static readonly BitSet _param_in_prog79 = new BitSet(new ulong[] { 0xA0B0002020002UL });
-            public static readonly BitSet _orderby_in_param92 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _top_in_param96 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _skip_in_param100 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _filter_in_param104 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _select_in_param108 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _inlinecount_in_param112 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _SKIP_in_skip123 = new BitSet(new ulong[] { 0x4000000UL });
-            public static readonly BitSet _INT_in_skip126 = new BitSet(new ulong[] { 0x4000002UL });
-            public static readonly BitSet _TOP_in_top137 = new BitSet(new ulong[] { 0x4000000UL });
-            public static readonly BitSet _INT_in_top140 = new BitSet(new ulong[] { 0x4000002UL });
-            public static readonly BitSet _FILTER_in_filter151 = new BitSet(new ulong[] { 0x10E42424906B00UL });
-            public static readonly BitSet _filterexpression_in_filter154 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _SELECT_in_select165 = new BitSet(new ulong[] { 0x800000UL });
-            public static readonly BitSet _propertyname_in_select168 = new BitSet(new ulong[] { 0x40100000000002UL });
-            public static readonly BitSet _SPACE_in_select171 = new BitSet(new ulong[] { 0x40000000000000UL });
-            public static readonly BitSet _54_in_select174 = new BitSet(new ulong[] { 0x100000800000UL });
-            public static readonly BitSet _SPACE_in_select176 = new BitSet(new ulong[] { 0x800000UL });
-            public static readonly BitSet _propertyname_in_select179 = new BitSet(new ulong[] { 0x40100000000002UL });
-            public static readonly BitSet _INLINECOUNT_in_inlinecount195 = new BitSet(new ulong[] { 0x10UL });
-            public static readonly BitSet _ALLPAGES_in_inlinecount198 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _INLINECOUNT_in_inlinecount203 = new BitSet(new ulong[] { 0x200000000UL });
-            public static readonly BitSet _NONE_in_inlinecount205 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _orexpression_in_filterexpression217 = new BitSet(new ulong[] { 0x100000000002UL });
-            public static readonly BitSet _SPACE_in_filterexpression221 = new BitSet(new ulong[] { 0x8000000000UL });
-            public static readonly BitSet _OR_in_filterexpression224 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _SPACE_in_filterexpression227 = new BitSet(new ulong[] { 0x10E42424906B00UL });
-            public static readonly BitSet _orexpression_in_filterexpression230 = new BitSet(new ulong[] { 0x100000000002UL });
-            public static readonly BitSet _andexpression_in_orexpression244 = new BitSet(new ulong[] { 0x100000000002UL });
-            public static readonly BitSet _SPACE_in_orexpression248 = new BitSet(new ulong[] { 0x20UL });
-            public static readonly BitSet _AND_in_orexpression251 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _SPACE_in_orexpression254 = new BitSet(new ulong[] { 0x10E42424906B00UL });
-            public static readonly BitSet _andexpression_in_orexpression257 = new BitSet(new ulong[] { 0x100000000002UL });
-            public static readonly BitSet _NOT_in_andexpression271 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _SPACE_in_andexpression274 = new BitSet(new ulong[] { 0x10E42024906B00UL });
-            public static readonly BitSet _52_in_andexpression277 = new BitSet(new ulong[] { 0x10E42424906B00UL });
-            public static readonly BitSet _filterexpression_in_andexpression279 = new BitSet(new ulong[] { 0x20000000000000UL });
-            public static readonly BitSet _53_in_andexpression282 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _booleanexpression_in_andexpression286 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _52_in_andexpression294 = new BitSet(new ulong[] { 0x10E42424906B00UL });
-            public static readonly BitSet _filterexpression_in_andexpression296 = new BitSet(new ulong[] { 0x20000000000000UL });
-            public static readonly BitSet _53_in_andexpression299 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _booleanexpression_in_andexpression303 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _atom_in_booleanexpression319 = new BitSet(new ulong[] { 0x100000000002UL });
-            public static readonly BitSet _SPACE_in_booleanexpression327 = new BitSet(new ulong[] { 0x8180C8000UL });
-            public static readonly BitSet _EQUALS_in_booleanexpression332 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _NOTEQUALS_in_booleanexpression338 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _GREATERTHAN_in_booleanexpression344 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _GREATERTHANOREQUAL_in_booleanexpression350 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _LESSTHAN_in_booleanexpression356 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _LESSTHANOREQUAL_in_booleanexpression362 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _SPACE_in_booleanexpression365 = new BitSet(new ulong[] { 0xE42024906B00UL });
-            public static readonly BitSet _atom_in_booleanexpression369 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _inexpression_in_atom419 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _functioncall_in_atom424 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _constant_in_atom429 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _propertyname_in_atom434 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _propertyname_in_inexpression444 = new BitSet(new ulong[] { 0x100000000000UL });
-            public static readonly BitSet _SPACE_in_inexpression446 = new BitSet(new ulong[] { 0x1001000000UL });
-            public static readonly BitSet _set_in_inexpression448 = new BitSet(new ulong[] { 0x10100000000000UL });
-            public static readonly BitSet _SPACE_in_inexpression455 = new BitSet(new ulong[] { 0x10000000000000UL });
-            public static readonly BitSet _52_in_inexpression457 = new BitSet(new ulong[] { 0x60542024102B00UL });
-            public static readonly BitSet _SPACE_in_inexpression459 = new BitSet(new ulong[] { 0x60542024102B00UL });
-            public static readonly BitSet _constant_in_inexpression462 = new BitSet(new ulong[] { 0x60100000000000UL });
-            public static readonly BitSet _SPACE_in_inexpression466 = new BitSet(new ulong[] { 0x40000000000000UL });
-            public static readonly BitSet _54_in_inexpression469 = new BitSet(new ulong[] { 0x542024102B00UL });
-            public static readonly BitSet _SPACE_in_inexpression471 = new BitSet(new ulong[] { 0x442024102B00UL });
-            public static readonly BitSet _constant_in_inexpression474 = new BitSet(new ulong[] { 0x60100000000000UL });
-            public static readonly BitSet _SPACE_in_inexpression478 = new BitSet(new ulong[] { 0x20000000000000UL });
-            public static readonly BitSet _53_in_inexpression481 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _function_in_functioncall492 = new BitSet(new ulong[] { 0x10100000000000UL });
-            public static readonly BitSet _SPACE_in_functioncall495 = new BitSet(new ulong[] { 0x10000000000000UL });
-            public static readonly BitSet _52_in_functioncall498 = new BitSet(new ulong[] { 0xF42024906B00UL });
-            public static readonly BitSet _SPACE_in_functioncall499 = new BitSet(new ulong[] { 0xE42024906B00UL });
-            public static readonly BitSet _atom_in_functioncall502 = new BitSet(new ulong[] { 0x60100000000000UL });
-            public static readonly BitSet _SPACE_in_functioncall506 = new BitSet(new ulong[] { 0x40000000000000UL });
-            public static readonly BitSet _54_in_functioncall509 = new BitSet(new ulong[] { 0x542024102B00UL });
-            public static readonly BitSet _SPACE_in_functioncall511 = new BitSet(new ulong[] { 0x442024102B00UL });
-            public static readonly BitSet _constant_in_functioncall514 = new BitSet(new ulong[] { 0x60100000000000UL });
-            public static readonly BitSet _SPACE_in_functioncall518 = new BitSet(new ulong[] { 0x20000000000000UL });
-            public static readonly BitSet _53_in_functioncall521 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _ORDERBY_in_orderby550 = new BitSet(new ulong[] { 0x800000UL });
-            public static readonly BitSet _orderbylist_in_orderby553 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _orderpropertyname_in_orderbylist563 = new BitSet(new ulong[] { 0x40100000000002UL });
-            public static readonly BitSet _SPACE_in_orderbylist566 = new BitSet(new ulong[] { 0x40000000000000UL });
-            public static readonly BitSet _54_in_orderbylist569 = new BitSet(new ulong[] { 0x100000800000UL });
-            public static readonly BitSet _SPACE_in_orderbylist573 = new BitSet(new ulong[] { 0x800000UL });
-            public static readonly BitSet _orderpropertyname_in_orderbylist576 = new BitSet(new ulong[] { 0x40100000000002UL });
-            public static readonly BitSet _propertyname_in_orderpropertyname587 = new BitSet(new ulong[] { 0x100000000002UL });
-            public static readonly BitSet _SPACE_in_orderpropertyname609 = new BitSet(new ulong[] { 0x1040UL });
-            public static readonly BitSet _ASC_in_orderpropertyname614 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _DESC_in_orderpropertyname620 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _INT_in_constant644 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _BOOL_in_constant649 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _STRING_in_constant654 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _DATETIME_in_constant659 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _LONG_in_constant664 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _SINGLE_in_constant669 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _DOUBLE_in_constant674 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _GUID_in_constant679 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _BYTE_in_constant684 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _NULL_in_constant689 = new BitSet(new ulong[] { 0x2UL });
-            public static readonly BitSet _IDENTIFIER_in_propertyname701 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _param_in_prog74 = new BitSet(new ulong[] { 0xA0B0002020402UL });
+            public static readonly BitSet _51_in_prog77 = new BitSet(new ulong[] { 0x20B0002020400UL });
+            public static readonly BitSet _param_in_prog80 = new BitSet(new ulong[] { 0xA0B0002020402UL });
+            public static readonly BitSet _orderby_in_param93 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _top_in_param97 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _skip_in_param101 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _filter_in_param105 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _select_in_param109 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _inlinecount_in_param113 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _count_in_param117 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _SKIP_in_skip128 = new BitSet(new ulong[] { 0x4000000UL });
+            public static readonly BitSet _INT_in_skip131 = new BitSet(new ulong[] { 0x4000002UL });
+            public static readonly BitSet _TOP_in_top142 = new BitSet(new ulong[] { 0x4000000UL });
+            public static readonly BitSet _INT_in_top145 = new BitSet(new ulong[] { 0x4000002UL });
+            public static readonly BitSet _FILTER_in_filter156 = new BitSet(new ulong[] { 0x10E42424906B00UL });
+            public static readonly BitSet _filterexpression_in_filter159 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _SELECT_in_select170 = new BitSet(new ulong[] { 0x800000UL });
+            public static readonly BitSet _propertyname_in_select173 = new BitSet(new ulong[] { 0x40100000000002UL });
+            public static readonly BitSet _SPACE_in_select176 = new BitSet(new ulong[] { 0x40000000000000UL });
+            public static readonly BitSet _54_in_select179 = new BitSet(new ulong[] { 0x100000800000UL });
+            public static readonly BitSet _SPACE_in_select181 = new BitSet(new ulong[] { 0x800000UL });
+            public static readonly BitSet _propertyname_in_select184 = new BitSet(new ulong[] { 0x40100000000002UL });
+            public static readonly BitSet _INLINECOUNT_in_inlinecount200 = new BitSet(new ulong[] { 0x10UL });
+            public static readonly BitSet _ALLPAGES_in_inlinecount203 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _INLINECOUNT_in_inlinecount208 = new BitSet(new ulong[] { 0x200000000UL });
+            public static readonly BitSet _NONE_in_inlinecount210 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _COUNT_in_count220 = new BitSet(new ulong[] { 0x100UL });
+            public static readonly BitSet _BOOL_in_count223 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _orexpression_in_filterexpression232 = new BitSet(new ulong[] { 0x100000000002UL });
+            public static readonly BitSet _SPACE_in_filterexpression236 = new BitSet(new ulong[] { 0x8000000000UL });
+            public static readonly BitSet _OR_in_filterexpression239 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _SPACE_in_filterexpression242 = new BitSet(new ulong[] { 0x10E42424906B00UL });
+            public static readonly BitSet _orexpression_in_filterexpression245 = new BitSet(new ulong[] { 0x100000000002UL });
+            public static readonly BitSet _andexpression_in_orexpression259 = new BitSet(new ulong[] { 0x100000000002UL });
+            public static readonly BitSet _SPACE_in_orexpression263 = new BitSet(new ulong[] { 0x20UL });
+            public static readonly BitSet _AND_in_orexpression266 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _SPACE_in_orexpression269 = new BitSet(new ulong[] { 0x10E42424906B00UL });
+            public static readonly BitSet _andexpression_in_orexpression272 = new BitSet(new ulong[] { 0x100000000002UL });
+            public static readonly BitSet _NOT_in_andexpression286 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _SPACE_in_andexpression289 = new BitSet(new ulong[] { 0x10E42024906B00UL });
+            public static readonly BitSet _52_in_andexpression292 = new BitSet(new ulong[] { 0x10E42424906B00UL });
+            public static readonly BitSet _filterexpression_in_andexpression294 = new BitSet(new ulong[] { 0x20000000000000UL });
+            public static readonly BitSet _53_in_andexpression297 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _booleanexpression_in_andexpression301 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _52_in_andexpression309 = new BitSet(new ulong[] { 0x10E42424906B00UL });
+            public static readonly BitSet _filterexpression_in_andexpression311 = new BitSet(new ulong[] { 0x20000000000000UL });
+            public static readonly BitSet _53_in_andexpression314 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _booleanexpression_in_andexpression318 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _atom_in_booleanexpression334 = new BitSet(new ulong[] { 0x100000000002UL });
+            public static readonly BitSet _SPACE_in_booleanexpression342 = new BitSet(new ulong[] { 0x8180C8000UL });
+            public static readonly BitSet _EQUALS_in_booleanexpression347 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _NOTEQUALS_in_booleanexpression353 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _GREATERTHAN_in_booleanexpression359 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _GREATERTHANOREQUAL_in_booleanexpression365 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _LESSTHAN_in_booleanexpression371 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _LESSTHANOREQUAL_in_booleanexpression377 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _SPACE_in_booleanexpression380 = new BitSet(new ulong[] { 0xE42024906B00UL });
+            public static readonly BitSet _atom_in_booleanexpression384 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _inexpression_in_atom434 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _functioncall_in_atom439 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _constant_in_atom444 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _propertyname_in_atom449 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _propertyname_in_inexpression459 = new BitSet(new ulong[] { 0x100000000000UL });
+            public static readonly BitSet _SPACE_in_inexpression461 = new BitSet(new ulong[] { 0x1001000000UL });
+            public static readonly BitSet _set_in_inexpression463 = new BitSet(new ulong[] { 0x10100000000000UL });
+            public static readonly BitSet _SPACE_in_inexpression470 = new BitSet(new ulong[] { 0x10000000000000UL });
+            public static readonly BitSet _52_in_inexpression472 = new BitSet(new ulong[] { 0x60542024102B00UL });
+            public static readonly BitSet _SPACE_in_inexpression474 = new BitSet(new ulong[] { 0x60542024102B00UL });
+            public static readonly BitSet _constant_in_inexpression477 = new BitSet(new ulong[] { 0x60100000000000UL });
+            public static readonly BitSet _SPACE_in_inexpression481 = new BitSet(new ulong[] { 0x40000000000000UL });
+            public static readonly BitSet _54_in_inexpression484 = new BitSet(new ulong[] { 0x542024102B00UL });
+            public static readonly BitSet _SPACE_in_inexpression486 = new BitSet(new ulong[] { 0x442024102B00UL });
+            public static readonly BitSet _constant_in_inexpression489 = new BitSet(new ulong[] { 0x60100000000000UL });
+            public static readonly BitSet _SPACE_in_inexpression493 = new BitSet(new ulong[] { 0x20000000000000UL });
+            public static readonly BitSet _53_in_inexpression496 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _function_in_functioncall507 = new BitSet(new ulong[] { 0x10100000000000UL });
+            public static readonly BitSet _SPACE_in_functioncall510 = new BitSet(new ulong[] { 0x10000000000000UL });
+            public static readonly BitSet _52_in_functioncall513 = new BitSet(new ulong[] { 0xF42024906B00UL });
+            public static readonly BitSet _SPACE_in_functioncall514 = new BitSet(new ulong[] { 0xE42024906B00UL });
+            public static readonly BitSet _atom_in_functioncall517 = new BitSet(new ulong[] { 0x60100000000000UL });
+            public static readonly BitSet _SPACE_in_functioncall521 = new BitSet(new ulong[] { 0x40000000000000UL });
+            public static readonly BitSet _54_in_functioncall524 = new BitSet(new ulong[] { 0x542024102B00UL });
+            public static readonly BitSet _SPACE_in_functioncall526 = new BitSet(new ulong[] { 0x442024102B00UL });
+            public static readonly BitSet _constant_in_functioncall529 = new BitSet(new ulong[] { 0x60100000000000UL });
+            public static readonly BitSet _SPACE_in_functioncall533 = new BitSet(new ulong[] { 0x20000000000000UL });
+            public static readonly BitSet _53_in_functioncall536 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _ORDERBY_in_orderby565 = new BitSet(new ulong[] { 0x800000UL });
+            public static readonly BitSet _orderbylist_in_orderby568 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _orderpropertyname_in_orderbylist578 = new BitSet(new ulong[] { 0x40100000000002UL });
+            public static readonly BitSet _SPACE_in_orderbylist581 = new BitSet(new ulong[] { 0x40000000000000UL });
+            public static readonly BitSet _54_in_orderbylist584 = new BitSet(new ulong[] { 0x100000800000UL });
+            public static readonly BitSet _SPACE_in_orderbylist588 = new BitSet(new ulong[] { 0x800000UL });
+            public static readonly BitSet _orderpropertyname_in_orderbylist591 = new BitSet(new ulong[] { 0x40100000000002UL });
+            public static readonly BitSet _propertyname_in_orderpropertyname602 = new BitSet(new ulong[] { 0x100000000002UL });
+            public static readonly BitSet _SPACE_in_orderpropertyname624 = new BitSet(new ulong[] { 0x1040UL });
+            public static readonly BitSet _ASC_in_orderpropertyname629 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _DESC_in_orderpropertyname635 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _INT_in_constant659 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _BOOL_in_constant664 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _STRING_in_constant669 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _DATETIME_in_constant674 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _LONG_in_constant679 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _SINGLE_in_constant684 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _DOUBLE_in_constant689 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _GUID_in_constant694 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _BYTE_in_constant699 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _NULL_in_constant704 = new BitSet(new ulong[] { 0x2UL });
+            public static readonly BitSet _IDENTIFIER_in_propertyname716 = new BitSet(new ulong[] { 0x2UL });
         }
         #endregion Follow sets
     }

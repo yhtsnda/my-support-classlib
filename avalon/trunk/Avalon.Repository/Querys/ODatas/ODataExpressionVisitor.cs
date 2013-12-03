@@ -134,7 +134,10 @@ namespace Avalon.Framework.Querys
 
             var leftType = GetType(leftExp);
             var rightType = GetType(rightExp);
-            if (leftType != rightType)
+
+            var isLeftNull = IsNullExpression(leftExp);
+            var isRightNull = IsNullExpression(rightExp);
+            if (leftType != rightType && !isLeftNull && !isRightNull)
             {
                 if (leftExp.NodeType == ExpressionType.Constant)
                     leftExp = Expression.Constant(ChangeType(((ConstantExpression)leftExp).Value, rightType));
@@ -149,16 +152,16 @@ namespace Avalon.Framework.Querys
                 case ExpressionNodeType.Or:
                     return Expression.OrElse(leftExp, rightExp);
                 case ExpressionNodeType.Equal:
-                    if (IsNullExpression(rightExp))
-                        return Expression.Call(null, isNullMethod, leftExp);
-                    if (IsNullExpression(leftExp))
-                        return Expression.Call(null, isNullMethod, rightExp);
+                    if (isRightNull)
+                        return Expression.Call(null, isNullMethod.MakeGenericMethod(leftType), leftExp);
+                    if (isLeftNull)
+                        return Expression.Call(null, isNullMethod.MakeGenericMethod(rightType), rightExp);
                     return Expression.Equal(leftExp, rightExp);
                 case ExpressionNodeType.NotEqual:
-                    if (IsNullExpression(rightExp))
-                        return Expression.Call(null, isNotNullMethod, leftExp);
-                    if (IsNullExpression(leftExp))
-                        return Expression.Call(null, isNotNullMethod, rightExp);
+                    if (isRightNull)
+                        return Expression.Call(null, isNotNullMethod.MakeGenericMethod(leftType), leftExp);
+                    if (isLeftNull)
+                        return Expression.Call(null, isNotNullMethod.MakeGenericMethod(rightType), rightExp);
                     return Expression.NotEqual(leftExp, rightExp);
                 case ExpressionNodeType.LessThan:
                     return Expression.LessThan(leftExp, rightExp);
@@ -257,7 +260,8 @@ namespace Avalon.Framework.Querys
                     return VisitFunction((FunctionExpressionNode)exp);
                 case ExpressionNodeType.In:
                     return VisitIn((InExpressionNode)exp);
-
+                case ExpressionNodeType.Null:
+                    return Expression.Constant(null);
                 default:
                     throw new NotSupportedException();
             }

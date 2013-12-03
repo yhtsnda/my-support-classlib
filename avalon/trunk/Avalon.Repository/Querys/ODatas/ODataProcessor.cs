@@ -1,6 +1,7 @@
 ﻿using Avalon.Utility;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,38 +12,27 @@ namespace Avalon.Framework.Querys
 {
     public class ODataProcessor
     {
-        public static IQuerySpecification<TFilter> Process<TFilter>(string queryString, ODataQueryValidator validator = null)
+        public static object Process<TFilter, TResult>(HttpContextBase context, ODataQueryValidator validator = null, Func<TResult, object> converter = null, Func<IQuerySpecification<TFilter>, IQuerySpecification<TFilter>> specFilter = null)
         {
-            ODataQueryData queryData;
-            return Process<TFilter>(queryString, out queryData, validator);
+            var datas = new NameValueCollection(context.Request.QueryString);
+            datas.Add(context.Request.Form);
+            return Process<TFilter, TResult>(datas, validator, converter);
         }
 
-        public static IQuerySpecification<TFilter> Process<TFilter>(string queryString, out ODataQueryData queryData, ODataQueryValidator validator = null)
+        public static object Process<TFilter, TResult>(NameValueCollection datas, ODataQueryValidator validator = null, Func<TResult, object> converter = null, Func<IQuerySpecification<TFilter>, IQuerySpecification<TFilter>> specFilter = null)
         {
-            queryData = ODataQueryData.Parse(queryString);
+            ODataQueryData queryData = ODataQueryData.Parse(datas);
             if (validator != null)
                 validator.Valid(queryData);
 
             var vistor = new ODataExpressionVisitor(queryData, QueryMetadataProvider.SpecificationProvider);
-            return vistor.Process<TFilter>();
-        }
+            var spec = vistor.Process<TFilter>();
 
-        public static object Process<TFilter, TResult>(HttpContextBase context, ODataQueryValidator validator = null, Func<TResult, object> converter = null)
-        {
-            return Process<TFilter, TResult>(context.Server.UrlDecode(context.Request.Url.Query.TrimStart('?')), validator, null, converter);
-        }
-
-        public static object Process<TFilter, TResult>(HttpContextBase context, ODataQueryValidator validator = null, Func<IQuerySpecification<TFilter>, IQuerySpecification<TFilter>> specFilter = null, Func<TResult, object> converter = null)
-        {
-            return Process<TFilter, TResult>(context.Server.UrlDecode(context.Request.Url.Query.TrimStart('?')), validator, specFilter, converter);
-        }
-
-        public static object Process<TFilter, TResult>(string queryString, ODataQueryValidator validator = null, Func<IQuerySpecification<TFilter>, IQuerySpecification<TFilter>> specFilter = null, Func<TResult, object> converter = null)
-        {
-            ODataQueryData queryData;
-            var spec = Process<TFilter>(queryString, out queryData, validator);
             if (specFilter != null)
                 spec = specFilter(spec);
+
+            if (queryData.Count)
+                return spec.Count();
 
             if (queryData.InlineCount)
             {

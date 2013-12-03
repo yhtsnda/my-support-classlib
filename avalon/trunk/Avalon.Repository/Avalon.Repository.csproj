@@ -146,8 +146,18 @@
     <Compile Include="Querys\ODatas\LinqToODataStrings\LinqToODataStringVisitor.cs" />
     <Compile Include="Querys\ODatas\LinqToODataStrings\ODataStringBuilder.cs" />
     <Compile Include="Querys\ODatas\ODataExpressionVisitor.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\AvalonQuery.g3.cs">
+      <DependentUpon>AvalonQuery.g3</DependentUpon>
+    </Compile>
+    <Compile Include="Querys\ODatas\ODataParsers\AvalonQuery.g3.lexer.cs">
+      <DependentUpon>AvalonQuery.g3</DependentUpon>
+    </Compile>
+    <Compile Include="Querys\ODatas\ODataParsers\AvalonQuery.g3.parser.cs">
+      <DependentUpon>AvalonQuery.g3</DependentUpon>
+    </Compile>
     <Compile Include="Querys\ODatas\ODataParsers\BinaryExpressionNode.cs" />
     <Compile Include="Querys\ODatas\ODataParsers\ConstantExpressionNode.cs" />
+    <Compile Include="Querys\ODatas\ODataParsers\CountExpressionNode.cs" />
     <Compile Include="Querys\ODatas\ODataParsers\ExpressionDebugView.cs" />
     <Compile Include="Querys\ODatas\ODataParsers\ExpressionNode.cs" />
     <Compile Include="Querys\ODatas\ODataParsers\ExpressionNodeType.cs" />
@@ -156,9 +166,6 @@
     <Compile Include="Querys\ODatas\ODataParsers\FunctionExpressionNode.cs" />
     <Compile Include="Querys\ODatas\ODataParsers\InExpressionNode.cs" />
     <Compile Include="Querys\ODatas\ODataParsers\InlineCountExpressionNode.cs" />
-    <Compile Include="Querys\ODatas\ODataParsers\AvalonQuery.g3.cs" />
-    <Compile Include="Querys\ODatas\ODataParsers\AvalonQuery.g3.lexer.cs" />
-    <Compile Include="Querys\ODatas\ODataParsers\AvalonQuery.g3.parser.cs" />
     <Compile Include="Querys\ODatas\ODataParsers\AvalonQueryLexer.cs" />
     <Compile Include="Querys\ODatas\ODataParsers\AvalonQueryParser.cs" />
     <Compile Include="Querys\ODatas\ODataParsers\NotExpressionNode.cs" />

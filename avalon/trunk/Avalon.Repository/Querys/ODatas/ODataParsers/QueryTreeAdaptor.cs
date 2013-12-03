@@ -34,6 +34,9 @@ namespace Avalon.Framework.Querys
                     case AvalonQueryLexer.INLINECOUNT:
                         node = new InlineCountExpressionNode();
                         break;
+                    case AvalonQueryLexer.COUNT:
+                        node = new CountExpressionNode();
+                        break;
                     case AvalonQueryLexer.ALLPAGES:
                     case AvalonQueryLexer.NONE:
                         node = new InlineCountTypeExpressionNode() { InlinCountType = token.Text };
@@ -150,6 +153,8 @@ namespace Avalon.Framework.Querys
                 case AvalonQueryLexer.IN:
                 case AvalonQueryLexer.NOTIN:
                     return ExpressionNodeType.In;
+                case AvalonQueryLexer.NULL:
+                    return ExpressionNodeType.Null;
             }
             return ExpressionNodeType.Unkonwn;
         }

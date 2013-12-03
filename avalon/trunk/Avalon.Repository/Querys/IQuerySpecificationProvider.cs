@@ -13,8 +13,8 @@ namespace Avalon.Framework.Querys
 
         IQuerySpecification<T> CreateSpecification<T>(Expression expression);
 
-        object Execute(Type queryType, MethodInfo method, Expression expression);
+        object Execute(Type queryType, MethodInfo method, IQuerySpecification spec);
 
-        object ExecuteItems<TItem>(Type queryType, MethodInfo method, Expression expression);
+        object ExecuteItems<TItem>(Type queryType, MethodInfo method, IQuerySpecification spec);
     }
 }

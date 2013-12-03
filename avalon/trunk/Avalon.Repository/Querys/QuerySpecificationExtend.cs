@@ -101,19 +101,19 @@ namespace Avalon.Framework.Querys
 
         public static IList<TResult> ToList<TResult>(this IQuerySpecification source)
         {
-            var result = (IList<TResult>)source.Provider.ExecuteItems<TResult>(source.ElementType, (MethodInfo)MethodBase.GetCurrentMethod(), source.Expression);
+            var result = (IList<TResult>)source.Provider.ExecuteItems<TResult>(source.ElementType, (MethodInfo)MethodBase.GetCurrentMethod(), source);
             ProxyProvider.Proxy(result);
             return result;
         }
 
         public static int Count(this IQuerySpecification source)
         {
-            return (int)source.Provider.Execute(source.ElementType, (MethodInfo)MethodBase.GetCurrentMethod(), source.Expression);
+            return (int)source.Provider.Execute(source.ElementType, (MethodInfo)MethodBase.GetCurrentMethod(), source);
         }
 
         public static PagingResult<TResult> ToPaging<TResult>(this IQuerySpecification source)
         {
-            var result = (PagingResult<TResult>)source.Provider.ExecuteItems<TResult>(source.ElementType, (MethodInfo)MethodBase.GetCurrentMethod(), source.Expression);
+            var result = (PagingResult<TResult>)source.Provider.ExecuteItems<TResult>(source.ElementType, (MethodInfo)MethodBase.GetCurrentMethod(), source);
             ProxyProvider.Proxy(result);
             return result;
         }

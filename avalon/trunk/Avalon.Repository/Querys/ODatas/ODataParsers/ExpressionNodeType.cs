@@ -29,6 +29,8 @@ namespace Avalon.Framework.Querys
         Constant,
         Property,
         Function,
-        In
+        In,
+
+        Null
     }
 }

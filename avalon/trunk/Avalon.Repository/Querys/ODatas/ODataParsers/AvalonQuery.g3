@@ -7,8 +7,9 @@ options {
     ASTLabelType=CommonTree;
 }
 
-@lexer::namespace{Avalon.Framework.Querys}
-@parser::namespace{Avalon.Framework.Querys}
+
+@lexer::namespace{Nd.Platform.Querys}
+@parser::namespace{Nd.Platform.Querys}
 
 /*
  * Parser Rules
@@ -18,7 +19,7 @@ public
 prog
 	:	(param ('&'! param)*)*;
 
-param	:	(orderby | top | skip | filter | select | inlinecount);
+param	:	(orderby | top | skip | filter | select | inlinecount | count);
 
 skip	
 	:	SKIP^ INT+;
@@ -36,7 +37,8 @@ select
 inlinecount
 	:	INLINECOUNT^ ALLPAGES
 	|	INLINECOUNT NONE ->;
-
+count
+	:	COUNT^ BOOL;
 filterexpression[bool subquery]
 	:	orexpression[subquery] (SPACE! OR^ SPACE! orexpression[subquery])*;
 	
@@ -150,7 +152,10 @@ SELECT
 	
 INLINECOUNT
 	:	'$inlinecount=';
-	
+
+COUNT
+	:	'$count=';
+
 STARTSWITH
 	:	'startswith';
 	
@@ -159,8 +164,6 @@ ENDSWITH
 	
 SUBSTRINGOF
 	:	'substringof';
-
-COUNT	:	'count';
 
 MIN	:	'min';
 
@@ -223,4 +226,3 @@ OCTAL_ESC
 fragment
 UNICODE_ESC
 		:   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
-		;

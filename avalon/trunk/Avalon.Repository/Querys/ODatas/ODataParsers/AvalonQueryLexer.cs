@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.0.2 Querys\\NdQuery.g3 2013-10-08 10:23:05
+// $ANTLR 3.5.0.2 AvalonQuery.g3 2013-12-03 12:00:02
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -102,7 +102,7 @@ namespace Avalon.Framework.Querys
 
             OnCreated();
         }
-        public override string GrammarFileName { get { return "Querys\\NdQuery.g3"; } }
+        public override string GrammarFileName { get { return "AvalonQuery.g3"; } }
 
 
         partial void OnCreated();
@@ -123,9 +123,9 @@ namespace Avalon.Framework.Querys
             {
                 int _type = T__51;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:10:7: ( '&' )
+                // AvalonQuery.g3:10:7: ( '&' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:10:9: '&'
+                // AvalonQuery.g3:10:9: '&'
                 {
                     DebugLocation(10, 9);
                     Match('&');
@@ -158,9 +158,9 @@ namespace Avalon.Framework.Querys
             {
                 int _type = T__52;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:11:7: ( '(' )
+                // AvalonQuery.g3:11:7: ( '(' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:11:9: '('
+                // AvalonQuery.g3:11:9: '('
                 {
                     DebugLocation(11, 9);
                     Match('(');
@@ -193,9 +193,9 @@ namespace Avalon.Framework.Querys
             {
                 int _type = T__53;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:12:7: ( ')' )
+                // AvalonQuery.g3:12:7: ( ')' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:12:9: ')'
+                // AvalonQuery.g3:12:9: ')'
                 {
                     DebugLocation(12, 9);
                     Match(')');
@@ -228,9 +228,9 @@ namespace Avalon.Framework.Querys
             {
                 int _type = T__54;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:13:7: ( ',' )
+                // AvalonQuery.g3:13:7: ( ',' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:13:9: ','
+                // AvalonQuery.g3:13:9: ','
                 {
                     DebugLocation(13, 9);
                     Match(',');
@@ -263,11 +263,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = IN;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:92:4: ( 'in' )
+                // AvalonQuery.g3:94:4: ( 'in' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:92:6: 'in'
+                // AvalonQuery.g3:94:6: 'in'
                 {
-                    DebugLocation(92, 6);
+                    DebugLocation(94, 6);
                     Match("in");
 
 
@@ -299,11 +299,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = NOTIN;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:94:7: ( 'notin' )
+                // AvalonQuery.g3:96:7: ( 'notin' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:94:9: 'notin'
+                // AvalonQuery.g3:96:9: 'notin'
                 {
-                    DebugLocation(94, 9);
+                    DebugLocation(96, 9);
                     Match("notin");
 
 
@@ -335,11 +335,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = EQUALS;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:97:2: ( 'eq' )
+                // AvalonQuery.g3:99:2: ( 'eq' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:97:4: 'eq'
+                // AvalonQuery.g3:99:4: 'eq'
                 {
-                    DebugLocation(97, 4);
+                    DebugLocation(99, 4);
                     Match("eq");
 
 
@@ -371,11 +371,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = NOTEQUALS;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:100:2: ( 'ne' )
+                // AvalonQuery.g3:102:2: ( 'ne' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:100:4: 'ne'
+                // AvalonQuery.g3:102:4: 'ne'
                 {
-                    DebugLocation(100, 4);
+                    DebugLocation(102, 4);
                     Match("ne");
 
 
@@ -407,11 +407,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = GREATERTHAN;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:103:2: ( 'gt' )
+                // AvalonQuery.g3:105:2: ( 'gt' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:103:4: 'gt'
+                // AvalonQuery.g3:105:4: 'gt'
                 {
-                    DebugLocation(103, 4);
+                    DebugLocation(105, 4);
                     Match("gt");
 
 
@@ -443,11 +443,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = GREATERTHANOREQUAL;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:106:2: ( 'ge' )
+                // AvalonQuery.g3:108:2: ( 'ge' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:106:4: 'ge'
+                // AvalonQuery.g3:108:4: 'ge'
                 {
-                    DebugLocation(106, 4);
+                    DebugLocation(108, 4);
                     Match("ge");
 
 
@@ -479,11 +479,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = LESSTHAN;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:109:2: ( 'lt' )
+                // AvalonQuery.g3:111:2: ( 'lt' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:109:4: 'lt'
+                // AvalonQuery.g3:111:4: 'lt'
                 {
-                    DebugLocation(109, 4);
+                    DebugLocation(111, 4);
                     Match("lt");
 
 
@@ -515,11 +515,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = LESSTHANOREQUAL;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:112:2: ( 'le' )
+                // AvalonQuery.g3:114:2: ( 'le' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:112:4: 'le'
+                // AvalonQuery.g3:114:4: 'le'
                 {
-                    DebugLocation(112, 4);
+                    DebugLocation(114, 4);
                     Match("le");
 
 
@@ -551,11 +551,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = NOT;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:115:2: ( 'not' )
+                // AvalonQuery.g3:117:2: ( 'not' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:115:4: 'not'
+                // AvalonQuery.g3:117:4: 'not'
                 {
-                    DebugLocation(115, 4);
+                    DebugLocation(117, 4);
                     Match("not");
 
 
@@ -587,11 +587,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = OR;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:118:2: ( 'or' )
+                // AvalonQuery.g3:120:2: ( 'or' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:118:4: 'or'
+                // AvalonQuery.g3:120:4: 'or'
                 {
-                    DebugLocation(118, 4);
+                    DebugLocation(120, 4);
                     Match("or");
 
 
@@ -623,11 +623,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = AND;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:121:2: ( 'and' )
+                // AvalonQuery.g3:123:2: ( 'and' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:121:5: 'and'
+                // AvalonQuery.g3:123:5: 'and'
                 {
-                    DebugLocation(121, 5);
+                    DebugLocation(123, 5);
                     Match("and");
 
 
@@ -659,11 +659,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = ASC;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:124:2: ( 'asc' )
+                // AvalonQuery.g3:126:2: ( 'asc' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:124:4: 'asc'
+                // AvalonQuery.g3:126:4: 'asc'
                 {
-                    DebugLocation(124, 4);
+                    DebugLocation(126, 4);
                     Match("asc");
 
 
@@ -695,11 +695,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = DESC;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:127:2: ( 'desc' )
+                // AvalonQuery.g3:129:2: ( 'desc' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:127:4: 'desc'
+                // AvalonQuery.g3:129:4: 'desc'
                 {
-                    DebugLocation(127, 4);
+                    DebugLocation(129, 4);
                     Match("desc");
 
 
@@ -731,11 +731,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = ALLPAGES;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:130:2: ( 'allpages' )
+                // AvalonQuery.g3:132:2: ( 'allpages' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:130:5: 'allpages'
+                // AvalonQuery.g3:132:5: 'allpages'
                 {
-                    DebugLocation(130, 5);
+                    DebugLocation(132, 5);
                     Match("allpages");
 
 
@@ -767,11 +767,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = NONE;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:133:2: ( 'none' )
+                // AvalonQuery.g3:135:2: ( 'none' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:133:4: 'none'
+                // AvalonQuery.g3:135:4: 'none'
                 {
-                    DebugLocation(133, 4);
+                    DebugLocation(135, 4);
                     Match("none");
 
 
@@ -803,11 +803,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = SKIP;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:136:2: ( '$skip=' )
+                // AvalonQuery.g3:138:2: ( '$skip=' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:136:4: '$skip='
+                // AvalonQuery.g3:138:4: '$skip='
                 {
-                    DebugLocation(136, 4);
+                    DebugLocation(138, 4);
                     Match("$skip=");
 
 
@@ -839,11 +839,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = TOP;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:139:2: ( '$top=' )
+                // AvalonQuery.g3:141:2: ( '$top=' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:139:4: '$top='
+                // AvalonQuery.g3:141:4: '$top='
                 {
-                    DebugLocation(139, 4);
+                    DebugLocation(141, 4);
                     Match("$top=");
 
 
@@ -875,11 +875,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = FILTER;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:142:2: ( '$filter=' )
+                // AvalonQuery.g3:144:2: ( '$filter=' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:142:4: '$filter='
+                // AvalonQuery.g3:144:4: '$filter='
                 {
-                    DebugLocation(142, 4);
+                    DebugLocation(144, 4);
                     Match("$filter=");
 
 
@@ -911,11 +911,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = ORDERBY;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:146:2: ( '$orderby=' )
+                // AvalonQuery.g3:148:2: ( '$orderby=' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:146:4: '$orderby='
+                // AvalonQuery.g3:148:4: '$orderby='
                 {
-                    DebugLocation(146, 4);
+                    DebugLocation(148, 4);
                     Match("$orderby=");
 
 
@@ -947,11 +947,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = SELECT;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:149:2: ( '$select=' )
+                // AvalonQuery.g3:151:2: ( '$select=' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:149:4: '$select='
+                // AvalonQuery.g3:151:4: '$select='
                 {
-                    DebugLocation(149, 4);
+                    DebugLocation(151, 4);
                     Match("$select=");
 
 
@@ -983,11 +983,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = INLINECOUNT;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:152:2: ( '$inlinecount=' )
+                // AvalonQuery.g3:154:2: ( '$inlinecount=' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:152:4: '$inlinecount='
+                // AvalonQuery.g3:154:4: '$inlinecount='
                 {
-                    DebugLocation(152, 4);
+                    DebugLocation(154, 4);
                     Match("$inlinecount=");
 
 
@@ -1005,6 +1005,42 @@ namespace Avalon.Framework.Querys
         }
         // $ANTLR end "INLINECOUNT"
 
+        partial void EnterRule_COUNT();
+        partial void LeaveRule_COUNT();
+
+        // $ANTLR start "COUNT"
+        [GrammarRule("COUNT")]
+        private void mCOUNT()
+        {
+            EnterRule_COUNT();
+            EnterRule("COUNT", 26);
+            TraceIn("COUNT", 26);
+            try
+            {
+                int _type = COUNT;
+                int _channel = DefaultTokenChannel;
+                // AvalonQuery.g3:157:2: ( '$count=' )
+                DebugEnterAlt(1);
+                // AvalonQuery.g3:157:4: '$count='
+                {
+                    DebugLocation(157, 4);
+                    Match("$count=");
+
+
+                }
+
+                state.type = _type;
+                state.channel = _channel;
+            }
+            finally
+            {
+                TraceOut("COUNT", 26);
+                LeaveRule("COUNT", 26);
+                LeaveRule_COUNT();
+            }
+        }
+        // $ANTLR end "COUNT"
+
         partial void EnterRule_STARTSWITH();
         partial void LeaveRule_STARTSWITH();
 
@@ -1013,17 +1049,17 @@ namespace Avalon.Framework.Querys
         private void mSTARTSWITH()
         {
             EnterRule_STARTSWITH();
-            EnterRule("STARTSWITH", 26);
-            TraceIn("STARTSWITH", 26);
+            EnterRule("STARTSWITH", 27);
+            TraceIn("STARTSWITH", 27);
             try
             {
                 int _type = STARTSWITH;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:155:2: ( 'startswith' )
+                // AvalonQuery.g3:160:2: ( 'startswith' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:155:4: 'startswith'
+                // AvalonQuery.g3:160:4: 'startswith'
                 {
-                    DebugLocation(155, 4);
+                    DebugLocation(160, 4);
                     Match("startswith");
 
 
@@ -1034,8 +1070,8 @@ namespace Avalon.Framework.Querys
             }
             finally
             {
-                TraceOut("STARTSWITH", 26);
-                LeaveRule("STARTSWITH", 26);
+                TraceOut("STARTSWITH", 27);
+                LeaveRule("STARTSWITH", 27);
                 LeaveRule_STARTSWITH();
             }
         }
@@ -1049,17 +1085,17 @@ namespace Avalon.Framework.Querys
         private void mENDSWITH()
         {
             EnterRule_ENDSWITH();
-            EnterRule("ENDSWITH", 27);
-            TraceIn("ENDSWITH", 27);
+            EnterRule("ENDSWITH", 28);
+            TraceIn("ENDSWITH", 28);
             try
             {
                 int _type = ENDSWITH;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:158:2: ( 'endswith' )
+                // AvalonQuery.g3:163:2: ( 'endswith' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:158:4: 'endswith'
+                // AvalonQuery.g3:163:4: 'endswith'
                 {
-                    DebugLocation(158, 4);
+                    DebugLocation(163, 4);
                     Match("endswith");
 
 
@@ -1070,8 +1106,8 @@ namespace Avalon.Framework.Querys
             }
             finally
             {
-                TraceOut("ENDSWITH", 27);
-                LeaveRule("ENDSWITH", 27);
+                TraceOut("ENDSWITH", 28);
+                LeaveRule("ENDSWITH", 28);
                 LeaveRule_ENDSWITH();
             }
         }
@@ -1085,17 +1121,17 @@ namespace Avalon.Framework.Querys
         private void mSUBSTRINGOF()
         {
             EnterRule_SUBSTRINGOF();
-            EnterRule("SUBSTRINGOF", 28);
-            TraceIn("SUBSTRINGOF", 28);
+            EnterRule("SUBSTRINGOF", 29);
+            TraceIn("SUBSTRINGOF", 29);
             try
             {
                 int _type = SUBSTRINGOF;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:161:2: ( 'substringof' )
+                // AvalonQuery.g3:166:2: ( 'substringof' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:161:4: 'substringof'
+                // AvalonQuery.g3:166:4: 'substringof'
                 {
-                    DebugLocation(161, 4);
+                    DebugLocation(166, 4);
                     Match("substringof");
 
 
@@ -1106,48 +1142,12 @@ namespace Avalon.Framework.Querys
             }
             finally
             {
-                TraceOut("SUBSTRINGOF", 28);
-                LeaveRule("SUBSTRINGOF", 28);
+                TraceOut("SUBSTRINGOF", 29);
+                LeaveRule("SUBSTRINGOF", 29);
                 LeaveRule_SUBSTRINGOF();
             }
         }
         // $ANTLR end "SUBSTRINGOF"
-
-        partial void EnterRule_COUNT();
-        partial void LeaveRule_COUNT();
-
-        // $ANTLR start "COUNT"
-        [GrammarRule("COUNT")]
-        private void mCOUNT()
-        {
-            EnterRule_COUNT();
-            EnterRule("COUNT", 29);
-            TraceIn("COUNT", 29);
-            try
-            {
-                int _type = COUNT;
-                int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:163:7: ( 'count' )
-                DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:163:9: 'count'
-                {
-                    DebugLocation(163, 9);
-                    Match("count");
-
-
-                }
-
-                state.type = _type;
-                state.channel = _channel;
-            }
-            finally
-            {
-                TraceOut("COUNT", 29);
-                LeaveRule("COUNT", 29);
-                LeaveRule_COUNT();
-            }
-        }
-        // $ANTLR end "COUNT"
 
         partial void EnterRule_MIN();
         partial void LeaveRule_MIN();
@@ -1163,11 +1163,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = MIN;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:165:5: ( 'min' )
+                // AvalonQuery.g3:168:5: ( 'min' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:165:7: 'min'
+                // AvalonQuery.g3:168:7: 'min'
                 {
-                    DebugLocation(165, 7);
+                    DebugLocation(168, 7);
                     Match("min");
 
 
@@ -1199,11 +1199,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = MAX;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:167:5: ( 'max' )
+                // AvalonQuery.g3:170:5: ( 'max' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:167:7: 'max'
+                // AvalonQuery.g3:170:7: 'max'
                 {
-                    DebugLocation(167, 7);
+                    DebugLocation(170, 7);
                     Match("max");
 
 
@@ -1235,11 +1235,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = SUM;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:169:5: ( 'sum' )
+                // AvalonQuery.g3:172:5: ( 'sum' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:169:7: 'sum'
+                // AvalonQuery.g3:172:7: 'sum'
                 {
-                    DebugLocation(169, 7);
+                    DebugLocation(172, 7);
                     Match("sum");
 
 
@@ -1271,11 +1271,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = AVERAGE;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:171:9: ( 'average' )
+                // AvalonQuery.g3:174:9: ( 'average' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:171:11: 'average'
+                // AvalonQuery.g3:174:11: 'average'
                 {
-                    DebugLocation(171, 11);
+                    DebugLocation(174, 11);
                     Match("average");
 
 
@@ -1307,12 +1307,12 @@ namespace Avalon.Framework.Querys
             {
                 int _type = INT;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:173:5: ( ( '-' )? ( '0' .. '9' )+ )
+                // AvalonQuery.g3:176:5: ( ( '-' )? ( '0' .. '9' )+ )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:173:7: ( '-' )? ( '0' .. '9' )+
+                // AvalonQuery.g3:176:7: ( '-' )? ( '0' .. '9' )+
                 {
-                    DebugLocation(173, 7);
-                    // Querys\\NdQuery.g3:173:7: ( '-' )?
+                    DebugLocation(176, 7);
+                    // AvalonQuery.g3:176:7: ( '-' )?
                     int alt1 = 2;
                     try
                     {
@@ -1332,9 +1332,9 @@ namespace Avalon.Framework.Querys
                         {
                             case 1:
                                 DebugEnterAlt(1);
-                                // Querys\\NdQuery.g3:173:8: '-'
+                                // AvalonQuery.g3:176:8: '-'
                                 {
-                                    DebugLocation(173, 8);
+                                    DebugLocation(176, 8);
                                     Match('-');
 
                                 }
@@ -1344,8 +1344,8 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(1); }
 
-                    DebugLocation(173, 17);
-                    // Querys\\NdQuery.g3:173:17: ( '0' .. '9' )+
+                    DebugLocation(176, 17);
+                    // AvalonQuery.g3:176:17: ( '0' .. '9' )+
                     int cnt2 = 0;
                     try
                     {
@@ -1370,9 +1370,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(173, 17);
+                                        DebugLocation(176, 17);
                                         input.Consume();
 
 
@@ -1424,12 +1424,12 @@ namespace Avalon.Framework.Querys
             {
                 int _type = LONG;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:175:6: ( ( '-' )? ( '0' .. '9' )+ 'L' )
+                // AvalonQuery.g3:178:6: ( ( '-' )? ( '0' .. '9' )+ 'L' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:175:8: ( '-' )? ( '0' .. '9' )+ 'L'
+                // AvalonQuery.g3:178:8: ( '-' )? ( '0' .. '9' )+ 'L'
                 {
-                    DebugLocation(175, 8);
-                    // Querys\\NdQuery.g3:175:8: ( '-' )?
+                    DebugLocation(178, 8);
+                    // AvalonQuery.g3:178:8: ( '-' )?
                     int alt3 = 2;
                     try
                     {
@@ -1449,9 +1449,9 @@ namespace Avalon.Framework.Querys
                         {
                             case 1:
                                 DebugEnterAlt(1);
-                                // Querys\\NdQuery.g3:175:9: '-'
+                                // AvalonQuery.g3:178:9: '-'
                                 {
-                                    DebugLocation(175, 9);
+                                    DebugLocation(178, 9);
                                     Match('-');
 
                                 }
@@ -1461,8 +1461,8 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(3); }
 
-                    DebugLocation(175, 15);
-                    // Querys\\NdQuery.g3:175:15: ( '0' .. '9' )+
+                    DebugLocation(178, 15);
+                    // AvalonQuery.g3:178:15: ( '0' .. '9' )+
                     int cnt4 = 0;
                     try
                     {
@@ -1487,9 +1487,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(175, 15);
+                                        DebugLocation(178, 15);
                                         input.Consume();
 
 
@@ -1512,7 +1512,7 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(4); }
 
-                    DebugLocation(175, 27);
+                    DebugLocation(178, 27);
                     Match('L');
 
                 }
@@ -1543,12 +1543,12 @@ namespace Avalon.Framework.Querys
             {
                 int _type = DOUBLE;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:177:8: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
+                // AvalonQuery.g3:180:8: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:177:10: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+
+                // AvalonQuery.g3:180:10: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+
                 {
-                    DebugLocation(177, 10);
-                    // Querys\\NdQuery.g3:177:10: ( '-' )?
+                    DebugLocation(180, 10);
+                    // AvalonQuery.g3:180:10: ( '-' )?
                     int alt5 = 2;
                     try
                     {
@@ -1568,9 +1568,9 @@ namespace Avalon.Framework.Querys
                         {
                             case 1:
                                 DebugEnterAlt(1);
-                                // Querys\\NdQuery.g3:177:11: '-'
+                                // AvalonQuery.g3:180:11: '-'
                                 {
-                                    DebugLocation(177, 11);
+                                    DebugLocation(180, 11);
                                     Match('-');
 
                                 }
@@ -1580,8 +1580,8 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(5); }
 
-                    DebugLocation(177, 17);
-                    // Querys\\NdQuery.g3:177:17: ( '0' .. '9' )+
+                    DebugLocation(180, 17);
+                    // AvalonQuery.g3:180:17: ( '0' .. '9' )+
                     int cnt6 = 0;
                     try
                     {
@@ -1606,9 +1606,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(177, 17);
+                                        DebugLocation(180, 17);
                                         input.Consume();
 
 
@@ -1631,10 +1631,10 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(6); }
 
-                    DebugLocation(177, 29);
+                    DebugLocation(180, 29);
                     Match('.');
-                    DebugLocation(177, 33);
-                    // Querys\\NdQuery.g3:177:33: ( '0' .. '9' )+
+                    DebugLocation(180, 33);
+                    // AvalonQuery.g3:180:33: ( '0' .. '9' )+
                     int cnt7 = 0;
                     try
                     {
@@ -1659,9 +1659,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(177, 33);
+                                        DebugLocation(180, 33);
                                         input.Consume();
 
 
@@ -1713,12 +1713,12 @@ namespace Avalon.Framework.Querys
             {
                 int _type = SINGLE;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:179:8: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ 'f' )
+                // AvalonQuery.g3:182:8: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ 'f' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:179:10: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ 'f'
+                // AvalonQuery.g3:182:10: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ 'f'
                 {
-                    DebugLocation(179, 10);
-                    // Querys\\NdQuery.g3:179:10: ( '-' )?
+                    DebugLocation(182, 10);
+                    // AvalonQuery.g3:182:10: ( '-' )?
                     int alt8 = 2;
                     try
                     {
@@ -1738,9 +1738,9 @@ namespace Avalon.Framework.Querys
                         {
                             case 1:
                                 DebugEnterAlt(1);
-                                // Querys\\NdQuery.g3:179:11: '-'
+                                // AvalonQuery.g3:182:11: '-'
                                 {
-                                    DebugLocation(179, 11);
+                                    DebugLocation(182, 11);
                                     Match('-');
 
                                 }
@@ -1750,8 +1750,8 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(8); }
 
-                    DebugLocation(179, 17);
-                    // Querys\\NdQuery.g3:179:17: ( '0' .. '9' )+
+                    DebugLocation(182, 17);
+                    // AvalonQuery.g3:182:17: ( '0' .. '9' )+
                     int cnt9 = 0;
                     try
                     {
@@ -1776,9 +1776,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(179, 17);
+                                        DebugLocation(182, 17);
                                         input.Consume();
 
 
@@ -1801,10 +1801,10 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(9); }
 
-                    DebugLocation(179, 29);
+                    DebugLocation(182, 29);
                     Match('.');
-                    DebugLocation(179, 33);
-                    // Querys\\NdQuery.g3:179:33: ( '0' .. '9' )+
+                    DebugLocation(182, 33);
+                    // AvalonQuery.g3:182:33: ( '0' .. '9' )+
                     int cnt10 = 0;
                     try
                     {
@@ -1829,9 +1829,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(179, 33);
+                                        DebugLocation(182, 33);
                                         input.Consume();
 
 
@@ -1854,7 +1854,7 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(10); }
 
-                    DebugLocation(179, 45);
+                    DebugLocation(182, 45);
                     Match('f');
 
                 }
@@ -1885,12 +1885,12 @@ namespace Avalon.Framework.Querys
             {
                 int _type = BOOL;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:181:6: ( ( 'true' | 'false' ) )
+                // AvalonQuery.g3:184:6: ( ( 'true' | 'false' ) )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:181:8: ( 'true' | 'false' )
+                // AvalonQuery.g3:184:8: ( 'true' | 'false' )
                 {
-                    DebugLocation(181, 8);
-                    // Querys\\NdQuery.g3:181:8: ( 'true' | 'false' )
+                    DebugLocation(184, 8);
+                    // AvalonQuery.g3:184:8: ( 'true' | 'false' )
                     int alt11 = 2;
                     try
                     {
@@ -1920,9 +1920,9 @@ namespace Avalon.Framework.Querys
                         {
                             case 1:
                                 DebugEnterAlt(1);
-                                // Querys\\NdQuery.g3:181:9: 'true'
+                                // AvalonQuery.g3:184:9: 'true'
                                 {
-                                    DebugLocation(181, 9);
+                                    DebugLocation(184, 9);
                                     Match("true");
 
 
@@ -1930,9 +1930,9 @@ namespace Avalon.Framework.Querys
                                 break;
                             case 2:
                                 DebugEnterAlt(2);
-                                // Querys\\NdQuery.g3:181:18: 'false'
+                                // AvalonQuery.g3:184:18: 'false'
                                 {
-                                    DebugLocation(181, 18);
+                                    DebugLocation(184, 18);
                                     Match("false");
 
 
@@ -1972,11 +1972,11 @@ namespace Avalon.Framework.Querys
             {
                 int _type = NULL;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:183:6: ( 'null' )
+                // AvalonQuery.g3:186:6: ( 'null' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:183:8: 'null'
+                // AvalonQuery.g3:186:8: 'null'
                 {
-                    DebugLocation(183, 8);
+                    DebugLocation(186, 8);
                     Match("null");
 
 
@@ -2008,15 +2008,15 @@ namespace Avalon.Framework.Querys
             {
                 int _type = DATETIME;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:186:2: ( 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\'' )
+                // AvalonQuery.g3:189:2: ( 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\'' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:186:4: 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\''
+                // AvalonQuery.g3:189:4: 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\''
                 {
-                    DebugLocation(186, 4);
+                    DebugLocation(189, 4);
                     Match("datetime'");
 
-                    DebugLocation(186, 20);
-                    // Querys\\NdQuery.g3:186:20: ( '0' .. '9' )+
+                    DebugLocation(189, 20);
+                    // AvalonQuery.g3:189:20: ( '0' .. '9' )+
                     int cnt12 = 0;
                     try
                     {
@@ -2041,9 +2041,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(186, 20);
+                                        DebugLocation(189, 20);
                                         input.Consume();
 
 
@@ -2066,10 +2066,10 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(12); }
 
-                    DebugLocation(186, 27);
+                    DebugLocation(189, 27);
                     Match('-');
-                    DebugLocation(186, 34);
-                    // Querys\\NdQuery.g3:186:34: ( '0' .. '9' )+
+                    DebugLocation(189, 34);
+                    // AvalonQuery.g3:189:34: ( '0' .. '9' )+
                     int cnt13 = 0;
                     try
                     {
@@ -2094,9 +2094,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(186, 34);
+                                        DebugLocation(189, 34);
                                         input.Consume();
 
 
@@ -2119,8 +2119,8 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(13); }
 
-                    DebugLocation(186, 41);
-                    // Querys\\NdQuery.g3:186:41: ( '-' )+
+                    DebugLocation(189, 41);
+                    // AvalonQuery.g3:189:41: ( '-' )+
                     int cnt14 = 0;
                     try
                     {
@@ -2145,9 +2145,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:186:41: '-'
+                                    // AvalonQuery.g3:189:41: '-'
                                     {
-                                        DebugLocation(186, 41);
+                                        DebugLocation(189, 41);
                                         Match('-');
 
                                     }
@@ -2169,8 +2169,8 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(14); }
 
-                    DebugLocation(186, 50);
-                    // Querys\\NdQuery.g3:186:50: ( '0' .. '9' )+
+                    DebugLocation(189, 50);
+                    // AvalonQuery.g3:189:50: ( '0' .. '9' )+
                     int cnt15 = 0;
                     try
                     {
@@ -2195,9 +2195,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(186, 50);
+                                        DebugLocation(189, 50);
                                         input.Consume();
 
 
@@ -2220,10 +2220,10 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(15); }
 
-                    DebugLocation(186, 57);
+                    DebugLocation(189, 57);
                     Match('T');
-                    DebugLocation(186, 64);
-                    // Querys\\NdQuery.g3:186:64: ( '0' .. '9' )+
+                    DebugLocation(189, 64);
+                    // AvalonQuery.g3:189:64: ( '0' .. '9' )+
                     int cnt16 = 0;
                     try
                     {
@@ -2248,9 +2248,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(186, 64);
+                                        DebugLocation(189, 64);
                                         input.Consume();
 
 
@@ -2273,10 +2273,10 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(16); }
 
-                    DebugLocation(186, 71);
+                    DebugLocation(189, 71);
                     Match(':');
-                    DebugLocation(186, 78);
-                    // Querys\\NdQuery.g3:186:78: ( '0' .. '9' )+
+                    DebugLocation(189, 78);
+                    // AvalonQuery.g3:189:78: ( '0' .. '9' )+
                     int cnt17 = 0;
                     try
                     {
@@ -2301,9 +2301,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(186, 78);
+                                        DebugLocation(189, 78);
                                         input.Consume();
 
 
@@ -2326,8 +2326,8 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(17); }
 
-                    DebugLocation(186, 85);
-                    // Querys\\NdQuery.g3:186:85: ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )*
+                    DebugLocation(189, 85);
+                    // AvalonQuery.g3:189:85: ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )*
                     try
                     {
                         DebugEnterSubRule(21);
@@ -2351,12 +2351,12 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:186:86: ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )*
+                                    // AvalonQuery.g3:189:86: ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )*
                                     {
-                                        DebugLocation(186, 86);
+                                        DebugLocation(189, 86);
                                         Match(':');
-                                        DebugLocation(186, 93);
-                                        // Querys\\NdQuery.g3:186:93: ( '0' .. '9' )+
+                                        DebugLocation(189, 93);
+                                        // AvalonQuery.g3:189:93: ( '0' .. '9' )+
                                         int cnt18 = 0;
                                         try
                                         {
@@ -2381,9 +2381,9 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:
+                                                        // AvalonQuery.g3:
                                                         {
-                                                            DebugLocation(186, 93);
+                                                            DebugLocation(189, 93);
                                                             input.Consume();
 
 
@@ -2406,8 +2406,8 @@ namespace Avalon.Framework.Querys
                                         }
                                         finally { DebugExitSubRule(18); }
 
-                                        DebugLocation(186, 100);
-                                        // Querys\\NdQuery.g3:186:100: ( '.' ( '0' .. '9' )+ )*
+                                        DebugLocation(189, 100);
+                                        // AvalonQuery.g3:189:100: ( '.' ( '0' .. '9' )+ )*
                                         try
                                         {
                                             DebugEnterSubRule(20);
@@ -2431,12 +2431,12 @@ namespace Avalon.Framework.Querys
                                                 {
                                                     case 1:
                                                         DebugEnterAlt(1);
-                                                        // Querys\\NdQuery.g3:186:101: '.' ( '0' .. '9' )+
+                                                        // AvalonQuery.g3:189:101: '.' ( '0' .. '9' )+
                                                         {
-                                                            DebugLocation(186, 101);
+                                                            DebugLocation(189, 101);
                                                             Match('.');
-                                                            DebugLocation(186, 108);
-                                                            // Querys\\NdQuery.g3:186:108: ( '0' .. '9' )+
+                                                            DebugLocation(189, 108);
+                                                            // AvalonQuery.g3:189:108: ( '0' .. '9' )+
                                                             int cnt19 = 0;
                                                             try
                                                             {
@@ -2461,9 +2461,9 @@ namespace Avalon.Framework.Querys
                                                                     {
                                                                         case 1:
                                                                             DebugEnterAlt(1);
-                                                                            // Querys\\NdQuery.g3:
+                                                                            // AvalonQuery.g3:
                                                                             {
-                                                                                DebugLocation(186, 108);
+                                                                                DebugLocation(189, 108);
                                                                                 input.Consume();
 
 
@@ -2516,7 +2516,7 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(21); }
 
-                    DebugLocation(186, 119);
+                    DebugLocation(189, 119);
                     Match('\'');
 
                 }
@@ -2547,54 +2547,54 @@ namespace Avalon.Framework.Querys
             {
                 int _type = GUID;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:188:6: ( 'guid\\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\\'' )
+                // AvalonQuery.g3:191:6: ( 'guid\\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\\'' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:188:8: 'guid\\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\\''
+                // AvalonQuery.g3:191:8: 'guid\\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\\''
                 {
-                    DebugLocation(188, 8);
+                    DebugLocation(191, 8);
                     Match("guid'");
 
-                    DebugLocation(188, 17);
+                    DebugLocation(191, 17);
                     mHEX_PAIR();
-                    DebugLocation(188, 26);
+                    DebugLocation(191, 26);
                     mHEX_PAIR();
-                    DebugLocation(188, 35);
+                    DebugLocation(191, 35);
                     mHEX_PAIR();
-                    DebugLocation(188, 44);
+                    DebugLocation(191, 44);
                     mHEX_PAIR();
-                    DebugLocation(188, 53);
+                    DebugLocation(191, 53);
                     Match('-');
-                    DebugLocation(188, 57);
+                    DebugLocation(191, 57);
                     mHEX_PAIR();
-                    DebugLocation(188, 66);
+                    DebugLocation(191, 66);
                     mHEX_PAIR();
-                    DebugLocation(188, 75);
+                    DebugLocation(191, 75);
                     Match('-');
-                    DebugLocation(188, 79);
+                    DebugLocation(191, 79);
                     mHEX_PAIR();
-                    DebugLocation(188, 88);
+                    DebugLocation(191, 88);
                     mHEX_PAIR();
-                    DebugLocation(188, 97);
+                    DebugLocation(191, 97);
                     Match('-');
-                    DebugLocation(188, 101);
+                    DebugLocation(191, 101);
                     mHEX_PAIR();
-                    DebugLocation(188, 110);
+                    DebugLocation(191, 110);
                     mHEX_PAIR();
-                    DebugLocation(188, 119);
+                    DebugLocation(191, 119);
                     Match('-');
-                    DebugLocation(188, 123);
+                    DebugLocation(191, 123);
                     mHEX_PAIR();
-                    DebugLocation(188, 132);
+                    DebugLocation(191, 132);
                     mHEX_PAIR();
-                    DebugLocation(188, 141);
+                    DebugLocation(191, 141);
                     mHEX_PAIR();
-                    DebugLocation(188, 150);
+                    DebugLocation(191, 150);
                     mHEX_PAIR();
-                    DebugLocation(188, 159);
+                    DebugLocation(191, 159);
                     mHEX_PAIR();
-                    DebugLocation(188, 168);
+                    DebugLocation(191, 168);
                     mHEX_PAIR();
-                    DebugLocation(188, 177);
+                    DebugLocation(191, 177);
                     Match('\'');
 
                 }
@@ -2625,14 +2625,14 @@ namespace Avalon.Framework.Querys
             {
                 int _type = BYTE;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:190:6: ( '0x' HEX_PAIR )
+                // AvalonQuery.g3:193:6: ( '0x' HEX_PAIR )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:190:8: '0x' HEX_PAIR
+                // AvalonQuery.g3:193:8: '0x' HEX_PAIR
                 {
-                    DebugLocation(190, 8);
+                    DebugLocation(193, 8);
                     Match("0x");
 
-                    DebugLocation(190, 13);
+                    DebugLocation(193, 13);
                     mHEX_PAIR();
 
                 }
@@ -2663,12 +2663,12 @@ namespace Avalon.Framework.Querys
             {
                 int _type = SPACE;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:192:7: ( ( ' ' | '\\t' )+ )
+                // AvalonQuery.g3:195:7: ( ( ' ' | '\\t' )+ )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:192:9: ( ' ' | '\\t' )+
+                // AvalonQuery.g3:195:9: ( ' ' | '\\t' )+
                 {
-                    DebugLocation(192, 9);
-                    // Querys\\NdQuery.g3:192:9: ( ' ' | '\\t' )+
+                    DebugLocation(195, 9);
+                    // AvalonQuery.g3:195:9: ( ' ' | '\\t' )+
                     int cnt22 = 0;
                     try
                     {
@@ -2693,9 +2693,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(192, 9);
+                                        DebugLocation(195, 9);
                                         input.Consume();
 
 
@@ -2747,12 +2747,12 @@ namespace Avalon.Framework.Querys
             {
                 int _type = NEWLINE;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:194:9: ( ( '\\r' | '\\n' )+ )
+                // AvalonQuery.g3:197:9: ( ( '\\r' | '\\n' )+ )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:194:11: ( '\\r' | '\\n' )+
+                // AvalonQuery.g3:197:11: ( '\\r' | '\\n' )+
                 {
-                    DebugLocation(194, 11);
-                    // Querys\\NdQuery.g3:194:11: ( '\\r' | '\\n' )+
+                    DebugLocation(197, 11);
+                    // AvalonQuery.g3:197:11: ( '\\r' | '\\n' )+
                     int cnt23 = 0;
                     try
                     {
@@ -2777,9 +2777,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(194, 11);
+                                        DebugLocation(197, 11);
                                         input.Consume();
 
 
@@ -2829,13 +2829,13 @@ namespace Avalon.Framework.Querys
             TraceIn("HEX_PAIR", 45);
             try
             {
-                // Querys\\NdQuery.g3:199:2: ( HEX_DIGIT HEX_DIGIT )
+                // AvalonQuery.g3:202:2: ( HEX_DIGIT HEX_DIGIT )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:199:4: HEX_DIGIT HEX_DIGIT
+                // AvalonQuery.g3:202:4: HEX_DIGIT HEX_DIGIT
                 {
-                    DebugLocation(199, 4);
+                    DebugLocation(202, 4);
                     mHEX_DIGIT();
-                    DebugLocation(199, 14);
+                    DebugLocation(202, 14);
                     mHEX_DIGIT();
 
                 }
@@ -2864,12 +2864,12 @@ namespace Avalon.Framework.Querys
             {
                 int _type = IDENTIFIER;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:201:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ )
+                // AvalonQuery.g3:204:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:201:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
+                // AvalonQuery.g3:204:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
                 {
-                    DebugLocation(201, 4);
-                    // Querys\\NdQuery.g3:201:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
+                    DebugLocation(204, 4);
+                    // AvalonQuery.g3:204:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
                     int cnt24 = 0;
                     try
                     {
@@ -2894,9 +2894,9 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:
+                                    // AvalonQuery.g3:
                                     {
-                                        DebugLocation(201, 4);
+                                        DebugLocation(204, 4);
                                         input.Consume();
 
 
@@ -2948,14 +2948,14 @@ namespace Avalon.Framework.Querys
             {
                 int _type = STRING;
                 int _channel = DefaultTokenChannel;
-                // Querys\\NdQuery.g3:203:9: ( '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\'' )
+                // AvalonQuery.g3:206:9: ( '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\'' )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:203:12: '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\''
+                // AvalonQuery.g3:206:12: '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\''
                 {
-                    DebugLocation(203, 12);
+                    DebugLocation(206, 12);
                     Match('\'');
-                    DebugLocation(203, 17);
-                    // Querys\\NdQuery.g3:203:17: ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )*
+                    DebugLocation(206, 17);
+                    // AvalonQuery.g3:206:17: ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )*
                     try
                     {
                         DebugEnterSubRule(25);
@@ -2994,18 +2994,18 @@ namespace Avalon.Framework.Querys
                             {
                                 case 1:
                                     DebugEnterAlt(1);
-                                    // Querys\\NdQuery.g3:203:18: ESC_SEQ
+                                    // AvalonQuery.g3:206:18: ESC_SEQ
                                     {
-                                        DebugLocation(203, 18);
+                                        DebugLocation(206, 18);
                                         mESC_SEQ();
 
                                     }
                                     break;
                                 case 2:
                                     DebugEnterAlt(2);
-                                    // Querys\\NdQuery.g3:203:27: ~ ( '\\\\' | '\\'' )
+                                    // AvalonQuery.g3:206:27: ~ ( '\\\\' | '\\'' )
                                     {
-                                        DebugLocation(203, 27);
+                                        DebugLocation(206, 27);
                                         input.Consume();
 
 
@@ -3023,7 +3023,7 @@ namespace Avalon.Framework.Querys
                     }
                     finally { DebugExitSubRule(25); }
 
-                    DebugLocation(203, 42);
+                    DebugLocation(206, 42);
                     Match('\'');
 
                 }
@@ -3052,11 +3052,11 @@ namespace Avalon.Framework.Querys
             TraceIn("HEX_DIGIT", 48);
             try
             {
-                // Querys\\NdQuery.g3:207:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+                // AvalonQuery.g3:210:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:
+                // AvalonQuery.g3:
                 {
-                    DebugLocation(207, 11);
+                    DebugLocation(210, 11);
                     if ((input.LA(1) >= '0' && input.LA(1) <= '9') || (input.LA(1) >= 'A' && input.LA(1) <= 'F') || (input.LA(1) >= 'a' && input.LA(1) <= 'f'))
                     {
                         input.Consume();
@@ -3094,7 +3094,7 @@ namespace Avalon.Framework.Querys
             TraceIn("ESC_SEQ", 49);
             try
             {
-                // Querys\\NdQuery.g3:211:2: ( '\\'\\'' | '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+                // AvalonQuery.g3:214:2: ( '\\'\\'' | '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
                 int alt26 = 4;
                 try
                 {
@@ -3159,9 +3159,9 @@ namespace Avalon.Framework.Querys
                 {
                     case 1:
                         DebugEnterAlt(1);
-                        // Querys\\NdQuery.g3:211:4: '\\'\\''
+                        // AvalonQuery.g3:214:4: '\\'\\''
                         {
-                            DebugLocation(211, 4);
+                            DebugLocation(214, 4);
                             Match("''");
 
 
@@ -3169,11 +3169,11 @@ namespace Avalon.Framework.Querys
                         break;
                     case 2:
                         DebugEnterAlt(2);
-                        // Querys\\NdQuery.g3:212:5: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                        // AvalonQuery.g3:215:5: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                         {
-                            DebugLocation(212, 5);
+                            DebugLocation(215, 5);
                             Match('\\');
-                            DebugLocation(212, 10);
+                            DebugLocation(215, 10);
                             input.Consume();
 
 
@@ -3181,18 +3181,18 @@ namespace Avalon.Framework.Querys
                         break;
                     case 3:
                         DebugEnterAlt(3);
-                        // Querys\\NdQuery.g3:213:5: UNICODE_ESC
+                        // AvalonQuery.g3:216:5: UNICODE_ESC
                         {
-                            DebugLocation(213, 5);
+                            DebugLocation(216, 5);
                             mUNICODE_ESC();
 
                         }
                         break;
                     case 4:
                         DebugEnterAlt(4);
-                        // Querys\\NdQuery.g3:214:5: OCTAL_ESC
+                        // AvalonQuery.g3:217:5: OCTAL_ESC
                         {
-                            DebugLocation(214, 5);
+                            DebugLocation(217, 5);
                             mOCTAL_ESC();
 
                         }
@@ -3221,7 +3221,7 @@ namespace Avalon.Framework.Querys
             TraceIn("OCTAL_ESC", 50);
             try
             {
-                // Querys\\NdQuery.g3:219:3: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+                // AvalonQuery.g3:222:3: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
                 int alt27 = 3;
                 try
                 {
@@ -3286,17 +3286,17 @@ namespace Avalon.Framework.Querys
                 {
                     case 1:
                         DebugEnterAlt(1);
-                        // Querys\\NdQuery.g3:219:7: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                        // AvalonQuery.g3:222:7: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                         {
-                            DebugLocation(219, 7);
+                            DebugLocation(222, 7);
                             Match('\\');
-                            DebugLocation(219, 12);
+                            DebugLocation(222, 12);
                             input.Consume();
 
-                            DebugLocation(219, 23);
+                            DebugLocation(222, 23);
                             input.Consume();
 
-                            DebugLocation(219, 34);
+                            DebugLocation(222, 34);
                             input.Consume();
 
 
@@ -3304,14 +3304,14 @@ namespace Avalon.Framework.Querys
                         break;
                     case 2:
                         DebugEnterAlt(2);
-                        // Querys\\NdQuery.g3:220:7: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                        // AvalonQuery.g3:223:7: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
                         {
-                            DebugLocation(220, 7);
+                            DebugLocation(223, 7);
                             Match('\\');
-                            DebugLocation(220, 12);
+                            DebugLocation(223, 12);
                             input.Consume();
 
-                            DebugLocation(220, 23);
+                            DebugLocation(223, 23);
                             input.Consume();
 
 
@@ -3319,11 +3319,11 @@ namespace Avalon.Framework.Querys
                         break;
                     case 3:
                         DebugEnterAlt(3);
-                        // Querys\\NdQuery.g3:221:7: '\\\\' ( '0' .. '7' )
+                        // AvalonQuery.g3:224:7: '\\\\' ( '0' .. '7' )
                         {
-                            DebugLocation(221, 7);
+                            DebugLocation(224, 7);
                             Match('\\');
-                            DebugLocation(221, 12);
+                            DebugLocation(224, 12);
                             input.Consume();
 
 
@@ -3353,21 +3353,21 @@ namespace Avalon.Framework.Querys
             TraceIn("UNICODE_ESC", 51);
             try
             {
-                // Querys\\NdQuery.g3:226:3: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+                // AvalonQuery.g3:229:3: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
                 DebugEnterAlt(1);
-                // Querys\\NdQuery.g3:226:7: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+                // AvalonQuery.g3:229:7: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
                 {
-                    DebugLocation(226, 7);
+                    DebugLocation(229, 7);
                     Match('\\');
-                    DebugLocation(226, 12);
+                    DebugLocation(229, 12);
                     Match('u');
-                    DebugLocation(226, 16);
+                    DebugLocation(229, 16);
                     mHEX_DIGIT();
-                    DebugLocation(226, 26);
+                    DebugLocation(229, 26);
                     mHEX_DIGIT();
-                    DebugLocation(226, 36);
+                    DebugLocation(229, 36);
                     mHEX_DIGIT();
-                    DebugLocation(226, 46);
+                    DebugLocation(229, 46);
                     mHEX_DIGIT();
 
                 }
@@ -3384,7 +3384,7 @@ namespace Avalon.Framework.Querys
 
         public override void mTokens()
         {
-            // Querys\\NdQuery.g3:1:8: ( T__51 | T__52 | T__53 | T__54 | IN | NOTIN | EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL | NOT | OR | AND | ASC | DESC | ALLPAGES | NONE | SKIP | TOP | FILTER | ORDERBY | SELECT | INLINECOUNT | STARTSWITH | ENDSWITH | SUBSTRINGOF | COUNT | MIN | MAX | SUM | AVERAGE | INT | LONG | DOUBLE | SINGLE | BOOL | NULL | DATETIME | GUID | BYTE | SPACE | NEWLINE | IDENTIFIER | STRING )
+            // AvalonQuery.g3:1:8: ( T__51 | T__52 | T__53 | T__54 | IN | NOTIN | EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL | NOT | OR | AND | ASC | DESC | ALLPAGES | NONE | SKIP | TOP | FILTER | ORDERBY | SELECT | INLINECOUNT | COUNT | STARTSWITH | ENDSWITH | SUBSTRINGOF | MIN | MAX | SUM | AVERAGE | INT | LONG | DOUBLE | SINGLE | BOOL | NULL | DATETIME | GUID | BYTE | SPACE | NEWLINE | IDENTIFIER | STRING )
             int alt28 = 46;
             try
             {
@@ -3404,7 +3404,7 @@ namespace Avalon.Framework.Querys
             {
                 case 1:
                     DebugEnterAlt(1);
-                    // Querys\\NdQuery.g3:1:10: T__51
+                    // AvalonQuery.g3:1:10: T__51
                     {
                         DebugLocation(1, 10);
                         mT__51();
@@ -3413,7 +3413,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 2:
                     DebugEnterAlt(2);
-                    // Querys\\NdQuery.g3:1:16: T__52
+                    // AvalonQuery.g3:1:16: T__52
                     {
                         DebugLocation(1, 16);
                         mT__52();
@@ -3422,7 +3422,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 3:
                     DebugEnterAlt(3);
-                    // Querys\\NdQuery.g3:1:22: T__53
+                    // AvalonQuery.g3:1:22: T__53
                     {
                         DebugLocation(1, 22);
                         mT__53();
@@ -3431,7 +3431,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 4:
                     DebugEnterAlt(4);
-                    // Querys\\NdQuery.g3:1:28: T__54
+                    // AvalonQuery.g3:1:28: T__54
                     {
                         DebugLocation(1, 28);
                         mT__54();
@@ -3440,7 +3440,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 5:
                     DebugEnterAlt(5);
-                    // Querys\\NdQuery.g3:1:34: IN
+                    // AvalonQuery.g3:1:34: IN
                     {
                         DebugLocation(1, 34);
                         mIN();
@@ -3449,7 +3449,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 6:
                     DebugEnterAlt(6);
-                    // Querys\\NdQuery.g3:1:37: NOTIN
+                    // AvalonQuery.g3:1:37: NOTIN
                     {
                         DebugLocation(1, 37);
                         mNOTIN();
@@ -3458,7 +3458,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 7:
                     DebugEnterAlt(7);
-                    // Querys\\NdQuery.g3:1:43: EQUALS
+                    // AvalonQuery.g3:1:43: EQUALS
                     {
                         DebugLocation(1, 43);
                         mEQUALS();
@@ -3467,7 +3467,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 8:
                     DebugEnterAlt(8);
-                    // Querys\\NdQuery.g3:1:50: NOTEQUALS
+                    // AvalonQuery.g3:1:50: NOTEQUALS
                     {
                         DebugLocation(1, 50);
                         mNOTEQUALS();
@@ -3476,7 +3476,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 9:
                     DebugEnterAlt(9);
-                    // Querys\\NdQuery.g3:1:60: GREATERTHAN
+                    // AvalonQuery.g3:1:60: GREATERTHAN
                     {
                         DebugLocation(1, 60);
                         mGREATERTHAN();
@@ -3485,7 +3485,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 10:
                     DebugEnterAlt(10);
-                    // Querys\\NdQuery.g3:1:72: GREATERTHANOREQUAL
+                    // AvalonQuery.g3:1:72: GREATERTHANOREQUAL
                     {
                         DebugLocation(1, 72);
                         mGREATERTHANOREQUAL();
@@ -3494,7 +3494,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 11:
                     DebugEnterAlt(11);
-                    // Querys\\NdQuery.g3:1:91: LESSTHAN
+                    // AvalonQuery.g3:1:91: LESSTHAN
                     {
                         DebugLocation(1, 91);
                         mLESSTHAN();
@@ -3503,7 +3503,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 12:
                     DebugEnterAlt(12);
-                    // Querys\\NdQuery.g3:1:100: LESSTHANOREQUAL
+                    // AvalonQuery.g3:1:100: LESSTHANOREQUAL
                     {
                         DebugLocation(1, 100);
                         mLESSTHANOREQUAL();
@@ -3512,7 +3512,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 13:
                     DebugEnterAlt(13);
-                    // Querys\\NdQuery.g3:1:116: NOT
+                    // AvalonQuery.g3:1:116: NOT
                     {
                         DebugLocation(1, 116);
                         mNOT();
@@ -3521,7 +3521,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 14:
                     DebugEnterAlt(14);
-                    // Querys\\NdQuery.g3:1:120: OR
+                    // AvalonQuery.g3:1:120: OR
                     {
                         DebugLocation(1, 120);
                         mOR();
@@ -3530,7 +3530,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 15:
                     DebugEnterAlt(15);
-                    // Querys\\NdQuery.g3:1:123: AND
+                    // AvalonQuery.g3:1:123: AND
                     {
                         DebugLocation(1, 123);
                         mAND();
@@ -3539,7 +3539,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 16:
                     DebugEnterAlt(16);
-                    // Querys\\NdQuery.g3:1:127: ASC
+                    // AvalonQuery.g3:1:127: ASC
                     {
                         DebugLocation(1, 127);
                         mASC();
@@ -3548,7 +3548,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 17:
                     DebugEnterAlt(17);
-                    // Querys\\NdQuery.g3:1:131: DESC
+                    // AvalonQuery.g3:1:131: DESC
                     {
                         DebugLocation(1, 131);
                         mDESC();
@@ -3557,7 +3557,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 18:
                     DebugEnterAlt(18);
-                    // Querys\\NdQuery.g3:1:136: ALLPAGES
+                    // AvalonQuery.g3:1:136: ALLPAGES
                     {
                         DebugLocation(1, 136);
                         mALLPAGES();
@@ -3566,7 +3566,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 19:
                     DebugEnterAlt(19);
-                    // Querys\\NdQuery.g3:1:145: NONE
+                    // AvalonQuery.g3:1:145: NONE
                     {
                         DebugLocation(1, 145);
                         mNONE();
@@ -3575,7 +3575,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 20:
                     DebugEnterAlt(20);
-                    // Querys\\NdQuery.g3:1:150: SKIP
+                    // AvalonQuery.g3:1:150: SKIP
                     {
                         DebugLocation(1, 150);
                         mSKIP();
@@ -3584,7 +3584,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 21:
                     DebugEnterAlt(21);
-                    // Querys\\NdQuery.g3:1:155: TOP
+                    // AvalonQuery.g3:1:155: TOP
                     {
                         DebugLocation(1, 155);
                         mTOP();
@@ -3593,7 +3593,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 22:
                     DebugEnterAlt(22);
-                    // Querys\\NdQuery.g3:1:159: FILTER
+                    // AvalonQuery.g3:1:159: FILTER
                     {
                         DebugLocation(1, 159);
                         mFILTER();
@@ -3602,7 +3602,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 23:
                     DebugEnterAlt(23);
-                    // Querys\\NdQuery.g3:1:166: ORDERBY
+                    // AvalonQuery.g3:1:166: ORDERBY
                     {
                         DebugLocation(1, 166);
                         mORDERBY();
@@ -3611,7 +3611,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 24:
                     DebugEnterAlt(24);
-                    // Querys\\NdQuery.g3:1:174: SELECT
+                    // AvalonQuery.g3:1:174: SELECT
                     {
                         DebugLocation(1, 174);
                         mSELECT();
@@ -3620,7 +3620,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 25:
                     DebugEnterAlt(25);
-                    // Querys\\NdQuery.g3:1:181: INLINECOUNT
+                    // AvalonQuery.g3:1:181: INLINECOUNT
                     {
                         DebugLocation(1, 181);
                         mINLINECOUNT();
@@ -3629,43 +3629,43 @@ namespace Avalon.Framework.Querys
                     break;
                 case 26:
                     DebugEnterAlt(26);
-                    // Querys\\NdQuery.g3:1:193: STARTSWITH
+                    // AvalonQuery.g3:1:193: COUNT
                     {
                         DebugLocation(1, 193);
-                        mSTARTSWITH();
+                        mCOUNT();
 
                     }
                     break;
                 case 27:
                     DebugEnterAlt(27);
-                    // Querys\\NdQuery.g3:1:204: ENDSWITH
+                    // AvalonQuery.g3:1:199: STARTSWITH
                     {
-                        DebugLocation(1, 204);
-                        mENDSWITH();
+                        DebugLocation(1, 199);
+                        mSTARTSWITH();
 
                     }
                     break;
                 case 28:
                     DebugEnterAlt(28);
-                    // Querys\\NdQuery.g3:1:213: SUBSTRINGOF
+                    // AvalonQuery.g3:1:210: ENDSWITH
                     {
-                        DebugLocation(1, 213);
-                        mSUBSTRINGOF();
+                        DebugLocation(1, 210);
+                        mENDSWITH();
 
                     }
                     break;
                 case 29:
                     DebugEnterAlt(29);
-                    // Querys\\NdQuery.g3:1:225: COUNT
+                    // AvalonQuery.g3:1:219: SUBSTRINGOF
                     {
-                        DebugLocation(1, 225);
-                        mCOUNT();
+                        DebugLocation(1, 219);
+                        mSUBSTRINGOF();
 
                     }
                     break;
                 case 30:
                     DebugEnterAlt(30);
-                    // Querys\\NdQuery.g3:1:231: MIN
+                    // AvalonQuery.g3:1:231: MIN
                     {
                         DebugLocation(1, 231);
                         mMIN();
@@ -3674,7 +3674,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 31:
                     DebugEnterAlt(31);
-                    // Querys\\NdQuery.g3:1:235: MAX
+                    // AvalonQuery.g3:1:235: MAX
                     {
                         DebugLocation(1, 235);
                         mMAX();
@@ -3683,7 +3683,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 32:
                     DebugEnterAlt(32);
-                    // Querys\\NdQuery.g3:1:239: SUM
+                    // AvalonQuery.g3:1:239: SUM
                     {
                         DebugLocation(1, 239);
                         mSUM();
@@ -3692,7 +3692,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 33:
                     DebugEnterAlt(33);
-                    // Querys\\NdQuery.g3:1:243: AVERAGE
+                    // AvalonQuery.g3:1:243: AVERAGE
                     {
                         DebugLocation(1, 243);
                         mAVERAGE();
@@ -3701,7 +3701,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 34:
                     DebugEnterAlt(34);
-                    // Querys\\NdQuery.g3:1:251: INT
+                    // AvalonQuery.g3:1:251: INT
                     {
                         DebugLocation(1, 251);
                         mINT();
@@ -3710,7 +3710,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 35:
                     DebugEnterAlt(35);
-                    // Querys\\NdQuery.g3:1:255: LONG
+                    // AvalonQuery.g3:1:255: LONG
                     {
                         DebugLocation(1, 255);
                         mLONG();
@@ -3719,7 +3719,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 36:
                     DebugEnterAlt(36);
-                    // Querys\\NdQuery.g3:1:260: DOUBLE
+                    // AvalonQuery.g3:1:260: DOUBLE
                     {
                         DebugLocation(1, 260);
                         mDOUBLE();
@@ -3728,7 +3728,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 37:
                     DebugEnterAlt(37);
-                    // Querys\\NdQuery.g3:1:267: SINGLE
+                    // AvalonQuery.g3:1:267: SINGLE
                     {
                         DebugLocation(1, 267);
                         mSINGLE();
@@ -3737,7 +3737,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 38:
                     DebugEnterAlt(38);
-                    // Querys\\NdQuery.g3:1:274: BOOL
+                    // AvalonQuery.g3:1:274: BOOL
                     {
                         DebugLocation(1, 274);
                         mBOOL();
@@ -3746,7 +3746,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 39:
                     DebugEnterAlt(39);
-                    // Querys\\NdQuery.g3:1:279: NULL
+                    // AvalonQuery.g3:1:279: NULL
                     {
                         DebugLocation(1, 279);
                         mNULL();
@@ -3755,7 +3755,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 40:
                     DebugEnterAlt(40);
-                    // Querys\\NdQuery.g3:1:284: DATETIME
+                    // AvalonQuery.g3:1:284: DATETIME
                     {
                         DebugLocation(1, 284);
                         mDATETIME();
@@ -3764,7 +3764,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 41:
                     DebugEnterAlt(41);
-                    // Querys\\NdQuery.g3:1:293: GUID
+                    // AvalonQuery.g3:1:293: GUID
                     {
                         DebugLocation(1, 293);
                         mGUID();
@@ -3773,7 +3773,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 42:
                     DebugEnterAlt(42);
-                    // Querys\\NdQuery.g3:1:298: BYTE
+                    // AvalonQuery.g3:1:298: BYTE
                     {
                         DebugLocation(1, 298);
                         mBYTE();
@@ -3782,7 +3782,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 43:
                     DebugEnterAlt(43);
-                    // Querys\\NdQuery.g3:1:303: SPACE
+                    // AvalonQuery.g3:1:303: SPACE
                     {
                         DebugLocation(1, 303);
                         mSPACE();
@@ -3791,7 +3791,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 44:
                     DebugEnterAlt(44);
-                    // Querys\\NdQuery.g3:1:309: NEWLINE
+                    // AvalonQuery.g3:1:309: NEWLINE
                     {
                         DebugLocation(1, 309);
                         mNEWLINE();
@@ -3800,7 +3800,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 45:
                     DebugEnterAlt(45);
-                    // Querys\\NdQuery.g3:1:317: IDENTIFIER
+                    // AvalonQuery.g3:1:317: IDENTIFIER
                     {
                         DebugLocation(1, 317);
                         mIDENTIFIER();
@@ -3809,7 +3809,7 @@ namespace Avalon.Framework.Querys
                     break;
                 case 46:
                     DebugEnterAlt(46);
-                    // Querys\\NdQuery.g3:1:328: STRING
+                    // AvalonQuery.g3:1:328: STRING
                     {
                         DebugLocation(1, 328);
                         mSTRING();
@@ -3834,229 +3834,222 @@ namespace Avalon.Framework.Querys
         private class DFA28 : DFA
         {
             private const string DFA28_eotS =
-                "\x5\xFFFF\x8\x18\x1\xFFFF\x3\x18\x1\xFFFF\x1\x38\x2\x18\x1\x38\x4\xFFFF" +
-                "\x1\x3D\x1\x18\x1\x40\x1\x18\x1\x42\x1\x18\x1\x44\x1\x45\x1\x18\x1\x47" +
-                "\x1\x48\x1\x49\x6\x18\x5\xFFFF\x5\x18\x1\x38\x1\x18\x1\xFFFF\x1\x58\x1" +
-                "\xFFFF\x2\x18\x1\xFFFF\x1\x5E\x1\x18\x1\xFFFF\x1\x18\x1\xFFFF\x1\x18" +
-                "\x2\xFFFF\x1\x18\x3\xFFFF\x1\x63\x1\x64\x4\x18\x2\xFFFF\x2\x18\x1\x6B" +
-                "\x1\x18\x1\x6D\x1\x6E\x1\xFFFF\x1\x18\x1\x70\x3\x18\x1\xFFFF\x1\x75\x1" +
-                "\x76\x2\x18\x2\xFFFF\x2\x18\x1\x7B\x3\x18\x1\xFFFF\x1\x18\x2\xFFFF\x1" +
-                "\x80\x2\xFFFF\x1\x81\x1\x18\x1\x83\x2\xFFFF\x1\x18\x1\xFFFF\x2\x18\x1" +
-                "\xFFFF\x3\x18\x1\x8A\x2\xFFFF\x1\x81\x1\xFFFF\x6\x18\x1\xFFFF\x2\x18" +
-                "\x1\x93\x3\x18\x1\x97\x1\x98\x1\xFFFF\x3\x18\x3\xFFFF\x2\x18\x1\x9E\x1" +
-                "\x18\x1\xFFFF\x1\xA0\x1\xFFFF";
+                "\x5\xFFFF\x8\x17\x1\xFFFF\x2\x17\x1\xFFFF\x1\x37\x2\x17\x1\x37\x4\xFFFF" +
+                "\x1\x3C\x1\x17\x1\x3F\x1\x17\x1\x41\x1\x17\x1\x43\x1\x44\x1\x17\x1\x46" +
+                "\x1\x47\x1\x48\x6\x17\x6\xFFFF\x4\x17\x1\x37\x1\x17\x1\xFFFF\x1\x56\x1" +
+                "\xFFFF\x2\x17\x1\xFFFF\x1\x5C\x1\x17\x1\xFFFF\x1\x17\x1\xFFFF\x1\x17" +
+                "\x2\xFFFF\x1\x17\x3\xFFFF\x1\x61\x1\x62\x4\x17\x2\xFFFF\x2\x17\x1\x69" +
+                "\x1\x6A\x1\x6B\x1\xFFFF\x1\x17\x1\x6D\x3\x17\x1\xFFFF\x1\x72\x1\x73\x2" +
+                "\x17\x2\xFFFF\x2\x17\x1\x78\x3\x17\x3\xFFFF\x1\x7C\x2\xFFFF\x1\x7D\x1" +
+                "\x17\x1\x7F\x2\xFFFF\x1\x17\x1\xFFFF\x2\x17\x1\xFFFF\x3\x17\x2\xFFFF" +
+                "\x1\x7D\x1\xFFFF\x8\x17\x1\x8E\x3\x17\x1\x92\x1\x93\x1\xFFFF\x3\x17\x3" +
+                "\xFFFF\x2\x17\x1\x99\x1\x17\x1\xFFFF\x1\x9B\x1\xFFFF";
             private const string DFA28_eofS =
-                "\xA1\xFFFF";
+                "\x9C\xFFFF";
             private const string DFA28_minS =
-                "\x1\x9\x4\xFFFF\x1\x6E\x1\x65\x1\x6E\x2\x65\x1\x72\x1\x6C\x1\x61\x1\x66" +
-                "\x1\x74\x1\x6F\x1\x61\x1\x30\x1\x2E\x1\x72\x1\x61\x1\x2E\x4\xFFFF\x1" +
-                "\x30\x1\x6E\x1\x30\x1\x6C\x1\x30\x1\x64\x2\x30\x1\x69\x3\x30\x1\x64\x1" +
-                "\x63\x1\x6C\x1\x65\x1\x73\x1\x74\x1\x65\x4\xFFFF\x1\x61\x1\x62\x1\x75" +
-                "\x1\x6E\x1\x78\x1\x2E\x1\x30\x1\xFFFF\x2\x30\x1\x75\x1\x6C\x1\xFFFF\x1" +
-                "\x30\x1\x65\x1\xFFFF\x1\x6C\x1\xFFFF\x1\x73\x2\xFFFF\x1\x64\x3\xFFFF" +
-                "\x2\x30\x1\x70\x1\x72\x1\x63\x1\x65\x2\xFFFF\x1\x72\x1\x73\x1\x30\x1" +
-                "\x6E\x2\x30\x1\xFFFF\x2\x30\x1\x65\x1\x73\x1\x6E\x1\xFFFF\x2\x30\x1\x77" +
-                "\x1\x27\x2\xFFFF\x2\x61\x1\x30\x3\x74\x1\xFFFF\x1\x74\x2\xFFFF\x1\x30" +
-                "\x2\xFFFF\x1\x30\x1\x65\x1\x30\x2\xFFFF\x1\x69\x1\xFFFF\x2\x67\x1\xFFFF" +
-                "\x1\x69\x1\x73\x1\x72\x1\x30\x2\xFFFF\x1\x30\x1\xFFFF\x1\x74\x2\x65\x1" +
-                "\x6D\x1\x77\x1\x69\x1\xFFFF\x1\x68\x1\x73\x1\x30\x1\x65\x1\x69\x1\x6E" +
-                "\x2\x30\x1\xFFFF\x1\x27\x1\x74\x1\x67\x3\xFFFF\x1\x68\x1\x6F\x1\x30\x1" +
-                "\x66\x1\xFFFF\x1\x30\x1\xFFFF";
+                "\x1\x9\x4\xFFFF\x1\x6E\x1\x65\x1\x6E\x2\x65\x1\x72\x1\x6C\x1\x61\x1\x63" +
+                "\x1\x74\x1\x61\x1\x30\x1\x2E\x1\x72\x1\x61\x1\x2E\x4\xFFFF\x1\x30\x1" +
+                "\x6E\x1\x30\x1\x6C\x1\x30\x1\x64\x2\x30\x1\x69\x3\x30\x1\x64\x1\x63\x1" +
+                "\x6C\x1\x65\x1\x73\x1\x74\x1\x65\x5\xFFFF\x1\x61\x1\x62\x1\x6E\x1\x78" +
+                "\x1\x2E\x1\x30\x1\xFFFF\x2\x30\x1\x75\x1\x6C\x1\xFFFF\x1\x30\x1\x65\x1" +
+                "\xFFFF\x1\x6C\x1\xFFFF\x1\x73\x2\xFFFF\x1\x64\x3\xFFFF\x2\x30\x1\x70" +
+                "\x1\x72\x1\x63\x1\x65\x2\xFFFF\x1\x72\x1\x73\x3\x30\x1\xFFFF\x2\x30\x1" +
+                "\x65\x1\x73\x1\x6E\x1\xFFFF\x2\x30\x1\x77\x1\x27\x2\xFFFF\x2\x61\x1\x30" +
+                "\x3\x74\x3\xFFFF\x1\x30\x2\xFFFF\x1\x30\x1\x65\x1\x30\x2\xFFFF\x1\x69" +
+                "\x1\xFFFF\x2\x67\x1\xFFFF\x1\x69\x1\x73\x1\x72\x2\xFFFF\x1\x30\x1\xFFFF" +
+                "\x1\x74\x2\x65\x1\x6D\x1\x77\x1\x69\x1\x68\x1\x73\x1\x30\x1\x65\x1\x69" +
+                "\x1\x6E\x2\x30\x1\xFFFF\x1\x27\x1\x74\x1\x67\x3\xFFFF\x1\x68\x1\x6F\x1" +
+                "\x30\x1\x66\x1\xFFFF\x1\x30\x1\xFFFF";
             private const string DFA28_maxS =
                 "\x1\x7A\x4\xFFFF\x1\x6E\x1\x75\x1\x71\x1\x75\x1\x74\x1\x72\x1\x76\x1" +
-                "\x65\x1\x74\x1\x75\x1\x6F\x1\x69\x1\x39\x1\x7A\x1\x72\x1\x61\x1\x7A\x4" +
-                "\xFFFF\x1\x7A\x1\x74\x1\x7A\x1\x6C\x1\x7A\x1\x64\x2\x7A\x1\x69\x3\x7A" +
-                "\x1\x64\x1\x63\x1\x6C\x1\x65\x1\x73\x1\x74\x1\x6B\x4\xFFFF\x1\x61\x1" +
-                "\x6D\x1\x75\x1\x6E\x1\x78\x1\x4C\x1\x66\x1\xFFFF\x1\x7A\x1\x39\x1\x75" +
-                "\x1\x6C\x1\xFFFF\x1\x7A\x1\x65\x1\xFFFF\x1\x6C\x1\xFFFF\x1\x73\x2\xFFFF" +
-                "\x1\x64\x3\xFFFF\x2\x7A\x1\x70\x1\x72\x1\x63\x1\x65\x2\xFFFF\x1\x72\x1" +
-                "\x73\x1\x7A\x1\x6E\x2\x7A\x1\xFFFF\x2\x66\x1\x65\x1\x73\x1\x6E\x1\xFFFF" +
-                "\x2\x7A\x1\x77\x1\x27\x2\xFFFF\x2\x61\x1\x7A\x3\x74\x1\xFFFF\x1\x74\x2" +
-                "\xFFFF\x1\x7A\x2\xFFFF\x1\x7A\x1\x65\x1\x7A\x2\xFFFF\x1\x69\x1\xFFFF" +
-                "\x2\x67\x1\xFFFF\x1\x69\x1\x73\x1\x72\x1\x7A\x2\xFFFF\x1\x7A\x1\xFFFF" +
-                "\x1\x74\x2\x65\x1\x6D\x1\x77\x1\x69\x1\xFFFF\x1\x68\x1\x73\x1\x7A\x1" +
-                "\x65\x1\x69\x1\x6E\x2\x7A\x1\xFFFF\x1\x27\x1\x74\x1\x67\x3\xFFFF\x1\x68" +
-                "\x1\x6F\x1\x7A\x1\x66\x1\xFFFF\x1\x7A\x1\xFFFF";
+                "\x65\x1\x74\x1\x75\x1\x69\x1\x39\x1\x7A\x1\x72\x1\x61\x1\x7A\x4\xFFFF" +
+                "\x1\x7A\x1\x74\x1\x7A\x1\x6C\x1\x7A\x1\x64\x2\x7A\x1\x69\x3\x7A\x1\x64" +
+                "\x1\x63\x1\x6C\x1\x65\x1\x73\x1\x74\x1\x6B\x5\xFFFF\x1\x61\x1\x6D\x1" +
+                "\x6E\x1\x78\x1\x4C\x1\x66\x1\xFFFF\x1\x7A\x1\x39\x1\x75\x1\x6C\x1\xFFFF" +
+                "\x1\x7A\x1\x65\x1\xFFFF\x1\x6C\x1\xFFFF\x1\x73\x2\xFFFF\x1\x64\x3\xFFFF" +
+                "\x2\x7A\x1\x70\x1\x72\x1\x63\x1\x65\x2\xFFFF\x1\x72\x1\x73\x3\x7A\x1" +
+                "\xFFFF\x2\x66\x1\x65\x1\x73\x1\x6E\x1\xFFFF\x2\x7A\x1\x77\x1\x27\x2\xFFFF" +
+                "\x2\x61\x1\x7A\x3\x74\x3\xFFFF\x1\x7A\x2\xFFFF\x1\x7A\x1\x65\x1\x7A\x2" +
+                "\xFFFF\x1\x69\x1\xFFFF\x2\x67\x1\xFFFF\x1\x69\x1\x73\x1\x72\x2\xFFFF" +
+                "\x1\x7A\x1\xFFFF\x1\x74\x2\x65\x1\x6D\x1\x77\x1\x69\x1\x68\x1\x73\x1" +
+                "\x7A\x1\x65\x1\x69\x1\x6E\x2\x7A\x1\xFFFF\x1\x27\x1\x74\x1\x67\x3\xFFFF" +
+                "\x1\x68\x1\x6F\x1\x7A\x1\x66\x1\xFFFF\x1\x7A\x1\xFFFF";
             private const string DFA28_acceptS =
-                "\x1\xFFFF\x1\x1\x1\x2\x1\x3\x1\x4\x11\xFFFF\x1\x2B\x1\x2C\x1\x2D\x1\x2E" +
-                "\x13\xFFFF\x1\x15\x1\x16\x1\x17\x1\x19\x7\xFFFF\x1\x22\x4\xFFFF\x1\x5" +
-                "\x2\xFFFF\x1\x8\x1\xFFFF\x1\x7\x1\xFFFF\x1\x9\x1\xA\x1\xFFFF\x1\xB\x1" +
-                "\xC\x1\xE\x6\xFFFF\x1\x14\x1\x18\x6\xFFFF\x1\x23\x5\xFFFF\x1\xD\x4\xFFFF" +
-                "\x1\xF\x1\x10\x6\xFFFF\x1\x20\x1\xFFFF\x1\x1E\x1\x1F\x1\xFFFF\x1\x24" +
-                "\x1\x25\x3\xFFFF\x1\x13\x1\x27\x1\xFFFF\x1\x29\x2\xFFFF\x1\x11\x4\xFFFF" +
-                "\x1\x2A\x1\x26\x1\xFFFF\x1\x6\x6\xFFFF\x1\x1D\x8\xFFFF\x1\x21\x3\xFFFF" +
-                "\x1\x1B\x1\x12\x1\x28\x4\xFFFF\x1\x1A\x1\xFFFF\x1\x1C";
+                "\x1\xFFFF\x1\x1\x1\x2\x1\x3\x1\x4\x10\xFFFF\x1\x2B\x1\x2C\x1\x2D\x1\x2E" +
+                "\x13\xFFFF\x1\x15\x1\x16\x1\x17\x1\x19\x1\x1A\x6\xFFFF\x1\x22\x4\xFFFF" +
+                "\x1\x5\x2\xFFFF\x1\x8\x1\xFFFF\x1\x7\x1\xFFFF\x1\x9\x1\xA\x1\xFFFF\x1" +
+                "\xB\x1\xC\x1\xE\x6\xFFFF\x1\x14\x1\x18\x5\xFFFF\x1\x23\x5\xFFFF\x1\xD" +
+                "\x4\xFFFF\x1\xF\x1\x10\x6\xFFFF\x1\x20\x1\x1E\x1\x1F\x1\xFFFF\x1\x24" +
+                "\x1\x25\x3\xFFFF\x1\x13\x1\x27\x1\xFFFF\x1\x29\x2\xFFFF\x1\x11\x3\xFFFF" +
+                "\x1\x2A\x1\x26\x1\xFFFF\x1\x6\xE\xFFFF\x1\x21\x3\xFFFF\x1\x1C\x1\x12" +
+                "\x1\x28\x4\xFFFF\x1\x1B\x1\xFFFF\x1\x1D";
             private const string DFA28_specialS =
-                "\xA1\xFFFF}>";
+                "\x9C\xFFFF}>";
             private static readonly string[] DFA28_transitionS =
 			{
-				"\x1\x16\x1\x17\x2\xFFFF\x1\x17\x12\xFFFF\x1\x16\x3\xFFFF\x1\xD\x1\xFFFF"+
-				"\x1\x1\x1\x19\x1\x2\x1\x3\x2\xFFFF\x1\x4\x1\x11\x2\xFFFF\x1\x12\x9\x15"+
-				"\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1\xB\x1\x18\x1\xF\x1\xC"+
-				"\x1\x7\x1\x14\x1\x8\x1\x18\x1\x5\x2\x18\x1\x9\x1\x10\x1\x6\x1\xA\x3"+
-				"\x18\x1\xE\x1\x13\x6\x18",
+				"\x1\x15\x1\x16\x2\xFFFF\x1\x16\x12\xFFFF\x1\x15\x3\xFFFF\x1\xD\x1\xFFFF"+
+				"\x1\x1\x1\x18\x1\x2\x1\x3\x2\xFFFF\x1\x4\x1\x10\x2\xFFFF\x1\x11\x9\x14"+
+				"\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1\xB\x2\x17\x1\xC\x1\x7"+
+				"\x1\x13\x1\x8\x1\x17\x1\x5\x2\x17\x1\x9\x1\xF\x1\x6\x1\xA\x3\x17\x1"+
+				"\xE\x1\x12\x6\x17",
 				"",
 				"",
 				"",
 				"",
-				"\x1\x1A",
-				"\x1\x1C\x9\xFFFF\x1\x1B\x5\xFFFF\x1\x1D",
-				"\x1\x1F\x2\xFFFF\x1\x1E",
-				"\x1\x21\xE\xFFFF\x1\x20\x1\x22",
-				"\x1\x24\xE\xFFFF\x1\x23",
-				"\x1\x25",
-				"\x1\x28\x1\xFFFF\x1\x26\x4\xFFFF\x1\x27\x2\xFFFF\x1\x29",
-				"\x1\x2B\x3\xFFFF\x1\x2A",
-				"\x1\x2E\x2\xFFFF\x1\x30\x5\xFFFF\x1\x2F\x3\xFFFF\x1\x2C\x1\x2D",
+				"\x1\x19",
+				"\x1\x1B\x9\xFFFF\x1\x1A\x5\xFFFF\x1\x1C",
+				"\x1\x1E\x2\xFFFF\x1\x1D",
+				"\x1\x20\xE\xFFFF\x1\x1F\x1\x21",
+				"\x1\x23\xE\xFFFF\x1\x22",
+				"\x1\x24",
+				"\x1\x27\x1\xFFFF\x1\x25\x4\xFFFF\x1\x26\x2\xFFFF\x1\x28",
+				"\x1\x2A\x3\xFFFF\x1\x29",
+				"\x1\x30\x2\xFFFF\x1\x2D\x2\xFFFF\x1\x2F\x5\xFFFF\x1\x2E\x3\xFFFF\x1"+
+				"\x2B\x1\x2C",
 				"\x1\x31\x1\x32",
-				"\x1\x33",
-				"\x1\x35\x7\xFFFF\x1\x34",
-				"\xA\x36",
-				"\x1\x3A\x1\xFFFF\xA\x15\x7\xFFFF\xB\x18\x1\x39\xE\x18\x4\xFFFF\x1\x18"+
-				"\x1\xFFFF\x17\x18\x1\x37\x2\x18",
+				"\x1\x34\x7\xFFFF\x1\x33",
+				"\xA\x35",
+				"\x1\x39\x1\xFFFF\xA\x14\x7\xFFFF\xB\x17\x1\x38\xE\x17\x4\xFFFF\x1\x17"+
+				"\x1\xFFFF\x17\x17\x1\x36\x2\x17",
+				"\x1\x3A",
 				"\x1\x3B",
-				"\x1\x3C",
-				"\x1\x3A\x1\xFFFF\xA\x15\x7\xFFFF\xB\x18\x1\x39\xE\x18\x4\xFFFF\x1\x18"+
-				"\x1\xFFFF\x1A\x18",
+				"\x1\x39\x1\xFFFF\xA\x14\x7\xFFFF\xB\x17\x1\x38\xE\x17\x4\xFFFF\x1\x17"+
+				"\x1\xFFFF\x1A\x17",
 				"",
 				"",
 				"",
 				"",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\x1\x3F\x5\xFFFF\x1\x3E",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\x1\x41",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\x1\x43",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\x1\x46",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\x1\x3E\x5\xFFFF\x1\x3D",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\x1\x40",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\x1\x42",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\x1\x45",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\x1\x49",
 				"\x1\x4A",
 				"\x1\x4B",
 				"\x1\x4C",
 				"\x1\x4D",
 				"\x1\x4E",
-				"\x1\x4F",
-				"\x1\x51\x5\xFFFF\x1\x50",
+				"\x1\x50\x5\xFFFF\x1\x4F",
 				"",
 				"",
 				"",
 				"",
-				"\x1\x52",
-				"\x1\x53\xA\xFFFF\x1\x54",
+				"",
+				"\x1\x51",
+				"\x1\x52\xA\xFFFF\x1\x53",
+				"\x1\x54",
 				"\x1\x55",
-				"\x1\x56",
-				"\x1\x57",
-				"\x1\x3A\x1\xFFFF\xA\x36\x12\xFFFF\x1\x58",
-				"\xA\x59\x7\xFFFF\x6\x59\x1A\xFFFF\x6\x59",
+				"\x1\x39\x1\xFFFF\xA\x35\x12\xFFFF\x1\x56",
+				"\xA\x57\x7\xFFFF\x6\x57\x1A\xFFFF\x6\x57",
 				"",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\xA\x5A",
-				"\x1\x5B",
-				"\x1\x5C",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\xA\x58",
+				"\x1\x59",
+				"\x1\x5A",
 				"",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x8\x18\x1\x5D\x11"+
-				"\x18",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x8\x17\x1\x5B\x11"+
+				"\x17",
+				"\x1\x5D",
+				"",
+				"\x1\x5E",
+				"",
 				"\x1\x5F",
+				"",
 				"",
 				"\x1\x60",
 				"",
-				"\x1\x61",
 				"",
 				"",
-				"\x1\x62",
-				"",
-				"",
-				"",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\x1\x63",
+				"\x1\x64",
 				"\x1\x65",
 				"\x1\x66",
+				"",
+				"",
 				"\x1\x67",
 				"\x1\x68",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
 				"",
+				"\xA\x6C\x7\xFFFF\x6\x6C\x1A\xFFFF\x6\x6C",
+				"\xA\x58\x2C\xFFFF\x1\x6E",
+				"\x1\x6F",
+				"\x1\x70",
+				"\x1\x71",
 				"",
-				"\x1\x69",
-				"\x1\x6A",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\x1\x6C",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"",
-				"\xA\x6F\x7\xFFFF\x6\x6F\x1A\xFFFF\x6\x6F",
-				"\xA\x5A\x2C\xFFFF\x1\x71",
-				"\x1\x72",
-				"\x1\x73",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
 				"\x1\x74",
+				"\x1\x75",
 				"",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
+				"",
+				"\x1\x76",
 				"\x1\x77",
-				"\x1\x78",
-				"",
-				"",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
 				"\x1\x79",
 				"\x1\x7A",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\x1\x7C",
-				"\x1\x7D",
+				"\x1\x7B",
+				"",
+				"",
+				"",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"",
+				"",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
 				"\x1\x7E",
-				"",
-				"\x1\x7F",
-				"",
-				"",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
 				"",
 				"",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
+				"\x1\x80",
+				"",
+				"\x1\x81",
 				"\x1\x82",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
 				"",
-				"",
+				"\x1\x83",
 				"\x1\x84",
-				"",
 				"\x1\x85",
-				"\x1\x86",
 				"",
+				"",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"",
+				"\x1\x86",
 				"\x1\x87",
 				"\x1\x88",
 				"\x1\x89",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"",
-				"",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"",
+				"\x1\x8A",
 				"\x1\x8B",
 				"\x1\x8C",
 				"\x1\x8D",
-				"\x1\x8E",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
 				"\x1\x8F",
 				"\x1\x90",
-				"",
 				"\x1\x91",
-				"\x1\x92",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
+				"",
 				"\x1\x94",
 				"\x1\x95",
 				"\x1\x96",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
 				"",
-				"\x1\x99",
+				"",
+				"",
+				"\x1\x97",
+				"\x1\x98",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
 				"\x1\x9A",
-				"\x1\x9B",
 				"",
-				"",
-				"",
-				"\x1\x9C",
-				"\x1\x9D",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
-				"\x1\x9F",
-				"",
-				"\xA\x18\x7\xFFFF\x1A\x18\x4\xFFFF\x1\x18\x1\xFFFF\x1A\x18",
+				"\xA\x17\x7\xFFFF\x1A\x17\x4\xFFFF\x1\x17\x1\xFFFF\x1A\x17",
 				""
 			};
 
@@ -4091,7 +4084,7 @@ namespace Avalon.Framework.Querys
                 this.transition = DFA28_transition;
             }
 
-            public override string Description { get { return "1:1: Tokens : ( T__51 | T__52 | T__53 | T__54 | IN | NOTIN | EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL | NOT | OR | AND | ASC | DESC | ALLPAGES | NONE | SKIP | TOP | FILTER | ORDERBY | SELECT | INLINECOUNT | STARTSWITH | ENDSWITH | SUBSTRINGOF | COUNT | MIN | MAX | SUM | AVERAGE | INT | LONG | DOUBLE | SINGLE | BOOL | NULL | DATETIME | GUID | BYTE | SPACE | NEWLINE | IDENTIFIER | STRING );"; } }
+            public override string Description { get { return "1:1: Tokens : ( T__51 | T__52 | T__53 | T__54 | IN | NOTIN | EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL | NOT | OR | AND | ASC | DESC | ALLPAGES | NONE | SKIP | TOP | FILTER | ORDERBY | SELECT | INLINECOUNT | COUNT | STARTSWITH | ENDSWITH | SUBSTRINGOF | MIN | MAX | SUM | AVERAGE | INT | LONG | DOUBLE | SINGLE | BOOL | NULL | DATETIME | GUID | BYTE | SPACE | NEWLINE | IDENTIFIER | STRING );"; } }
 
             public override void Error(NoViableAltException nvae)
             {
@@ -4104,4 +4097,4 @@ namespace Avalon.Framework.Querys
 
     }
 
-} // namespace Avalon.Framework.Querys
+} // namespace Nd.Platform.Querys
