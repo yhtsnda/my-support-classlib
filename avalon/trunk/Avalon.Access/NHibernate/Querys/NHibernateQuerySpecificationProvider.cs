@@ -36,28 +36,28 @@ namespace Avalon.NHibernateAccess
             return new NHibernateQuerySpecification<T>(this, expression);
         }
 
-        public object Execute(Type queryType, MethodInfo method, Expression expression)
+        public object Execute(Type queryType, MethodInfo method, IQuerySpecification spec)
         {
             if (method == countMethod)
-                return ExecuteCount(queryType, expression);
+                return ExecuteCount(queryType, spec);
 
             throw new NotSupportedException("不支持的方法 " + method.Name);
         }
 
-        public object ExecuteItems<TItem>(Type queryType, MethodInfo method, Expression expression)
+        public object ExecuteItems<TItem>(Type queryType, MethodInfo method, IQuerySpecification spec)
         {
             if (method == listMethod)
-                return ExecuteList<TItem>(queryType, expression);
+                return ExecuteList<TItem>(queryType, spec);
 
             if (method == pagingMethod)
-                return ExecutePaging<TItem>(queryType, expression);
+                return ExecutePaging<TItem>(queryType, spec);
 
             throw new NotSupportedException("不支持的方法 " + method.Name);
         }
 
-        int ExecuteCount(Type queryType, Expression expression)
+        int ExecuteCount(Type queryType, IQuerySpecification spec)
         {
-            LinqToSqlVisitor vistor = new LinqToSqlVisitor(new QueryEntityManager(queryType), expression, SqlMode.Count);
+            LinqToSqlVisitor vistor = new LinqToSqlVisitor(new QueryEntityManager(queryType), spec.Expression, SqlMode.Count);
             var sql = vistor.SqlBuilder.GetQuerySql();
 
             var session = (INHibernateShardSession)RepositoryFramework.GetSessionFactory(queryType).OpenSession(queryType, ShardParams.Empty);
@@ -65,10 +65,10 @@ namespace Avalon.NHibernateAccess
             return (int)query.UniqueResult();
         }
 
-        IList<TItem> ExecuteList<TItem>(Type queryType, Expression expression)
+        IList<TItem> ExecuteList<TItem>(Type queryType, IQuerySpecification spec)
         {
             var resultType = typeof(TItem);
-            LinqToSqlVisitor vistor = new LinqToSqlVisitor(new QueryEntityManager(queryType, resultType), expression, SqlMode.Query);
+            LinqToSqlVisitor vistor = new LinqToSqlVisitor(new QueryEntityManager(queryType, resultType), spec.Expression, SqlMode.Query);
             var sql = vistor.SqlBuilder.GetQuerySql();
 
             var session = (INHibernateShardSession)RepositoryFramework.GetSessionFactory(queryType).OpenSession(queryType, ShardParams.Empty);
@@ -81,13 +81,13 @@ namespace Avalon.NHibernateAccess
             return items;
         }
 
-        PagingResult<TItem> ExecutePaging<TItem>(Type queryType, Expression expression)
+        PagingResult<TItem> ExecutePaging<TItem>(Type queryType, IQuerySpecification spec)
         {
-            int count = ExecuteCount(queryType, expression);
+            int count = ExecuteCount(queryType, spec);
             var paging = new PagingResult<TItem>(count);
             if (count > 0)
             {
-                var items = ExecuteList<TItem>(queryType, expression);
+                var items = ExecuteList<TItem>(queryType, spec);
                 paging.AddRange(items);
             }
             return paging;
