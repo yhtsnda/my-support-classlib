@@ -11,54 +11,71 @@ namespace Avalon.UCenter
     {
         UserInnerService userInnerService;
         IMappingRepository mappingRepository;
+        IMappingAppRepository mappingAppRepository;
 
-        public MappingService(UserInnerService userInnerService, IMappingRepository mappingRepository)
+        public MappingService(UserInnerService userInnerService, 
+            IMappingRepository mappingRepository,
+            IMappingAppRepository mappingAppRepository)
         {
             this.userInnerService = userInnerService;
             this.mappingRepository = mappingRepository;
+            this.mappingAppRepository = mappingAppRepository;
         }
-
-        public Mapping GetMappingByPassport91Id(long passwordId)
+        /// <summary>
+        /// 获取用户映射信息
+        /// </summary>
+        public Mapping GetMapping(string key, int source)
         {
-            var spec = mappingRepository.CreateSpecification().Where(o => o.PassportId == passwordId && o.MappingType == MappingType.X91Passport);
+            var spec = mappingRepository.CreateSpecification()
+                .Where(o => o.MappingUserKey == key && o.MappingSourceId == source);
             return mappingRepository.FindOne(spec);
         }
-
-        public Mapping GetMapping(string key, MappingType source)
+        /// <summary>
+        /// 创建用户映射信息
+        /// </summary>
+        public Mapping CreateMapping(string mappingKey, int source, int localUserId, int mappingId = 0)
         {
-            var spec = mappingRepository.CreateSpecification().Where(o => o.UserKey == key && o.MappingType == source);
-            return mappingRepository.FindOne(spec);
-        }
+            var mappingApp = mappingAppRepository.Get(source);
+            if (mappingApp == null)
+                throw new ArgumentException("映射应用不存在, 请联系管理员添加映射");
 
-        public Mapping GetMappingForPassport91(long userId)
-        {
-            var spec = mappingRepository.CreateSpecification().Where(o => o.LocalUserId == userId && o.MappingType == MappingType.X91Passport);
-            return mappingRepository.FindOne(spec);
-        }
-
-        public Mapping CreateMapping(string key, MappingType source, long userId)
-        {
-            var mapping = GetMapping(key, source);
+            var mapping = GetMapping(mappingKey, source);
             if (mapping != null)
                 throw new ArgumentException("绑定已经存在");
 
-            var user = userInnerService.GetUserInner(userId);
+            var user = userInnerService.GetUserInner(localUserId);
             if (user == null)
                 throw new ArgumentException("用户不存在");
 
-            mapping = new Mapping()
-            {
-                LocalUserId = userId,
-                MappingType = source,
-                UserKey = key
-            };
+            mapping = new Mapping(mappingId, mappingKey, source, localUserId);
             CreateMapping(mapping);
             return mapping;
         }
+        /// <summary>
+        /// 创建用户映射信息
+        /// </summary>
+        public Mapping CreateMapping(string mappingKey, int source, UserInner innerUser, int mappingId = 0)
+        {
+            var mappingApp = mappingAppRepository.Get(source);
+            if (mappingApp == null)
+                throw new ArgumentException("映射应用不存在, 请联系管理员添加映射");
 
+            Arguments.NotNull(innerUser, "innerUser");
+            var mapping = GetMapping(mappingKey, source);
+            if (mapping != null)
+                throw new AvalonException("该帐号 {0} 的映射已经存在。", mappingKey);
+
+            mapping = new Mapping(mappingId, mappingKey, source, innerUser.UserId);
+            CreateMapping(mapping);
+
+            return mapping;
+        }
+        /// <summary>
+        /// 获取映射键对应的所有映射
+        /// </summary>
         public IList<Mapping> GetMappingList(string key)
         {
-            var spec = mappingRepository.CreateSpecification().Where(o => o.UserKey == key);
+            var spec = mappingRepository.CreateSpecification().Where(o => o.MappingUserKey == key);
             return mappingRepository.FindAll(spec);
         }
 
@@ -66,88 +83,70 @@ namespace Avalon.UCenter
         {
             mappingRepository.Create(mapping);
         }
-
         /// <summary>
         /// 确保91passport的映射关系，并返回UserInner
         /// </summary>
         public UserInner EnsureUserMapping(long passport91Id, string userName, string nickName, string password, string email, long platCode, string ip, string browser, bool auto, string fromUrl, string extendField)
         {
-            Arguments.That(passport91Id > 0, "passport91Id", "passport91Id错误，必须进行91passport的安全授权");
+            throw new NotImplementedException();
+            //Arguments.That(passport91Id > 0, "passport91Id", "passport91Id错误，必须进行91passport的安全授权");
 
-            var mapping = GetMappingByPassport91Id(passport91Id);
-            UserInner userInner = null;
+            //var mapping = GetMappingByPassport91Id(passport91Id);
+            //UserInner userInner = null;
 
-            if (mapping == null)
-            {
-                userInner = userInnerService.GetUserInner(userName);
-                if (userInner == null)
-                {
-                    userInner = new UserInner()
-                    {
-                        UserName = userName,
-                        Password = password,
-                        NickName = nickName,
-                        UpgradeStatus = UpgradeStatus.Upgraded,
-                        Email = email
-                    };
+            //if (mapping == null)
+            //{
+            //    userInner = userInnerService.GetUserInner(userName);
+            //    if (userInner == null)
+            //    {
+            //        userInner = new UserInner()
+            //        {
+            //            UserName = userName,
+            //            Password = password,
+            //            NickName = nickName,
+            //            UpgradeStatus = UpgradeStatus.Upgraded,
+            //            Email = email
+            //        };
 
-                    userInnerService.CreateUserInner(userInner);
-                    userInnerService.OnRegisterSuccess(userInner, platCode, ip, browser, auto, fromUrl, extendField);
-                }
+            //        userInnerService.CreateUserInner(userInner);
+            //        userInnerService.OnRegisterSuccess(userInner, platCode, ip, browser, auto, fromUrl, extendField);
+            //    }
 
-                mapping = GetMapping(userName, MappingType.X91Passport);
-                if (mapping == null)
-                {
-                    mapping = new Mapping()
-                    {
-                        LocalUserId = userInner.UserId,
-                        PassportId = passport91Id,
-                        MappingType = MappingType.X91Passport,
-                        UserKey = userName
-                    };
-                    CreateMapping(mapping);
-                }
-                else 
-                {
-                    //本地映射存在，但未关联passportId，在此做更新  by lcj 2013-11-04
-                    mapping.PassportId = passport91Id;
-                    mappingRepository.Update(mapping);
-                }
-            }
-            else
-            {
-                userInner = userInnerService.GetUserInner(mapping.LocalUserId);
-                if (userInner == null)
-                    throw new Exception(String.Format("数据错误。 mapping 存在但 user {0}不存在", mapping.LocalUserId));
+            //    mapping = GetMapping(userName, MappingType.X91Passport);
+            //    if (mapping == null)
+            //    {
+            //        mapping = new Mapping()
+            //        {
+            //            LocalUserId = userInner.UserId,
+            //            PassportId = passport91Id,
+            //            MappingType = MappingType.X91Passport,
+            //            UserKey = userName
+            //        };
+            //        CreateMapping(mapping);
+            //    }
+            //    else
+            //    {
+            //        //本地映射存在，但未关联passportId，在此做更新  by lcj 2013-11-04
+            //        mapping.PassportId = passport91Id;
+            //        mappingRepository.Update(mapping);
+            //    }
+            //}
+            //else
+            //{
+            //    userInner = userInnerService.GetUserInner(mapping.LocalUserId);
+            //    if (userInner == null)
+            //        throw new Exception(String.Format("数据错误。 mapping 存在但 user {0}不存在", mapping.LocalUserId));
 
-                if (userInner.UpgradeStatus != UpgradeStatus.Upgraded)
-                {
-                    userInner.UpgradeStatus = UpgradeStatus.Upgraded;
-                    userInnerService.UpdateUserInner(userInner);
+            //    if (userInner.UpgradeStatus != UpgradeStatus.Upgraded)
+            //    {
+            //        userInner.UpgradeStatus = UpgradeStatus.Upgraded;
+            //        userInnerService.UpdateUserInner(userInner);
 
-                    userInnerService.OnUpgradeSuccess(userInner);
-                }
-            }
+            //        userInnerService.OnUpgradeSuccess(userInner);
+            //    }
+            //}
 
-            return userInner;
-        }
-
-        public Mapping CreateMapping(string userKey, MappingType mappingSource, UserInner innerUser)
-        {
-            Arguments.NotNull(innerUser, "innerUser");
-            var mapping = GetMapping(userKey, mappingSource);
-            if (mapping != null)
-                throw new AvalonException("该帐号 {0} 的映射已经存在。", userKey);
-
-            mapping = new Mapping()
-            {
-                LocalUserId = innerUser.UserId,
-                MappingType = mappingSource,
-                UserKey = userKey
-            };
-            CreateMapping(mapping);
-
-            return mapping;
+            //return userInner;
         }
     }
 }

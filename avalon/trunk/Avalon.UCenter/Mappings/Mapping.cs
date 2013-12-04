@@ -8,42 +8,42 @@ namespace Avalon.UCenter
 {
     public class Mapping
     {
-        public Mapping()
+        public Mapping(int mappingId, string mappingKey, int sourceId, int localUserId)
         {
+            this.MappingUserId = mappingId;
+            this.MappingUserKey = mappingKey;
+            this.MappingSourceId = sourceId;
+            this.LocalUserId = localUserId;
             CreateTime = NetworkTime.Now;
         }
 
-
-        public virtual int Id { get; set; }
-
         /// <summary>
-        /// 非91UP用户与91UP映射的用户键
+        /// 唯一键
         /// </summary>
-        public virtual string UserKey { get; set; }
-
+        public virtual int Id { get; protected set; }
         /// <summary>
-        /// 用户的来源
+        /// 与用户中心映射的用户Id
         /// </summary>
-        public virtual MappingType MappingType { get; set; }
-
+        public virtual int MappingUserId { get; protected set; }
         /// <summary>
-        /// 映射的91UP用户的ID
+        /// 与用户中心映射的用户键
         /// </summary>
-        public virtual long LocalUserId { get; set; }
-
+        public virtual string MappingUserKey { get; protected set; }
         /// <summary>
-        /// 映射的91U用户名
+        /// 映射来源ID
         /// </summary>
-        public virtual string LocalUserName { get; set; }
-
+        public virtual int MappingSourceId { get; protected set; }
+        /// <summary>
+        /// 映射来源类型
+        /// </summary>
+        internal virtual MappingApp MappingSource { get; set; }
+        /// <summary>
+        /// 外部用户映射到本地的用户ID
+        /// </summary>
+        public virtual int LocalUserId { get; protected set; }
         /// <summary>
         /// 创建时间
         /// </summary>
-        public virtual DateTime CreateTime { get; set; }
-
-        /// <summary>
-        /// 用户来源地的标识
-        /// </summary>
-        public virtual long PassportId { get; set; }
+        public virtual DateTime CreateTime { get; protected set; }
     }
 }

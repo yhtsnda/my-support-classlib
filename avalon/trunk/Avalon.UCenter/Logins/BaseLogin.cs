@@ -7,7 +7,7 @@ namespace Avalon.UCenter
 {
     public abstract class BaseLogin
     {
-        public long PlatCode { get; set; }
+        public string AppCode { get; set; }
 
         public string IpAddress { get; set; }
 

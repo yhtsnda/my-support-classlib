@@ -7,7 +7,7 @@ namespace Avalon.UCenter
 {
     public class UserLogin : BaseLogin
     {
-        public string UserName { get; set; }
+        public string Voucher { get; set; }
 
         public string Password { get; set; }
     }

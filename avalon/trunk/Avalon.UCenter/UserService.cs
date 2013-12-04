@@ -28,17 +28,16 @@ namespace Avalon.UCenter
 
         #region login
         /// <summary>
-        /// 使用用户中心进行登录（不会连接到91校验）
+        /// 使用用户中心进行登录
         /// </summary>
         public ResultWrapper<LoginResultCode, UserInner> TryLogin(UserLogin login)
         {
-            var result = userInnerService.TryLogin(login.UserName, login.Password, login.PlatCode);
+            var result = userInnerService.TryLogin(login.Voucher, login.Password, login.AppCode);
             //登录成功
             if (result.Code == LoginResultCode.Success)
-                userInnerService.OnLoginSuccess(result.Data.UserId, login.PlatCode, login.IpAddress, login.Browser, login.ExtendField);
+                userInnerService.OnLoginSuccess(result.Data.UserId, login.AppCode, login.IpAddress, login.Browser, login.ExtendField);
             return result;
         }
-
         /// <summary>
         /// 第三方登录
         /// </summary>
@@ -55,14 +54,10 @@ namespace Avalon.UCenter
 
             return CreateLoginResult(userInner);
         }
-
         /// <summary>
         /// 第三方帐号绑定登录
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="mappingType"></param>
-        /// <param name="userId"></param>
-        public ResultWrapper<LoginResultCode, UserInner> TryLoginForThirdBind(Passport91Login login, string accessToken, MappingType mappingType)
+        public ResultWrapper<LoginResultCode, UserInner> TryLoginForThirdBind(UserLogin login, string accessToken, MappingType mappingType)
         {
             var result = TryLogin(login);
             if (result.Code == LoginResultCode.Success)

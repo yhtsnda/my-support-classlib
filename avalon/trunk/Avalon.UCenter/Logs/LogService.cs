@@ -12,18 +12,18 @@ namespace Avalon.UCenter
         IActiveLogRepository activeLogRepository;
         IRegisterLogRepository registerLogRepository;
         ILoginLogRepository loginLogRepository;
-        IUpgradeLogRepository upgradeLogRepository;
         ILastLoginLogRepository lastLoginLogRepository;
 
-        public LogService(IActiveLogRepository activeLogRepository, IRegisterLogRepository registerLogRepository, ILoginLogRepository loginLogRepository, IUpgradeLogRepository upgradeLogRepository, ILastLoginLogRepository lastLoginLogRepository)
+        public LogService(IActiveLogRepository activeLogRepository, 
+            IRegisterLogRepository registerLogRepository, 
+            ILoginLogRepository loginLogRepository, 
+            ILastLoginLogRepository lastLoginLogRepository)
         {
             this.activeLogRepository = activeLogRepository;
             this.registerLogRepository = registerLogRepository;
             this.loginLogRepository = loginLogRepository;
-            this.upgradeLogRepository = upgradeLogRepository;
             this.lastLoginLogRepository = lastLoginLogRepository;
         }
-
         /// <summary>
         /// 一天仅更新一次
         /// </summary>
@@ -46,7 +46,6 @@ namespace Avalon.UCenter
                 lastLoginLogRepository.Update(lastLoginLog);
             }
         }
-
         /// <summary>
         /// 每 day + userid + ip + platcode 只有一笔数据
         /// </summary>
@@ -74,7 +73,6 @@ namespace Avalon.UCenter
             //写入存在数据
             loginLogRepository.SetLog(userId, platCode, ipInt32);
         }
-
         /// <summary>
         /// 每 userid + platcode 只有一笔数据
         /// </summary>
@@ -105,7 +103,9 @@ namespace Avalon.UCenter
                 activeLogRepository.Create(activeLog);
             }
         }
-
+        /// <summary>
+        /// 注册日志(每个UserId只记录一笔)
+        /// </summary>
         public void WriteRegisterLog(UserInner userInner, long platCode, string ip, string browser, bool auto, string fromUrl, string extendField)
         {
             var registerLog = new RegisterLog()
@@ -130,18 +130,6 @@ namespace Avalon.UCenter
                 LastLoginIp = ip
             };
             lastLoginLogRepository.Create(lastLoginLog);
-        }
-
-        public void WriteUpgradeLog(UserInner userInner)
-        {
-            var upgradeLog = new UpgradeLog()
-            {
-                OriginalUserName = userInner.UserName,
-                UserName = userInner.UserName,
-                UserId = userInner.UserId
-            };
-
-            upgradeLogRepository.Create(upgradeLog);
         }
     }
 }

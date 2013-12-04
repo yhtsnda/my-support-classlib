@@ -6,9 +6,11 @@ using System.Text;
 
 namespace Avalon.UCenter
 {
-    public interface IMappingRepository : IRepository<Mapping>
+    public interface IMappingRepository : INoShardRepository<Mapping>
     {
     }
 
-   
+    public interface IMappingAppRepository : INoShardRepository<MappingApp>
+    {
+    }
 }

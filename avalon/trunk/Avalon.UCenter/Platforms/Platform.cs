@@ -72,6 +72,7 @@ namespace Avalon.UCenter
     public enum LoginVouchers
     {
         UserName,
+        Email,
         Mobile,
         IdCard
     }

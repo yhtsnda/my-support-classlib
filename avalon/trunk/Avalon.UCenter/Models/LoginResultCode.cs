@@ -12,10 +12,10 @@ namespace Avalon.UCenter
         EmptyUserName = 400001,
         EmptyPassword = 400002,
         EmptyAppCode = 400003,
-
         InvalidAppCode = 400004,
-        BindingNotFound = 400031,
+        NotAllowLoginApp = 400005,
 
+        BindingNotFound = 400031,
         //升级相关
         NeedToUpgrade = 400032,
         UserNotFound = 400033,
@@ -48,7 +48,8 @@ namespace Avalon.UCenter
                     return "用户未找到";
                 case LoginResultCode.WrongPassword:
                     return "错误的密码";
-
+                case LoginResultCode.NotAllowLoginApp:
+                    return "用户未授权使用应用";
                 default:
                     return "系统接口异常";
             }
