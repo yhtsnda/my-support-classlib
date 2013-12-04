@@ -79,6 +79,8 @@ namespace Avalon.UCenter
             return mappingRepository.FindAll(spec);
         }
 
+        public 
+
         void CreateMapping(Mapping mapping)
         {
             mappingRepository.Create(mapping);
