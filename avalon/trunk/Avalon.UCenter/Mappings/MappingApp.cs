@@ -1,4 +1,5 @@
 ﻿using Avalon.Framework;
+using Avalon.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Avalon.UCenter
         {
             this.AppName = name;
             this.AppSuffix = suffix;
+            this.Status = PlatformStatus.InUse;
         }
         /// <summary>
         /// 映射应用的ID
@@ -32,6 +34,16 @@ namespace Avalon.UCenter
         /// 创建时间
         /// </summary>
         public virtual DateTime CreateTime { get; protected set; }
+        /// <summary>
+        /// 平台状态
+        /// </summary>
+        public virtual PlatformStatus Status { get; protected set; }
+
+        public virtual void SetMappAppStatus(PlatformStatus status)
+        {
+            this.Status = status;
+            this.CreateTime = NetworkTime.Now;
+        }
 
         void IValidatable.Validate()
         {

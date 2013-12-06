@@ -78,9 +78,49 @@ namespace Avalon.UCenter
             var spec = mappingRepository.CreateSpecification().Where(o => o.MappingUserKey == key);
             return mappingRepository.FindAll(spec);
         }
-
-        public 
-
+        /// <summary>
+        /// 创建新的映射应用
+        /// </summary>
+        public void CreateMappingApp(MappingApp entry)
+        {
+            mappingAppRepository.Create(entry);
+        }
+        /// <summary>
+        /// 更新映射应用
+        /// </summary>
+        public void UpdateMappingApp(MappingApp entry)
+        {
+            mappingAppRepository.Update(entry);
+        }
+        /// <summary>
+        /// 将映射应用设置为不可用
+        /// </summary>
+        public void DeleteMappingApp(int id)
+        {
+            var app = mappingAppRepository.Get(id);
+            if (app == null)
+                throw new ArgumentException("Mapping App不存在");
+            app.SetMappAppStatus(PlatformStatus.NotAvailable);
+            mappingAppRepository.Update(app);
+        }
+        /// <summary>
+        /// 获取一个映射应用
+        /// </summary>
+        public MappingApp GetMappingApp(int id)
+        {
+            var app = mappingAppRepository.Get(id);
+            if (app == null)
+                throw new ArgumentException("Mapping App不存在");
+            return app;
+        }
+        /// <summary>
+        /// 获取所有的映射应用
+        /// </summary>
+        public IList<MappingApp> GetMappingAppAll()
+        {
+            var list = mappingAppRepository.FindAll(mappingAppRepository.CreateSpecification());
+            return list;
+        }
         void CreateMapping(Mapping mapping)
         {
             mappingRepository.Create(mapping);
