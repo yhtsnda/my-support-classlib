@@ -16,7 +16,7 @@ namespace Avalon.Framework.Querys
         {
             var datas = new NameValueCollection(context.Request.QueryString);
             datas.Add(context.Request.Form);
-            return Process<TFilter, TResult>(datas, validator, converter);
+            return Process<TFilter, TResult>(datas, validator, converter, specFilter);
         }
 
         public static object Process<TFilter, TResult>(NameValueCollection datas, ODataQueryValidator validator = null, Func<TResult, object> converter = null, Func<IQuerySpecification<TFilter>, IQuerySpecification<TFilter>> specFilter = null)
