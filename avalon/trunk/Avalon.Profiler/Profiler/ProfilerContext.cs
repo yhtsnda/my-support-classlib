@@ -142,9 +142,12 @@ namespace Avalon.Profiler
                 data.Request.Header = String.Concat(request.Headers.AllKeys.Select(o => String.Format("{0}:{1}\r\n", o, request.Headers[o])));
                 if (data.Request.Method == "POST")
                 {
-                    using (StreamReader sr = new StreamReader(request.InputStream, request.ContentEncoding))
+                    if (!request.ContentType.StartsWith("multipart/form-data") && request.ContentType != "application/offset+octet-stream" && request.ContentLength < 2048)
                     {
-                        data.Request.Body = sr.ReadToEnd();
+                        using (StreamReader sr = new StreamReader(request.InputStream, request.ContentEncoding))
+                        {
+                            data.Request.Body = sr.ReadToEnd();
+                        }
                     }
                 }
             }

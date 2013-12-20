@@ -95,6 +95,7 @@
     <Compile Include="Settings\SettingProvider.cs" />
     <Compile Include="ShardParams.cs" />
     <Compile Include="Util\AcquireLock.cs" />
+    <Compile Include="Util\Base34Encoding.cs" />
     <Compile Include="Util\Base58Encoding.cs" />
     <Compile Include="Util\CookieAuthentication.cs" />
     <Compile Include="Util\FileHelper.cs" />
