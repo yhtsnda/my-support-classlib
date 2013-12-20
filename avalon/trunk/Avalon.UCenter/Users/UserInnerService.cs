@@ -54,7 +54,7 @@ namespace Avalon.UCenter
             return userInnerRepository.FindOne(spec);
         }
         /// <summary>
-        /// 根据用户手机号码获取用户信息(可以是复数的)
+        /// 根据用户手机号码获取用户信息
         /// </summary>
         public UserInner GetUserInnerByMobile(string mobile)
         {
@@ -129,7 +129,7 @@ namespace Avalon.UCenter
         /// <summary>
         /// 登录成功的流程
         /// </summary>
-        internal void OnLoginSuccess(long userId, string platCode, string ip, string browser, string extendField)
+        internal void OnLoginSuccess(int userId, string platCode, string ip, string browser, string extendField)
         {
             logService.WriteLoginLog(userId, platCode, ip, browser, extendField);
             logService.WriteActiveLog(userId, platCode);

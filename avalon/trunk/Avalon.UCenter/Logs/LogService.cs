@@ -27,7 +27,7 @@ namespace Avalon.UCenter
         /// <summary>
         /// 一天仅更新一次
         /// </summary>
-        void WriteLastLoginLog(long userId, string ip)
+        void WriteLastLoginLog(int userId, string ip)
         {
             var lastLoginLog = lastLoginLogRepository.Get(userId);
             if (lastLoginLog == null)
@@ -49,7 +49,7 @@ namespace Avalon.UCenter
         /// <summary>
         /// 每 day + userid + ip + platcode 只有一笔数据
         /// </summary>
-        public void WriteLoginLog(long userId, long platCode, string ip, string browser, string extendField)
+        public void WriteLoginLog(int userId, long platCode, string ip, string browser, string extendField)
         {
             var ipInt32 = UserUtil.GetIpInt(ip);
 
@@ -76,7 +76,7 @@ namespace Avalon.UCenter
         /// <summary>
         /// 每 userid + platcode 只有一笔数据
         /// </summary>
-        public void WriteActiveLog(long userId, long activePlatCode)
+        public void WriteActiveLog(int userId, long activePlatCode)
         {
             int productCode = UserUtil.GetProductCode(activePlatCode);
             int terminalCode = UserUtil.GetTerminalCode(activePlatCode);
