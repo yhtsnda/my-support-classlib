@@ -16,7 +16,8 @@ namespace Avalon.Utility
         /// <returns></returns>
         public static IEnumerable<Type> GetTypesImplementing<T>()
         {
-            return GetTypesImplementing<T>(Assembly.GetCallingAssembly());
+            var assemblies = GetAssemblies();
+            return assemblies.SelectMany(GetTypesImplementing<T>).ToList();
         }
 
         /// <summary>

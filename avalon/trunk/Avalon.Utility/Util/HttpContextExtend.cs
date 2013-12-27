@@ -19,5 +19,16 @@ namespace System.Web
         {
             return context != null && !((bool)handler(context));
         }
+
+        public static bool IsLargeRequest(this HttpContext context)
+        {
+            if (IsAvailable(context))
+            {
+                var request = context.Request;
+                if(request.HttpMethod == "POST")
+                    return request.ContentType.StartsWith("multipart/form-data") || request.ContentType == "application/offset+octet-stream" || request.ContentLength > 2048;
+            }
+            return false;
+        }
     }
 }

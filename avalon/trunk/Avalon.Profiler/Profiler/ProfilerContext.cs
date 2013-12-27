@@ -140,14 +140,11 @@ namespace Avalon.Profiler
                 data.Request.Url = request.Url.ToString();
                 data.Request.Method = request.HttpMethod;
                 data.Request.Header = String.Concat(request.Headers.AllKeys.Select(o => String.Format("{0}:{1}\r\n", o, request.Headers[o])));
-                if (data.Request.Method == "POST")
+                if (!app.Context.IsLargeRequest())
                 {
-                    if (!request.ContentType.StartsWith("multipart/form-data") && request.ContentType != "application/offset+octet-stream" && request.ContentLength < 2048)
+                    using (StreamReader sr = new StreamReader(request.InputStream, request.ContentEncoding))
                     {
-                        using (StreamReader sr = new StreamReader(request.InputStream, request.ContentEncoding))
-                        {
-                            data.Request.Body = sr.ReadToEnd();
-                        }
+                        data.Request.Body = sr.ReadToEnd();
                     }
                 }
             }
