@@ -44,9 +44,9 @@ namespace Avalon.OAuthClient
         {
             get
             {
-                var oauthScope = OAuthScope.PeekOAuthScope();
-                if (oauthScope != null)
-                    return oauthScope.AccessToken;
+                //var oauthScope = OAuthScope.PeekOAuthScope();
+                //if (oauthScope != null)
+                //    return oauthScope.AccessToken;
 
                 EnsureAuthorize();
                 return accessGrant.AccessToken;

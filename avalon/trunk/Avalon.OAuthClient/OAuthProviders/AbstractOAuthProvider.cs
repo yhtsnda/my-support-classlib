@@ -16,7 +16,24 @@ namespace Avalon.OAuthClient
         /// </summary>
         public virtual OAuthContext GetCurrent()
         {
-            var accessGrant = GetCurrentAccessGrant();
+            AccessGrant accessGrant = null;
+            var oauthScope = OAuthScope.PeekOAuthScope();
+            if (oauthScope != null)
+            {
+                accessGrant = OAuthImpl.GetAccessGrant(oauthScope.AccessToken);
+                if (accessGrant == null)
+                {
+                    accessGrant = new AccessGrant
+                    {
+                        AccessToken = oauthScope.AccessToken,
+                        ExpireTime = NetworkTime.Now.AddDays(-1)
+                    };
+                }
+                else
+                {
+                    accessGrant = GetCurrentAccessGrant();
+                }
+            }
             EnsureAccessGrantValid(ref accessGrant);
             return new OAuthContext(accessGrant);
         }
