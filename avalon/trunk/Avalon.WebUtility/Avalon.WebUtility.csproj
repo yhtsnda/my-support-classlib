@@ -70,6 +70,7 @@
     <Compile Include="Api\MutilApiImpl.cs" />
     <Compile Include="Api\ODataQueryAttribute.cs" />
     <Compile Include="Api\OpenApiAttribute.cs" />
+    <Compile Include="Api\OpenApiMethodAttribute.cs" />
     <Compile Include="Api\PlatformAuthorizeAttribute.cs" />
     <Compile Include="ControllerExtensions\InvokeActionResultExtend.cs" />
     <Compile Include="FilterExtensions\CompressAttribute.cs" />

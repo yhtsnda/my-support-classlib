@@ -54,7 +54,10 @@ namespace Avalon.OAuthClient
                     {
                         var token = new ClientCredentialsTokenData(am.ClientId, am.ClientSecret);
                         accessGrant = AuthorizeAndValid(token);
-                        appAccessGrant.Add(accessGrant.ClientId, accessGrant);
+                        if (appAccessGrant.ContainsKey(accessGrant.ClientId))
+                            appAccessGrant[accessGrant.ClientId] = accessGrant;
+                        else
+                            appAccessGrant.Add(accessGrant.ClientId, accessGrant);
                     }
                 }
             }
